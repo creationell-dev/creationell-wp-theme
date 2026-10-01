@@ -1,0 +1,38 @@
+/*--------------------------------------------------------------
+Language switcher
+--------------------------------------------------------------*/
+
+// Markup: creationell_wp_theme_language_switcher() (src/wpml/class-language-switcher.php).
+// Bootstrap styles the dropdown and the inline list; this file adds the target
+// size (WCAG 2.5.8) and a focus ring from the Bootstrap focus variables.
+// Logical properties only, no fixed colors.
+
+$creationell-theme-language-switcher-target-size: 24px !default;
+
+.creationell-theme-language-switcher {
+  .dropdown-toggle,
+  .dropdown-item,
+  .list-inline-item > a {
+    min-block-size: $creationell-theme-language-switcher-target-size;
+    min-inline-size: $creationell-theme-language-switcher-target-size;
+  }
+
+  .dropdown-toggle,
+  .list-inline-item > a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .dropdown-toggle {
+    text-decoration: none;
+  }
+
+  .dropdown-toggle:focus-visible,
+  .dropdown-item:focus-visible,
+  .list-inline-item > a:focus-visible {
+    outline: $focus-ring-width solid var(--#{$prefix}emphasis-color);
+    outline-offset: $focus-ring-width;
+    box-shadow: none;
+  }
+}

@@ -1,0 +1,55 @@
+/*
+ * Settings pages "Texts" and "Design" of the theme in the admin.
+ *
+ * Loaded only on these pages (admin_enqueue_scripts, handle
+ * creationell-wp-theme-admin-settings). Hand-written and not built: it uses
+ * logical properties only, so the same file serves left-to-right and
+ * right-to-left admin languages.
+ */
+
+/* Read-only color: a swatch next to the hex value, which carries the information. */
+.creationell-wp-theme-swatch {
+	display: inline-block;
+	inline-size: 1.5em;
+	block-size: 1.5em;
+	margin-inline-end: 0.5em;
+	vertical-align: middle;
+	border: 1px solid #50575e;
+	border-radius: 2px;
+}
+
+/* Reset button below the field it belongs to. */
+.creationell-wp-theme-reset {
+	margin-block: 0.5em 0;
+}
+
+/* Visible focus for the reset button, also in Windows high contrast mode. */
+.creationell-wp-theme-reset .button:focus-visible {
+	outline: 2px solid #2271b1;
+	outline-offset: 2px;
+}
+
+/* Read-only fields look inactive but stay readable. */
+.acf-field[data-key^="field_creationell_wp_theme_"] input[disabled],
+.acf-field[data-key^="field_creationell_wp_theme_"] select[disabled],
+.acf-field[data-key^="field_creationell_wp_theme_"] textarea[disabled] {
+	color: #1d2327;
+	background-color: #f0f0f1;
+}
+
+/*
+ * Field descriptions carry the effective value, its origin and the lock reason.
+ * ACF prints them in #667085, below 4.5:1 on the admin background #f0f0f0.
+ */
+.acf-field[data-key^="field_creationell_wp_theme_"] p.description {
+	color: #50575e;
+}
+
+/*
+ * Notice of a failed validation above the form: ACF prints white text on
+ * #d94f4f (4.05:1); the error red of WordPress reaches AA.
+ */
+.acf-notice.-error.-dismiss {
+	background-color: #b32d2e;
+	border-color: #8a2424;
+}

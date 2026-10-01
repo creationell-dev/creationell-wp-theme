@@ -1,0 +1,21 @@
+{
+	"$schema": "https://blockstudio.dev/schema/block",
+	"apiVersion": 3,
+	"name": "creationell-theme/footer-text",
+	"title": "Footer text",
+	"category": "creationell-theme",
+	"description": "Footer text of the theme settings, or the copyright line without it, with the footer links of the theme.",
+	"icon": "editor-paragraph",
+	"keywords": [
+		"footer",
+		"copyright",
+		"text"
+	],
+	"textdomain": "creationell-wp-theme",
+	"supports": {
+		"html": false,
+		"multiple": false,
+		"reusable": false
+	},
+	"blockstudio": true
+}

@@ -1,0 +1,35 @@
+/*
+ * Corrections for the block editor canvas on top of theme.min.css.
+ *
+ * Loaded only inside the canvas (enqueue_block_assets, handle
+ * creationell-wp-theme-editor-canvas). Hand-written and not built: it uses
+ * logical properties only, so the same file serves left-to-right and
+ * right-to-left languages.
+ */
+
+/* The canvas body shows the content with the Bootstrap body styles. */
+.editor-styles-wrapper {
+	font-family: var(--bs-body-font-family);
+	font-size: var(--bs-body-font-size);
+	font-weight: var(--bs-body-font-weight);
+	line-height: var(--bs-body-line-height);
+	color: var(--bs-body-color);
+	background-color: var(--bs-body-bg);
+}
+
+/* Space at the sides of the content, like the gutter of the template container. */
+.editor-styles-wrapper .is-root-container {
+	padding-inline: calc(var(--bs-gutter-x, 1.5rem) * 0.5);
+}
+
+/* Placeholders of empty blocks stay readable on the body colors. */
+.editor-styles-wrapper [data-rich-text-placeholder]::after {
+	color: var(--bs-secondary-color);
+	opacity: 1;
+}
+
+/* Images never overflow the canvas. */
+.editor-styles-wrapper img {
+	max-inline-size: 100%;
+	block-size: auto;
+}

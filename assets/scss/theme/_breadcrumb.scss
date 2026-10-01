@@ -1,0 +1,20 @@
+/*--------------------------------------------------------------
+Breadcrumb - creationell Theme v6.4.0
+--------------------------------------------------------------*/
+
+// Breadcrumb if wrapped in a horizontal scroller
+.overflow-x-auto {
+
+  scrollbar-color: rgba(var(--#{$prefix}body-color-rgb),.16) transparent;
+    
+  .breadcrumb-item {
+    
+    &.active {
+      padding-inline-end: $spacer;
+    }
+
+    &::before {
+      float: none;
+    }
+  }
+}

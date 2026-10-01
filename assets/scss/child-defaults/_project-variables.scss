@@ -1,0 +1,8 @@
+// Empty stand-in for the variables of the child theme.
+//
+// The individual stylesheet of the design settings compiles with the child
+// folder assets/scss/ first in the import paths, so a child theme that declares
+// the active Bootstrap line in style.css ("Bootstrap Lines") replaces this file
+// with its own _project-variables.scss. Colors and fonts come from the theme
+// settings, which win over "!default" values here. This file stays in its own
+// folder: Sass resolves an import next to theme.scss before the import paths.

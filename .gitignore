@@ -1,0 +1,11 @@
+# .gitignore of the public theme repository.
+# lib/ is part of the theme and stays tracked.
+# Patterns start with / so that assets/vendor/ and scss/vendor/ stay tracked.
+/node_modules/
+/vendor/
+/build/
+/out/
+*.zip
+*.sha256
+*.log
+.DS_Store

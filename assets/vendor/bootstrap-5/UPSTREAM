@@ -1,0 +1,13 @@
+package: bootstrap
+version: 5.3.8
+license: MIT
+resolved: https://registry.npmjs.org/bootstrap/-/bootstrap-5.3.8.tgz
+integrity: sha512-HP1SZDqaLDPwsNiqRqi5NcP0SSXciX2s9E+RyqJIIqGo+vJeN5AJVM98CXmW/Wux0nQ5L7jeWUdplCEf0Ee+tg==
+line: 5
+copied:
+  scss <- scss
+  js/bootstrap.bundle.min.js <- dist/js/bootstrap.bundle.min.js
+  LICENSE <- LICENSE
+excluded: scss/tests/**, **/*.map
+post-processing: sourceMappingURL comments removed
+generated-by: bin/sync-vendor.php

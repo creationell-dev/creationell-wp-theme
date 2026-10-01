@@ -1,0 +1,62 @@
+// Runs after the variables of Bootstrap and before its maps and components.
+
+// Focus ring of the dark colour mode ([data-bs-theme=dark] on the page or on a
+// part of it, such as a dark footer). The default primary colour reaches 2.6:1
+// on the dark page and 2.3:1 on its tertiary background only, so the ring there
+// is the light ring, tinted in steps of 5 % until it reaches 3:1 on both (with a
+// small margin; composer test:contrast checks the pairs). The secondary
+// background (bg-body-secondary) is not part of the check. A child theme may set
+// $focus-ring-color-dark in its _project-variables.scss.
+@function creationell-focus-ring-dark($color, $backgrounds) {
+  $weight: 0%;
+  @while $weight < 100% {
+    $tint: tint-color($color, $weight);
+    $reached: true;
+    @each $background in $backgrounds {
+      @if contrast-ratio($background, $tint) < 3.1 {
+        $reached: false;
+      }
+    }
+    @if $reached {
+      @return $tint;
+    }
+    $weight: $weight + 5%;
+  }
+  @return $white;
+}
+
+// A ring colour that is no colour (a custom property, currentcolor) serves both modes.
+$focus-ring-color-dark: null !default;
+@if not $focus-ring-color-dark {
+  @if type-of($focus-ring-color) == color {
+    $focus-ring-color-dark: creationell-focus-ring-dark(opaque($body-bg-dark, $focus-ring-color), ($body-bg-dark, $body-tertiary-bg-dark));
+  } @else {
+    $focus-ring-color-dark: $focus-ring-color;
+  }
+}
+
+// The rings of fields, menus, pagination, accordion and close button take their
+// colour from --creationell-theme-focus-ring (theme/_forms.scss), so they follow
+// the colour mode. Bootstrap computed these variables with the static colour; a
+// variable is replaced only while it still holds that value, so a ring set in
+// _project-variables.scss of a child theme stays as it is.
+@function creationell-focus-ring-var($value, $static, $replacement) {
+  @return if($value == $static, $replacement, $value);
+}
+
+$creationell-static-ring:      0 0 $focus-ring-blur $focus-ring-width $focus-ring-color;
+$creationell-ring:             0 0 $focus-ring-blur $focus-ring-width var(--creationell-theme-focus-ring);
+$creationell-static-range-gap: 0 0 0 1px $body-bg, $creationell-static-ring;
+
+$focus-ring-box-shadow:             creationell-focus-ring-var($focus-ring-box-shadow, $creationell-static-ring, $creationell-ring);
+$input-btn-focus-box-shadow:        creationell-focus-ring-var($input-btn-focus-box-shadow, $creationell-static-ring, $creationell-ring);
+$btn-focus-box-shadow:              creationell-focus-ring-var($btn-focus-box-shadow, $creationell-static-ring, $creationell-ring);
+$input-focus-box-shadow:            creationell-focus-ring-var($input-focus-box-shadow, $creationell-static-ring, $creationell-ring);
+$form-check-input-focus-box-shadow: creationell-focus-ring-var($form-check-input-focus-box-shadow, $creationell-static-ring, $creationell-ring);
+$form-select-focus-box-shadow:      creationell-focus-ring-var($form-select-focus-box-shadow, 0 0 0 $form-select-focus-width $focus-ring-color, 0 0 0 $form-select-focus-width var(--creationell-theme-focus-ring));
+// The gap around the range thumb in the page colour of the colour mode.
+$form-range-thumb-focus-box-shadow: creationell-focus-ring-var($form-range-thumb-focus-box-shadow, $creationell-static-range-gap, (0 0 0 1px var(--#{$prefix}body-bg), $creationell-ring));
+$nav-link-focus-box-shadow:         creationell-focus-ring-var($nav-link-focus-box-shadow, $creationell-static-ring, $creationell-ring);
+$pagination-focus-box-shadow:       creationell-focus-ring-var($pagination-focus-box-shadow, $creationell-static-ring, $creationell-ring);
+$accordion-button-focus-box-shadow: creationell-focus-ring-var($accordion-button-focus-box-shadow, $creationell-static-ring, $creationell-ring);
+$btn-close-focus-shadow:            creationell-focus-ring-var($btn-close-focus-shadow, $creationell-static-ring, $creationell-ring);

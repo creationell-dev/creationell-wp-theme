@@ -1,0 +1,37 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "creationell-theme/consent-link",
+	"title": "Cookie settings link",
+	"category": "creationell-theme",
+	"icon": "shield",
+	"description": "Link or button that opens the cookie settings.",
+	"keywords": [ "cookie", "consent", "privacy" ],
+	"textdomain": "creationell-wp-theme",
+	"supports": {
+		"html": false,
+		"anchor": true
+	},
+	"example": {},
+	"blockstudio": {
+		"attributes": [
+			{
+				"id": "label",
+				"type": "text",
+				"label": "Label",
+				"help": "Empty shows “Cookie settings”.",
+				"default": ""
+			},
+			{
+				"id": "appearance",
+				"type": "select",
+				"label": "Appearance",
+				"default": "link",
+				"options": [
+					{ "value": "link", "label": "Link" },
+					{ "value": "button", "label": "Button" }
+				]
+			}
+		]
+	}
+}

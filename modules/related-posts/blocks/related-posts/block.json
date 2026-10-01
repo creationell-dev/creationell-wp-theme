@@ -1,0 +1,92 @@
+{
+	"$schema": "https://blockstudio.dev/schema/block",
+	"apiVersion": 3,
+	"name": "creationell-theme/related-posts",
+	"title": "Related posts",
+	"category": "creationell-theme",
+	"icon": "excerpt-view",
+	"description": "Posts that share a category or tag with the current post, as a grid or a slider.",
+	"keywords": [
+		"posts",
+		"related",
+		"similar"
+	],
+	"textdomain": "creationell-wp-theme",
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"align": true
+	},
+	"example": {},
+	"blockstudio": {
+		"attributes": [
+			{
+				"id": "count",
+				"type": "number",
+				"label": "Number of posts",
+				"help": "0 uses the number of the theme settings.",
+				"default": 0,
+				"min": 0,
+				"max": 12,
+				"step": 1
+			},
+			{
+				"id": "display",
+				"type": "select",
+				"label": "Display",
+				"help": "The slider needs the module post slider; while it is off the posts show as a grid.",
+				"default": "default",
+				"options": [
+					{
+						"value": "default",
+						"label": "As in the theme settings"
+					},
+					{
+						"value": "grid",
+						"label": "Grid"
+					},
+					{
+						"value": "slider",
+						"label": "Slider"
+					}
+				]
+			},
+			{
+				"id": "heading",
+				"type": "text",
+				"label": "Heading",
+				"help": "Leave empty for the heading of the theme settings.",
+				"default": ""
+			},
+			{
+				"id": "headingLevel",
+				"type": "select",
+				"label": "Heading level",
+				"help": "Level of the heading, to fit the headings around the block; the post titles follow one level below.",
+				"default": 2,
+				"options": [
+					{
+						"value": 2,
+						"label": "Heading 2"
+					},
+					{
+						"value": 3,
+						"label": "Heading 3"
+					},
+					{
+						"value": 4,
+						"label": "Heading 4"
+					},
+					{
+						"value": 5,
+						"label": "Heading 5"
+					},
+					{
+						"value": 6,
+						"label": "Heading 6"
+					}
+				]
+			}
+		]
+	}
+}

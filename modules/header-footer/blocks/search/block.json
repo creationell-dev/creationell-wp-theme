@@ -1,0 +1,18 @@
+{
+	"$schema": "https://blockstudio.dev/schema/block",
+	"apiVersion": 3,
+	"name": "creationell-theme/search",
+	"title": "Search form",
+	"category": "creationell-theme",
+	"description": "Search form of the theme.",
+	"icon": "search",
+	"keywords": [
+		"search"
+	],
+	"textdomain": "creationell-wp-theme",
+	"supports": {
+		"html": false,
+		"reusable": false
+	},
+	"blockstudio": true
+}

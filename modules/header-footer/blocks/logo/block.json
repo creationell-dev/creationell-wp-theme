@@ -1,0 +1,28 @@
+{
+	"$schema": "https://blockstudio.dev/schema/block",
+	"apiVersion": 3,
+	"name": "creationell-theme/logo",
+	"title": "Logo",
+	"category": "creationell-theme",
+	"description": "Logo of the site from the theme files, with a variant for the dark color scheme; the site name without logo files.",
+	"icon": "format-image",
+	"keywords": [
+		"logo",
+		"brand"
+	],
+	"textdomain": "creationell-wp-theme",
+	"supports": {
+		"html": false,
+		"reusable": false
+	},
+	"blockstudio": {
+		"attributes": [
+			{
+				"id": "linkHome",
+				"type": "toggle",
+				"label": "Link to the home page",
+				"default": true
+			}
+		]
+	}
+}

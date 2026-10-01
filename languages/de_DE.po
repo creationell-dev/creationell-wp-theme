@@ -1,0 +1,3700 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: creationell Theme\n"
+"Report-Msgid-Bugs-To: https://www.creationell.de/\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-09-28T09:50:02+00:00\n"
+"PO-Revision-Date: 2026-09-25T15:35:16+00:00\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: creationell-wp-theme\n"
+
+#. Theme Name of the theme
+#: style.css
+#: inc/blocks/patterns.php:24
+#: modules/header-footer/inc/class-header-footer-module.php:64
+#: modules/post-lists/inc/class-post-lists-module.php:233
+#: modules/post-slider/inc/class-post-slider-module.php:222
+msgid "creationell Theme"
+msgstr "creationell Theme"
+
+#. Theme URI of the theme
+#: style.css
+msgid "https://github.com/creationell-dev/creationell-wp-theme"
+msgstr "https://github.com/creationell-dev/creationell-wp-theme"
+
+#. Description of the theme
+#: style.css
+msgid "Classic WordPress theme with Bootstrap 5 for the block editor and the Bootstrap blocks of creationell, based on Bootscore (MIT)."
+msgstr "Klassisches WordPress-Theme mit Bootstrap 5 für den Block-Editor und die Bootstrap-Blöcke von creationell, basierend auf Bootscore (MIT)."
+
+#. Author of the theme
+#: style.css
+msgid "creationell® – die Werbeagentur"
+msgstr "creationell® – die Werbeagentur"
+
+#. Author URI of the theme
+#: style.css
+msgid "https://www.creationell.de/"
+msgstr "https://www.creationell.de/"
+
+#: 404.php:79
+msgid "Page not found"
+msgstr "Seite nicht gefunden"
+
+#: 404.php:92
+msgid "The page you are looking for does not exist or has moved."
+msgstr "Die Seite, die du suchst, existiert nicht oder wurde verschoben."
+
+#: 404.php:97
+msgid "Back Home &raquo;"
+msgstr "Zur Startseite &raquo;"
+
+#. translators: %s: post title
+#: comments.php:39
+#, php-format
+msgctxt "comments title"
+msgid "One Comment &ldquo;%s&rdquo;"
+msgstr "Ein Kommentar zu &bdquo;%s&ldquo;"
+
+#. translators: 1: number of comments, 2: post title
+#: comments.php:44
+#, php-format
+msgctxt "comments title"
+msgid "%1$s Comment on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s Comments on &ldquo;%2$s&rdquo;"
+msgstr[0] "%1$s Kommentar zu &bdquo;%2$s&ldquo;"
+msgstr[1] "%1$s Kommentare zu &bdquo;%2$s&ldquo;"
+
+#: comments.php:63
+msgid "Comment navigation above the comments"
+msgstr "Kommentar-Navigation über den Kommentaren"
+
+#: comments.php:64
+#: comments.php:91
+msgid "Comment navigation"
+msgstr "Kommentar-Navigation"
+
+#: comments.php:67
+#: comments.php:94
+msgid "Older Comments"
+msgstr "Ältere Kommentare"
+
+#: comments.php:68
+#: comments.php:95
+msgid "Newer Comments"
+msgstr "Neuere Kommentare"
+
+#: comments.php:90
+msgid "Comment navigation below the comments"
+msgstr "Kommentar-Navigation unter den Kommentaren"
+
+#: comments.php:128
+msgid "Comments are closed."
+msgstr "Die Kommentarfunktion ist geschlossen."
+
+#: comments.php:141
+#: inc/template-tags.php:223
+msgid "Leave a Comment"
+msgstr "Schreibe einen Kommentar"
+
+#. translators: %s: name of the comment author
+#: comments.php:143
+#, php-format
+msgid "Leave a Comment to %s"
+msgstr "Schreibe einen Kommentar an %s"
+
+#: comments.php:144
+#: src/admin/class-module-page.php:575
+#: src/admin/class-transfer-page.php:974
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#: comments.php:145
+msgid "Post Comment"
+msgstr "Kommentar abschicken"
+
+#: footer.php:268
+msgid "Return to top"
+msgstr "Zurück nach oben"
+
+#: header.php:37
+msgid "Skip to content"
+msgstr "Zum Inhalt springen"
+
+#: header.php:38
+msgid "Skip to footer"
+msgstr "Zur Fußzeile springen"
+
+#: template-parts/header/navbar.php:44
+msgid "Main menu"
+msgstr "Hauptmenü"
+
+#. translators: %s: site name
+#: modules/header-footer/inc/class-header-blocks.php:128
+#: template-parts/header/navbar.php:121
+#, php-format
+msgid "%s – Home"
+msgstr "%s – Startseite"
+
+#: template-parts/header/navbar.php:170
+msgid "Menu"
+msgstr "Menü"
+
+#: modules/consent/inc/class-texts.php:168
+#: patterns/c-alert-danger.php:16
+#: sidebar.php:98
+#: template-parts/header/navbar.php:173
+msgid "Close"
+msgstr "Schließen"
+
+#: template-parts/header/navbar.php:271
+msgid "Toggle main menu"
+msgstr "Hauptmenü ein- und ausblenden"
+
+#: inc/blocks/block-widget-search.php:260
+msgid "Header search"
+msgstr "Suche im Kopfbereich"
+
+#: inc/breadcrumb.php:95
+msgid "Breadcrumb"
+msgstr "Brotkrümelnavigation"
+
+#: inc/breadcrumb.php:116
+msgid "Home"
+msgstr "Startseite"
+
+#. translators: %s: search query
+#. translators: %s: search query.
+#: inc/breadcrumb.php:206
+#: search.php:98
+#, php-format
+msgid "Search Results for: %s"
+msgstr "Suchergebnisse für: %s"
+
+#. translators: %s: title of the menu item with the submenu
+#: inc/class-creationell-wp-theme-nav-walker.php:204
+#, php-format
+msgid "Show submenu for %s"
+msgstr "Untermenü für %s anzeigen"
+
+#: inc/comments.php:50
+msgid "Pingback:"
+msgstr "Pingback:"
+
+#: inc/comments.php:50
+#: inc/comments.php:88
+#: inc/template-tags.php:241
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#. translators: 1: date, 2: time
+#: inc/comments.php:85
+#, php-format
+msgctxt "1: date, 2: time"
+msgid "%1$s at %2$s"
+msgstr "%1$s um %2$s"
+
+#: inc/comments.php:93
+msgid "Your comment is awaiting moderation."
+msgstr "Dein Kommentar wartet auf Freischaltung."
+
+#: inc/comments.php:144
+#: modules/consent/inc/class-texts.php:286
+msgid "Name"
+msgstr "Name"
+
+#: inc/comments.php:146
+#: src/settings/definitions/texts.php:72
+msgid "Email"
+msgstr "E-Mail"
+
+#: inc/comments.php:148
+msgid "Website"
+msgstr "Website"
+
+#: inc/comments.php:164
+msgctxt "noun"
+msgid "Comment"
+msgstr "Kommentar"
+
+#: inc/comments.php:212
+msgid "Save my name, email, and website in this browser for the next time I comment."
+msgstr "Meinen Namen, meine E-Mail-Adresse und meine Website in diesem Browser für die nächste Kommentierung speichern."
+
+#. translators: Name of the navigation through the pages of the blog, an archive or the search results; not the same as "Post navigation" (previous and next post) and "Post list navigation" (post list block).
+#: inc/pagination.php:38
+msgid "Posts navigation"
+msgstr "Seiten der Beitragsübersicht"
+
+#: inc/pagination.php:42
+msgid "First Page"
+msgstr "Erste Seite"
+
+#: inc/pagination.php:46
+msgid "Previous Page"
+msgstr "Vorherige Seite"
+
+#: inc/pagination.php:52
+msgid "Current Page"
+msgstr "Aktuelle Seite"
+
+#: inc/pagination.php:53
+#: template-parts/post-lists/pagination.php:44
+#: template-parts/post-lists/pagination.php:48
+msgid "Page"
+msgstr "Seite"
+
+#: inc/pagination.php:58
+msgid "Next Page"
+msgstr "Nächste Seite"
+
+#: inc/pagination.php:62
+msgid "Last Page"
+msgstr "Letzte Seite"
+
+#: inc/password-protected-form.php:51
+msgid "This content is password-protected. To view it, please enter the password below."
+msgstr "Dieser Inhalt ist passwortgeschützt. Um ihn anzusehen, gib bitte unten das Passwort ein."
+
+#: inc/password-protected-form.php:52
+msgid "Password"
+msgstr "Passwort"
+
+#: inc/password-protected-form.php:55
+msgctxt "post password form"
+msgid "Enter"
+msgstr "Absenden"
+
+#: inc/template-tags.php:74
+msgid "Sticky post"
+msgstr "Oben gehaltener Beitrag"
+
+#. translators: used between list items, there is a space after the comma
+#: inc/template-tags.php:91
+msgid ", "
+msgstr ", "
+
+#. translators: %s: post author
+#: inc/template-tags.php:183
+#, php-format
+msgctxt "post author"
+msgid "by %s"
+msgstr "von %s"
+
+#: inc/template-tags.php:260
+msgid "Leave a comment"
+msgstr "Schreibe einen Kommentar"
+
+#: inc/template-tags.php:285
+msgid "Tagged"
+msgstr "Verschlagwortet mit"
+
+#: inc/widgets.php:30
+msgid "Top Bar"
+msgstr "Obere Leiste"
+
+#: inc/widgets.php:32
+#: inc/widgets.php:53
+#: inc/widgets.php:73
+#: inc/widgets.php:86
+#: inc/widgets.php:99
+#: inc/widgets.php:112
+#: inc/widgets.php:133
+#: inc/widgets.php:154
+#: inc/widgets.php:175
+#: inc/widgets.php:196
+#: inc/widgets.php:209
+#: inc/widgets.php:222
+msgid "Add widgets here."
+msgstr "Füge hier Widgets hinzu."
+
+#: inc/widgets.php:51
+msgid "Top Nav"
+msgstr "Obere Navigation"
+
+#: inc/widgets.php:71
+msgid "Top Nav 2"
+msgstr "Obere Navigation 2"
+
+#: inc/widgets.php:84
+msgid "Top Nav Search"
+msgstr "Suche in der oberen Navigation"
+
+#: inc/widgets.php:97
+#: sidebar.php:95
+msgid "Sidebar"
+msgstr "Seitenleiste"
+
+#: inc/widgets.php:110
+msgid "Footer Top"
+msgstr "Fußzeile oben"
+
+#: inc/widgets.php:131
+msgid "Footer 1"
+msgstr "Fußzeile 1"
+
+#: inc/widgets.php:152
+msgid "Footer 2"
+msgstr "Fußzeile 2"
+
+#: inc/widgets.php:173
+msgid "Footer 3"
+msgstr "Fußzeile 3"
+
+#: inc/widgets.php:194
+msgid "Footer 4"
+msgstr "Fußzeile 4"
+
+#: inc/widgets.php:207
+msgid "Footer Info"
+msgstr "Fußzeile Info"
+
+#: inc/widgets.php:220
+msgid "404 Page"
+msgstr "404-Seite"
+
+#: modules/contact-form-7/module.php:21
+msgid "Contact Form 7 styling"
+msgstr "Contact-Form-7-Gestaltung"
+
+#: modules/header-footer/inc/class-editor-restrictions.php:94
+#: modules/header-footer/inc/class-editor-restrictions.php:95
+#: modules/header-footer/inc/class-editor-restrictions.php:262
+msgid "Header & Footer"
+msgstr "Kopf- und Fußbereich"
+
+#: modules/header-footer/inc/class-editor-restrictions.php:102
+msgid "Header"
+msgstr "Kopfbereich"
+
+#: modules/header-footer/inc/class-editor-restrictions.php:103
+#: src/settings/acf/class-options-pages.php:362
+msgid "Footer"
+msgstr "Fußbereich"
+
+#: modules/header-footer/inc/class-editor-restrictions.php:104
+#: modules/header-footer/inc/class-menu-scope.php:163
+#: modules/header-footer/inc/class-menu-scope.php:536
+msgid "Menus"
+msgstr "Menüs"
+
+#: modules/header-footer/inc/class-editor-restrictions.php:264
+msgid "Open the template parts in the Site Editor"
+msgstr "Template-Teile im Website-Editor öffnen"
+
+#. Template Name of the theme
+msgid "Blank"
+msgstr "Leer"
+
+#. Template Name of the theme
+msgid "Full Width Image"
+msgstr "Bild in voller Breite"
+
+#. Template Name of the theme
+msgid "Left Sidebar"
+msgstr "Seitenleiste links"
+
+#. Template Name of the theme
+msgid "No Sidebar"
+msgstr "Ohne Seitenleiste"
+
+#: patterns/c-alert-danger.php
+msgctxt "Pattern title"
+msgid "c - Alert-danger with icon and dismiss button"
+msgstr "c - Warnhinweis (danger) mit Icon und Schließen-Button"
+
+#: patterns/c-alert-danger.php:16
+msgid "A dismissing danger alert with an icon and a <a href=\"#\">link</a>."
+msgstr "Ein schließbarer Warnhinweis mit Icon und einem <a href=\"#\">Link</a>."
+
+#: patterns/c-alert-info.php
+msgctxt "Pattern title"
+msgid "c - Alert-info"
+msgstr "c - Hinweis (info)"
+
+#: patterns/c-alert-info.php:16
+msgid "A simple info alert with a <a href=\"#\">link</a>."
+msgstr "Ein einfacher Info-Hinweis mit einem <a href=\"#\">Link</a>."
+
+#: patterns/c-btn-danger-lg.php
+msgctxt "Pattern title"
+msgid "c - Button danger lg"
+msgstr "c - Button danger groß"
+
+#: modules/consent/i18n-strings.php:29
+#: patterns/c-btn-danger-lg.php:16
+#: patterns/c-btn-outline-secondary-sm.php:16
+#: patterns/c-btn-primary.php:16
+#: patterns/c-card-basic.php:30
+#: patterns/c-card-header-footer.php:34
+#: patterns/c-hero-img-left.php:36
+#: patterns/c-hero-img-right.php:36
+#: patterns/s-hero-img-left.php:38
+#: patterns/s-hero-img-right.php:38
+#: patterns/s-hero-jumbotron.php:27
+msgid "Button"
+msgstr "Button"
+
+#: patterns/c-btn-outline-secondary-sm.php
+msgctxt "Pattern title"
+msgid "c - Button outline-secondary sm"
+msgstr "c - Button outline-secondary klein"
+
+#: patterns/c-btn-primary.php
+msgctxt "Pattern title"
+msgid "c - Button primary"
+msgstr "c - Button primary"
+
+#: patterns/c-card-basic.php
+msgctxt "Pattern title"
+msgid "c - Card basic with image"
+msgstr "c - Einfache Card mit Bild"
+
+#: patterns/c-card-basic.php:22
+#: patterns/c-card-header-footer.php:26
+msgid "Card title"
+msgstr "Card-Titel"
+
+#: patterns/c-card-basic.php:26
+#: patterns/c-card-header-footer.php:30
+msgid "Some quick example text to build on the card title and make up the bulk of the card's content."
+msgstr "Ein kurzer Beispieltext, der auf dem Card-Titel aufbaut und den Großteil des Card-Inhalts ausmacht."
+
+#: patterns/c-card-header-footer.php
+msgctxt "Pattern title"
+msgid "c - Card with header and footer"
+msgstr "c - Card mit Kopf- und Fußbereich"
+
+#: patterns/c-card-header-footer.php:17
+msgid "Card header"
+msgstr "Card-Kopfbereich"
+
+#: patterns/c-card-header-footer.php:39
+msgid "Card footer"
+msgstr "Card-Fußbereich"
+
+#: patterns/c-card-widget-categories.php
+msgctxt "Pattern title"
+msgid "c - Card with category widget"
+msgstr "c - Card mit Kategorien-Widget"
+
+#: patterns/c-card-widget-categories.php:17
+msgid "Categories"
+msgstr "Kategorien"
+
+#: patterns/c-cards-pricing.php
+msgctxt "Pattern title"
+msgid "c - Cards pricing"
+msgstr "c - Preis-Cards"
+
+#: patterns/c-cards-pricing.php:19
+msgid "Free"
+msgstr "Kostenlos"
+
+#: patterns/c-cards-pricing.php:24
+msgid "$0<small class=\"text-body-secondary\">/mo</small>"
+msgstr "0 €<small class=\"text-body-secondary\">/Monat</small>"
+
+#: patterns/c-cards-pricing.php:29
+msgid "10 users included"
+msgstr "10 Nutzer inklusive"
+
+#: patterns/c-cards-pricing.php:33
+msgid "2 GB of storage"
+msgstr "2 GB Speicherplatz"
+
+#: patterns/c-cards-pricing.php:37
+msgid "Email support"
+msgstr "Support per E-Mail"
+
+#: patterns/c-cards-pricing.php:41
+#: patterns/c-cards-pricing.php:77
+#: patterns/c-cards-pricing.php:113
+msgid "Help center access"
+msgstr "Zugang zum Hilfe-Center"
+
+#: patterns/c-cards-pricing.php:46
+msgid "Sign up for free"
+msgstr "Kostenlos registrieren"
+
+#: patterns/c-cards-pricing.php:55
+msgid "Pro"
+msgstr "Pro"
+
+#: patterns/c-cards-pricing.php:60
+msgid "$15<small class=\"text-body-secondary\">/mo</small>"
+msgstr "15 €<small class=\"text-body-secondary\">/Monat</small>"
+
+#: patterns/c-cards-pricing.php:65
+msgid "20 users included"
+msgstr "20 Nutzer inklusive"
+
+#: patterns/c-cards-pricing.php:69
+msgid "10 GB of storage"
+msgstr "10 GB Speicherplatz"
+
+#: patterns/c-cards-pricing.php:73
+msgid "Priority email support"
+msgstr "Bevorzugter Support per E-Mail"
+
+#: patterns/c-cards-pricing.php:82
+msgid "Get started"
+msgstr "Jetzt starten"
+
+#: patterns/c-cards-pricing.php:91
+msgid "Enterprise"
+msgstr "Enterprise"
+
+#: patterns/c-cards-pricing.php:96
+msgid "$29<small class=\"text-body-secondary\">/mo</small>"
+msgstr "29 €<small class=\"text-body-secondary\">/Monat</small>"
+
+#: patterns/c-cards-pricing.php:101
+msgid "30 users included"
+msgstr "30 Nutzer inklusive"
+
+#: patterns/c-cards-pricing.php:105
+msgid "15 GB of storage"
+msgstr "15 GB Speicherplatz"
+
+#: patterns/c-cards-pricing.php:109
+msgid "Phone and email support"
+msgstr "Support per Telefon und E-Mail"
+
+#: patterns/c-cards-pricing.php:118
+msgid "Contact us"
+msgstr "Kontaktiere uns"
+
+#: patterns/c-hero-img-left.php
+msgctxt "Pattern title"
+msgid "c - Hero img left"
+msgstr "c - Hero mit Bild links"
+
+#: patterns/c-hero-img-left.php:28
+#: patterns/c-hero-img-right.php:28
+msgid "Hero"
+msgstr "Hero"
+
+#: patterns/c-hero-img-left.php:32
+msgid "This is a two column hero with left aligned image and CTA buttons."
+msgstr "Ein zweispaltiger Hero mit linksbündigem Bild und CTA-Buttons."
+
+#: patterns/c-hero-img-right.php
+msgctxt "Pattern title"
+msgid "c - Hero img right"
+msgstr "c - Hero mit Bild rechts"
+
+#: patterns/c-hero-img-right.php:32
+msgid "This is a two column hero with right aligned image and CTA buttons."
+msgstr "Ein zweispaltiger Hero mit rechtsbündigem Bild und CTA-Buttons."
+
+#: patterns/c-hero-jumbotron.php
+msgctxt "Pattern title"
+msgid "c - Hero jumbotron"
+msgstr "c - Hero Jumbotron"
+
+#: patterns/c-hero-jumbotron.php:17
+msgid "Basic jumbotron"
+msgstr "Einfaches Jumbotron"
+
+#: patterns/c-hero-jumbotron.php:21
+msgid "This is a simple Bootstrap jumbotron, recreated with built-in utility classes."
+msgstr "Ein einfaches Bootstrap-Jumbotron, nachgebaut mit den eingebauten Utility-Klassen."
+
+#: patterns/l-container.php
+msgctxt "Pattern title"
+msgid "l - Container"
+msgstr "l - Container"
+
+#: patterns/l-container.php:17
+msgid "This is a <code>container</code>"
+msgstr "Das ist ein <code>container</code>"
+
+#: patterns/l-grid-col-3.php
+msgctxt "Pattern title"
+msgid "l - Grid 3/3/3/3"
+msgstr "l - Raster 3/3/3/3"
+
+#: patterns/l-grid-col-4-col-8.php
+msgctxt "Pattern title"
+msgid "l - Grid 4/8"
+msgstr "l - Raster 4/8"
+
+#: patterns/l-grid-col-6.php
+msgctxt "Pattern title"
+msgid "l - Grid 6/6"
+msgstr "l - Raster 6/6"
+
+#: patterns/l-grid-col-8-col-4.php
+msgctxt "Pattern title"
+msgid "l - Grid 8/4"
+msgstr "l - Raster 8/4"
+
+#: patterns/s-heading-subtitle.php
+msgctxt "Pattern title"
+msgid "s - Heading and subtitle"
+msgstr "s - Überschrift und Untertitel"
+
+#: patterns/s-heading-subtitle.php:18
+msgid "Section with heading"
+msgstr "Abschnitt mit Überschrift"
+
+#: patterns/s-heading-subtitle.php:22
+msgid "This is a <code>section</code> with heading and subtitle wrapped in a <code>container</code>. Use it on the <code>page-blank</code> template."
+msgstr "Das ist eine <code>section</code> mit Überschrift und Untertitel in einem <code>container</code>. Verwende sie im Template <code>page-blank</code>."
+
+#: patterns/s-heading-subtitle.php:26
+msgid "Some content inside the <code>container</code>."
+msgstr "Etwas Inhalt im <code>container</code>."
+
+#: patterns/s-hero-img-left.php
+msgctxt "Pattern title"
+msgid "s - Hero image left"
+msgstr "s - Hero mit Bild links"
+
+#: patterns/s-hero-img-left.php:30
+#: patterns/s-hero-img-right.php:30
+msgid "Section with hero"
+msgstr "Abschnitt mit Hero"
+
+#: patterns/s-hero-img-left.php:34
+msgid "This <code>section</code> features a two-column hero with a left-aligned image and CTA buttons wrapped in a <code>container</code>. Use it on the <code>page-blank</code> template."
+msgstr "Diese <code>section</code> enthält einen zweispaltigen Hero mit linksbündigem Bild und CTA-Buttons in einem <code>container</code>. Verwende sie im Template <code>page-blank</code>."
+
+#: patterns/s-hero-img-right.php
+msgctxt "Pattern title"
+msgid "s - Hero image right"
+msgstr "s - Hero mit Bild rechts"
+
+#: patterns/s-hero-img-right.php:34
+msgid "This <code>section</code> features a two-column hero with a right-aligned image and CTA buttons wrapped in a <code>container</code>. Use it on the <code>page-blank</code> template."
+msgstr "Diese <code>section</code> enthält einen zweispaltigen Hero mit rechtsbündigem Bild und CTA-Buttons in einem <code>container</code>. Verwende sie im Template <code>page-blank</code>."
+
+#: patterns/s-hero-jumbotron.php
+msgctxt "Pattern title"
+msgid "s - Hero jumbotron"
+msgstr "s - Hero Jumbotron"
+
+#: patterns/s-hero-jumbotron.php:19
+msgid "Section jumbotron"
+msgstr "Abschnitt Jumbotron"
+
+#: patterns/s-hero-jumbotron.php:23
+msgid "This is a <code>section</code> with a simple centered jumbotron pattern wrapped in a <code>container</code>. Use it on the <code>page-blank</code> template."
+msgstr "Das ist eine <code>section</code> mit einem einfachen, zentrierten Jumbotron in einem <code>container</code>. Verwende sie im Template <code>page-blank</code>."
+
+#: inc/blocks/block-widget-search.php:314
+#: searchform.php:34
+msgid "Site search"
+msgstr "Website-Suche"
+
+#: searchform.php:38
+msgid "Search for:"
+msgstr "Suche nach:"
+
+#: searchform.php:39
+#: searchform.php:50
+msgid "Search"
+msgstr "Suchen"
+
+#: sidebar.php:59
+msgid "Open side menu"
+msgstr "Seitenmenü öffnen"
+
+#. Template Name of the theme
+msgid "Full width image"
+msgstr "Bild in voller Breite"
+
+#. translators: Name of the navigation to the previous and the next post; not the same as "Posts navigation" (pages of a post archive).
+#: single-templates/single-full-width-image.php:215
+#: single-templates/single-sidebar-left.php:166
+#: single-templates/single-sidebar-none.php:152
+#: single.php:164
+msgid "Post navigation"
+msgstr "Vorheriger und nächster Beitrag"
+
+#. Template Name of the theme
+msgid "Sidebar left"
+msgstr "Seitenleiste links"
+
+#: src/admin/class-menu.php:61
+#: src/admin/class-menu.php:148
+msgid "creationell Theme settings"
+msgstr "Einstellungen des creationell Theme"
+
+#: src/admin/class-menu.php:62
+msgid "Theme settings"
+msgstr "Theme-Einstellungen"
+
+#: src/admin/class-menu.php:149
+msgid "No theme settings page is available to you."
+msgstr "Für dich ist keine Seite mit Theme-Einstellungen verfügbar."
+
+#: src/admin/class-settings-notices.php:131
+msgid "Read only: you may view these settings but not change them."
+msgstr "Nur lesend: Du darfst diese Einstellungen ansehen, aber nicht ändern."
+
+#. translators: 1: label of the setting, 2: reason.
+#: src/admin/class-settings-notices.php:145
+#, php-format
+msgid "Not saved: %1$s: %2$s"
+msgstr "Nicht gespeichert: %1$s: %2$s"
+
+#. translators: %s: comma-separated labels of settings.
+#: src/admin/class-settings-notices.php:154
+#, php-format
+msgid "Saved: %s."
+msgstr "Gespeichert: %s."
+
+#. translators: %s: comma-separated labels of settings.
+#: src/admin/class-settings-notices.php:158
+#, php-format
+msgid "Back to the default: %s."
+msgstr "Auf die Vorgabe zurückgesetzt: %s."
+
+#. translators: %s: names of the constants, separated by commas.
+#: src/assets/class-bootstrap-bridge.php:133
+#, php-format
+msgid "Bootstrap loads twice: the creationell Theme loads Bootstrap, and CreaBootstrapBlocks loads its own copy because wp-config.php sets %s to true. Remove these constants or set them to false."
+msgstr "Bootstrap wird doppelt geladen: Das creationell Theme lädt Bootstrap, und CreaBootstrapBlocks lädt eine eigene Kopie, weil wp-config.php %s auf true setzt. Entferne diese Konstanten oder setze sie auf false."
+
+#. translators: 1: Bootstrap version of the plugin, 2: Bootstrap version of the theme.
+#: src/assets/class-bootstrap-bridge.php:319
+#, php-format
+msgid "CreaBootstrapBlocks is built for Bootstrap %1$s, the creationell Theme loads Bootstrap %2$s. The blocks run on the Bootstrap of the theme; update the plugin or the theme so that both use the same version."
+msgstr "CreaBootstrapBlocks ist für Bootstrap %1$s gebaut, das creationell Theme lädt Bootstrap %2$s. Die Blöcke laufen mit dem Bootstrap des Themes; aktualisiere das Plugin oder das Theme, damit beide dieselbe Version nutzen."
+
+#: src/assets/class-bootstrap-bridge.php:320
+#: src/assets/class-bootstrap-bridge.php:321
+msgid "unknown"
+msgstr "unbekannt"
+
+#. translators: 1: folder name of the child theme, 2: reason in English.
+#: src/child/class-child-theme.php:271
+#, php-format
+msgid "The child theme %1$s needs a fix in its style.css: %2$s The creationell Theme uses the project styles of a child theme only for the Bootstrap lines it declares."
+msgstr "Das Child-Theme %1$s braucht eine Korrektur in seiner style.css: %2$s Das creationell Theme nutzt die Projekt-Styles eines Child-Themes nur für die Bootstrap-Linien, die es angibt."
+
+#: src/compiler/class-custom-stylesheet.php:364
+msgid "You are not allowed to rebuild the stylesheet."
+msgstr "Du darfst das Stylesheet nicht neu erstellen."
+
+#. translators: %s: error message of the compiler, in English.
+#: src/compiler/class-custom-stylesheet.php:402
+#, php-format
+msgid "The stylesheet of the design settings could not be built; the previous stylesheet stays active. Error: %s"
+msgstr "Das Stylesheet der Design-Einstellungen konnte nicht erstellt werden; das bisherige Stylesheet bleibt aktiv. Fehler: %s"
+
+#: src/compiler/class-custom-stylesheet.php:407
+msgid "The stylesheet does not match the current design settings, theme files or child theme files."
+msgstr "Das Stylesheet passt nicht zu den aktuellen Design-Einstellungen, Theme-Dateien oder Child-Theme-Dateien."
+
+#: src/compiler/class-custom-stylesheet.php:419
+msgid "Rebuild the stylesheet"
+msgstr "Stylesheet neu erstellen"
+
+#. translators: %s: script handles with their consent category, e.g. "my-analytics (analytics)".
+#: src/consent/class-script-marker.php:297
+#, php-format
+msgid "These scripts wait for consent, but no consent provider is active, so they never run: %s. Switch on the consent module or remove the marking."
+msgstr "Diese Skripte warten auf eine Einwilligung, aber kein Consent-Anbieter ist aktiv, deshalb laufen sie nie: %s. Schalte das Consent-Modul ein oder entferne die Markierung."
+
+#: src/core/class-site-editor-lock.php:167
+msgid "Fonts are managed in the design settings of the theme."
+msgstr "Schriften werden in den Design-Einstellungen des Themes verwaltet."
+
+#. translators: 1: required PHP version, 2: required WordPress version, 3: running PHP version, 4: running WordPress version.
+#: src/core/class-theme.php:135
+#, php-format
+msgid "The creationell Theme needs PHP %1$s and WordPress %2$s or newer; this site runs PHP %3$s and WordPress %4$s. The theme functions stay off until the server and WordPress are updated."
+msgstr "Das creationell Theme benötigt PHP %1$s und WordPress %2$s oder neuer; diese Website läuft mit PHP %3$s und WordPress %4$s. Die Theme-Funktionen bleiben ausgeschaltet, bis Server und WordPress aktualisiert sind."
+
+#. translators: %s: URL of the update manifest.
+#: src/core/class-theme.php:162
+#, php-format
+msgid "The creationell Theme looks for updates at %s (set by CREATIONELL_WP_THEME_MANIFEST_URL) instead of the official manifest. Use this only for tests."
+msgstr "Das creationell Theme sucht Updates unter %s (gesetzt durch CREATIONELL_WP_THEME_MANIFEST_URL) statt im offiziellen Manifest. Nutze das nur für Tests."
+
+#. translators: %s: value of the constant.
+#: src/core/class-theme.php:173
+#, php-format
+msgid "CREATIONELL_WP_THEME_MANIFEST_URL is set to %s, which is no https URL. The creationell Theme ignores it and uses the official update manifest."
+msgstr "CREATIONELL_WP_THEME_MANIFEST_URL ist auf %s gesetzt, das ist keine https-URL. Das creationell Theme ignoriert den Wert und nutzt das offizielle Update-Manifest."
+
+#: modules/post-lists/module.php:25
+#: src/modules/class-module-catalog.php:166
+msgid "Post lists"
+msgstr "Beitragslisten"
+
+#: modules/post-slider/i18n-strings.php:20
+#: modules/post-slider/inc/class-post-slider-module.php:313
+#: modules/post-slider/module.php:25
+#: src/modules/class-module-catalog.php:167
+msgid "Post slider"
+msgstr "Beitrags-Slider"
+
+#: modules/related-posts/i18n-strings.php:20
+#: modules/related-posts/inc/class-related-posts-module.php:319
+#: modules/related-posts/module.php:26
+#: src/modules/class-module-catalog.php:168
+msgid "Related posts"
+msgstr "Ähnliche Beiträge"
+
+#: src/modules/class-module-catalog.php:169
+msgid "Contact Form 7"
+msgstr "Contact Form 7"
+
+#: src/modules/class-module-catalog.php:170
+msgid "Consent"
+msgstr "Einwilligung"
+
+#: src/modules/class-module-catalog.php:171
+msgid "Header and footer"
+msgstr "Kopf- und Fußbereich"
+
+#: src/modules/class-module-catalog.php:172
+msgid "WooCommerce"
+msgstr "WooCommerce"
+
+#. translators: 1: module title, 2: plugin file such as bs-grid/main.php.
+#: src/modules/class-module-gate.php:391
+#, php-format
+msgid "The theme module %1$s stays off while the plugin %2$s is active, which the module replaces. Deactivate the plugin to use the module."
+msgstr "Das Theme-Modul %1$s bleibt aus, solange das Plugin %2$s aktiv ist, das es ersetzt. Deaktiviere das Plugin, um das Modul zu nutzen."
+
+#. translators: 1: module title, 2: error message in English.
+#: src/modules/class-module-gate.php:414
+#, php-format
+msgid "The theme module %1$s failed to load and stays off for this request: %2$s"
+msgstr "Das Theme-Modul %1$s konnte nicht geladen werden und bleibt für diese Anfrage aus: %2$s"
+
+#: src/settings/acf/class-acf-adapter.php:184
+msgid "The theme settings pages \"Texts\" and \"Design\" need the plugin ACF Pro. Without it the site keeps the saved settings and the defaults, but they cannot be changed in the admin."
+msgstr "Die Seiten „Texte“ und „Design“ der Theme-Einstellungen brauchen das Plugin ACF Pro. Ohne das Plugin behält die Website die gespeicherten Einstellungen und die Vorgaben, im Adminbereich lassen sie sich aber nicht ändern."
+
+#. translators: 1: effective value of the setting, 2: where the value comes from, e.g. "theme default".
+#: src/settings/acf/class-acf-adapter.php:314
+#, php-format
+msgid "Effective: %1$s · Origin: %2$s"
+msgstr "Wirksam: %1$s · Herkunft: %2$s"
+
+#: src/settings/acf/class-acf-adapter.php:387
+msgid "(none)"
+msgstr "(keine)"
+
+#. translators: 1: title of a page, 2: ID of the page.
+#: src/settings/acf/class-acf-adapter.php:393
+#, php-format
+msgid "%1$s (ID %2$d)"
+msgstr "%1$s (ID %2$d)"
+
+#: src/settings/acf/class-acf-adapter.php:394
+msgid "(no title)"
+msgstr "(kein Titel)"
+
+#. translators: %s: label of the setting.
+#: src/settings/acf/class-acf-adapter.php:429
+#, php-format
+msgid "Reset to default: %s"
+msgstr "Auf Vorgabe zurücksetzen: %s"
+
+#. translators: %s: name of a PHP constant.
+#: src/settings/acf/class-acf-adapter.php:609
+#, php-format
+msgid "Set by the constant %s."
+msgstr "Durch die Konstante %s gesetzt."
+
+#: src/settings/acf/class-acf-adapter.php:614
+msgid "Locked by the child theme."
+msgstr "Durch das Child-Theme gesperrt."
+
+#: src/settings/acf/class-acf-adapter.php:617
+#: src/settings/class-setter.php:349
+msgid "Choose one language; settings cannot be saved for all languages at once."
+msgstr "Wähle eine Sprache; Einstellungen lassen sich nicht für alle Sprachen gleichzeitig speichern."
+
+#: src/settings/acf/class-acf-adapter.php:620
+msgid "The same in every language; change it in the default language."
+msgstr "Gilt in jeder Sprache gleich; ändere den Wert in der Standardsprache."
+
+#: src/settings/acf/class-acf-adapter.php:623
+msgid "You may view this setting but not change it."
+msgstr "Du darfst diese Einstellung ansehen, aber nicht ändern."
+
+#: src/settings/acf/class-acf-adapter.php:640
+msgid "default language"
+msgstr "Standardsprache"
+
+#: src/settings/acf/class-acf-adapter.php:643
+msgid "child theme default"
+msgstr "Vorgabe des Child-Themes"
+
+#: src/settings/acf/class-acf-adapter.php:644
+msgid "saved value"
+msgstr "gespeicherter Wert"
+
+#: src/settings/acf/class-acf-adapter.php:645
+msgid "child theme lock"
+msgstr "Sperre des Child-Themes"
+
+#: src/settings/acf/class-acf-adapter.php:646
+msgid "site constant"
+msgstr "Konstante der Website"
+
+#: src/settings/acf/class-acf-adapter.php:647
+msgid "theme default"
+msgstr "Vorgabe des Themes"
+
+#: src/settings/acf/class-acf-adapter.php:674
+msgid "yes"
+msgstr "ja"
+
+#: src/settings/acf/class-acf-adapter.php:674
+msgid "no"
+msgstr "nein"
+
+#: src/settings/acf/class-acf-adapter.php:681
+msgid "(empty)"
+msgstr "(leer)"
+
+#: src/settings/acf/class-field-factory.php:188
+msgid "System sans-serif"
+msgstr "Systemschrift ohne Serifen"
+
+#: src/settings/acf/class-field-factory.php:189
+msgid "System serif"
+msgstr "Systemschrift mit Serifen"
+
+#: src/settings/acf/class-field-factory.php:190
+msgid "Same as body font"
+msgstr "Wie die Grundschrift"
+
+#: src/settings/acf/class-options-pages.php:112
+msgid "Texts"
+msgstr "Texte"
+
+#: src/settings/acf/class-options-pages.php:113
+msgid "Design"
+msgstr "Design"
+
+#: src/admin/class-module-page.php:484
+#: src/admin/class-transfer-page.php:1392
+#: src/settings/acf/class-options-pages.php:125
+msgid "Save"
+msgstr "Speichern"
+
+#: src/settings/acf/class-options-pages.php:164
+msgid "The settings were processed."
+msgstr "Die Einstellungen wurden verarbeitet."
+
+#: src/admin/class-transfer-page.php:994
+#: src/settings/acf/class-options-pages.php:202
+#: src/settings/class-registry.php:160
+msgid "Bootstrap line"
+msgstr "Bootstrap-Linie"
+
+#: src/settings/acf/class-options-pages.php:360
+msgid "Colors"
+msgstr "Farben"
+
+#: src/settings/acf/class-options-pages.php:361
+msgid "Fonts"
+msgstr "Schriften"
+
+#: modules/header-footer/i18n-strings.php:62
+#: modules/header-footer/inc/class-text-blocks.php:72
+#: src/settings/acf/class-options-pages.php:363
+msgid "Contact"
+msgstr "Kontakt"
+
+#: modules/header-footer/inc/class-text-blocks.php:118
+#: src/settings/acf/class-options-pages.php:364
+msgid "Social media"
+msgstr "Soziale Medien"
+
+#. translators: %d: number of the active Bootstrap line, e.g. 5.
+#: src/settings/acf/class-options-pages.php:381
+#, php-format
+msgid "The theme uses Bootstrap line %d. Only the agency can switch the line."
+msgstr "Das Theme nutzt die Bootstrap-Linie %d. Nur die Agentur kann die Linie umschalten."
+
+#. translators: %d: number of a Bootstrap line, e.g. 6.
+#: src/settings/acf/class-options-pages.php:389
+#, php-format
+msgid "Bootstrap line %d is not included in this theme version."
+msgstr "Die Bootstrap-Linie %d ist in dieser Theme-Version nicht enthalten."
+
+#. translators: 1: name of the constant, 2: requested line, 3: reason in English, 4: line in use.
+#: src/settings/class-bootstrap-line.php:189
+#, php-format
+msgid "%1$s asks for Bootstrap line %2$d: %3$s The creationell Theme keeps line %4$d."
+msgstr "%1$s verlangt Bootstrap-Linie %2$d: %3$s Das creationell Theme bleibt bei Linie %4$d."
+
+#: src/settings/class-font-catalog.php:206
+msgid "System font (sans-serif)"
+msgstr "Systemschrift (ohne Serifen)"
+
+#: src/settings/class-font-catalog.php:207
+msgid "System font (serif)"
+msgstr "Systemschrift (mit Serifen)"
+
+#: src/settings/class-registry.php:161
+msgid "Major Bootstrap version the theme styles and scripts are built on."
+msgstr "Bootstrap-Hauptversion, auf der Styles und Skripte des Themes aufbauen."
+
+#. translators: %d: maximum number of characters.
+#: src/settings/class-sanitizer.php:127
+#, php-format
+msgid "Use at most %d characters."
+msgstr "Verwende höchstens %d Zeichen."
+
+#: src/settings/class-sanitizer.php:130
+msgid "This value is not allowed here."
+msgstr "Dieser Wert ist hier nicht erlaubt."
+
+#: src/settings/class-sanitizer.php:357
+msgid "Enter a color as #rrggbb, for example #0d6efd."
+msgstr "Gib eine Farbe als #rrggbb ein, zum Beispiel #0d6efd."
+
+#: src/settings/class-sanitizer.php:358
+msgid "Choose a font from the list."
+msgstr "Wähle eine Schrift aus der Liste."
+
+#: src/settings/class-sanitizer.php:359
+msgid "Enter a valid email address."
+msgstr "Gib eine gültige E-Mail-Adresse ein."
+
+#: src/settings/class-sanitizer.php:360
+msgid "Enter a web address starting with https:// or http://."
+msgstr "Gib eine Webadresse ein, die mit https:// oder http:// beginnt."
+
+#: src/settings/class-sanitizer.php:361
+msgid "Use digits, spaces and + ( ) . / - only."
+msgstr "Verwende nur Ziffern, Leerzeichen und + ( ) . / -."
+
+#: src/settings/class-sanitizer.php:362
+msgid "Choose one of the available values."
+msgstr "Wähle einen der verfügbaren Werte."
+
+#: src/settings/class-sanitizer.php:363
+msgid "Enter a whole number."
+msgstr "Gib eine ganze Zahl ein."
+
+#: src/settings/class-sanitizer.php:364
+msgid "Choose yes or no."
+msgstr "Wähle Ja oder Nein."
+
+#: src/settings/class-sanitizer.php:365
+msgid "Enter text."
+msgstr "Gib einen Text ein."
+
+#: src/settings/class-setter.php:333
+msgid "This setting does not exist."
+msgstr "Diese Einstellung gibt es nicht."
+
+#: src/settings/class-setter.php:337
+msgid "Modules are switched on the modules page or with the module commands."
+msgstr "Module werden auf der Modulseite oder mit den Modulbefehlen geschaltet."
+
+#: src/settings/class-setter.php:340
+msgid "You are not allowed to change this setting."
+msgstr "Du darfst diese Einstellung nicht ändern."
+
+#: src/settings/class-setter.php:343
+msgid "The Bootstrap line cannot be switched in this theme version."
+msgstr "Die Bootstrap-Linie lässt sich in dieser Theme-Version nicht umschalten."
+
+#: src/settings/class-setter.php:346
+msgid "This setting is locked by the child theme or a constant."
+msgstr "Diese Einstellung ist durch das Child-Theme oder eine Konstante gesperrt."
+
+#: src/settings/class-setter.php:353
+msgid "This setting is the same in every language; change it in the default language."
+msgstr "Diese Einstellung gilt in jeder Sprache gleich; ändere sie in der Standardsprache."
+
+#: src/settings/class-setter.php:356
+msgid "The language code is invalid."
+msgstr "Der Sprachcode ist ungültig."
+
+#: src/settings/class-setter.php:554
+msgid "white or black text"
+msgstr "weißer oder schwarzer Text"
+
+#. translators: 1: foreground color name, 2: background color name, 3: contrast ratio, 4: minimum ratio.
+#: src/settings/class-setter.php:562
+#, php-format
+msgid "%1$s on %2$s has a contrast of %3$s:1, at least %4$s:1 is needed."
+msgstr "%1$s auf %2$s hat einen Kontrast von %3$s:1, nötig sind mindestens %4$s:1."
+
+#: src/settings/definitions/design.php:33
+msgid "Primary color"
+msgstr "Primärfarbe"
+
+#: src/settings/definitions/design.php:34
+msgid "Buttons, links and highlights."
+msgstr "Buttons, Links und Hervorhebungen."
+
+#: src/settings/definitions/design.php:45
+msgid "Secondary color"
+msgstr "Sekundärfarbe"
+
+#: src/settings/definitions/design.php:56
+msgid "Success color"
+msgstr "Erfolgsfarbe"
+
+#: src/settings/definitions/design.php:67
+msgid "Info color"
+msgstr "Infofarbe"
+
+#: src/settings/definitions/design.php:78
+msgid "Warning color"
+msgstr "Warnfarbe"
+
+#: src/settings/definitions/design.php:89
+msgid "Danger color"
+msgstr "Gefahrenfarbe"
+
+#: src/settings/definitions/design.php:100
+msgid "Light color"
+msgstr "Helle Farbe"
+
+#: src/settings/definitions/design.php:111
+msgid "Dark color"
+msgstr "Dunkle Farbe"
+
+#: src/settings/definitions/design.php:122
+msgid "Text color"
+msgstr "Textfarbe"
+
+#: src/settings/definitions/design.php:133
+msgid "Background color"
+msgstr "Hintergrundfarbe"
+
+#: src/settings/definitions/design.php:143
+msgid "Body font"
+msgstr "Schrift für Fließtext"
+
+#: src/settings/definitions/design.php:153
+msgid "Headings font"
+msgstr "Schrift für Überschriften"
+
+#: src/settings/definitions/design.php:154
+msgid "Without an own font the headings use the body font."
+msgstr "Ohne eigene Schrift nutzen die Überschriften die Schrift für Fließtext."
+
+#: modules/header-footer/inc/class-social-networks.php:75
+#: src/settings/definitions/texts.php:22
+msgid "Facebook"
+msgstr "Facebook"
+
+#: modules/header-footer/inc/class-social-networks.php:76
+#: src/settings/definitions/texts.php:23
+msgid "Instagram"
+msgstr "Instagram"
+
+#: modules/header-footer/inc/class-social-networks.php:77
+#: src/settings/definitions/texts.php:24
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: modules/header-footer/inc/class-social-networks.php:78
+#: src/settings/definitions/texts.php:25
+msgid "XING"
+msgstr "XING"
+
+#: modules/header-footer/inc/class-social-networks.php:79
+#: src/settings/definitions/texts.php:26
+msgid "YouTube"
+msgstr "YouTube"
+
+#: modules/header-footer/inc/class-social-networks.php:80
+#: src/settings/definitions/texts.php:27
+msgid "Mastodon"
+msgstr "Mastodon"
+
+#: modules/header-footer/i18n-strings.php:56
+#: src/settings/definitions/texts.php:40
+msgid "Footer text"
+msgstr "Text in der Fußzeile"
+
+#: src/settings/definitions/texts.php:41
+msgid "Links, bold, italic and line breaks are allowed. Empty shows the copyright line."
+msgstr "Links, fett, kursiv und Zeilenumbrüche sind erlaubt. Leer zeigt die Copyright-Zeile."
+
+#: src/settings/definitions/texts.php:52
+msgid "Address"
+msgstr "Adresse"
+
+#: src/settings/definitions/texts.php:62
+msgid "Phone"
+msgstr "Telefon"
+
+#: src/settings/transfer/enum-transfer-error.php:53
+msgid "The file could not be uploaded. Please try again."
+msgstr "Die Datei konnte nicht hochgeladen werden. Bitte versuche es erneut."
+
+#: src/settings/transfer/enum-transfer-error.php:54
+msgid "The file is larger than 1 MB."
+msgstr "Die Datei ist größer als 1 MB."
+
+#: src/settings/transfer/enum-transfer-error.php:55
+msgid "Only JSON files ending in .json can be imported."
+msgstr "Nur JSON-Dateien mit der Endung .json lassen sich importieren."
+
+#: src/settings/transfer/enum-transfer-error.php:56
+msgid "The file does not contain valid JSON."
+msgstr "Die Datei enthält kein gültiges JSON."
+
+#: src/settings/transfer/enum-transfer-error.php:57
+msgid "The file is not a settings export of this theme."
+msgstr "Die Datei ist kein Einstellungs-Export dieses Themes."
+
+#: src/settings/transfer/enum-transfer-error.php:58
+msgid "The file does not match the export format."
+msgstr "Die Datei entspricht nicht dem Exportformat."
+
+#: src/settings/transfer/enum-transfer-error.php:59
+msgid "The file comes from a newer theme version. Update the theme first."
+msgstr "Die Datei stammt aus einer neueren Theme-Version. Aktualisiere zuerst das Theme."
+
+#: src/settings/transfer/enum-transfer-error.php:60
+msgid "The file uses an older format that this theme version cannot convert."
+msgstr "Die Datei nutzt ein älteres Format, das diese Theme-Version nicht umwandeln kann."
+
+#: src/settings/transfer/enum-transfer-error.php:61
+msgid "Choose a single language in the language switcher first; all languages at once are not supported."
+msgstr "Wähle zuerst im Sprachumschalter eine einzelne Sprache; alle Sprachen gleichzeitig werden nicht unterstützt."
+
+#: src/settings/transfer/enum-transfer-error.php:62
+msgid "Import and export are not available while the multilingual mode of ACF Extended is active."
+msgstr "Import und Export sind nicht verfügbar, solange der mehrsprachige Modus von ACF Extended aktiv ist."
+
+#: src/settings/transfer/enum-transfer-error.php:63
+msgid "You are not allowed to import or export settings."
+msgstr "Du darfst keine Einstellungen importieren oder exportieren."
+
+#: src/settings/transfer/enum-transfer-error.php:64
+msgid "The import could not be found. Upload the file again."
+msgstr "Der Import wurde nicht gefunden. Lade die Datei erneut hoch."
+
+#: src/settings/transfer/enum-transfer-error.php:65
+msgid "The import has expired. Upload the file again."
+msgstr "Der Import ist abgelaufen. Lade die Datei erneut hoch."
+
+#: src/settings/transfer/enum-transfer-error.php:66
+msgid "The import was started by another user."
+msgstr "Der Import wurde von einem anderen Benutzer gestartet."
+
+#: src/settings/transfer/enum-transfer-error.php:67
+msgid "Select at least one section."
+msgstr "Wähle mindestens einen Bereich aus."
+
+#: src/settings/transfer/enum-transfer-error.php:68
+msgid "Confirm the module changes before importing."
+msgstr "Bestätige die Moduländerungen vor dem Import."
+
+#: src/settings/transfer/enum-transfer-error.php:69
+msgid "Nothing was imported because some values were rejected."
+msgstr "Es wurde nichts importiert, weil einige Werte abgelehnt wurden."
+
+#: src/settings/transfer/enum-transfer-error.php:70
+msgid "The backup could not be found."
+msgstr "Die Sicherung wurde nicht gefunden."
+
+#. translators: 1: version of the theme, 2: Bootstrap line, e.g. 5.
+#: src/update/class-theme-updater.php:715
+#, php-format
+msgid "Version %1$s of the creationell Theme does not contain Bootstrap line %2$d, which this site uses, so WordPress does not offer the update. Switch the site to a Bootstrap line of the new version first, as the theme documentation describes, then update."
+msgstr "Version %1$s des creationell Theme enthält die Bootstrap-Linie %2$d nicht, die diese Website nutzt, deshalb bietet WordPress das Update nicht an. Stelle die Website zuerst auf eine Bootstrap-Linie der neuen Version um, wie in der Theme-Dokumentation beschrieben, und aktualisiere dann."
+
+#: src/update/enum-update-error.php:131
+msgid "The update package of the creationell Theme must be downloaded over HTTPS."
+msgstr "Das Update-Paket des creationell Theme muss über HTTPS heruntergeladen werden."
+
+#: src/update/enum-update-error.php:132
+msgid "The update manifest of the creationell Theme could not be loaded, so the package cannot be verified. Please try again later."
+msgstr "Das Update-Manifest des creationell Theme konnte nicht geladen werden, deshalb lässt sich das Paket nicht prüfen. Bitte versuche es später erneut."
+
+#: src/update/enum-update-error.php:133
+msgid "The update manifest of the creationell Theme carries no usable SHA-256 checksum for the package, so the package is not installed."
+msgstr "Das Update-Manifest des creationell Theme enthält keine verwendbare SHA-256-Prüfsumme für das Paket, deshalb wird das Paket nicht installiert."
+
+#: src/update/enum-update-error.php:134
+msgid "The downloaded package of the creationell Theme does not match the SHA-256 checksum of the update manifest and was deleted."
+msgstr "Das heruntergeladene Paket des creationell Theme passt nicht zur SHA-256-Prüfsumme des Update-Manifests und wurde gelöscht."
+
+#: src/update/enum-update-error.php:135
+msgid "The update package of the creationell Theme could not be downloaded."
+msgstr "Das Update-Paket des creationell Theme konnte nicht heruntergeladen werden."
+
+#: src/update/enum-update-error.php:136
+msgid "The offered package of the creationell Theme is not the one named in the current update manifest. Check for updates again, then retry."
+msgstr "Das angebotene Paket des creationell Theme ist nicht das im aktuellen Update-Manifest genannte. Suche erneut nach Updates und versuche es dann noch einmal."
+
+#: src/update/enum-update-error.php:137
+msgid "The new version of the creationell Theme needs a newer WordPress or PHP version than this site runs."
+msgstr "Die neue Version des creationell Theme braucht eine neuere WordPress- oder PHP-Version, als auf dieser Website läuft."
+
+#: src/update/enum-update-error.php:138
+msgid "The new version of the creationell Theme does not contain the Bootstrap line this site uses. Switch the site to a line of the new version before updating."
+msgstr "Die neue Version des creationell Theme enthält die Bootstrap-Linie nicht, die diese Website nutzt. Stelle die Website vor dem Update auf eine Linie der neuen Version um."
+
+#: src/update/enum-update-error.php:139
+msgid "Automatic updates of the creationell Theme are disabled; update the theme by hand."
+msgstr "Automatische Updates des creationell Theme sind abgeschaltet; aktualisiere das Theme von Hand."
+
+#: src/update/enum-update-error.php:140
+msgid "The update package of the creationell Theme does not unpack to the folder creationell-wp-theme; the installed theme stays unchanged."
+msgstr "Das Update-Paket des creationell Theme entpackt nicht in den Ordner creationell-wp-theme; das installierte Theme bleibt unverändert."
+
+#: src/admin/class-transfer-page.php:1047
+#: src/admin/class-transfer-page.php:1155
+#: src/wpml/class-language-switcher.php:187
+msgid "Language"
+msgstr "Sprache"
+
+#. translators: %s: native name of the current language, e.g. "Deutsch".
+#: src/wpml/class-language-switcher.php:456
+#, php-format
+msgid "Language: %s. Change language"
+msgstr "Sprache: %s. Sprache wechseln"
+
+#: src/wpml/class-language-switcher.php:511
+msgid "(home page)"
+msgstr "(Startseite)"
+
+#: src/wpml/class-wpml-integration.php:191
+msgid "WPML String Translation is not active; corrections of theme texts and further languages need it."
+msgstr "WPML String Translation ist nicht aktiv; Korrekturen der Theme-Texte und weitere Sprachen brauchen es."
+
+#: src/wpml/class-wpml-integration.php:194
+msgid "ACF Multilingual (ACFML) is not active; the translated settings cannot be translated per language."
+msgstr "ACF Multilingual (ACFML) ist nicht aktiv; die übersetzbaren Einstellungen lassen sich nicht je Sprache übersetzen."
+
+#. translators: %s: comma-separated language codes.
+#: src/wpml/class-wpml-integration.php:199
+#, php-format
+msgid "The settings snapshots do not match the languages %s; open any admin page to rebuild them."
+msgstr "Die Einstellungs-Snapshots passen nicht zu den Sprachen %s; öffne eine beliebige Admin-Seite, um sie neu aufzubauen."
+
+#. translators: %s: comma-separated option names.
+#: src/wpml/class-wpml-integration.php:204
+#, php-format
+msgid "Global settings were saved per language (%s); the theme ignores these rows. Keep the global settings page out of the multilang module of ACF Extended and delete the rows."
+msgstr "Globale Einstellungen wurden je Sprache gespeichert (%s); das Theme ignoriert diese Zeilen. Nimm die Seite der globalen Einstellungen aus dem Multilang-Modul von ACF Extended heraus und lösche die Zeilen."
+
+#: src/wpml/class-wpml-integration.php:207
+msgid "The theme has no wpml-config.xml; WPML does not know which block texts to translate."
+msgstr "Das Theme hat keine wpml-config.xml; WPML weiß nicht, welche Blocktexte zu übersetzen sind."
+
+#. translators: %s: WPML URL mode, e.g. "parameter".
+#: src/wpml/class-wpml-integration.php:211
+#, php-format
+msgid "WPML uses the URL mode \"%s\"; the theme is tested with language directories."
+msgstr "WPML nutzt den URL-Modus „%s“; das Theme ist mit Sprachverzeichnissen getestet."
+
+#: modules/header-footer/i18n-strings.php:51
+#: template-parts/footer/footer-menu.php:23
+msgid "Footer menu"
+msgstr "Fußzeilenmenü"
+
+#: template-parts/header/actions.php:100
+msgid "Open search"
+msgstr "Suche öffnen"
+
+#: template-parts/loop/cards-grid-term.php:46
+#: template-parts/loop/cards-horizontal-term.php:49
+#: template-parts/loop/cards-overlay-term.php:51
+msgid "item"
+msgid_plural "items"
+msgstr[0] "Eintrag"
+msgstr[1] "Einträge"
+
+#: template-parts/loop/cards-grid-term.php:284
+#: template-parts/loop/cards-grid.php:255
+#: template-parts/loop/cards-horizontal-term.php:324
+#: template-parts/loop/cards-horizontal.php:295
+#: template-parts/loop/cards-overlay-term.php:301
+#: template-parts/loop/cards-overlay.php:267
+msgid "Read more »"
+msgstr "Weiterlesen »"
+
+#: template-parts/loop/content-none.php:17
+msgid "Nothing Found for"
+msgstr "Nichts gefunden für"
+
+#: template-parts/loop/content-none.php:24
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr "Leider passt nichts zu deinen Suchbegriffen. Bitte versuche es mit anderen Stichwörtern noch einmal."
+
+#: template-parts/loop/loop-none.php:17
+msgid "No content found."
+msgstr "Kein Inhalt gefunden."
+
+#: src/settings/class-theme-json-tokens.php:259
+#: theme.json
+msgctxt "Color name"
+msgid "Primary"
+msgstr "Primär"
+
+#: src/settings/class-theme-json-tokens.php:260
+#: theme.json
+msgctxt "Color name"
+msgid "Secondary"
+msgstr "Sekundär"
+
+#: src/settings/class-theme-json-tokens.php:261
+#: theme.json
+msgctxt "Color name"
+msgid "Success"
+msgstr "Erfolg"
+
+#: src/settings/class-theme-json-tokens.php:262
+#: theme.json
+msgctxt "Color name"
+msgid "Info"
+msgstr "Info"
+
+#: src/settings/class-theme-json-tokens.php:263
+#: theme.json
+msgctxt "Color name"
+msgid "Warning"
+msgstr "Warnung"
+
+#: src/settings/class-theme-json-tokens.php:264
+#: theme.json
+msgctxt "Color name"
+msgid "Danger"
+msgstr "Gefahr"
+
+#: src/settings/class-theme-json-tokens.php:265
+#: theme.json
+msgctxt "Color name"
+msgid "Light"
+msgstr "Hell"
+
+#: src/settings/class-theme-json-tokens.php:266
+#: theme.json
+msgctxt "Color name"
+msgid "Dark"
+msgstr "Dunkel"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Header"
+msgstr "Kopfbereich"
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Footer"
+msgstr "Fußbereich"
+
+#: modules/consent/i18n-strings.php:20
+msgid "Cookie settings link"
+msgstr "Link zu den Cookie-Einstellungen"
+
+#: modules/consent/i18n-strings.php:21
+msgid "Link or button that opens the cookie settings."
+msgstr "Link oder Schaltfläche, die die Cookie-Einstellungen öffnet."
+
+#: modules/consent/i18n-strings.php:22
+msgid "cookie"
+msgstr "Cookie"
+
+#: modules/consent/i18n-strings.php:23
+msgid "consent"
+msgstr "Einwilligung"
+
+#: modules/consent/i18n-strings.php:24
+msgid "privacy"
+msgstr "Datenschutz"
+
+#: modules/consent/i18n-strings.php:25
+msgid "Label"
+msgstr "Beschriftung"
+
+#: modules/consent/i18n-strings.php:26
+msgid "Empty shows “Cookie settings”."
+msgstr "Leer zeigt „Cookie-Einstellungen“."
+
+#: modules/consent/i18n-strings.php:27
+msgid "Appearance"
+msgstr "Darstellung"
+
+#: modules/consent/i18n-strings.php:28
+msgid "Link"
+msgstr "Link"
+
+#: modules/consent/inc/class-links.php:102
+msgid "Privacy policy"
+msgstr "Datenschutzerklärung"
+
+#: modules/consent/inc/class-links.php:109
+msgid "Imprint"
+msgstr "Impressum"
+
+#: modules/consent/inc/class-links.php:126
+#: modules/consent/inc/class-texts.php:164
+msgid "Cookie settings"
+msgstr "Cookie-Einstellungen"
+
+#: modules/consent/inc/class-texts.php:131
+msgid "Accept all"
+msgstr "Alle akzeptieren"
+
+#: modules/consent/inc/class-texts.php:132
+msgid "Reject optional"
+msgstr "Optionale ablehnen"
+
+#: modules/consent/inc/class-texts.php:136
+msgid "We use cookies"
+msgstr "Wir verwenden Cookies"
+
+#: modules/consent/inc/class-texts.php:137
+msgid "We use necessary cookies and, with your consent, optional ones. You can change your choice at any time under “Cookie settings”."
+msgstr "Wir verwenden notwendige Cookies und, mit deiner Einwilligung, optionale. Du kannst deine Auswahl jederzeit unter „Cookie-Einstellungen“ ändern."
+
+#: modules/consent/inc/class-texts.php:140
+#: src/settings/transfer/class-settings-section.php:115
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: modules/consent/inc/class-texts.php:145
+msgid "Our cookie settings have changed. Please check your choice."
+msgstr "Unsere Cookie-Einstellungen haben sich geändert. Bitte prüfe deine Auswahl."
+
+#: modules/consent/inc/class-texts.php:148
+msgid "Choose which optional cookies we may use. Necessary cookies are always active. You can change your choice at any time."
+msgstr "Wähle, welche optionalen Cookies wir verwenden dürfen. Notwendige Cookies sind immer aktiv. Du kannst deine Auswahl jederzeit ändern."
+
+#: modules/consent/inc/class-texts.php:156
+msgid "More information"
+msgstr "Weitere Informationen"
+
+#: modules/consent/inc/class-texts.php:167
+msgid "Save settings"
+msgstr "Einstellungen speichern"
+
+#: modules/consent/inc/class-texts.php:268
+msgid "Stores your cookie choice"
+msgstr "Speichert deine Cookie-Auswahl"
+
+#. translators: %d: number of days.
+#: modules/consent/inc/class-texts.php:270
+#, php-format
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] "%d Tag"
+msgstr[1] "%d Tage"
+
+#: modules/consent/inc/class-texts.php:287
+#: src/admin/class-module-page.php:420
+msgid "Description"
+msgstr "Beschreibung"
+
+#: modules/consent/inc/class-texts.php:288
+msgid "Duration"
+msgstr "Dauer"
+
+#: modules/consent/inc/class-texts.php:306
+msgid "Necessary"
+msgstr "Notwendig"
+
+#: modules/consent/inc/class-texts.php:307
+msgid "These cookies are needed for the website to work, for example to store your cookie choice."
+msgstr "Diese Cookies braucht die Website, um zu funktionieren, zum Beispiel um deine Cookie-Auswahl zu speichern."
+
+#: modules/consent/inc/class-texts.php:310
+msgid "Functional"
+msgstr "Funktional"
+
+#: modules/consent/inc/class-texts.php:311
+msgid "These cookies remember settings and enable extra functions, such as embedded content."
+msgstr "Diese Cookies merken sich Einstellungen und ermöglichen zusätzliche Funktionen, etwa eingebettete Inhalte."
+
+#: modules/consent/inc/class-texts.php:314
+msgid "Statistics"
+msgstr "Statistik"
+
+#: modules/consent/inc/class-texts.php:315
+msgid "These cookies help us understand how visitors use the website, so that we can improve it."
+msgstr "Diese Cookies helfen uns zu verstehen, wie Besucher die Website nutzen, damit wir das Angebot verbessern können."
+
+#: modules/consent/inc/class-texts.php:318
+msgid "Marketing"
+msgstr "Marketing"
+
+#: modules/consent/inc/class-texts.php:319
+msgid "These cookies are used to show relevant advertising and to measure its reach."
+msgstr "Diese Cookies dienen dazu, passende Werbung anzuzeigen und deren Reichweite zu messen."
+
+#: modules/consent/module.php:23
+msgid "Cookie consent"
+msgstr "Cookie-Einwilligung"
+
+#: modules/consent/module.php:35
+msgid "The cookie banner, the preferences dialog and the withdrawal link disappear immediately. Marked scripts stay blocked."
+msgstr "Cookie-Banner, Einstellungsdialog und Widerrufslink verschwinden sofort. Markierte Skripte bleiben blockiert."
+
+#: modules/consent/settings.php:34
+msgid "Cookie banner title"
+msgstr "Titel des Cookie-Banners"
+
+#: modules/consent/settings.php:35
+msgid "Empty shows \"We use cookies\"."
+msgstr "Leer zeigt „Wir verwenden Cookies“."
+
+#: modules/consent/settings.php:46
+msgid "Cookie banner text"
+msgstr "Text des Cookie-Banners"
+
+#: modules/consent/settings.php:47
+msgid "Links, bold, italic and line breaks are allowed. Empty shows the default text."
+msgstr "Links, fett, kursiv und Zeilenumbrüche sind erlaubt. Leer zeigt den Standardtext."
+
+#: modules/consent/settings.php:58
+msgid "Cookie settings introduction"
+msgstr "Einleitung der Cookie-Einstellungen"
+
+#: modules/consent/settings.php:59
+msgid "First paragraph of the cookie settings dialog. Links, bold, italic and line breaks are allowed. Empty shows the default text."
+msgstr "Erster Absatz des Dialogs der Cookie-Einstellungen. Links, fett, kursiv und Zeilenumbrüche sind erlaubt. Leer zeigt den Standardtext."
+
+#: modules/consent/settings.php:70
+msgid "Imprint page"
+msgstr "Impressumsseite"
+
+#: modules/consent/settings.php:71
+msgid "Linked in the cookie banner next to the privacy policy page of the site. None hides the link."
+msgstr "Wird im Cookie-Banner neben der Datenschutzseite der Website verlinkt. Ohne Auswahl entfällt der Link."
+
+#: modules/consent/settings.php:82
+msgid "Consent revision"
+msgstr "Version der Einwilligung"
+
+#: modules/consent/settings.php:83
+msgid "Raise the number after a change of the cookies: every visitor is asked again. From 0 to 9999."
+msgstr "Erhöhe die Zahl nach einer Änderung der Cookies: Jeder Besucher wird erneut gefragt. Von 0 bis 9999."
+
+#: modules/consent/settings.php:94
+msgid "Consent lifetime in days"
+msgstr "Gültigkeit der Einwilligung in Tagen"
+
+#: modules/consent/settings.php:95
+msgid "How long the choice of a visitor is kept, from 30 to 395 days."
+msgstr "Wie lange die Auswahl eines Besuchers gespeichert bleibt, von 30 bis 395 Tagen."
+
+#: modules/header-footer/inc/class-menu-scope.php:162
+msgid "No header or footer menu is assigned yet."
+msgstr "Noch ist kein Menü für Kopf- oder Fußbereich zugewiesen."
+
+#: modules/header-footer/inc/class-menu-scope.php:535
+msgid "You may only edit the menus of the header and footer."
+msgstr "Du darfst nur die Menüs von Kopf- und Fußbereich bearbeiten."
+
+#: src/admin/class-transfer-page.php:373
+#: src/admin/class-transfer-page.php:374
+#: src/admin/class-transfer-page.php:726
+msgid "Import/Export"
+msgstr "Import/Export"
+
+#. translators: 1: result of the import, 2: title of the admin page.
+#: src/admin/class-transfer-page.php:429
+#, php-format
+msgid "%1$s – %2$s"
+msgstr "%1$s – %2$s"
+
+#: src/admin/class-transfer-page.php:718
+msgid "You are not allowed to open this page."
+msgstr "Du darfst diese Seite nicht öffnen."
+
+#: src/admin/class-transfer-page.php:749
+msgid "You can only view import and export."
+msgstr "Du kannst Import und Export nur ansehen."
+
+#: src/admin/class-transfer-page.php:758
+msgid "Backup created."
+msgstr "Sicherung erstellt."
+
+#: src/admin/class-transfer-page.php:760
+msgid "Import cancelled. Nothing was changed."
+msgstr "Import abgebrochen. Nichts wurde geändert."
+
+#: src/admin/class-transfer-page.php:779
+#: src/admin/class-transfer-page.php:1488
+msgid "Export"
+msgstr "Export"
+
+#: src/admin/class-transfer-page.php:780
+msgid "Downloads the settings as a JSON file. Sensitive values are never exported."
+msgstr "Lädt die Einstellungen als JSON-Datei herunter. Sensible Werte werden nie exportiert."
+
+#: src/admin/class-transfer-page.php:783
+#: src/admin/class-transfer-page.php:859
+#: src/admin/class-transfer-page.php:917
+#: src/admin/class-transfer-page.php:996
+msgid "Sections"
+msgstr "Bereiche"
+
+#: src/admin/class-transfer-page.php:792
+#: src/admin/class-transfer-page.php:918
+#: src/admin/class-transfer-page.php:995
+msgid "Languages"
+msgstr "Sprachen"
+
+#. translators: %s: language code, e.g. "de".
+#: src/admin/class-transfer-page.php:796
+#, php-format
+msgid "%s (default language)"
+msgstr "%s (Standardsprache)"
+
+#: src/admin/class-transfer-page.php:800
+msgid "Download file"
+msgstr "Datei herunterladen"
+
+#: src/admin/class-transfer-page.php:817
+#: src/admin/class-transfer-page.php:1489
+msgid "Import"
+msgstr "Import"
+
+#: src/admin/class-transfer-page.php:818
+msgid "The import shows a preview first; nothing changes before you confirm it. The current settings are backed up before the import."
+msgstr "Der Import zeigt zuerst eine Vorschau; nichts ändert sich, bevor du sie bestätigst. Vor dem Import werden die aktuellen Einstellungen gesichert."
+
+#: src/admin/class-transfer-page.php:823
+msgid "Settings file"
+msgstr "Einstellungsdatei"
+
+#: src/admin/class-transfer-page.php:827
+msgid "JSON, at most 1 MB"
+msgstr "JSON, höchstens 1 MB"
+
+#: src/admin/class-transfer-page.php:831
+msgid "Show preview"
+msgstr "Vorschau anzeigen"
+
+#: src/admin/class-transfer-page.php:844
+msgid "Backups"
+msgstr "Sicherungen"
+
+#. translators: %d: number of backups the theme keeps.
+#: src/admin/class-transfer-page.php:848
+#, php-format
+msgid "The theme keeps the last %d backups. It makes one before every import, restore and module switch."
+msgstr "Das Theme behält die letzten %d Sicherungen. Es legt vor jedem Import, jeder Wiederherstellung und jedem Modulwechsel eine an."
+
+#: src/admin/class-transfer-page.php:854
+msgid "No backups yet."
+msgstr "Noch keine Sicherungen."
+
+#: src/admin/class-transfer-page.php:857
+#: src/admin/class-transfer-page.php:914
+msgid "Time"
+msgstr "Zeitpunkt"
+
+#: src/admin/class-module-page.php:422
+#: src/admin/class-transfer-page.php:858
+msgid "Reason"
+msgstr "Grund"
+
+#: src/admin/class-transfer-page.php:860
+#: src/admin/class-transfer-page.php:919
+msgid "Person"
+msgstr "Person"
+
+#: src/admin/class-module-page.php:425
+#: src/admin/class-transfer-page.php:863
+#: src/admin/class-transfer-page.php:915
+msgid "Action"
+msgstr "Aktion"
+
+#: src/admin/class-transfer-page.php:865
+msgid "Backups, newest first"
+msgstr "Sicherungen, neueste zuerst"
+
+#: src/admin/class-transfer-page.php:877
+msgid "Restore …"
+msgstr "Wiederherstellen …"
+
+#: src/admin/class-transfer-page.php:886
+msgid "Back up now"
+msgstr "Jetzt sichern"
+
+#: src/admin/class-transfer-page.php:902
+msgid "Log"
+msgstr "Protokoll"
+
+#: src/admin/class-transfer-page.php:903
+msgid "The log keeps who exported, imported, restored or backed up which sections, for 90 days. It stores no values."
+msgstr "Das Protokoll hält 90 Tage lang fest, wer welche Bereiche exportiert, importiert, wiederhergestellt oder gesichert hat. Es speichert keine Werte."
+
+#: src/admin/class-transfer-page.php:906
+msgid "No log entries yet."
+msgstr "Noch keine Protokolleinträge."
+
+#. translators: %d: number of entries.
+#: src/admin/class-transfer-page.php:912
+#, php-format
+msgid "Last %d log entries"
+msgstr "Letzte %d Protokolleinträge"
+
+#: src/admin/class-transfer-page.php:916
+msgid "Channel"
+msgstr "Kanal"
+
+#: src/admin/class-transfer-page.php:927
+msgid "Admin"
+msgstr "Admin"
+
+#: src/admin/class-transfer-page.php:959
+msgid "Preview"
+msgstr "Vorschau"
+
+#: src/admin/class-transfer-page.php:960
+msgid "Check what the import changes. Nothing has been changed yet."
+msgstr "Prüfe, was der Import ändert. Noch wurde nichts geändert."
+
+#: src/admin/class-transfer-page.php:990
+#: src/admin/class-transfer-page.php:1491
+msgid "Backup"
+msgstr "Sicherung"
+
+#: src/admin/class-transfer-page.php:990
+msgid "File"
+msgstr "Datei"
+
+#: src/admin/class-transfer-page.php:991
+msgid "Exported from"
+msgstr "Exportiert von"
+
+#: src/admin/class-transfer-page.php:992
+msgid "Exported at"
+msgstr "Exportiert am"
+
+#: src/admin/class-transfer-page.php:993
+msgid "Theme version"
+msgstr "Theme-Version"
+
+#: src/admin/class-transfer-page.php:999
+msgid "Not in the file (sensitive)"
+msgstr "Nicht in der Datei (sensibel)"
+
+#: src/admin/class-transfer-page.php:1020
+msgid "Warnings"
+msgstr "Warnungen"
+
+#: src/admin/class-module-page.php:419
+#: src/admin/class-transfer-page.php:1043
+msgid "Module"
+msgstr "Modul"
+
+#: src/admin/class-transfer-page.php:1043
+#: src/admin/class-transfer-page.php:1155
+msgid "Setting"
+msgstr "Einstellung"
+
+#: src/admin/class-transfer-page.php:1047
+#: src/admin/class-transfer-page.php:1155
+msgid "Current"
+msgstr "Aktuell"
+
+#: src/admin/class-transfer-page.php:1047
+#: src/admin/class-transfer-page.php:1155
+msgid "New"
+msgstr "Neu"
+
+#: src/admin/class-transfer-page.php:1047
+#: src/admin/class-transfer-page.php:1155
+msgid "Result"
+msgstr "Ergebnis"
+
+#: src/admin/class-transfer-page.php:1068
+msgid "All languages"
+msgstr "Alle Sprachen"
+
+#: src/admin/class-transfer-page.php:1089
+msgid "Module changes"
+msgstr "Moduländerungen"
+
+#: src/admin/class-transfer-page.php:1090
+msgid "The import switches modules. Published contents that use them may look different or lose functions:"
+msgstr "Der Import schaltet Module um. Veröffentlichte Inhalte, die diese Module nutzen, können anders aussehen oder Funktionen verlieren:"
+
+#. translators: 1: module title, 2: number of published contents.
+#: src/admin/class-transfer-page.php:1095
+#, php-format
+msgid "%1$s: used in %2$d published content"
+msgid_plural "%1$s: used in %2$d published contents"
+msgstr[0] "%1$s: in %2$d veröffentlichtem Inhalt verwendet"
+msgstr[1] "%1$s: in %2$d veröffentlichten Inhalten verwendet"
+
+#: src/admin/class-transfer-page.php:1110
+msgid "I understand the consequences of the module changes"
+msgstr "Ich habe die Folgen der Modulwechsel verstanden"
+
+#: src/admin/class-transfer-page.php:1126
+msgid "No import result is available anymore."
+msgstr "Es liegt kein Importergebnis mehr vor."
+
+#. translators: 1: number of changed values, 2: number of skipped values, 3: number of rejected values.
+#: src/admin/class-transfer-page.php:1136
+#, php-format
+msgid "%1$d changed, %2$d skipped, %3$d rejected."
+msgstr "%1$d geändert, %2$d übersprungen, %3$d abgelehnt."
+
+#: src/admin/class-transfer-page.php:1143
+msgid "Backup made before the import:"
+msgstr "Sicherung vor dem Import:"
+
+#: src/admin/class-transfer-page.php:1144
+msgid "Restore this backup …"
+msgstr "Diese Sicherung wiederherstellen …"
+
+#: src/admin/class-transfer-page.php:1154
+#: src/admin/class-transfer-page.php:1363
+msgid "Rejected"
+msgstr "Abgelehnt"
+
+#: src/admin/class-transfer-page.php:1154
+#: src/admin/class-transfer-page.php:1362
+msgid "Skipped"
+msgstr "Übersprungen"
+
+#: src/admin/class-transfer-page.php:1162
+msgid "Back to Import/Export"
+msgstr "Zurück zu Import/Export"
+
+#: src/admin/class-transfer-page.php:1174
+msgid "Import finished"
+msgstr "Import abgeschlossen"
+
+#: src/admin/class-transfer-page.php:1174
+msgid "Nothing was imported"
+msgstr "Nichts wurde importiert"
+
+#: src/admin/class-transfer-page.php:1217
+msgid "Go to the field"
+msgstr "Zum Feld"
+
+#: src/admin/class-module-page.php:788
+#: src/admin/class-transfer-page.php:1335
+msgid "Default"
+msgstr "Standard"
+
+#: src/admin/class-transfer-page.php:1339
+msgid "Yes"
+msgstr "Ja"
+
+#: src/admin/class-transfer-page.php:1339
+msgid "No"
+msgstr "Nein"
+
+#: src/admin/class-transfer-page.php:1361
+msgid "Changes"
+msgstr "Änderung"
+
+#. translators: %d: number of published contents.
+#: src/admin/class-transfer-page.php:1375
+#, php-format
+msgid "Used in %d published content."
+msgid_plural "Used in %d published contents."
+msgstr[0] "In %d veröffentlichtem Inhalt verwendet."
+msgstr[1] "In %d veröffentlichten Inhalten verwendet."
+
+#: src/admin/class-transfer-page.php:1393
+msgid "Reset to the default"
+msgstr "Auf den Standard zurücksetzen"
+
+#: src/admin/class-transfer-page.php:1394
+msgid "Switch the module"
+msgstr "Modul umschalten"
+
+#: src/admin/class-transfer-page.php:1395
+msgid "Unchanged"
+msgstr "Unverändert"
+
+#: src/admin/class-transfer-page.php:1396
+msgid "Not in the file"
+msgstr "Nicht in der Datei"
+
+#: src/admin/class-transfer-page.php:1397
+msgid "Locked on this site"
+msgstr "Auf dieser Website gesperrt"
+
+#: src/admin/class-transfer-page.php:1398
+msgid "Not translatable"
+msgstr "Nicht übersetzbar"
+
+#: src/admin/class-transfer-page.php:1399
+msgid "Unknown setting"
+msgstr "Unbekannte Einstellung"
+
+#: src/admin/class-transfer-page.php:1400
+msgid "Setting removed in a theme update"
+msgstr "Einstellung in einem Theme-Update entfernt"
+
+#: src/admin/class-transfer-page.php:1401
+msgid "Setting renamed in a theme update"
+msgstr "Einstellung in einem Theme-Update umbenannt"
+
+#: src/admin/class-transfer-page.php:1402
+msgid "Sensitive, never imported"
+msgstr "Sensibel, wird nie importiert"
+
+#: src/admin/class-transfer-page.php:1403
+msgid "Language not active on this site"
+msgstr "Sprache auf dieser Website nicht aktiv"
+
+#: src/admin/class-transfer-page.php:1404
+msgid "Not available in the Bootstrap line of this site"
+msgstr "In der Bootstrap-Linie dieser Website nicht verfügbar"
+
+#: src/admin/class-transfer-page.php:1405
+msgid "The Bootstrap line is never imported"
+msgstr "Die Bootstrap-Linie wird nie importiert"
+
+#: src/admin/class-transfer-page.php:1406
+msgid "Unknown part of the file"
+msgstr "Unbekannter Teil der Datei"
+
+#: src/admin/class-transfer-page.php:1407
+msgid "Module unchanged"
+msgstr "Modul unverändert"
+
+#: src/admin/class-transfer-page.php:1408
+msgid "Module locked on this site"
+msgstr "Modul auf dieser Website gesperrt"
+
+#: src/admin/class-transfer-page.php:1409
+msgid "You may not change this setting"
+msgstr "Du darfst diese Einstellung nicht ändern"
+
+#: src/admin/class-transfer-page.php:1410
+msgid "Invalid value"
+msgstr "Ungültiger Wert"
+
+#: src/admin/class-transfer-page.php:1411
+msgid "Contrast too low"
+msgstr "Kontrast zu gering"
+
+#: src/admin/class-transfer-page.php:1412
+msgid "Referenced content not found on this site"
+msgstr "Verknüpfter Inhalt auf dieser Website nicht gefunden"
+
+#: src/admin/class-transfer-page.php:1413
+msgid "You may not switch this module"
+msgstr "Du darfst dieses Modul nicht umschalten"
+
+#: src/admin/class-transfer-page.php:1414
+msgid "Invalid module state"
+msgstr "Ungültiger Modulzustand"
+
+#: src/admin/class-transfer-page.php:1415
+msgid "Needs your confirmation"
+msgstr "Braucht deine Bestätigung"
+
+#: src/admin/class-transfer-page.php:1429
+msgid "On"
+msgstr "An"
+
+#: src/admin/class-module-page.php:745
+#: src/admin/class-transfer-page.php:1430
+msgid "Off"
+msgstr "Aus"
+
+#: src/admin/class-module-page.php:744
+#: src/admin/class-transfer-page.php:1431
+msgid "Hidden"
+msgstr "Ausgeblendet"
+
+#: src/admin/class-transfer-page.php:1446
+msgid "The file comes from another Bootstrap line. The import never switches the line; settings of the other line are skipped. Switch the line first if you need them."
+msgstr "Die Datei stammt aus einer anderen Bootstrap-Linie. Der Import wechselt die Linie nie; Einstellungen der anderen Linie werden übersprungen. Wechsle zuerst die Linie, wenn du diese Einstellungen brauchst."
+
+#: src/admin/class-transfer-page.php:1449
+msgid "The file comes from a newer theme version. Settings this version does not know are skipped."
+msgstr "Die Datei stammt aus einer neueren Theme-Version. Einstellungen, die diese Version nicht kennt, werden übersprungen."
+
+#. translators: 1: old format version, 2: new format version.
+#: src/admin/class-transfer-page.php:1454
+#, php-format
+msgid "The file was converted from format version %1$s to %2$s."
+msgstr "Die Datei wurde von Formatversion %1$s auf %2$s umgewandelt."
+
+#: src/admin/class-transfer-page.php:1469
+msgid "Before an import"
+msgstr "Vor einem Import"
+
+#: src/admin/class-transfer-page.php:1470
+msgid "Before a restore"
+msgstr "Vor einer Wiederherstellung"
+
+#: src/admin/class-transfer-page.php:1471
+msgid "Before a module switch"
+msgstr "Vor einem Modulwechsel"
+
+#: src/admin/class-transfer-page.php:1472
+msgid "Manual"
+msgstr "Manuell"
+
+#: src/admin/class-transfer-page.php:1473
+msgid "Before a Bootstrap line switch"
+msgstr "Vor einem Wechsel der Bootstrap-Linie"
+
+#: src/admin/class-transfer-page.php:1490
+msgid "Restore"
+msgstr "Wiederherstellung"
+
+#: src/admin/class-transfer-page.php:1552
+msgid "Unknown or deleted user"
+msgstr "Unbekannter oder gelöschter Benutzer"
+
+#: src/admin/class-transfer-page.php:1623
+msgid "The backup or the log could not be stored. Nothing was changed."
+msgstr "Die Sicherung oder das Protokoll konnte nicht gespeichert werden. Nichts wurde geändert."
+
+#: src/settings/class-theme-json-tokens.php:280
+msgctxt "Font family name"
+msgid "Body"
+msgstr "Fließtext"
+
+#: src/settings/class-theme-json-tokens.php:281
+msgctxt "Font family name"
+msgid "Headings"
+msgstr "Überschriften"
+
+#: src/settings/transfer/class-importer.php:157
+msgid "This theme version does not know this part of the file."
+msgstr "Diese Theme-Version kennt diesen Teil der Datei nicht."
+
+#: src/admin/class-module-page.php:137
+#: src/settings/transfer/class-modules-section.php:92
+msgid "Modules"
+msgstr "Module"
+
+#: src/settings/transfer/class-modules-section.php:135
+msgid "The file has no state for this module; it stays as it is."
+msgstr "Die Datei enthält keinen Zustand für dieses Modul; es bleibt, wie es ist."
+
+#: src/settings/transfer/class-modules-section.php:272
+msgid "The child theme or a constant holds the state of this module."
+msgstr "Das Child-Theme oder eine Konstante legt den Zustand dieses Moduls fest."
+
+#: src/settings/transfer/class-modules-section.php:274
+msgid "You are not allowed to switch modules."
+msgstr "Du darfst keine Module umschalten."
+
+#: src/settings/transfer/class-modules-section.php:276
+msgid "This module or state does not exist on this site."
+msgstr "Dieses Modul oder dieser Zustand existiert auf dieser Website nicht."
+
+#. translators: %d: number of live contents.
+#: src/settings/transfer/class-modules-section.php:281
+#, php-format
+msgid "Switching this module off affects %d live content; confirm the module changes."
+msgid_plural "Switching this module off affects %d live contents; confirm the module changes."
+msgstr[0] "Das Abschalten dieses Moduls betrifft %d veröffentlichten Inhalt; bestätige die Moduländerungen."
+msgstr[1] "Das Abschalten dieses Moduls betrifft %d veröffentlichte Inhalte; bestätige die Moduländerungen."
+
+#: src/settings/transfer/class-settings-section.php:192
+msgid "Sensitive settings are left out of every export and never imported."
+msgstr "Sensible Einstellungen fehlen in jedem Export und werden nie importiert."
+
+#: src/settings/transfer/class-settings-section.php:206
+msgid "This language is not active on this site."
+msgstr "Diese Sprache ist auf dieser Website nicht aktiv."
+
+#. translators: %s: setting key.
+#: src/settings/transfer/class-settings-section.php:290
+#, php-format
+msgid "The file has another value for %s; that value is imported."
+msgstr "Die Datei enthält einen anderen Wert für %s; dieser Wert wird importiert."
+
+#: src/settings/transfer/class-settings-section.php:308
+msgid "The page, file or term this setting points to does not exist on this site."
+msgstr "Die Seite, die Datei oder der Begriff, auf die diese Einstellung verweist, existiert auf dieser Website nicht."
+
+#: src/settings/transfer/class-settings-section.php:344
+msgid "The file has no value for this setting; it stays as it is."
+msgstr "Die Datei enthält keinen Wert für diese Einstellung; sie bleibt, wie sie ist."
+
+#: src/settings/transfer/class-settings-section.php:363
+msgid "The Bootstrap line is never imported; it is part of the code of the site."
+msgstr "Die Bootstrap-Linie wird nie importiert; sie gehört zum Code der Website."
+
+#: src/settings/transfer/class-settings-section.php:369
+msgid "This setting has no counterpart in the Bootstrap line of this site."
+msgstr "Diese Einstellung hat keine Entsprechung in der Bootstrap-Linie dieser Website."
+
+#. translators: %s: setting key in the file.
+#: src/settings/transfer/class-settings-section.php:373
+#, php-format
+msgid "Mapped from %s of the other Bootstrap line."
+msgstr "Aus %s der anderen Bootstrap-Linie übernommen."
+
+#. translators: %s: new setting key.
+#: src/settings/transfer/class-settings-section.php:386
+#, php-format
+msgid "This setting is now called %s; the value under the new name is imported."
+msgstr "Diese Einstellung heißt jetzt %s; importiert wird der Wert unter dem neuen Namen."
+
+#. translators: %s: former setting key.
+#: src/settings/transfer/class-settings-section.php:391
+#, php-format
+msgid "Renamed from %s."
+msgstr "Umbenannt aus %s."
+
+#. translators: %s: new setting key.
+#: src/settings/transfer/class-settings-section.php:393
+#, php-format
+msgid "This setting is now called %s and is imported under that name."
+msgstr "Diese Einstellung heißt jetzt %s und wird unter diesem Namen importiert."
+
+#. translators: %s: theme version.
+#: src/settings/transfer/class-settings-section.php:398
+#, php-format
+msgid "This setting was removed in theme version %s."
+msgstr "Diese Einstellung wurde in Theme-Version %s entfernt."
+
+#: src/settings/transfer/class-settings-section.php:400
+msgid "This theme version does not know this setting."
+msgstr "Diese Theme-Version kennt diese Einstellung nicht."
+
+#: src/settings/transfer/class-settings-section.php:414
+msgid "Sensitive settings are never imported."
+msgstr "Sensible Einstellungen werden nie importiert."
+
+#: src/settings/transfer/class-settings-section.php:418
+msgid "Module switches are imported in the section Modules."
+msgstr "Modulzustände werden im Bereich Module importiert."
+
+#: src/settings/transfer/class-settings-section.php:419
+msgid "This setting is never imported."
+msgstr "Diese Einstellung wird nie importiert."
+
+#: src/settings/transfer/class-settings-section.php:423
+msgid "This setting differs per language; the file must list it per language."
+msgstr "Diese Einstellung unterscheidet sich je Sprache; die Datei muss sie je Sprache aufführen."
+
+#: src/settings/transfer/class-settings-section.php:426
+msgid "This setting is the same in every language; the file must list it without a language."
+msgstr "Diese Einstellung ist in allen Sprachen gleich; die Datei muss sie ohne Sprache aufführen."
+
+#: modules/consent/blocks/consent-link/block.json
+msgctxt "block title"
+msgid "Cookie settings link"
+msgstr "Link zu den Cookie-Einstellungen"
+
+#: modules/consent/blocks/consent-link/block.json
+msgctxt "block description"
+msgid "Link or button that opens the cookie settings."
+msgstr "Link oder Schaltfläche, die die Cookie-Einstellungen öffnet."
+
+#: modules/consent/blocks/consent-link/block.json
+msgctxt "block keyword"
+msgid "cookie"
+msgstr "Cookie"
+
+#: modules/consent/blocks/consent-link/block.json
+msgctxt "block keyword"
+msgid "consent"
+msgstr "Einwilligung"
+
+#: modules/consent/blocks/consent-link/block.json
+msgctxt "block keyword"
+msgid "privacy"
+msgstr "Datenschutz"
+
+#: src/admin/class-transfer-page.php:970
+msgctxt "button"
+msgid "Import"
+msgstr "Importieren"
+
+#: src/settings/acf/class-options-pages.php:312
+msgid "Dismiss this notice"
+msgstr "Diesen Hinweis ausblenden"
+
+#: modules/header-footer/i18n-strings.php:20
+msgid "Navbar"
+msgstr "Navigationsleiste"
+
+#: modules/header-footer/i18n-strings.php:21
+msgid "Main menu of the header with logo, search and a menu that opens from the side on small screens."
+msgstr "Hauptmenü des Kopfbereichs mit Logo, Suche und einem Menü, das sich auf kleinen Bildschirmen von der Seite öffnet."
+
+#: modules/header-footer/i18n-strings.php:22
+msgid "header"
+msgstr "Kopfbereich"
+
+#: modules/header-footer/i18n-strings.php:23
+msgid "menu"
+msgstr "Menü"
+
+#: modules/header-footer/i18n-strings.php:24
+msgid "navigation"
+msgstr "Navigation"
+
+#: modules/header-footer/i18n-strings.php:25
+msgid "Show the full menu from"
+msgstr "Volles Menü zeigen ab"
+
+#: modules/header-footer/i18n-strings.php:26
+msgid "Below this screen width the menu opens from the side."
+msgstr "Unterhalb dieser Bildschirmbreite öffnet sich das Menü von der Seite."
+
+#: modules/header-footer/i18n-strings.php:27
+msgid "Small screens (576 px)"
+msgstr "Kleine Bildschirme (576 px)"
+
+#: modules/header-footer/i18n-strings.php:28
+msgid "Medium screens (768 px)"
+msgstr "Mittlere Bildschirme (768 px)"
+
+#: modules/header-footer/i18n-strings.php:29
+msgid "Large screens (992 px)"
+msgstr "Große Bildschirme (992 px)"
+
+#: modules/header-footer/i18n-strings.php:30
+msgid "Extra large screens (1200 px)"
+msgstr "Sehr große Bildschirme (1200 px)"
+
+#: modules/header-footer/i18n-strings.php:31
+msgid "Extra extra large screens (1400 px)"
+msgstr "Extrem große Bildschirme (1400 px)"
+
+#: modules/header-footer/i18n-strings.php:32
+msgid "Show logo"
+msgstr "Logo zeigen"
+
+#: modules/header-footer/i18n-strings.php:33
+msgid "Show search"
+msgstr "Suche zeigen"
+
+#: modules/header-footer/i18n-strings.php:34
+msgid "Menu opens from"
+msgstr "Menü öffnet sich von"
+
+#: modules/header-footer/i18n-strings.php:35
+msgid "Start side"
+msgstr "Zeilenanfang"
+
+#: modules/header-footer/i18n-strings.php:36
+msgid "End side"
+msgstr "Zeilenende"
+
+#: modules/header-footer/i18n-strings.php:39
+msgid "Logo"
+msgstr "Logo"
+
+#: modules/header-footer/i18n-strings.php:40
+msgid "Logo of the site from the theme files, with a variant for the dark color scheme; the site name without logo files."
+msgstr "Logo der Website aus den Theme-Dateien, mit einer Variante für das dunkle Farbschema; ohne Logodateien der Name der Website."
+
+#: modules/header-footer/i18n-strings.php:41
+msgid "logo"
+msgstr "Logo"
+
+#: modules/header-footer/i18n-strings.php:42
+msgid "brand"
+msgstr "Marke"
+
+#: modules/header-footer/i18n-strings.php:43
+msgid "Link to the home page"
+msgstr "Link zur Startseite"
+
+#: modules/header-footer/i18n-strings.php:46
+msgid "Search form"
+msgstr "Suchformular"
+
+#: modules/header-footer/i18n-strings.php:47
+msgid "Search form of the theme."
+msgstr "Suchformular des Themes."
+
+#: modules/header-footer/i18n-strings.php:48
+msgid "search"
+msgstr "Suche"
+
+#: modules/header-footer/i18n-strings.php:52
+msgid "Menu assigned to the location Footer menu."
+msgstr "Menü, das der Position Fußzeilenmenü zugewiesen ist."
+
+#: modules/header-footer/i18n-strings.php:53
+msgid "footer"
+msgstr "Fußbereich"
+
+#: modules/header-footer/module.php:24
+msgid "Header and footer in the Site Editor"
+msgstr "Kopf- und Fußbereich im Website-Editor"
+
+#: modules/header-footer/module.php:51
+msgid "Customised header and footer parts stay in the database but are no longer shown."
+msgstr "Angepasste Kopf- und Fußbereiche bleiben in der Datenbank, werden aber nicht mehr angezeigt."
+
+#: patterns/header-footer/footer-default.php
+msgctxt "Pattern title"
+msgid "Footer"
+msgstr "Fußbereich"
+
+#: patterns/header-footer/header-default.php
+msgctxt "Pattern title"
+msgid "Header"
+msgstr "Kopfbereich"
+
+#: src/admin/class-module-page.php:136
+#: src/admin/class-module-page.php:191
+msgid "Theme modules"
+msgstr "Theme-Module"
+
+#: src/admin/class-module-page.php:194
+msgid "You can only view the modules."
+msgstr "Du kannst die Module nur ansehen."
+
+#: src/admin/class-module-page.php:402
+msgid "You are not allowed to switch theme modules."
+msgstr "Du darfst die Theme-Module nicht schalten."
+
+#: src/admin/class-module-page.php:418
+msgid "Theme modules and their state"
+msgstr "Theme-Module und ihr Zustand"
+
+#: src/admin/class-module-page.php:421
+msgid "State"
+msgstr "Zustand"
+
+#. translators: %s: title of the module.
+#: src/admin/class-module-page.php:468
+#, php-format
+msgid "State of %s"
+msgstr "Zustand von %s"
+
+#. translators: %s: title of the module.
+#: src/admin/class-module-page.php:526
+#, php-format
+msgid "Switch %s off?"
+msgstr "%s ausschalten?"
+
+#: src/admin/class-module-page.php:535
+msgid "Nothing is deleted; the settings of the module stay stored."
+msgstr "Es wird nichts gelöscht; die Einstellungen des Moduls bleiben gespeichert."
+
+#: src/admin/class-module-page.php:536
+msgid "While the module is off, its blocks show nothing on the website. Nothing is deleted: the contents keep the blocks and show them again once the module is on."
+msgstr "Solange das Modul aus ist, zeigen seine Blöcke auf der Website nichts an. Es wird nichts gelöscht: Die Inhalte behalten die Blöcke und zeigen sie wieder, sobald das Modul an ist."
+
+#: src/admin/class-module-page.php:559
+msgid "More contents use the blocks of this module now. Check the list and confirm again."
+msgstr "Inzwischen nutzen mehr Inhalte die Blöcke dieses Moduls. Prüfe die Liste und bestätige erneut."
+
+#: src/admin/class-module-page.php:560
+msgid "Confirm that you understand the consequences."
+msgstr "Bestätige, dass du die Folgen verstanden hast."
+
+#: src/admin/class-module-page.php:568
+msgid "I understand the consequences"
+msgstr "Ich habe die Folgen verstanden"
+
+#: src/admin/class-module-page.php:573
+msgid "Switch off"
+msgstr "Ausschalten"
+
+#. translators: %s: title of the module.
+#: src/admin/class-module-page.php:596
+#, php-format
+msgid "Contents with blocks of %s"
+msgstr "Inhalte mit Blöcken von %s"
+
+#: src/admin/class-module-page.php:597
+msgid "Location"
+msgstr "Fundort"
+
+#: src/admin/class-module-page.php:598
+msgid "Contents"
+msgstr "Inhalte"
+
+#: src/admin/class-module-page.php:599
+msgid "Revisions and trash"
+msgstr "Revisionen und Papierkorb"
+
+#: src/admin/class-module-page.php:613
+msgid "Contents that use the blocks, newest first:"
+msgstr "Inhalte, die die Blöcke nutzen, die neuesten zuerst:"
+
+#. translators: %d: ID of the content.
+#: src/admin/class-module-page.php:617
+#, php-format
+msgid "Content %d without title"
+msgstr "Inhalt %d ohne Titel"
+
+#. translators: 1: title of the module, 2: reason, e.g. "The plugin x/x.php is not active".
+#: src/admin/class-module-page.php:648
+#, php-format
+msgid "%1$s stays off: %2$s."
+msgstr "%1$s bleibt aus: %2$s."
+
+#: src/admin/class-module-page.php:654
+msgid "The module reported an error while switching; the new state applies anyway. The PHP error log names the error."
+msgstr "Das Modul hat beim Schalten einen Fehler gemeldet; der neue Zustand gilt trotzdem. Das PHP-Fehlerprotokoll nennt den Fehler."
+
+#: src/admin/class-module-page.php:686
+msgid "The module or the state is unknown; nothing changed."
+msgstr "Das Modul oder der Zustand ist unbekannt; nichts wurde geändert."
+
+#. translators: %s: title of the module.
+#: src/admin/class-module-page.php:698
+#, php-format
+msgid "%s is locked; nothing changed."
+msgstr "%s ist gesperrt; nichts wurde geändert."
+
+#. translators: %s: title of the module.
+#: src/admin/class-module-page.php:705
+#, php-format
+msgid "%s already has this state; nothing changed."
+msgstr "%s hat diesen Zustand bereits; nichts wurde geändert."
+
+#. translators: %s: title of the module.
+#: src/admin/class-module-page.php:710
+#, php-format
+msgid "%s is now active."
+msgstr "%s ist jetzt aktiv."
+
+#. translators: %s: title of the module.
+#: src/admin/class-module-page.php:712
+#, php-format
+msgid "%s is now hidden."
+msgstr "%s ist jetzt versteckt."
+
+#. translators: %s: title of the module.
+#: src/admin/class-module-page.php:714
+#, php-format
+msgid "%s is now off."
+msgstr "%s ist jetzt aus."
+
+#: src/admin/class-module-page.php:730
+msgid "No backup of the theme settings is made when a module goes off; export the settings first to keep a copy."
+msgstr "Beim Ausschalten eines Moduls wird keine Sicherung der Theme-Einstellungen angelegt; exportiere die Einstellungen vorher, um eine Kopie zu behalten."
+
+#: src/admin/class-module-page.php:743
+msgid "Active"
+msgstr "Aktiv"
+
+#: src/admin/class-module-page.php:764
+msgid "Synced patterns"
+msgstr "Synchronisierte Vorlagen"
+
+#: src/admin/class-module-page.php:765
+msgid "Template parts"
+msgstr "Template-Teile"
+
+#: src/admin/class-module-page.php:766
+msgid "Templates"
+msgstr "Templates"
+
+#: src/admin/class-module-page.php:767
+msgid "Navigation menus"
+msgstr "Navigationsmenüs"
+
+#: src/admin/class-module-page.php:768
+msgid "Revisions"
+msgstr "Revisionen"
+
+#: src/admin/class-module-page.php:769
+msgid "Block widgets"
+msgstr "Block-Widgets"
+
+#: src/admin/class-module-page.php:790
+msgid "Set by the child theme"
+msgstr "Vom Child-Theme gesetzt"
+
+#: src/admin/class-module-page.php:792
+msgid "Set on this page"
+msgstr "Auf dieser Seite gesetzt"
+
+#: src/admin/class-module-page.php:794
+msgid "Locked by the child theme"
+msgstr "Vom Child-Theme gesperrt"
+
+#. translators: %s: name of the constant, e.g. CREATIONELL_WP_THEME_MODULE_CONSENT.
+#: src/admin/class-module-page.php:797
+#, php-format
+msgid "Set by the constant %s in wp-config.php"
+msgstr "Durch die Konstante %s in der wp-config.php gesetzt"
+
+#: src/admin/class-module-page.php:799
+msgid "The child theme or the constant sets a state the module does not know"
+msgstr "Das Child-Theme oder die Konstante setzt einen Zustand, den das Modul nicht kennt"
+
+#: src/admin/class-module-page.php:801
+msgid "The stored state is invalid; the default applies"
+msgstr "Der gespeicherte Zustand ist ungültig; es gilt der Standard"
+
+#: src/admin/class-module-page.php:803
+msgid "Not installed"
+msgstr "Nicht installiert"
+
+#: src/admin/class-module-page.php:805
+msgid "The manifest of the module is invalid"
+msgstr "Das Manifest des Moduls ist ungültig"
+
+#: src/admin/class-module-page.php:807
+msgid "Blockstudio is not active"
+msgstr "Blockstudio ist nicht aktiv"
+
+#: src/admin/class-module-page.php:809
+msgid "The required modules lead back to this module"
+msgstr "Die benötigten Module führen zu diesem Modul zurück"
+
+#. translators: %s: plugin file, e.g. bs-swiper/main.php.
+#: src/admin/class-module-page.php:812
+#, php-format
+msgid "The older plugin %s is active"
+msgstr "Das ältere Plugin %s ist aktiv"
+
+#. translators: %s: plugin file, e.g. contact-form-7/wp-contact-form-7.php.
+#: src/admin/class-module-page.php:815
+#, php-format
+msgid "The plugin %s is not active"
+msgstr "Das Plugin %s ist nicht aktiv"
+
+#. translators: %s: title of the required module.
+#: src/admin/class-module-page.php:818
+#, php-format
+msgid "The module %s is off"
+msgstr "Das Modul %s ist aus"
+
+#. translators: %s: titles of the modules, separated by commas.
+#: src/admin/class-theme-switch-notice.php:106
+#, php-format
+msgid "After a theme switch, the blocks of %s are missing; the cookie banner and the consent lock are gone."
+msgstr "Nach einem Theme-Wechsel fehlen die Blöcke von %s; Cookie-Banner und Einwilligungssperre entfallen."
+
+#. translators: %s: titles of the modules, separated by commas.
+#: src/admin/class-theme-switch-notice.php:110
+#, php-format
+msgid "After a theme switch, the blocks of %s are missing."
+msgstr "Nach einem Theme-Wechsel fehlen die Blöcke von %s."
+
+#: src/admin/class-theme-switch-notice.php:112
+msgid "After a theme switch, the cookie banner and the consent lock are gone."
+msgstr "Nach einem Theme-Wechsel entfallen Cookie-Banner und Einwilligungssperre."
+
+#: modules/header-footer/blocks/footer-menu/block.json
+msgctxt "block title"
+msgid "Footer menu"
+msgstr "Fußzeilenmenü"
+
+#: modules/header-footer/blocks/footer-menu/block.json
+msgctxt "block description"
+msgid "Menu assigned to the location Footer menu."
+msgstr "Menü, das der Position Fußzeilenmenü zugewiesen ist."
+
+#: modules/header-footer/blocks/footer-menu/block.json
+#: modules/header-footer/blocks/footer-text/block.json
+msgctxt "block keyword"
+msgid "footer"
+msgstr "Fußbereich"
+
+#: modules/header-footer/blocks/footer-menu/block.json
+#: modules/header-footer/blocks/navbar/block.json
+msgctxt "block keyword"
+msgid "menu"
+msgstr "Menü"
+
+#: modules/header-footer/blocks/footer-menu/block.json
+#: modules/header-footer/blocks/navbar/block.json
+msgctxt "block keyword"
+msgid "navigation"
+msgstr "Navigation"
+
+#: modules/header-footer/blocks/logo/block.json
+msgctxt "block title"
+msgid "Logo"
+msgstr "Logo"
+
+#: modules/header-footer/blocks/logo/block.json
+msgctxt "block description"
+msgid "Logo of the site from the theme files, with a variant for the dark color scheme; the site name without logo files."
+msgstr "Logo der Website aus den Theme-Dateien, mit einer Variante für das dunkle Farbschema; ohne Logodateien der Name der Website."
+
+#: modules/header-footer/blocks/logo/block.json
+msgctxt "block keyword"
+msgid "logo"
+msgstr "Logo"
+
+#: modules/header-footer/blocks/logo/block.json
+msgctxt "block keyword"
+msgid "brand"
+msgstr "Marke"
+
+#: modules/header-footer/blocks/navbar/block.json
+msgctxt "block title"
+msgid "Navbar"
+msgstr "Navigationsleiste"
+
+#: modules/header-footer/blocks/navbar/block.json
+msgctxt "block description"
+msgid "Main menu of the header with logo, search and a menu that opens from the side on small screens."
+msgstr "Hauptmenü des Kopfbereichs mit Logo, Suche und einem Menü, das sich auf kleinen Bildschirmen von der Seite öffnet."
+
+#: modules/header-footer/blocks/navbar/block.json
+msgctxt "block keyword"
+msgid "header"
+msgstr "Kopfbereich"
+
+#: modules/header-footer/blocks/search/block.json
+msgctxt "block title"
+msgid "Search form"
+msgstr "Suchformular"
+
+#: modules/header-footer/blocks/search/block.json
+msgctxt "block description"
+msgid "Search form of the theme."
+msgstr "Suchformular des Themes."
+
+#: modules/header-footer/blocks/search/block.json
+msgctxt "block keyword"
+msgid "search"
+msgstr "Suche"
+
+#: src/posts/class-slider-config.php:136
+#: template-parts/post-slider/slider.php:76
+msgid "Pause slideshow"
+msgstr "Diashow anhalten"
+
+#: src/posts/class-slider-config.php:137
+msgid "Play slideshow"
+msgstr "Diashow starten"
+
+#: src/posts/class-slider-config.php:248
+#: template-parts/post-slider/slider.php:74
+msgid "Previous slide"
+msgstr "Vorherige Folie"
+
+#: src/posts/class-slider-config.php:249
+#: template-parts/post-slider/slider.php:75
+msgid "Next slide"
+msgstr "Nächste Folie"
+
+#: src/posts/class-slider-config.php:250
+msgid "This is the first slide"
+msgstr "Das ist die erste Folie"
+
+#: src/posts/class-slider-config.php:251
+msgid "This is the last slide"
+msgstr "Das ist die letzte Folie"
+
+#. translators: Keep {{index}}: Swiper replaces it with the number of the slide.
+#: src/posts/class-slider-config.php:253
+msgid "Go to slide {{index}}"
+msgstr "Zu Folie {{index}} gehen"
+
+#. translators: Keep {{index}} and {{slidesLength}}: Swiper replaces them with the number of the slide and the number of slides.
+#: src/posts/class-slider-config.php:255
+msgid "{{index}} / {{slidesLength}}"
+msgstr "{{index}} / {{slidesLength}}"
+
+#: src/posts/class-slider-config.php:256
+msgctxt "role description of the post slider"
+msgid "carousel"
+msgstr "Karussell"
+
+#: src/posts/class-slider-config.php:257
+msgctxt "role description of one slide of the post slider"
+msgid "slide"
+msgstr "Folie"
+
+#: template-parts/post-lists/card-grid.php:68
+#: template-parts/post-lists/card-hero.php:77
+#: template-parts/post-lists/card-list.php:76
+#: template-parts/post-lists/panel.php:60
+msgid "Read more"
+msgstr "Weiterlesen"
+
+#: template-parts/post-lists/empty.php:17
+msgid "No posts found."
+msgstr "Keine Beiträge gefunden."
+
+#: modules/header-footer/i18n-strings.php:57
+msgid "Footer text of the theme settings, or the copyright line without it, with the footer links of the theme."
+msgstr "Text in der Fußzeile aus den Theme-Einstellungen, ohne ihn die Copyright-Zeile, mit den Links des Themes in der Fußzeile."
+
+#: modules/header-footer/i18n-strings.php:58
+msgid "copyright"
+msgstr "Copyright"
+
+#: modules/header-footer/i18n-strings.php:59
+msgid "text"
+msgstr "Text"
+
+#: modules/header-footer/i18n-strings.php:63
+msgid "Address, phone and email of the theme settings."
+msgstr "Adresse, Telefon und E-Mail aus den Theme-Einstellungen."
+
+#: modules/header-footer/i18n-strings.php:64
+msgid "contact"
+msgstr "Kontakt"
+
+#: modules/header-footer/i18n-strings.php:65
+msgid "address"
+msgstr "Adresse"
+
+#: modules/header-footer/i18n-strings.php:66
+msgid "phone"
+msgstr "Telefon"
+
+#: modules/header-footer/i18n-strings.php:67
+msgid "email"
+msgstr "E-Mail"
+
+#: modules/header-footer/i18n-strings.php:68
+#: modules/related-posts/i18n-strings.php:32
+msgid "Heading"
+msgstr "Überschrift"
+
+#: modules/header-footer/i18n-strings.php:69
+msgid "Empty shows \"Contact\"."
+msgstr "Leer zeigt „Kontakt“."
+
+#: modules/header-footer/i18n-strings.php:70
+#: modules/post-lists/i18n-strings.php:61
+#: modules/post-slider/i18n-strings.php:67
+#: modules/related-posts/i18n-strings.php:34
+msgid "Heading level"
+msgstr "Überschriftenebene"
+
+#: modules/header-footer/i18n-strings.php:71
+#: modules/post-lists/i18n-strings.php:63
+#: modules/post-slider/i18n-strings.php:69
+#: modules/related-posts/i18n-strings.php:36
+msgid "Heading 2"
+msgstr "Überschrift 2"
+
+#: modules/header-footer/i18n-strings.php:72
+#: modules/post-lists/i18n-strings.php:64
+#: modules/post-slider/i18n-strings.php:70
+#: modules/related-posts/i18n-strings.php:37
+msgid "Heading 3"
+msgstr "Überschrift 3"
+
+#: modules/header-footer/i18n-strings.php:73
+#: modules/post-lists/i18n-strings.php:65
+#: modules/post-slider/i18n-strings.php:71
+#: modules/related-posts/i18n-strings.php:38
+msgid "Heading 4"
+msgstr "Überschrift 4"
+
+#: modules/header-footer/i18n-strings.php:74
+#: modules/post-lists/i18n-strings.php:66
+#: modules/post-slider/i18n-strings.php:72
+#: modules/related-posts/i18n-strings.php:39
+msgid "Heading 5"
+msgstr "Überschrift 5"
+
+#: modules/header-footer/i18n-strings.php:75
+#: modules/post-lists/i18n-strings.php:67
+#: modules/post-slider/i18n-strings.php:73
+#: modules/related-posts/i18n-strings.php:40
+msgid "Heading 6"
+msgstr "Überschrift 6"
+
+#: modules/header-footer/i18n-strings.php:76
+msgid "Show address"
+msgstr "Adresse anzeigen"
+
+#: modules/header-footer/i18n-strings.php:77
+msgid "Show phone"
+msgstr "Telefon anzeigen"
+
+#: modules/header-footer/i18n-strings.php:78
+msgid "Show email"
+msgstr "E-Mail anzeigen"
+
+#: modules/header-footer/i18n-strings.php:81
+msgid "Social links"
+msgstr "Links zu sozialen Medien"
+
+#: modules/header-footer/i18n-strings.php:82
+msgid "Links to the social media profiles of the theme settings."
+msgstr "Links zu den Profilen in sozialen Medien aus den Theme-Einstellungen."
+
+#: modules/header-footer/i18n-strings.php:83
+msgid "social"
+msgstr "soziale Medien"
+
+#: modules/header-footer/i18n-strings.php:84
+msgid "links"
+msgstr "Links"
+
+#: modules/header-footer/i18n-strings.php:85
+msgid "profiles"
+msgstr "Profile"
+
+#: modules/header-footer/i18n-strings.php:86
+msgid "Name of the list"
+msgstr "Name der Liste"
+
+#: modules/header-footer/i18n-strings.php:87
+msgid "Screen readers read it out. Empty uses \"Social media\"."
+msgstr "Screenreader lesen ihn vor. Leer nutzt „Soziale Medien“."
+
+#: modules/header-footer/i18n-strings.php:90
+msgid "Language switcher"
+msgstr "Sprachumschalter"
+
+#: modules/header-footer/i18n-strings.php:91
+msgid "Links to the page in the other languages of WPML; shows nothing without WPML."
+msgstr "Links zur Seite in den anderen Sprachen von WPML; ohne WPML leer."
+
+#: modules/header-footer/i18n-strings.php:92
+msgid "language"
+msgstr "Sprache"
+
+#: modules/header-footer/i18n-strings.php:93
+msgid "translation"
+msgstr "Übersetzung"
+
+#: modules/header-footer/i18n-strings.php:94
+msgid "WPML"
+msgstr "WPML"
+
+#: modules/header-footer/i18n-strings.php:95
+#: modules/post-lists/i18n-strings.php:75
+#: modules/related-posts/i18n-strings.php:27
+msgid "Display"
+msgstr "Darstellung"
+
+#: modules/header-footer/i18n-strings.php:96
+msgid "List of languages"
+msgstr "Liste der Sprachen"
+
+#: modules/header-footer/i18n-strings.php:97
+msgid "Dropdown"
+msgstr "Auswahlliste"
+
+#. translators: 1: part name, e.g. "footer", 2: comma-separated language codes, 3: part slug.
+#: modules/header-footer/inc/class-part-translations.php:231
+#, php-format
+msgid "The %1$s translation into %2$s has a slug other than \"%3$s\"; pages in these languages show the %1$s of the theme file."
+msgstr "Die Übersetzung von „%1$s“ in %2$s hat einen anderen Slug als „%3$s“; Seiten in diesen Sprachen zeigen den %1$s aus der Theme-Datei."
+
+#. translators: 1: part name, e.g. "header", 2: comma-separated language codes.
+#: modules/header-footer/inc/class-part-translations.php:240
+#, php-format
+msgid "The %1$s has no translation into %2$s; pages in these languages show the %1$s of the default language."
+msgstr "Der %1$s hat keine Übersetzung in %2$s; Seiten in diesen Sprachen zeigen den %1$s der Standardsprache."
+
+#: modules/header-footer/inc/class-part-translations.php:245
+msgid "Translate header and footer with WPML only, not by switching the language in the Site Editor."
+msgstr "Übersetze Kopf- und Fußbereich nur mit WPML, nicht durch einen Sprachwechsel im Website-Editor."
+
+#: modules/header-footer/inc/class-part-translations.php:340
+msgctxt "template part name inside a sentence"
+msgid "header"
+msgstr "Kopfbereich"
+
+#: modules/header-footer/inc/class-part-translations.php:341
+msgctxt "template part name inside a sentence"
+msgid "footer"
+msgstr "Fußbereich"
+
+#: modules/header-footer/inc/class-text-blocks.php:157
+msgid "Language switcher (WPML)"
+msgstr "Sprachumschalter (WPML)"
+
+#: modules/header-footer/inc/class-text-blocks.php:222
+msgid "Set in Theme settings → Texts"
+msgstr "Einstellen unter Theme-Einstellungen → Texte"
+
+#: modules/header-footer/blocks/contact/block.json
+msgctxt "block title"
+msgid "Contact"
+msgstr "Kontakt"
+
+#: modules/header-footer/blocks/contact/block.json
+msgctxt "block description"
+msgid "Address, phone and email of the theme settings."
+msgstr "Adresse, Telefon und E-Mail aus den Theme-Einstellungen."
+
+#: modules/header-footer/blocks/contact/block.json
+msgctxt "block keyword"
+msgid "contact"
+msgstr "Kontakt"
+
+#: modules/header-footer/blocks/contact/block.json
+msgctxt "block keyword"
+msgid "address"
+msgstr "Adresse"
+
+#: modules/header-footer/blocks/contact/block.json
+msgctxt "block keyword"
+msgid "phone"
+msgstr "Telefon"
+
+#: modules/header-footer/blocks/contact/block.json
+msgctxt "block keyword"
+msgid "email"
+msgstr "E-Mail"
+
+#: modules/header-footer/blocks/footer-text/block.json
+msgctxt "block title"
+msgid "Footer text"
+msgstr "Text in der Fußzeile"
+
+#: modules/header-footer/blocks/footer-text/block.json
+msgctxt "block description"
+msgid "Footer text of the theme settings, or the copyright line without it, with the footer links of the theme."
+msgstr "Text in der Fußzeile aus den Theme-Einstellungen, ohne ihn die Copyright-Zeile, mit den Links des Themes in der Fußzeile."
+
+#: modules/header-footer/blocks/footer-text/block.json
+msgctxt "block keyword"
+msgid "copyright"
+msgstr "Copyright"
+
+#: modules/header-footer/blocks/footer-text/block.json
+msgctxt "block keyword"
+msgid "text"
+msgstr "Text"
+
+#: modules/header-footer/blocks/language-switcher/block.json
+msgctxt "block title"
+msgid "Language switcher"
+msgstr "Sprachumschalter"
+
+#: modules/header-footer/blocks/language-switcher/block.json
+msgctxt "block description"
+msgid "Links to the page in the other languages of WPML; shows nothing without WPML."
+msgstr "Links zur Seite in den anderen Sprachen von WPML; ohne WPML leer."
+
+#: modules/header-footer/blocks/language-switcher/block.json
+msgctxt "block keyword"
+msgid "language"
+msgstr "Sprache"
+
+#: modules/header-footer/blocks/language-switcher/block.json
+msgctxt "block keyword"
+msgid "translation"
+msgstr "Übersetzung"
+
+#: modules/header-footer/blocks/language-switcher/block.json
+msgctxt "block keyword"
+msgid "WPML"
+msgstr "WPML"
+
+#: modules/header-footer/blocks/social-links/block.json
+msgctxt "block title"
+msgid "Social links"
+msgstr "Links zu sozialen Medien"
+
+#: modules/header-footer/blocks/social-links/block.json
+msgctxt "block description"
+msgid "Links to the social media profiles of the theme settings."
+msgstr "Links zu den Profilen in sozialen Medien aus den Theme-Einstellungen."
+
+#: modules/header-footer/blocks/social-links/block.json
+msgctxt "block keyword"
+msgid "social"
+msgstr "soziale Medien"
+
+#: modules/header-footer/blocks/social-links/block.json
+msgctxt "block keyword"
+msgid "links"
+msgstr "Links"
+
+#: modules/header-footer/blocks/social-links/block.json
+msgctxt "block keyword"
+msgid "profiles"
+msgstr "Profile"
+
+#: modules/post-lists/i18n-strings.php:20
+msgid "Post list"
+msgstr "Beitragsliste"
+
+#: modules/post-lists/i18n-strings.php:21
+msgid "Posts as grid, list or large image cards, chosen by type, terms or by hand."
+msgstr "Beiträge als Raster, Liste oder große Bildkarten, gewählt nach Typ, Begriffen oder von Hand."
+
+#: modules/post-lists/i18n-strings.php:22
+#: modules/post-slider/i18n-strings.php:22
+#: modules/related-posts/i18n-strings.php:22
+msgid "posts"
+msgstr "Beiträge"
+
+#: modules/post-lists/i18n-strings.php:23
+msgid "grid"
+msgstr "Raster"
+
+#: modules/post-lists/i18n-strings.php:24
+msgid "list"
+msgstr "Liste"
+
+#: modules/post-lists/i18n-strings.php:25
+msgid "query"
+msgstr "Abfrage"
+
+#: modules/post-lists/i18n-strings.php:26
+#: modules/post-slider/i18n-strings.php:26
+msgid "Layout"
+msgstr "Layout"
+
+#: modules/post-lists/i18n-strings.php:27
+#: modules/related-posts/i18n-strings.php:30
+msgid "Grid"
+msgstr "Raster"
+
+#: modules/post-lists/i18n-strings.php:28
+msgid "List"
+msgstr "Liste"
+
+#: modules/post-lists/i18n-strings.php:29
+#: modules/post-slider/i18n-strings.php:28
+msgid "Large image cards"
+msgstr "Große Bildkarten"
+
+#: modules/post-lists/i18n-strings.php:30
+#: modules/post-slider/i18n-strings.php:29
+msgid "Columns"
+msgstr "Spalten"
+
+#: modules/post-lists/i18n-strings.php:31
+msgid "Columns of the grid on large screens."
+msgstr "Spalten des Rasters auf großen Bildschirmen."
+
+#: modules/post-lists/i18n-strings.php:32
+msgid "Pagination"
+msgstr "Seitennavigation"
+
+#: modules/post-lists/i18n-strings.php:33
+msgid "Shows page links below the list."
+msgstr "Zeigt Seitenlinks unter der Liste."
+
+#: modules/post-lists/i18n-strings.php:34
+#: modules/post-slider/i18n-strings.php:40
+msgid "Post type"
+msgstr "Beitragstyp"
+
+#: modules/post-lists/i18n-strings.php:35
+#: modules/post-slider/i18n-strings.php:41
+msgid "Taxonomy"
+msgstr "Taxonomie"
+
+#: modules/post-lists/i18n-strings.php:36
+#: modules/post-slider/i18n-strings.php:42
+msgid "Shows only posts with one of the terms below."
+msgstr "Zeigt nur Beiträge mit einem der Begriffe unten."
+
+#: modules/post-lists/i18n-strings.php:37
+#: modules/post-slider/i18n-strings.php:43
+msgid "Term IDs"
+msgstr "Begriffs-IDs"
+
+#: modules/post-lists/i18n-strings.php:38
+#: modules/post-slider/i18n-strings.php:44
+msgid "IDs of the terms of the taxonomy, separated by commas."
+msgstr "IDs der Begriffe der Taxonomie, durch Kommas getrennt."
+
+#: modules/post-lists/i18n-strings.php:39
+#: modules/post-slider/i18n-strings.php:45
+msgid "Selected posts"
+msgstr "Ausgewählte Beiträge"
+
+#: modules/post-lists/i18n-strings.php:40
+#: modules/post-slider/i18n-strings.php:46
+msgid "Shows only these posts. Leave empty for the newest posts."
+msgstr "Zeigt nur diese Beiträge. Leer lassen für die neuesten Beiträge."
+
+#: modules/post-lists/i18n-strings.php:41
+#: modules/post-slider/i18n-strings.php:47
+msgid "Parent page"
+msgstr "Übergeordnete Seite"
+
+#: modules/post-lists/i18n-strings.php:42
+#: modules/post-slider/i18n-strings.php:48
+msgid "Shows only the child pages of this page."
+msgstr "Zeigt nur die Unterseiten dieser Seite."
+
+#: modules/post-lists/i18n-strings.php:43
+#: modules/post-slider/i18n-strings.php:49
+msgid "Order by"
+msgstr "Sortieren nach"
+
+#: modules/post-lists/i18n-strings.php:44
+#: modules/post-slider/i18n-strings.php:50
+msgid "Date"
+msgstr "Datum"
+
+#: modules/post-lists/i18n-strings.php:45
+#: modules/post-slider/i18n-strings.php:51
+msgid "Title"
+msgstr "Titel"
+
+#: modules/post-lists/i18n-strings.php:46
+#: modules/post-slider/i18n-strings.php:52
+msgid "Menu order"
+msgstr "Menüreihenfolge"
+
+#: modules/post-lists/i18n-strings.php:47
+#: modules/post-slider/i18n-strings.php:53
+msgid "Last modified"
+msgstr "Zuletzt geändert"
+
+#: modules/post-lists/i18n-strings.php:48
+#: modules/post-slider/i18n-strings.php:54
+msgid "Random"
+msgstr "Zufällig"
+
+#: modules/post-lists/i18n-strings.php:49
+#: modules/post-slider/i18n-strings.php:55
+msgid "Order of the selected posts"
+msgstr "Reihenfolge der ausgewählten Beiträge"
+
+#: modules/post-lists/i18n-strings.php:50
+#: modules/post-slider/i18n-strings.php:56
+msgid "Direction"
+msgstr "Richtung"
+
+#: modules/post-lists/i18n-strings.php:51
+#: modules/post-slider/i18n-strings.php:57
+msgid "Descending"
+msgstr "Absteigend"
+
+#: modules/post-lists/i18n-strings.php:52
+#: modules/post-slider/i18n-strings.php:58
+msgid "Ascending"
+msgstr "Aufsteigend"
+
+#: modules/post-lists/i18n-strings.php:53
+#: modules/post-slider/i18n-strings.php:59
+#: modules/related-posts/i18n-strings.php:25
+msgid "Number of posts"
+msgstr "Anzahl der Beiträge"
+
+#: modules/post-lists/i18n-strings.php:54
+#: modules/post-slider/i18n-strings.php:60
+msgid "Leave out the current post"
+msgstr "Aktuellen Beitrag auslassen"
+
+#: modules/post-lists/i18n-strings.php:55
+#: modules/post-slider/i18n-strings.php:61
+msgid "Show image"
+msgstr "Bild anzeigen"
+
+#: modules/post-lists/i18n-strings.php:56
+#: modules/post-slider/i18n-strings.php:62
+msgid "Show categories"
+msgstr "Kategorien anzeigen"
+
+#: modules/post-lists/i18n-strings.php:57
+#: modules/post-slider/i18n-strings.php:63
+msgid "Show date and author"
+msgstr "Datum und Autor anzeigen"
+
+#: modules/post-lists/i18n-strings.php:58
+#: modules/post-slider/i18n-strings.php:64
+msgid "Show excerpt"
+msgstr "Auszüge anzeigen"
+
+#: modules/post-lists/i18n-strings.php:59
+#: modules/post-slider/i18n-strings.php:65
+msgid "Show read more"
+msgstr "„Weiterlesen“ anzeigen"
+
+#: modules/post-lists/i18n-strings.php:60
+#: modules/post-slider/i18n-strings.php:66
+msgid "Show tags"
+msgstr "Schlagwörter anzeigen"
+
+#: modules/post-lists/i18n-strings.php:62
+#: modules/post-slider/i18n-strings.php:68
+msgid "Level of the post titles, to fit the headings around the block."
+msgstr "Ebene der Beitragstitel, passend zu den Überschriften um den Block."
+
+#: modules/post-lists/i18n-strings.php:70
+msgid "Post accordion"
+msgstr "Beitrags-Akkordeon"
+
+#: modules/post-lists/i18n-strings.php:71
+msgid "Posts as accordion or tabs, with the excerpt or the full content."
+msgstr "Beiträge als Akkordeon oder Tabs, mit Auszug oder vollem Inhalt."
+
+#: modules/post-lists/i18n-strings.php:72
+msgid "accordion"
+msgstr "Akkordeon"
+
+#: modules/post-lists/i18n-strings.php:73
+msgid "tabs"
+msgstr "Tabs"
+
+#: modules/post-lists/i18n-strings.php:74
+msgid "faq"
+msgstr "FAQ"
+
+#: modules/post-lists/i18n-strings.php:76
+msgid "Accordion"
+msgstr "Akkordeon"
+
+#: modules/post-lists/i18n-strings.php:77
+msgid "Tabs"
+msgstr "Tabs"
+
+#: modules/post-lists/i18n-strings.php:78
+msgid "Open the first item"
+msgstr "Ersten Eintrag öffnen"
+
+#: modules/post-lists/i18n-strings.php:79
+msgid "Keep items open"
+msgstr "Einträge offen halten"
+
+#: modules/post-lists/i18n-strings.php:80
+msgid "Opening an item does not close the others."
+msgstr "Das Öffnen eines Eintrags schließt die anderen nicht."
+
+#: modules/post-lists/i18n-strings.php:81
+msgid "Without outer borders"
+msgstr "Ohne äußere Rahmen"
+
+#: modules/post-lists/i18n-strings.php:82
+msgid "Text"
+msgstr "Text"
+
+#: modules/post-lists/i18n-strings.php:83
+msgid "Excerpt"
+msgstr "Auszug"
+
+#: modules/post-lists/i18n-strings.php:84
+msgid "Full content"
+msgstr "Voller Inhalt"
+
+#: modules/post-lists/settings.php:32
+msgid "Most posts per list"
+msgstr "Höchstzahl Beiträge je Liste"
+
+#: modules/post-lists/settings.php:33
+msgid "Upper limit for the number of posts of a post list, an accordion or a slider, from 1 to 50."
+msgstr "Obergrenze für die Anzahl der Beiträge einer Beitragsliste, eines Akkordeons oder eines Sliders, von 1 bis 50."
+
+#: modules/post-slider/i18n-strings.php:21
+msgid "Posts as a slider of cards or large image cards, chosen by type, terms or by hand."
+msgstr "Beiträge als Slider aus Karten oder großen Bildkarten, gewählt nach Typ, Begriffen oder von Hand."
+
+#: modules/post-slider/i18n-strings.php:23
+msgid "slider"
+msgstr "Slider"
+
+#: modules/post-slider/i18n-strings.php:24
+msgid "carousel"
+msgstr "Karussell"
+
+#: modules/post-slider/i18n-strings.php:25
+msgid "slideshow"
+msgstr "Diashow"
+
+#: modules/post-slider/i18n-strings.php:27
+msgid "Cards in columns"
+msgstr "Karten in Spalten"
+
+#: modules/post-slider/i18n-strings.php:30
+msgid "Cards side by side on large screens; small screens show fewer."
+msgstr "Karten nebeneinander auf großen Bildschirmen; kleine Bildschirme zeigen weniger."
+
+#: modules/post-slider/i18n-strings.php:31
+msgid "Transition"
+msgstr "Übergang"
+
+#: modules/post-slider/i18n-strings.php:32
+msgid "Slide"
+msgstr "Schieben"
+
+#: modules/post-slider/i18n-strings.php:33
+msgid "Fade"
+msgstr "Überblenden"
+
+#: modules/post-slider/i18n-strings.php:34
+msgid "Loop"
+msgstr "Endlosschleife"
+
+#: modules/post-slider/i18n-strings.php:35
+msgid "After the last slide the first follows."
+msgstr "Auf die letzte Folie folgt die erste."
+
+#: modules/post-slider/i18n-strings.php:36
+msgid "Play automatically"
+msgstr "Automatisch abspielen"
+
+#: modules/post-slider/i18n-strings.php:37
+msgid "Moves on by itself and shows a button to pause. Visitors who prefer less motion start it themselves."
+msgstr "Wechselt von selbst und zeigt eine Schaltfläche zum Pausieren. Besucher, die weniger Bewegung bevorzugen, starten es selbst."
+
+#: modules/post-slider/i18n-strings.php:38
+msgid "Show arrows"
+msgstr "Pfeile anzeigen"
+
+#: modules/post-slider/i18n-strings.php:39
+msgid "Show dots"
+msgstr "Punkte anzeigen"
+
+#: modules/post-slider/settings.php:32
+msgid "Slideshow delay in milliseconds"
+msgstr "Diashow-Dauer in Millisekunden"
+
+#: modules/post-slider/settings.php:33
+msgid "Time each slide stays while a post slider plays by itself, from 3000 to 15000 milliseconds."
+msgstr "Zeit, die jede Folie steht, während ein Beitrags-Slider von selbst läuft, von 3000 bis 15000 Millisekunden."
+
+#: modules/related-posts/i18n-strings.php:21
+msgid "Posts that share a category or tag with the current post, as a grid or a slider."
+msgstr "Beiträge mit gemeinsamer Kategorie oder gemeinsamem Schlagwort mit dem aktuellen Beitrag, als Raster oder Slider."
+
+#: modules/related-posts/i18n-strings.php:23
+msgid "related"
+msgstr "verwandt"
+
+#: modules/related-posts/i18n-strings.php:24
+msgid "similar"
+msgstr "ähnlich"
+
+#: modules/related-posts/i18n-strings.php:26
+msgid "0 uses the number of the theme settings."
+msgstr "0 nimmt die Zahl aus den Theme-Einstellungen."
+
+#: modules/related-posts/i18n-strings.php:28
+msgid "The slider needs the module post slider; while it is off the posts show as a grid."
+msgstr "Der Slider braucht das Modul Beitrags-Slider; solange es aus ist, erscheinen die Beiträge als Raster."
+
+#: modules/related-posts/i18n-strings.php:29
+msgid "As in the theme settings"
+msgstr "Wie in den Theme-Einstellungen"
+
+#: modules/related-posts/i18n-strings.php:31
+msgid "Slider"
+msgstr "Slider"
+
+#: modules/related-posts/i18n-strings.php:33
+msgid "Leave empty for the heading of the theme settings."
+msgstr "Leer lassen für die Überschrift aus den Theme-Einstellungen."
+
+#: modules/related-posts/i18n-strings.php:35
+msgid "Level of the heading, to fit the headings around the block; the post titles follow one level below."
+msgstr "Ebene der Überschrift, passend zu den Überschriften um den Block; die Beitragstitel folgen eine Ebene darunter."
+
+#: modules/related-posts/inc/class-related-posts-module.php:451
+msgid "Shows related posts on single posts."
+msgstr "Zeigt verwandte Beiträge in Einzelbeiträgen."
+
+#: modules/related-posts/settings.php:36
+msgid "Post types with related posts"
+msgstr "Beitragstypen mit verwandten Beiträgen"
+
+#: modules/related-posts/settings.php:37
+msgid "Names of the public post types, separated by commas, e.g. post,page. Media are never included."
+msgstr "Namen der öffentlichen Beitragstypen, durch Kommas getrennt, z. B. post,page. Medien sind nie enthalten."
+
+#: modules/related-posts/settings.php:53
+msgid "Related by"
+msgstr "Verwandt nach"
+
+#: modules/related-posts/settings.php:54
+msgid "Posts are related when they share a category, a tag or either of both."
+msgstr "Beiträge sind verwandt, wenn sie eine Kategorie, ein Schlagwort oder eines von beiden teilen."
+
+#: modules/related-posts/settings.php:65
+msgid "Number of related posts"
+msgstr "Anzahl verwandter Beiträge"
+
+#: modules/related-posts/settings.php:66
+msgid "From 1 to 12."
+msgstr "Von 1 bis 12."
+
+#: modules/related-posts/settings.php:81
+msgid "Display of related posts"
+msgstr "Darstellung verwandter Beiträge"
+
+#: modules/related-posts/settings.php:82
+msgid "Grid or slider; the slider needs the module post slider and shows a grid while it is off."
+msgstr "Raster oder Slider; der Slider braucht das Modul Beitrags-Slider und zeigt ein Raster, solange es aus ist."
+
+#: modules/related-posts/settings.php:95
+msgid "Heading of the related posts"
+msgstr "Überschrift der verwandten Beiträge"
+
+#: modules/related-posts/settings.php:96
+msgid "Empty shows \"Related posts\"."
+msgstr "Leer zeigt „Ähnliche Beiträge“."
+
+#: modules/post-lists/blocks/post-accordion/block.json
+msgctxt "block title"
+msgid "Post accordion"
+msgstr "Beitrags-Akkordeon"
+
+#: modules/post-lists/blocks/post-accordion/block.json
+msgctxt "block description"
+msgid "Posts as accordion or tabs, with the excerpt or the full content."
+msgstr "Beiträge als Akkordeon oder Tabs, mit Auszug oder vollem Inhalt."
+
+#: modules/post-lists/blocks/post-accordion/block.json
+#: modules/post-lists/blocks/post-list/block.json
+#: modules/post-slider/blocks/post-slider/block.json
+#: modules/related-posts/blocks/related-posts/block.json
+msgctxt "block keyword"
+msgid "posts"
+msgstr "Beiträge"
+
+#: modules/post-lists/blocks/post-accordion/block.json
+msgctxt "block keyword"
+msgid "accordion"
+msgstr "Akkordeon"
+
+#: modules/post-lists/blocks/post-accordion/block.json
+msgctxt "block keyword"
+msgid "tabs"
+msgstr "Tabs"
+
+#: modules/post-lists/blocks/post-accordion/block.json
+msgctxt "block keyword"
+msgid "faq"
+msgstr "FAQ"
+
+#: modules/post-lists/blocks/post-list/block.json
+msgctxt "block title"
+msgid "Post list"
+msgstr "Beitragsliste"
+
+#: modules/post-lists/blocks/post-list/block.json
+msgctxt "block description"
+msgid "Posts as grid, list or large image cards, chosen by type, terms or by hand."
+msgstr "Beiträge als Raster, Liste oder große Bildkarten, gewählt nach Typ, Begriffen oder von Hand."
+
+#: modules/post-lists/blocks/post-list/block.json
+msgctxt "block keyword"
+msgid "grid"
+msgstr "Raster"
+
+#: modules/post-lists/blocks/post-list/block.json
+msgctxt "block keyword"
+msgid "list"
+msgstr "Liste"
+
+#: modules/post-lists/blocks/post-list/block.json
+msgctxt "block keyword"
+msgid "query"
+msgstr "Abfrage"
+
+#: modules/post-slider/blocks/post-slider/block.json
+msgctxt "block title"
+msgid "Post slider"
+msgstr "Beitrags-Slider"
+
+#: modules/post-slider/blocks/post-slider/block.json
+msgctxt "block description"
+msgid "Posts as a slider of cards or large image cards, chosen by type, terms or by hand."
+msgstr "Beiträge als Slider aus Karten oder großen Bildkarten, gewählt nach Typ, Begriffen oder von Hand."
+
+#: modules/post-slider/blocks/post-slider/block.json
+msgctxt "block keyword"
+msgid "slider"
+msgstr "Slider"
+
+#: modules/post-slider/blocks/post-slider/block.json
+msgctxt "block keyword"
+msgid "carousel"
+msgstr "Karussell"
+
+#: modules/post-slider/blocks/post-slider/block.json
+msgctxt "block keyword"
+msgid "slideshow"
+msgstr "Diashow"
+
+#: modules/related-posts/blocks/related-posts/block.json
+msgctxt "block title"
+msgid "Related posts"
+msgstr "Ähnliche Beiträge"
+
+#: modules/related-posts/blocks/related-posts/block.json
+msgctxt "block description"
+msgid "Posts that share a category or tag with the current post, as a grid or a slider."
+msgstr "Beiträge mit gemeinsamer Kategorie oder gemeinsamem Schlagwort mit dem aktuellen Beitrag, als Raster oder Slider."
+
+#: modules/related-posts/blocks/related-posts/block.json
+msgctxt "block keyword"
+msgid "related"
+msgstr "verwandt"
+
+#: modules/related-posts/blocks/related-posts/block.json
+msgctxt "block keyword"
+msgid "similar"
+msgstr "ähnlich"
+
+#: template-parts/loop/content-none.php:26
+msgid "New search"
+msgstr "Neue Suche"
+
+#. translators: %d: number of the post slider on the page, from 2.
+#: modules/post-slider/inc/class-post-slider-module.php:316
+#, php-format
+msgid "Post slider %d"
+msgstr "Beitrags-Slider %d"
+
+#. translators: %d: number of the search form in the header, from 2.
+#: inc/blocks/block-widget-search.php:263
+#, php-format
+msgid "Header search %d"
+msgstr "Suche im Kopfbereich %d"
+
+#: template-parts/post-lists/pagination.php:37
+msgid "Post list navigation"
+msgstr "Navigation der Beitragsliste"
+
+#. translators: %d: number of the paginated post list on the page, from 2.
+#: template-parts/post-lists/pagination.php:39
+#, php-format
+msgid "Post list navigation %d"
+msgstr "Navigation der Beitragsliste %d"
+
+#: inc/blocks/block-widget-search.php:254
+msgid "Header search (menu)"
+msgstr "Suche im Kopfbereich (Menü)"
+
+#. translators: %d: number of the search form in the collapsible header menu, from 2.
+#: inc/blocks/block-widget-search.php:257
+#, php-format
+msgid "Header search (menu) %d"
+msgstr "Suche im Kopfbereich (Menü) %d"
+
+#: modules/consent/module.php:24
+msgid "Cookie banner and preferences dialog based on CookieConsent. Not legally reviewed."
+msgstr "Cookie-Banner und Einstellungsdialog auf Basis von CookieConsent. Nicht rechtlich geprüft."
+
+#: modules/contact-form-7/module.php:22
+msgid "Bootstrap styling and accessible behaviour for Contact Form 7 forms. Form templates come from the plugin \"Contact Form 7: Accessible Defaults\"."
+msgstr "Bootstrap-Gestaltung und barrierearmes Verhalten für Formulare von Contact Form 7. Die Formularvorlagen kommen aus dem Plugin „Contact Form 7: Accessible Defaults“."
+
+#: modules/header-footer/module.php:25
+msgid "Header and footer as template parts that editors change in the Site Editor. While the module is off, the theme shows its own header and footer."
+msgstr "Kopf- und Fußbereich als Template-Teile, die Redakteure im Website-Editor ändern. Solange das Modul aus ist, zeigt das Theme seinen eigenen Kopf- und Fußbereich."
+
+#: modules/post-lists/module.php:26
+msgid "Blocks for post lists as a grid, a list or large image cards, and as an accordion or tabs. Replaces the plugin bs Grid."
+msgstr "Blöcke für Beitragslisten als Raster, Liste oder große Bildkarten sowie als Akkordeon oder Tabs. Ersetzt das Plugin bs Grid."
+
+#: modules/post-slider/module.php:26
+msgid "Block for a slider of posts, as cards in columns or as large image cards. Replaces the post sliders of the plugin bs Swiper."
+msgstr "Block für einen Beitrags-Slider mit Karten in Spalten oder großen Bildkarten. Ersetzt die Beitrags-Slider des Plugins bs Swiper."
+
+#: modules/related-posts/module.php:27
+msgid "Related posts below a single post and as a block: posts that share a category or a tag with the current post. Needs the module Post lists."
+msgstr "Ähnliche Beiträge unter einem einzelnen Beitrag und als Block: Beiträge mit einer gemeinsamen Kategorie oder einem gemeinsamen Schlagwort. Benötigt das Modul Beitragslisten."
+
+#. translators: %d: number of the search form outside the header, from 2.
+#: inc/blocks/block-widget-search.php:317
+#, php-format
+msgid "Site search %d"
+msgstr "Website-Suche %d"
+
+#. translators: 1: language code, e.g. "en", 2: comma-separated part names, 3: code of the default language.
+#: modules/header-footer/inc/class-part-translations.php:323
+#, php-format
+msgid "No linked translation into %1$s exists for: %2$s. Saving here overwrites the part of the default language %3$s. Translate header and footer with WPML first, or switch the admin language to %3$s."
+msgstr "Keine verknüpfte Übersetzung in %1$s für: %2$s. Wenn du hier speicherst, überschreibst du den Bereich der Standardsprache %3$s. Übersetze Kopf- und Fußbereich zuerst mit WPML oder stelle die Sprache der Verwaltung auf %3$s um."

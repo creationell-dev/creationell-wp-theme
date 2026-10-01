@@ -1,0 +1,81 @@
+{
+	"$schema": "https://blockstudio.dev/schema/block",
+	"apiVersion": 3,
+	"name": "creationell-theme/navbar",
+	"title": "Navbar",
+	"category": "creationell-theme",
+	"description": "Main menu of the header with logo, search and a menu that opens from the side on small screens.",
+	"icon": "menu",
+	"keywords": [
+		"header",
+		"menu",
+		"navigation"
+	],
+	"textdomain": "creationell-wp-theme",
+	"supports": {
+		"html": false,
+		"multiple": false,
+		"reusable": false
+	},
+	"blockstudio": {
+		"attributes": [
+			{
+				"id": "expand",
+				"type": "select",
+				"label": "Show the full menu from",
+				"help": "Below this screen width the menu opens from the side.",
+				"default": "lg",
+				"options": [
+					{
+						"value": "sm",
+						"label": "Small screens (576 px)"
+					},
+					{
+						"value": "md",
+						"label": "Medium screens (768 px)"
+					},
+					{
+						"value": "lg",
+						"label": "Large screens (992 px)"
+					},
+					{
+						"value": "xl",
+						"label": "Extra large screens (1200 px)"
+					},
+					{
+						"value": "xxl",
+						"label": "Extra extra large screens (1400 px)"
+					}
+				]
+			},
+			{
+				"id": "showLogo",
+				"type": "toggle",
+				"label": "Show logo",
+				"default": true
+			},
+			{
+				"id": "showSearch",
+				"type": "toggle",
+				"label": "Show search",
+				"default": true
+			},
+			{
+				"id": "offcanvasPlacement",
+				"type": "select",
+				"label": "Menu opens from",
+				"default": "end",
+				"options": [
+					{
+						"value": "start",
+						"label": "Start side"
+					},
+					{
+						"value": "end",
+						"label": "End side"
+					}
+				]
+			}
+		]
+	}
+}

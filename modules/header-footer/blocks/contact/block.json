@@ -1,0 +1,77 @@
+{
+	"$schema": "https://blockstudio.dev/schema/block",
+	"apiVersion": 3,
+	"name": "creationell-theme/contact",
+	"title": "Contact",
+	"category": "creationell-theme",
+	"description": "Address, phone and email of the theme settings.",
+	"icon": "id",
+	"keywords": [
+		"contact",
+		"address",
+		"phone",
+		"email"
+	],
+	"textdomain": "creationell-wp-theme",
+	"supports": {
+		"html": false,
+		"reusable": false
+	},
+	"blockstudio": {
+		"attributes": [
+			{
+				"id": "heading",
+				"type": "text",
+				"label": "Heading",
+				"help": "Empty shows \"Contact\".",
+				"default": ""
+			},
+			{
+				"id": "headingLevel",
+				"type": "select",
+				"label": "Heading level",
+				"default": 2,
+				"options": [
+					{
+						"value": 2,
+						"label": "Heading 2"
+					},
+					{
+						"value": 3,
+						"label": "Heading 3"
+					},
+					{
+						"value": 4,
+						"label": "Heading 4"
+					},
+					{
+						"value": 5,
+						"label": "Heading 5"
+					},
+					{
+						"value": 6,
+						"label": "Heading 6"
+					}
+				]
+			},
+			{
+				"id": "showAddress",
+				"type": "toggle",
+				"label": "Show address",
+				"default": true
+			},
+			{
+				"id": "showPhone",
+				"type": "toggle",
+				"label": "Show phone",
+				"default": true
+			},
+			{
+				"id": "showEmail",
+				"type": "toggle",
+				"label": "Show email",
+				"default": true
+			}
+		]
+	}
+}

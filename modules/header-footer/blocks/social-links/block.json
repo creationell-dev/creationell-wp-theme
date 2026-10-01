@@ -1,0 +1,30 @@
+{
+	"$schema": "https://blockstudio.dev/schema/block",
+	"apiVersion": 3,
+	"name": "creationell-theme/social-links",
+	"title": "Social links",
+	"category": "creationell-theme",
+	"description": "Links to the social media profiles of the theme settings.",
+	"icon": "share",
+	"keywords": [
+		"social",
+		"links",
+		"profiles"
+	],
+	"textdomain": "creationell-wp-theme",
+	"supports": {
+		"html": false,
+		"reusable": false
+	},
+	"blockstudio": {
+		"attributes": [
+			{
+				"id": "label",
+				"type": "text",
+				"label": "Name of the list",
+				"help": "Screen readers read it out. Empty uses \"Social media\".",
+				"default": ""
+			}
+		]
+	}
+}

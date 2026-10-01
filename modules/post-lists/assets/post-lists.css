@@ -1,0 +1,69 @@
+/**
+ * Module post-lists: layout details of the post cards, the accordion and the pagination.
+ *
+ * Bootstrap classes in the template parts do most of the work; this file adds
+ * what they cannot express. Colors come only from the Bootstrap variables of the
+ * theme (--bs-*), so color settings and the dark mode apply. Logical properties
+ * only; no right-to-left copy needed. Loaded after creationell-wp-theme-main on
+ * pages with a post list or accordion and in the editor canvas.
+ *
+ * @package Creationell\WpTheme
+ * @since   1.0.0
+ */
+
+/* Hero card: the image fills the card behind the text box, which grows with its text. */
+.creationell-theme-post-hero {
+	min-block-size: 18rem;
+}
+
+.creationell-theme-post-hero > .card-img {
+	position: absolute;
+	inset: 0;
+}
+
+.creationell-theme-post-hero > .card-img-overlay {
+	position: relative;
+	flex-grow: 1;
+}
+
+/*
+ * The title link is stretched over the card; its focus ring would only frame the
+ * title. The whole card shows the ring instead (2.4.7, 2.4.13).
+ */
+.creationell-theme-post-card:has(.stretched-link:focus-visible) {
+	outline: var(--bs-focus-ring-width, .25rem) solid var(--bs-focus-ring-color, currentcolor);
+	outline-offset: 2px;
+}
+
+.creationell-theme-post-card .stretched-link:focus-visible {
+	outline: 0;
+}
+
+/* Forced colors modes drop the box-shadow ring of Bootstrap; a transparent outline becomes visible there. */
+.creationell-theme-post-accordion .accordion-button:focus-visible {
+	outline: 2px solid transparent;
+}
+
+/* Page links and tabs keep a target size of at least 24 x 24 px (2.5.8). */
+.creationell-theme-post-list__pagination .page-link,
+.creationell-theme-post-accordion .nav-link {
+	min-block-size: 2.75rem;
+	min-inline-size: 2.75rem;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Embedded post content ends without a gap before "Read more". */
+.creationell-theme-post-list__content > :last-child {
+	margin-block-end: 0;
+}
+
+.creationell-theme-post-list__content {
+	margin-block-end: 1rem;
+}
+
+/* The automatic related posts below a single post keep their distance to the post navigation (module related-posts). */
+.creationell-theme-related-posts--auto {
+	margin-block-end: 3rem;
+}

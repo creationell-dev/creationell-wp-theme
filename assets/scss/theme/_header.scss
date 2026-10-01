@@ -1,0 +1,44 @@
+/*--------------------------------------------------------------
+Header
+--------------------------------------------------------------*/
+
+// Keeps targets of links and elements that get the focus out from under the
+// sticky header. theme.js sets the offset from the height of the header.
+html {
+  scroll-padding-top: var(--creationell-theme-sticky-offset, 0px);
+}
+
+// Targets of the skip links of header.php: theme.js gives the content area or the
+// footer tabindex="-1" while it focuses them after a skip link, so the next Tab
+// goes on from there. They are large containers, no controls; a ring around the
+// whole content or footer would only distract, as on the focus target of the top
+// button (#to-top).
+#primary[tabindex="-1"]:focus,
+#footer[tabindex="-1"]:focus {
+  outline: 0;
+}
+
+// Elements of the sticky header are always in view. While one of them has the
+// focus, the offset would make the browser scroll the page up on a change of
+// the layout, for example when the offcanvas menu opens by keyboard.
+html:has(#masthead :focus) {
+  scroll-padding-top: 0;
+}
+
+// Menu item with a submenu: the link and the button that opens the submenu
+// side by side; the submenu starts on a new line in the collapsed menu.
+.navbar-nav .nav-item-has-toggle {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  > .dropdown-menu {
+    flex-basis: 100%;
+  }
+
+  // The collapsed menu has no side padding on links; the toggle keeps a target of
+  // at least 24 px (WCAG 2.5.8) instead of the width of its caret.
+  > .dropdown-toggle-split {
+    min-inline-size: 2.5rem;
+  }
+}

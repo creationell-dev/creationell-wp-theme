@@ -1,0 +1,8 @@
+/.git
+/.github
+/.gitignore
+/phpdoc.xml
+/composer.json
+/composer.lock
+/node_modules
+/docs

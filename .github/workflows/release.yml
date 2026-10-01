@@ -1,0 +1,97 @@
+# Builds the release assets and the update manifest of a published release.
+#
+# The release of a tag vX.Y.Z gets creationell-wp-theme.zip and its .sha256 file;
+# GitHub Pages then serves theme_creationell-wp-theme.json and index.html. The
+# release is checked against the manifest that Pages serves before, so an older
+# version or a changed set of Bootstrap lines stops here. The assets are uploaded
+# before Pages is deployed: the manifest never names a missing ZIP.
+# workflow_dispatch builds a tag again; run it from the tag itself ("Use workflow
+# from"), because the github-pages environment only deploys tags v*.
+name: Release
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Release tag vX.Y.Z; run the workflow from this tag
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  MANIFEST_URL: https://creationell-dev.github.io/creationell-wp-theme/theme_creationell-wp-theme.json
+  RELEASE_TAG: ${{ github.event.release.tag_name || inputs.tag }}
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    steps:
+      - name: Check the tag
+        id: tag
+        run: |
+          if [[ ! "$RELEASE_TAG" =~ ^v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$ ]]; then
+            echo "::error::The release tag must look like vX.Y.Z (no pre-release part)."
+            exit 1
+          fi
+          if [ "$GITHUB_REF" != "refs/tags/${RELEASE_TAG}" ]; then
+            echo "::error::Run this workflow from the tag ${RELEASE_TAG}: the github-pages environment only deploys tags."
+            exit 1
+          fi
+          echo "Release tag ${RELEASE_TAG}."
+
+      - name: Check out the tag
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: refs/tags/${{ env.RELEASE_TAG }}
+          persist-credentials: false
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@f3e473d116dcccaddc5834248c87452386958240 # 2.37.2
+        with:
+          php-version: '8.3'
+          coverage: none
+          tools: none
+
+      - name: Build the release
+        run: bash .github/scripts/build-public-release.sh --tag="$RELEASE_TAG" --out=out --previous="$MANIFEST_URL"
+
+      - name: Upload the release assets
+        id: assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release upload "$RELEASE_TAG" out/assets/* --clobber --repo "$GITHUB_REPOSITORY"
+
+      - name: Upload the pages
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: out/pages
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy the pages
+        id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1

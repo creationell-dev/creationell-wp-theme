@@ -1,0 +1,64 @@
+@import "bootstrap-5/scss/mixins/banner";
+@include bsBanner("");
+
+@import "bootstrap-5/scss/functions";
+
+// Variables of the child theme (assets/scss/_project-variables.scss); empty in child-defaults/.
+@import "project-variables";
+
+@import "theme-variables";
+
+@import "bootstrap-5/scss/variables";
+@import "bootstrap-5/scss/variables-dark";
+
+@import "theme-maps";
+
+@import "bootstrap-5/scss/maps";
+@import "bootstrap-5/scss/mixins";
+
+@import "bootstrap-5/scss/utilities";
+
+@import "theme-utilities";
+
+@import "bootstrap-5/scss/root";
+@import "bootstrap-5/scss/reboot";
+@import "bootstrap-5/scss/type";
+@import "bootstrap-5/scss/images";
+@import "bootstrap-5/scss/containers";
+@import "bootstrap-5/scss/grid";
+@import "bootstrap-5/scss/tables";
+@import "bootstrap-5/scss/forms";
+@import "bootstrap-5/scss/buttons";
+@import "bootstrap-5/scss/transitions";
+@import "bootstrap-5/scss/dropdown";
+@import "bootstrap-5/scss/button-group";
+@import "bootstrap-5/scss/nav";
+@import "bootstrap-5/scss/navbar";
+@import "bootstrap-5/scss/card";
+@import "bootstrap-5/scss/accordion";
+@import "bootstrap-5/scss/breadcrumb";
+@import "bootstrap-5/scss/pagination";
+@import "bootstrap-5/scss/badge";
+@import "bootstrap-5/scss/alert";
+@import "bootstrap-5/scss/progress";
+@import "bootstrap-5/scss/list-group";
+@import "bootstrap-5/scss/close";
+@import "bootstrap-5/scss/toasts";
+@import "bootstrap-5/scss/modal";
+@import "bootstrap-5/scss/tooltip";
+@import "bootstrap-5/scss/popover";
+@import "bootstrap-5/scss/carousel";
+@import "bootstrap-5/scss/spinners";
+@import "bootstrap-5/scss/offcanvas";
+@import "bootstrap-5/scss/placeholders";
+
+@import "bootstrap-5/scss/helpers";
+
+@import "bootstrap-5/scss/utilities/api";
+
+@import "theme-style";
+@import "theme/language-switcher";
+@import "theme-custom";
+
+// Styles of the child theme (assets/scss/project.scss); empty in child-defaults/.
+@import "project";

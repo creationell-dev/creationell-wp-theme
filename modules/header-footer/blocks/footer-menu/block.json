@@ -1,0 +1,20 @@
+{
+	"$schema": "https://blockstudio.dev/schema/block",
+	"apiVersion": 3,
+	"name": "creationell-theme/footer-menu",
+	"title": "Footer menu",
+	"category": "creationell-theme",
+	"description": "Menu assigned to the location Footer menu.",
+	"icon": "menu-alt",
+	"keywords": [
+		"footer",
+		"menu",
+		"navigation"
+	],
+	"textdomain": "creationell-wp-theme",
+	"supports": {
+		"html": false,
+		"reusable": false
+	},
+	"blockstudio": true
+}

@@ -1,0 +1,78 @@
+# Scoped third-party PHP libraries of the theme. Generated file. Do not edit.
+prefix = Creationell\WpTheme\Vendor
+input_hash = d7abda42e7a67f8e62a1a5dd6def390c64f9fff76b417d20965be15b6d79263c
+generator = bin/build-scoped-libs.php
+
+[league/uri]
+version = 7.6.0
+reference = f625804987a0a9112d954f9209d91fec52182344
+license = MIT
+source = https://github.com/thephpleague/uri.git
+path = league/uri
+license_file = league/uri/LICENSE
+
+[league/uri-interfaces]
+version = 7.8.1
+reference = 85d5c77c5d6d3af6c54db4a78246364908f3c928
+license = MIT
+source = https://github.com/thephpleague/uri-interfaces.git
+path = league/uri-interfaces
+license_file = league/uri-interfaces/LICENSE
+
+[moodlehq/rtlcss-php]
+version = 1.0.1
+reference = e251ac75ae5a8ea8e745ae92a6d426fcb0797d84
+license = MIT
+source = https://github.com/moodlehq/rtlcss-php.git
+path = moodlehq/rtlcss-php
+license_file = moodlehq/rtlcss-php/LICENSE
+note = src/MoodleHQ/RTLCSS/RTLCSS.php replaced before scoping with a version adapted to sabberworm/php-css-parser 9, API changes only (original blob 1e14e805e2fed7261ec61cd397d8ed892ac49fb0)
+
+[psr/http-factory]
+version = 1.1.0
+reference = 2b4765fddfe3b508ac62f829e852b1501d3f6e8a
+license = MIT
+source = https://github.com/php-fig/http-factory.git
+path = psr/http-factory
+license_file = psr/http-factory/LICENSE
+
+[psr/http-message]
+version = 2.0
+reference = 402d35bcb92c70c026d1a6a9883f06b2ead23d71
+license = MIT
+source = https://github.com/php-fig/http-message.git
+path = psr/http-message
+license_file = psr/http-message/LICENSE
+
+[sabberworm/php-css-parser]
+version = 9.5.0
+reference = f284e63b6e891e0c28631e54ba06c3ed102a9ef3
+license = MIT
+source = https://github.com/MyIntervals/PHP-CSS-Parser.git
+path = sabberworm/php-css-parser
+license_file = sabberworm/php-css-parser/LICENSE
+
+[scssphp/scssphp]
+version = 2.1.0
+reference = d8450c2baf5fb07d00374999d0ea51276974d1b6
+license = MIT
+source = https://github.com/scssphp/scssphp.git
+path = scssphp/scssphp
+license_file = scssphp/scssphp/LICENSE.md
+note = src/SourceMap/Base64VLQ.php replaced before scoping with the MIT version from scssphp commit 97ffb86ac9a9a527cc793269247e66ecfba59f33 (blob 3823709dda2f30ae9bfcc6078fbc51edcff91fbf)
+
+[scssphp/source-span]
+version = 1.1.0
+reference = 37d653206daf11da1ee60b333984101bc4c27ba2
+license = MIT
+source = https://github.com/scssphp/source-span.git
+path = scssphp/source-span
+license_file = scssphp/source-span/LICENSE.md
+
+[symfony/filesystem]
+version = 7.4.0
+reference = d551b38811096d0be9c4691d406991b47c0c630a
+license = MIT
+source = https://github.com/symfony/filesystem.git
+path = symfony/filesystem
+license_file = symfony/filesystem/LICENSE

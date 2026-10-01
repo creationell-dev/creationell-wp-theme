@@ -1,0 +1,39 @@
+{
+	"$schema": "https://blockstudio.dev/schema/block",
+	"apiVersion": 3,
+	"name": "creationell-theme/language-switcher",
+	"title": "Language switcher",
+	"category": "creationell-theme",
+	"description": "Links to the page in the other languages of WPML; shows nothing without WPML.",
+	"icon": "translation",
+	"keywords": [
+		"language",
+		"translation",
+		"WPML"
+	],
+	"textdomain": "creationell-wp-theme",
+	"supports": {
+		"html": false,
+		"reusable": false
+	},
+	"blockstudio": {
+		"attributes": [
+			{
+				"id": "display",
+				"type": "select",
+				"label": "Display",
+				"default": "list",
+				"options": [
+					{
+						"value": "list",
+						"label": "List of languages"
+					},
+					{
+						"value": "dropdown",
+						"label": "Dropdown"
+					}
+				]
+			}
+		]
+	}
+}

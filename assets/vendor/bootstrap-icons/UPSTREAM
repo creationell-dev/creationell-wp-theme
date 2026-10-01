@@ -1,0 +1,15 @@
+package: bootstrap-icons
+version: 1.13.1
+license: MIT
+resolved: https://registry.npmjs.org/bootstrap-icons/-/bootstrap-icons-1.13.1.tgz
+integrity: sha512-ijombt4v6bv5CLeXvRWKy7CuM3TRTuPEuGaGKvTV5cz65rQSY8RQ2JcHt6b90cBBAC7s8fsf2EkQDldzCoXUjw==
+line: none
+copied:
+  font/bootstrap-icons.min.css <- font/bootstrap-icons.min.css
+  font/bootstrap-icons.json <- font/bootstrap-icons.json
+  font/fonts <- font/fonts
+  icons <- icons
+  LICENSE <- LICENSE
+excluded: **/*.map
+post-processing: sourceMappingURL comments removed
+generated-by: bin/sync-vendor.php

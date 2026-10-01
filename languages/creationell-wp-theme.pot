@@ -1,0 +1,3700 @@
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: creationell Theme\n"
+"Report-Msgid-Bugs-To: https://www.creationell.de/\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-10-01T11:59:34+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: creationell-wp-theme\n"
+
+#. Theme Name of the theme
+#: style.css
+#: inc/blocks/patterns.php:24
+#: modules/header-footer/inc/class-header-footer-module.php:64
+#: modules/post-lists/inc/class-post-lists-module.php:233
+#: modules/post-slider/inc/class-post-slider-module.php:222
+msgid "creationell Theme"
+msgstr ""
+
+#. Theme URI of the theme
+#: style.css
+msgid "https://github.com/creationell-dev/creationell-wp-theme"
+msgstr ""
+
+#. Description of the theme
+#: style.css
+msgid "Classic WordPress theme with Bootstrap 5 for the block editor and the Bootstrap blocks of creationell, based on Bootscore (MIT)."
+msgstr ""
+
+#. Author of the theme
+#: style.css
+msgid "creationell® – die Werbeagentur"
+msgstr ""
+
+#. Author URI of the theme
+#: style.css
+msgid "https://www.creationell.de/"
+msgstr ""
+
+#: 404.php:79
+msgid "Page not found"
+msgstr ""
+
+#: 404.php:92
+msgid "The page you are looking for does not exist or has moved."
+msgstr ""
+
+#: 404.php:97
+msgid "Back Home &raquo;"
+msgstr ""
+
+#. translators: %s: post title
+#: comments.php:39
+#, php-format
+msgctxt "comments title"
+msgid "One Comment &ldquo;%s&rdquo;"
+msgstr ""
+
+#. translators: 1: number of comments, 2: post title
+#: comments.php:44
+#, php-format
+msgctxt "comments title"
+msgid "%1$s Comment on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s Comments on &ldquo;%2$s&rdquo;"
+msgstr[0] ""
+msgstr[1] ""
+
+#: comments.php:63
+msgid "Comment navigation above the comments"
+msgstr ""
+
+#: comments.php:64
+#: comments.php:91
+msgid "Comment navigation"
+msgstr ""
+
+#: comments.php:67
+#: comments.php:94
+msgid "Older Comments"
+msgstr ""
+
+#: comments.php:68
+#: comments.php:95
+msgid "Newer Comments"
+msgstr ""
+
+#: comments.php:90
+msgid "Comment navigation below the comments"
+msgstr ""
+
+#: comments.php:128
+msgid "Comments are closed."
+msgstr ""
+
+#: comments.php:141
+#: inc/template-tags.php:223
+msgid "Leave a Comment"
+msgstr ""
+
+#. translators: %s: name of the comment author
+#: comments.php:143
+#, php-format
+msgid "Leave a Comment to %s"
+msgstr ""
+
+#: comments.php:144
+#: src/admin/class-module-page.php:575
+#: src/admin/class-transfer-page.php:974
+msgid "Cancel"
+msgstr ""
+
+#: comments.php:145
+msgid "Post Comment"
+msgstr ""
+
+#: footer.php:268
+msgid "Return to top"
+msgstr ""
+
+#: header.php:37
+msgid "Skip to content"
+msgstr ""
+
+#: header.php:38
+msgid "Skip to footer"
+msgstr ""
+
+#: inc/blocks/block-widget-search.php:254
+msgid "Header search (menu)"
+msgstr ""
+
+#. translators: %d: number of the search form in the collapsible header menu, from 2.
+#: inc/blocks/block-widget-search.php:257
+#, php-format
+msgid "Header search (menu) %d"
+msgstr ""
+
+#: inc/blocks/block-widget-search.php:260
+msgid "Header search"
+msgstr ""
+
+#. translators: %d: number of the search form in the header, from 2.
+#: inc/blocks/block-widget-search.php:263
+#, php-format
+msgid "Header search %d"
+msgstr ""
+
+#: inc/blocks/block-widget-search.php:314
+#: searchform.php:34
+msgid "Site search"
+msgstr ""
+
+#. translators: %d: number of the search form outside the header, from 2.
+#: inc/blocks/block-widget-search.php:317
+#, php-format
+msgid "Site search %d"
+msgstr ""
+
+#: inc/breadcrumb.php:95
+msgid "Breadcrumb"
+msgstr ""
+
+#: inc/breadcrumb.php:116
+msgid "Home"
+msgstr ""
+
+#. translators: %s: search query
+#. translators: %s: search query.
+#: inc/breadcrumb.php:206
+#: search.php:98
+#, php-format
+msgid "Search Results for: %s"
+msgstr ""
+
+#. translators: %s: title of the menu item with the submenu
+#: inc/class-creationell-wp-theme-nav-walker.php:204
+#, php-format
+msgid "Show submenu for %s"
+msgstr ""
+
+#: inc/comments.php:50
+msgid "Pingback:"
+msgstr ""
+
+#: inc/comments.php:50
+#: inc/comments.php:88
+#: inc/template-tags.php:241
+msgid "Edit"
+msgstr ""
+
+#. translators: 1: date, 2: time
+#: inc/comments.php:85
+#, php-format
+msgctxt "1: date, 2: time"
+msgid "%1$s at %2$s"
+msgstr ""
+
+#: inc/comments.php:93
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: inc/comments.php:144
+#: modules/consent/inc/class-texts.php:286
+msgid "Name"
+msgstr ""
+
+#: inc/comments.php:146
+#: src/settings/definitions/texts.php:72
+msgid "Email"
+msgstr ""
+
+#: inc/comments.php:148
+msgid "Website"
+msgstr ""
+
+#: inc/comments.php:164
+msgctxt "noun"
+msgid "Comment"
+msgstr ""
+
+#: inc/comments.php:212
+msgid "Save my name, email, and website in this browser for the next time I comment."
+msgstr ""
+
+#. translators: Name of the navigation through the pages of the blog, an archive or the search results; not the same as "Post navigation" (previous and next post) and "Post list navigation" (post list block).
+#: inc/pagination.php:38
+msgid "Posts navigation"
+msgstr ""
+
+#: inc/pagination.php:42
+msgid "First Page"
+msgstr ""
+
+#: inc/pagination.php:46
+msgid "Previous Page"
+msgstr ""
+
+#: inc/pagination.php:52
+msgid "Current Page"
+msgstr ""
+
+#: inc/pagination.php:53
+#: template-parts/post-lists/pagination.php:44
+#: template-parts/post-lists/pagination.php:48
+msgid "Page"
+msgstr ""
+
+#: inc/pagination.php:58
+msgid "Next Page"
+msgstr ""
+
+#: inc/pagination.php:62
+msgid "Last Page"
+msgstr ""
+
+#: inc/password-protected-form.php:51
+msgid "This content is password-protected. To view it, please enter the password below."
+msgstr ""
+
+#: inc/password-protected-form.php:52
+msgid "Password"
+msgstr ""
+
+#: inc/password-protected-form.php:55
+msgctxt "post password form"
+msgid "Enter"
+msgstr ""
+
+#: inc/template-tags.php:74
+msgid "Sticky post"
+msgstr ""
+
+#. translators: used between list items, there is a space after the comma
+#: inc/template-tags.php:91
+msgid ", "
+msgstr ""
+
+#. translators: %s: post author
+#: inc/template-tags.php:183
+#, php-format
+msgctxt "post author"
+msgid "by %s"
+msgstr ""
+
+#: inc/template-tags.php:260
+msgid "Leave a comment"
+msgstr ""
+
+#: inc/template-tags.php:285
+msgid "Tagged"
+msgstr ""
+
+#: inc/widgets.php:30
+msgid "Top Bar"
+msgstr ""
+
+#: inc/widgets.php:32
+#: inc/widgets.php:53
+#: inc/widgets.php:73
+#: inc/widgets.php:86
+#: inc/widgets.php:99
+#: inc/widgets.php:112
+#: inc/widgets.php:133
+#: inc/widgets.php:154
+#: inc/widgets.php:175
+#: inc/widgets.php:196
+#: inc/widgets.php:209
+#: inc/widgets.php:222
+msgid "Add widgets here."
+msgstr ""
+
+#: inc/widgets.php:51
+msgid "Top Nav"
+msgstr ""
+
+#: inc/widgets.php:71
+msgid "Top Nav 2"
+msgstr ""
+
+#: inc/widgets.php:84
+msgid "Top Nav Search"
+msgstr ""
+
+#: inc/widgets.php:97
+#: sidebar.php:95
+msgid "Sidebar"
+msgstr ""
+
+#: inc/widgets.php:110
+msgid "Footer Top"
+msgstr ""
+
+#: inc/widgets.php:131
+msgid "Footer 1"
+msgstr ""
+
+#: inc/widgets.php:152
+msgid "Footer 2"
+msgstr ""
+
+#: inc/widgets.php:173
+msgid "Footer 3"
+msgstr ""
+
+#: inc/widgets.php:194
+msgid "Footer 4"
+msgstr ""
+
+#: inc/widgets.php:207
+msgid "Footer Info"
+msgstr ""
+
+#: inc/widgets.php:220
+msgid "404 Page"
+msgstr ""
+
+#: modules/consent/i18n-strings.php:20
+msgid "Cookie settings link"
+msgstr ""
+
+#: modules/consent/i18n-strings.php:21
+msgid "Link or button that opens the cookie settings."
+msgstr ""
+
+#: modules/consent/i18n-strings.php:22
+msgid "cookie"
+msgstr ""
+
+#: modules/consent/i18n-strings.php:23
+msgid "consent"
+msgstr ""
+
+#: modules/consent/i18n-strings.php:24
+msgid "privacy"
+msgstr ""
+
+#: modules/consent/i18n-strings.php:25
+msgid "Label"
+msgstr ""
+
+#: modules/consent/i18n-strings.php:26
+msgid "Empty shows “Cookie settings”."
+msgstr ""
+
+#: modules/consent/i18n-strings.php:27
+msgid "Appearance"
+msgstr ""
+
+#: modules/consent/i18n-strings.php:28
+msgid "Link"
+msgstr ""
+
+#: modules/consent/i18n-strings.php:29
+#: patterns/c-btn-danger-lg.php:16
+#: patterns/c-btn-outline-secondary-sm.php:16
+#: patterns/c-btn-primary.php:16
+#: patterns/c-card-basic.php:30
+#: patterns/c-card-header-footer.php:34
+#: patterns/c-hero-img-left.php:36
+#: patterns/c-hero-img-right.php:36
+#: patterns/s-hero-img-left.php:38
+#: patterns/s-hero-img-right.php:38
+#: patterns/s-hero-jumbotron.php:27
+msgid "Button"
+msgstr ""
+
+#: modules/consent/inc/class-links.php:102
+msgid "Privacy policy"
+msgstr ""
+
+#: modules/consent/inc/class-links.php:109
+msgid "Imprint"
+msgstr ""
+
+#: modules/consent/inc/class-links.php:126
+#: modules/consent/inc/class-texts.php:164
+msgid "Cookie settings"
+msgstr ""
+
+#: modules/consent/inc/class-texts.php:131
+msgid "Accept all"
+msgstr ""
+
+#: modules/consent/inc/class-texts.php:132
+msgid "Reject optional"
+msgstr ""
+
+#: modules/consent/inc/class-texts.php:136
+msgid "We use cookies"
+msgstr ""
+
+#: modules/consent/inc/class-texts.php:137
+msgid "We use necessary cookies and, with your consent, optional ones. You can change your choice at any time under “Cookie settings”."
+msgstr ""
+
+#: modules/consent/inc/class-texts.php:140
+#: src/settings/transfer/class-settings-section.php:115
+msgid "Settings"
+msgstr ""
+
+#: modules/consent/inc/class-texts.php:145
+msgid "Our cookie settings have changed. Please check your choice."
+msgstr ""
+
+#: modules/consent/inc/class-texts.php:148
+msgid "Choose which optional cookies we may use. Necessary cookies are always active. You can change your choice at any time."
+msgstr ""
+
+#: modules/consent/inc/class-texts.php:156
+msgid "More information"
+msgstr ""
+
+#: modules/consent/inc/class-texts.php:167
+msgid "Save settings"
+msgstr ""
+
+#: modules/consent/inc/class-texts.php:168
+#: patterns/c-alert-danger.php:16
+#: sidebar.php:98
+#: template-parts/header/navbar.php:173
+msgid "Close"
+msgstr ""
+
+#: modules/consent/inc/class-texts.php:268
+msgid "Stores your cookie choice"
+msgstr ""
+
+#. translators: %d: number of days.
+#: modules/consent/inc/class-texts.php:270
+#, php-format
+msgid "%d day"
+msgid_plural "%d days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: modules/consent/inc/class-texts.php:287
+#: src/admin/class-module-page.php:420
+msgid "Description"
+msgstr ""
+
+#: modules/consent/inc/class-texts.php:288
+msgid "Duration"
+msgstr ""
+
+#: modules/consent/inc/class-texts.php:306
+msgid "Necessary"
+msgstr ""
+
+#: modules/consent/inc/class-texts.php:307
+msgid "These cookies are needed for the website to work, for example to store your cookie choice."
+msgstr ""
+
+#: modules/consent/inc/class-texts.php:310
+msgid "Functional"
+msgstr ""
+
+#: modules/consent/inc/class-texts.php:311
+msgid "These cookies remember settings and enable extra functions, such as embedded content."
+msgstr ""
+
+#: modules/consent/inc/class-texts.php:314
+msgid "Statistics"
+msgstr ""
+
+#: modules/consent/inc/class-texts.php:315
+msgid "These cookies help us understand how visitors use the website, so that we can improve it."
+msgstr ""
+
+#: modules/consent/inc/class-texts.php:318
+msgid "Marketing"
+msgstr ""
+
+#: modules/consent/inc/class-texts.php:319
+msgid "These cookies are used to show relevant advertising and to measure its reach."
+msgstr ""
+
+#: modules/consent/module.php:23
+msgid "Cookie consent"
+msgstr ""
+
+#: modules/consent/module.php:24
+msgid "Cookie banner and preferences dialog based on CookieConsent. Not legally reviewed."
+msgstr ""
+
+#: modules/consent/module.php:35
+msgid "The cookie banner, the preferences dialog and the withdrawal link disappear immediately. Marked scripts stay blocked."
+msgstr ""
+
+#: modules/consent/settings.php:34
+msgid "Cookie banner title"
+msgstr ""
+
+#: modules/consent/settings.php:35
+msgid "Empty shows \"We use cookies\"."
+msgstr ""
+
+#: modules/consent/settings.php:46
+msgid "Cookie banner text"
+msgstr ""
+
+#: modules/consent/settings.php:47
+msgid "Links, bold, italic and line breaks are allowed. Empty shows the default text."
+msgstr ""
+
+#: modules/consent/settings.php:58
+msgid "Cookie settings introduction"
+msgstr ""
+
+#: modules/consent/settings.php:59
+msgid "First paragraph of the cookie settings dialog. Links, bold, italic and line breaks are allowed. Empty shows the default text."
+msgstr ""
+
+#: modules/consent/settings.php:70
+msgid "Imprint page"
+msgstr ""
+
+#: modules/consent/settings.php:71
+msgid "Linked in the cookie banner next to the privacy policy page of the site. None hides the link."
+msgstr ""
+
+#: modules/consent/settings.php:82
+msgid "Consent revision"
+msgstr ""
+
+#: modules/consent/settings.php:83
+msgid "Raise the number after a change of the cookies: every visitor is asked again. From 0 to 9999."
+msgstr ""
+
+#: modules/consent/settings.php:94
+msgid "Consent lifetime in days"
+msgstr ""
+
+#: modules/consent/settings.php:95
+msgid "How long the choice of a visitor is kept, from 30 to 395 days."
+msgstr ""
+
+#: modules/contact-form-7/module.php:21
+msgid "Contact Form 7 styling"
+msgstr ""
+
+#: modules/contact-form-7/module.php:22
+msgid "Bootstrap styling and accessible behaviour for Contact Form 7 forms. Form templates come from the plugin \"Contact Form 7: Accessible Defaults\"."
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:20
+msgid "Navbar"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:21
+msgid "Main menu of the header with logo, search and a menu that opens from the side on small screens."
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:22
+msgid "header"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:23
+msgid "menu"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:24
+msgid "navigation"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:25
+msgid "Show the full menu from"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:26
+msgid "Below this screen width the menu opens from the side."
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:27
+msgid "Small screens (576 px)"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:28
+msgid "Medium screens (768 px)"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:29
+msgid "Large screens (992 px)"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:30
+msgid "Extra large screens (1200 px)"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:31
+msgid "Extra extra large screens (1400 px)"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:32
+msgid "Show logo"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:33
+msgid "Show search"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:34
+msgid "Menu opens from"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:35
+msgid "Start side"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:36
+msgid "End side"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:39
+msgid "Logo"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:40
+msgid "Logo of the site from the theme files, with a variant for the dark color scheme; the site name without logo files."
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:41
+msgid "logo"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:42
+msgid "brand"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:43
+msgid "Link to the home page"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:46
+msgid "Search form"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:47
+msgid "Search form of the theme."
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:48
+msgid "search"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:51
+#: template-parts/footer/footer-menu.php:23
+msgid "Footer menu"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:52
+msgid "Menu assigned to the location Footer menu."
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:53
+msgid "footer"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:56
+#: src/settings/definitions/texts.php:40
+msgid "Footer text"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:57
+msgid "Footer text of the theme settings, or the copyright line without it, with the footer links of the theme."
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:58
+msgid "copyright"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:59
+msgid "text"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:62
+#: modules/header-footer/inc/class-text-blocks.php:72
+#: src/settings/acf/class-options-pages.php:363
+msgid "Contact"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:63
+msgid "Address, phone and email of the theme settings."
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:64
+msgid "contact"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:65
+msgid "address"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:66
+msgid "phone"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:67
+msgid "email"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:68
+#: modules/related-posts/i18n-strings.php:32
+msgid "Heading"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:69
+msgid "Empty shows \"Contact\"."
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:70
+#: modules/post-lists/i18n-strings.php:61
+#: modules/post-slider/i18n-strings.php:67
+#: modules/related-posts/i18n-strings.php:34
+msgid "Heading level"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:71
+#: modules/post-lists/i18n-strings.php:63
+#: modules/post-slider/i18n-strings.php:69
+#: modules/related-posts/i18n-strings.php:36
+msgid "Heading 2"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:72
+#: modules/post-lists/i18n-strings.php:64
+#: modules/post-slider/i18n-strings.php:70
+#: modules/related-posts/i18n-strings.php:37
+msgid "Heading 3"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:73
+#: modules/post-lists/i18n-strings.php:65
+#: modules/post-slider/i18n-strings.php:71
+#: modules/related-posts/i18n-strings.php:38
+msgid "Heading 4"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:74
+#: modules/post-lists/i18n-strings.php:66
+#: modules/post-slider/i18n-strings.php:72
+#: modules/related-posts/i18n-strings.php:39
+msgid "Heading 5"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:75
+#: modules/post-lists/i18n-strings.php:67
+#: modules/post-slider/i18n-strings.php:73
+#: modules/related-posts/i18n-strings.php:40
+msgid "Heading 6"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:76
+msgid "Show address"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:77
+msgid "Show phone"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:78
+msgid "Show email"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:81
+msgid "Social links"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:82
+msgid "Links to the social media profiles of the theme settings."
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:83
+msgid "social"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:84
+msgid "links"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:85
+msgid "profiles"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:86
+msgid "Name of the list"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:87
+msgid "Screen readers read it out. Empty uses \"Social media\"."
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:90
+msgid "Language switcher"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:91
+msgid "Links to the page in the other languages of WPML; shows nothing without WPML."
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:92
+msgid "language"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:93
+msgid "translation"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:94
+msgid "WPML"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:95
+#: modules/post-lists/i18n-strings.php:75
+#: modules/related-posts/i18n-strings.php:27
+msgid "Display"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:96
+msgid "List of languages"
+msgstr ""
+
+#: modules/header-footer/i18n-strings.php:97
+msgid "Dropdown"
+msgstr ""
+
+#: modules/header-footer/inc/class-editor-restrictions.php:94
+#: modules/header-footer/inc/class-editor-restrictions.php:95
+#: modules/header-footer/inc/class-editor-restrictions.php:262
+msgid "Header & Footer"
+msgstr ""
+
+#: modules/header-footer/inc/class-editor-restrictions.php:102
+msgid "Header"
+msgstr ""
+
+#: modules/header-footer/inc/class-editor-restrictions.php:103
+#: src/settings/acf/class-options-pages.php:362
+msgid "Footer"
+msgstr ""
+
+#: modules/header-footer/inc/class-editor-restrictions.php:104
+#: modules/header-footer/inc/class-menu-scope.php:163
+#: modules/header-footer/inc/class-menu-scope.php:536
+msgid "Menus"
+msgstr ""
+
+#: modules/header-footer/inc/class-editor-restrictions.php:264
+msgid "Open the template parts in the Site Editor"
+msgstr ""
+
+#. translators: %s: site name
+#: modules/header-footer/inc/class-header-blocks.php:128
+#: template-parts/header/navbar.php:121
+#, php-format
+msgid "%s – Home"
+msgstr ""
+
+#: modules/header-footer/inc/class-menu-scope.php:162
+msgid "No header or footer menu is assigned yet."
+msgstr ""
+
+#: modules/header-footer/inc/class-menu-scope.php:535
+msgid "You may only edit the menus of the header and footer."
+msgstr ""
+
+#. translators: 1: part name, e.g. "footer", 2: comma-separated language codes, 3: part slug.
+#: modules/header-footer/inc/class-part-translations.php:231
+#, php-format
+msgid "The %1$s translation into %2$s has a slug other than \"%3$s\"; pages in these languages show the %1$s of the theme file."
+msgstr ""
+
+#. translators: 1: part name, e.g. "header", 2: comma-separated language codes.
+#: modules/header-footer/inc/class-part-translations.php:240
+#, php-format
+msgid "The %1$s has no translation into %2$s; pages in these languages show the %1$s of the default language."
+msgstr ""
+
+#: modules/header-footer/inc/class-part-translations.php:245
+msgid "Translate header and footer with WPML only, not by switching the language in the Site Editor."
+msgstr ""
+
+#. translators: 1: language code, e.g. "en", 2: comma-separated part names, 3: code of the default language.
+#: modules/header-footer/inc/class-part-translations.php:323
+#, php-format
+msgid "No linked translation into %1$s exists for: %2$s. Saving here overwrites the part of the default language %3$s. Translate header and footer with WPML first, or switch the admin language to %3$s."
+msgstr ""
+
+#: modules/header-footer/inc/class-part-translations.php:340
+msgctxt "template part name inside a sentence"
+msgid "header"
+msgstr ""
+
+#: modules/header-footer/inc/class-part-translations.php:341
+msgctxt "template part name inside a sentence"
+msgid "footer"
+msgstr ""
+
+#: modules/header-footer/inc/class-social-networks.php:75
+#: src/settings/definitions/texts.php:22
+msgid "Facebook"
+msgstr ""
+
+#: modules/header-footer/inc/class-social-networks.php:76
+#: src/settings/definitions/texts.php:23
+msgid "Instagram"
+msgstr ""
+
+#: modules/header-footer/inc/class-social-networks.php:77
+#: src/settings/definitions/texts.php:24
+msgid "LinkedIn"
+msgstr ""
+
+#: modules/header-footer/inc/class-social-networks.php:78
+#: src/settings/definitions/texts.php:25
+msgid "XING"
+msgstr ""
+
+#: modules/header-footer/inc/class-social-networks.php:79
+#: src/settings/definitions/texts.php:26
+msgid "YouTube"
+msgstr ""
+
+#: modules/header-footer/inc/class-social-networks.php:80
+#: src/settings/definitions/texts.php:27
+msgid "Mastodon"
+msgstr ""
+
+#: modules/header-footer/inc/class-text-blocks.php:118
+#: src/settings/acf/class-options-pages.php:364
+msgid "Social media"
+msgstr ""
+
+#: modules/header-footer/inc/class-text-blocks.php:157
+msgid "Language switcher (WPML)"
+msgstr ""
+
+#: modules/header-footer/inc/class-text-blocks.php:222
+msgid "Set in Theme settings → Texts"
+msgstr ""
+
+#: modules/header-footer/module.php:24
+msgid "Header and footer in the Site Editor"
+msgstr ""
+
+#: modules/header-footer/module.php:25
+msgid "Header and footer as template parts that editors change in the Site Editor. While the module is off, the theme shows its own header and footer."
+msgstr ""
+
+#: modules/header-footer/module.php:51
+msgid "Customised header and footer parts stay in the database but are no longer shown."
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:20
+msgid "Post list"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:21
+msgid "Posts as grid, list or large image cards, chosen by type, terms or by hand."
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:22
+#: modules/post-slider/i18n-strings.php:22
+#: modules/related-posts/i18n-strings.php:22
+msgid "posts"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:23
+msgid "grid"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:24
+msgid "list"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:25
+msgid "query"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:26
+#: modules/post-slider/i18n-strings.php:26
+msgid "Layout"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:27
+#: modules/related-posts/i18n-strings.php:30
+msgid "Grid"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:28
+msgid "List"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:29
+#: modules/post-slider/i18n-strings.php:28
+msgid "Large image cards"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:30
+#: modules/post-slider/i18n-strings.php:29
+msgid "Columns"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:31
+msgid "Columns of the grid on large screens."
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:32
+msgid "Pagination"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:33
+msgid "Shows page links below the list."
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:34
+#: modules/post-slider/i18n-strings.php:40
+msgid "Post type"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:35
+#: modules/post-slider/i18n-strings.php:41
+msgid "Taxonomy"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:36
+#: modules/post-slider/i18n-strings.php:42
+msgid "Shows only posts with one of the terms below."
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:37
+#: modules/post-slider/i18n-strings.php:43
+msgid "Term IDs"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:38
+#: modules/post-slider/i18n-strings.php:44
+msgid "IDs of the terms of the taxonomy, separated by commas."
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:39
+#: modules/post-slider/i18n-strings.php:45
+msgid "Selected posts"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:40
+#: modules/post-slider/i18n-strings.php:46
+msgid "Shows only these posts. Leave empty for the newest posts."
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:41
+#: modules/post-slider/i18n-strings.php:47
+msgid "Parent page"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:42
+#: modules/post-slider/i18n-strings.php:48
+msgid "Shows only the child pages of this page."
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:43
+#: modules/post-slider/i18n-strings.php:49
+msgid "Order by"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:44
+#: modules/post-slider/i18n-strings.php:50
+msgid "Date"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:45
+#: modules/post-slider/i18n-strings.php:51
+msgid "Title"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:46
+#: modules/post-slider/i18n-strings.php:52
+msgid "Menu order"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:47
+#: modules/post-slider/i18n-strings.php:53
+msgid "Last modified"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:48
+#: modules/post-slider/i18n-strings.php:54
+msgid "Random"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:49
+#: modules/post-slider/i18n-strings.php:55
+msgid "Order of the selected posts"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:50
+#: modules/post-slider/i18n-strings.php:56
+msgid "Direction"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:51
+#: modules/post-slider/i18n-strings.php:57
+msgid "Descending"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:52
+#: modules/post-slider/i18n-strings.php:58
+msgid "Ascending"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:53
+#: modules/post-slider/i18n-strings.php:59
+#: modules/related-posts/i18n-strings.php:25
+msgid "Number of posts"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:54
+#: modules/post-slider/i18n-strings.php:60
+msgid "Leave out the current post"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:55
+#: modules/post-slider/i18n-strings.php:61
+msgid "Show image"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:56
+#: modules/post-slider/i18n-strings.php:62
+msgid "Show categories"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:57
+#: modules/post-slider/i18n-strings.php:63
+msgid "Show date and author"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:58
+#: modules/post-slider/i18n-strings.php:64
+msgid "Show excerpt"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:59
+#: modules/post-slider/i18n-strings.php:65
+msgid "Show read more"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:60
+#: modules/post-slider/i18n-strings.php:66
+msgid "Show tags"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:62
+#: modules/post-slider/i18n-strings.php:68
+msgid "Level of the post titles, to fit the headings around the block."
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:70
+msgid "Post accordion"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:71
+msgid "Posts as accordion or tabs, with the excerpt or the full content."
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:72
+msgid "accordion"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:73
+msgid "tabs"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:74
+msgid "faq"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:76
+msgid "Accordion"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:77
+msgid "Tabs"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:78
+msgid "Open the first item"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:79
+msgid "Keep items open"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:80
+msgid "Opening an item does not close the others."
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:81
+msgid "Without outer borders"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:82
+msgid "Text"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:83
+msgid "Excerpt"
+msgstr ""
+
+#: modules/post-lists/i18n-strings.php:84
+msgid "Full content"
+msgstr ""
+
+#: modules/post-lists/module.php:25
+#: src/modules/class-module-catalog.php:166
+msgid "Post lists"
+msgstr ""
+
+#: modules/post-lists/module.php:26
+msgid "Blocks for post lists as a grid, a list or large image cards, and as an accordion or tabs. Replaces the plugin bs Grid."
+msgstr ""
+
+#: modules/post-lists/settings.php:32
+msgid "Most posts per list"
+msgstr ""
+
+#: modules/post-lists/settings.php:33
+msgid "Upper limit for the number of posts of a post list, an accordion or a slider, from 1 to 50."
+msgstr ""
+
+#: modules/post-slider/i18n-strings.php:20
+#: modules/post-slider/inc/class-post-slider-module.php:313
+#: modules/post-slider/module.php:25
+#: src/modules/class-module-catalog.php:167
+msgid "Post slider"
+msgstr ""
+
+#: modules/post-slider/i18n-strings.php:21
+msgid "Posts as a slider of cards or large image cards, chosen by type, terms or by hand."
+msgstr ""
+
+#: modules/post-slider/i18n-strings.php:23
+msgid "slider"
+msgstr ""
+
+#: modules/post-slider/i18n-strings.php:24
+msgid "carousel"
+msgstr ""
+
+#: modules/post-slider/i18n-strings.php:25
+msgid "slideshow"
+msgstr ""
+
+#: modules/post-slider/i18n-strings.php:27
+msgid "Cards in columns"
+msgstr ""
+
+#: modules/post-slider/i18n-strings.php:30
+msgid "Cards side by side on large screens; small screens show fewer."
+msgstr ""
+
+#: modules/post-slider/i18n-strings.php:31
+msgid "Transition"
+msgstr ""
+
+#: modules/post-slider/i18n-strings.php:32
+msgid "Slide"
+msgstr ""
+
+#: modules/post-slider/i18n-strings.php:33
+msgid "Fade"
+msgstr ""
+
+#: modules/post-slider/i18n-strings.php:34
+msgid "Loop"
+msgstr ""
+
+#: modules/post-slider/i18n-strings.php:35
+msgid "After the last slide the first follows."
+msgstr ""
+
+#: modules/post-slider/i18n-strings.php:36
+msgid "Play automatically"
+msgstr ""
+
+#: modules/post-slider/i18n-strings.php:37
+msgid "Moves on by itself and shows a button to pause. Visitors who prefer less motion start it themselves."
+msgstr ""
+
+#: modules/post-slider/i18n-strings.php:38
+msgid "Show arrows"
+msgstr ""
+
+#: modules/post-slider/i18n-strings.php:39
+msgid "Show dots"
+msgstr ""
+
+#. translators: %d: number of the post slider on the page, from 2.
+#: modules/post-slider/inc/class-post-slider-module.php:316
+#, php-format
+msgid "Post slider %d"
+msgstr ""
+
+#: modules/post-slider/module.php:26
+msgid "Block for a slider of posts, as cards in columns or as large image cards. Replaces the post sliders of the plugin bs Swiper."
+msgstr ""
+
+#: modules/post-slider/settings.php:32
+msgid "Slideshow delay in milliseconds"
+msgstr ""
+
+#: modules/post-slider/settings.php:33
+msgid "Time each slide stays while a post slider plays by itself, from 3000 to 15000 milliseconds."
+msgstr ""
+
+#: modules/related-posts/i18n-strings.php:20
+#: modules/related-posts/inc/class-related-posts-module.php:319
+#: modules/related-posts/module.php:26
+#: src/modules/class-module-catalog.php:168
+msgid "Related posts"
+msgstr ""
+
+#: modules/related-posts/i18n-strings.php:21
+msgid "Posts that share a category or tag with the current post, as a grid or a slider."
+msgstr ""
+
+#: modules/related-posts/i18n-strings.php:23
+msgid "related"
+msgstr ""
+
+#: modules/related-posts/i18n-strings.php:24
+msgid "similar"
+msgstr ""
+
+#: modules/related-posts/i18n-strings.php:26
+msgid "0 uses the number of the theme settings."
+msgstr ""
+
+#: modules/related-posts/i18n-strings.php:28
+msgid "The slider needs the module post slider; while it is off the posts show as a grid."
+msgstr ""
+
+#: modules/related-posts/i18n-strings.php:29
+msgid "As in the theme settings"
+msgstr ""
+
+#: modules/related-posts/i18n-strings.php:31
+msgid "Slider"
+msgstr ""
+
+#: modules/related-posts/i18n-strings.php:33
+msgid "Leave empty for the heading of the theme settings."
+msgstr ""
+
+#: modules/related-posts/i18n-strings.php:35
+msgid "Level of the heading, to fit the headings around the block; the post titles follow one level below."
+msgstr ""
+
+#: modules/related-posts/inc/class-related-posts-module.php:451
+msgid "Shows related posts on single posts."
+msgstr ""
+
+#: modules/related-posts/module.php:27
+msgid "Related posts below a single post and as a block: posts that share a category or a tag with the current post. Needs the module Post lists."
+msgstr ""
+
+#: modules/related-posts/settings.php:36
+msgid "Post types with related posts"
+msgstr ""
+
+#: modules/related-posts/settings.php:37
+msgid "Names of the public post types, separated by commas, e.g. post,page. Media are never included."
+msgstr ""
+
+#: modules/related-posts/settings.php:53
+msgid "Related by"
+msgstr ""
+
+#: modules/related-posts/settings.php:54
+msgid "Posts are related when they share a category, a tag or either of both."
+msgstr ""
+
+#: modules/related-posts/settings.php:65
+msgid "Number of related posts"
+msgstr ""
+
+#: modules/related-posts/settings.php:66
+msgid "From 1 to 12."
+msgstr ""
+
+#: modules/related-posts/settings.php:81
+msgid "Display of related posts"
+msgstr ""
+
+#: modules/related-posts/settings.php:82
+msgid "Grid or slider; the slider needs the module post slider and shows a grid while it is off."
+msgstr ""
+
+#: modules/related-posts/settings.php:95
+msgid "Heading of the related posts"
+msgstr ""
+
+#: modules/related-posts/settings.php:96
+msgid "Empty shows \"Related posts\"."
+msgstr ""
+
+#. Template Name of the theme
+msgid "Blank"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Full Width Image"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Left Sidebar"
+msgstr ""
+
+#. Template Name of the theme
+msgid "No Sidebar"
+msgstr ""
+
+#: patterns/c-alert-danger.php
+msgctxt "Pattern title"
+msgid "c - Alert-danger with icon and dismiss button"
+msgstr ""
+
+#: patterns/c-alert-danger.php:16
+msgid "A dismissing danger alert with an icon and a <a href=\"#\">link</a>."
+msgstr ""
+
+#: patterns/c-alert-info.php
+msgctxt "Pattern title"
+msgid "c - Alert-info"
+msgstr ""
+
+#: patterns/c-alert-info.php:16
+msgid "A simple info alert with a <a href=\"#\">link</a>."
+msgstr ""
+
+#: patterns/c-btn-danger-lg.php
+msgctxt "Pattern title"
+msgid "c - Button danger lg"
+msgstr ""
+
+#: patterns/c-btn-outline-secondary-sm.php
+msgctxt "Pattern title"
+msgid "c - Button outline-secondary sm"
+msgstr ""
+
+#: patterns/c-btn-primary.php
+msgctxt "Pattern title"
+msgid "c - Button primary"
+msgstr ""
+
+#: patterns/c-card-basic.php
+msgctxt "Pattern title"
+msgid "c - Card basic with image"
+msgstr ""
+
+#: patterns/c-card-basic.php:22
+#: patterns/c-card-header-footer.php:26
+msgid "Card title"
+msgstr ""
+
+#: patterns/c-card-basic.php:26
+#: patterns/c-card-header-footer.php:30
+msgid "Some quick example text to build on the card title and make up the bulk of the card's content."
+msgstr ""
+
+#: patterns/c-card-header-footer.php
+msgctxt "Pattern title"
+msgid "c - Card with header and footer"
+msgstr ""
+
+#: patterns/c-card-header-footer.php:17
+msgid "Card header"
+msgstr ""
+
+#: patterns/c-card-header-footer.php:39
+msgid "Card footer"
+msgstr ""
+
+#: patterns/c-card-widget-categories.php
+msgctxt "Pattern title"
+msgid "c - Card with category widget"
+msgstr ""
+
+#: patterns/c-card-widget-categories.php:17
+msgid "Categories"
+msgstr ""
+
+#: patterns/c-cards-pricing.php
+msgctxt "Pattern title"
+msgid "c - Cards pricing"
+msgstr ""
+
+#: patterns/c-cards-pricing.php:19
+msgid "Free"
+msgstr ""
+
+#: patterns/c-cards-pricing.php:24
+msgid "$0<small class=\"text-body-secondary\">/mo</small>"
+msgstr ""
+
+#: patterns/c-cards-pricing.php:29
+msgid "10 users included"
+msgstr ""
+
+#: patterns/c-cards-pricing.php:33
+msgid "2 GB of storage"
+msgstr ""
+
+#: patterns/c-cards-pricing.php:37
+msgid "Email support"
+msgstr ""
+
+#: patterns/c-cards-pricing.php:41
+#: patterns/c-cards-pricing.php:77
+#: patterns/c-cards-pricing.php:113
+msgid "Help center access"
+msgstr ""
+
+#: patterns/c-cards-pricing.php:46
+msgid "Sign up for free"
+msgstr ""
+
+#: patterns/c-cards-pricing.php:55
+msgid "Pro"
+msgstr ""
+
+#: patterns/c-cards-pricing.php:60
+msgid "$15<small class=\"text-body-secondary\">/mo</small>"
+msgstr ""
+
+#: patterns/c-cards-pricing.php:65
+msgid "20 users included"
+msgstr ""
+
+#: patterns/c-cards-pricing.php:69
+msgid "10 GB of storage"
+msgstr ""
+
+#: patterns/c-cards-pricing.php:73
+msgid "Priority email support"
+msgstr ""
+
+#: patterns/c-cards-pricing.php:82
+msgid "Get started"
+msgstr ""
+
+#: patterns/c-cards-pricing.php:91
+msgid "Enterprise"
+msgstr ""
+
+#: patterns/c-cards-pricing.php:96
+msgid "$29<small class=\"text-body-secondary\">/mo</small>"
+msgstr ""
+
+#: patterns/c-cards-pricing.php:101
+msgid "30 users included"
+msgstr ""
+
+#: patterns/c-cards-pricing.php:105
+msgid "15 GB of storage"
+msgstr ""
+
+#: patterns/c-cards-pricing.php:109
+msgid "Phone and email support"
+msgstr ""
+
+#: patterns/c-cards-pricing.php:118
+msgid "Contact us"
+msgstr ""
+
+#: patterns/c-hero-img-left.php
+msgctxt "Pattern title"
+msgid "c - Hero img left"
+msgstr ""
+
+#: patterns/c-hero-img-left.php:28
+#: patterns/c-hero-img-right.php:28
+msgid "Hero"
+msgstr ""
+
+#: patterns/c-hero-img-left.php:32
+msgid "This is a two column hero with left aligned image and CTA buttons."
+msgstr ""
+
+#: patterns/c-hero-img-right.php
+msgctxt "Pattern title"
+msgid "c - Hero img right"
+msgstr ""
+
+#: patterns/c-hero-img-right.php:32
+msgid "This is a two column hero with right aligned image and CTA buttons."
+msgstr ""
+
+#: patterns/c-hero-jumbotron.php
+msgctxt "Pattern title"
+msgid "c - Hero jumbotron"
+msgstr ""
+
+#: patterns/c-hero-jumbotron.php:17
+msgid "Basic jumbotron"
+msgstr ""
+
+#: patterns/c-hero-jumbotron.php:21
+msgid "This is a simple Bootstrap jumbotron, recreated with built-in utility classes."
+msgstr ""
+
+#: patterns/header-footer/footer-default.php
+msgctxt "Pattern title"
+msgid "Footer"
+msgstr ""
+
+#: patterns/header-footer/header-default.php
+msgctxt "Pattern title"
+msgid "Header"
+msgstr ""
+
+#: patterns/l-container.php
+msgctxt "Pattern title"
+msgid "l - Container"
+msgstr ""
+
+#: patterns/l-container.php:17
+msgid "This is a <code>container</code>"
+msgstr ""
+
+#: patterns/l-grid-col-3.php
+msgctxt "Pattern title"
+msgid "l - Grid 3/3/3/3"
+msgstr ""
+
+#: patterns/l-grid-col-4-col-8.php
+msgctxt "Pattern title"
+msgid "l - Grid 4/8"
+msgstr ""
+
+#: patterns/l-grid-col-6.php
+msgctxt "Pattern title"
+msgid "l - Grid 6/6"
+msgstr ""
+
+#: patterns/l-grid-col-8-col-4.php
+msgctxt "Pattern title"
+msgid "l - Grid 8/4"
+msgstr ""
+
+#: patterns/s-heading-subtitle.php
+msgctxt "Pattern title"
+msgid "s - Heading and subtitle"
+msgstr ""
+
+#: patterns/s-heading-subtitle.php:18
+msgid "Section with heading"
+msgstr ""
+
+#: patterns/s-heading-subtitle.php:22
+msgid "This is a <code>section</code> with heading and subtitle wrapped in a <code>container</code>. Use it on the <code>page-blank</code> template."
+msgstr ""
+
+#: patterns/s-heading-subtitle.php:26
+msgid "Some content inside the <code>container</code>."
+msgstr ""
+
+#: patterns/s-hero-img-left.php
+msgctxt "Pattern title"
+msgid "s - Hero image left"
+msgstr ""
+
+#: patterns/s-hero-img-left.php:30
+#: patterns/s-hero-img-right.php:30
+msgid "Section with hero"
+msgstr ""
+
+#: patterns/s-hero-img-left.php:34
+msgid "This <code>section</code> features a two-column hero with a left-aligned image and CTA buttons wrapped in a <code>container</code>. Use it on the <code>page-blank</code> template."
+msgstr ""
+
+#: patterns/s-hero-img-right.php
+msgctxt "Pattern title"
+msgid "s - Hero image right"
+msgstr ""
+
+#: patterns/s-hero-img-right.php:34
+msgid "This <code>section</code> features a two-column hero with a right-aligned image and CTA buttons wrapped in a <code>container</code>. Use it on the <code>page-blank</code> template."
+msgstr ""
+
+#: patterns/s-hero-jumbotron.php
+msgctxt "Pattern title"
+msgid "s - Hero jumbotron"
+msgstr ""
+
+#: patterns/s-hero-jumbotron.php:19
+msgid "Section jumbotron"
+msgstr ""
+
+#: patterns/s-hero-jumbotron.php:23
+msgid "This is a <code>section</code> with a simple centered jumbotron pattern wrapped in a <code>container</code>. Use it on the <code>page-blank</code> template."
+msgstr ""
+
+#: searchform.php:38
+msgid "Search for:"
+msgstr ""
+
+#: searchform.php:39
+#: searchform.php:50
+msgid "Search"
+msgstr ""
+
+#: sidebar.php:59
+msgid "Open side menu"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Full width image"
+msgstr ""
+
+#. translators: Name of the navigation to the previous and the next post; not the same as "Posts navigation" (pages of a post archive).
+#: single-templates/single-full-width-image.php:215
+#: single-templates/single-sidebar-left.php:166
+#: single-templates/single-sidebar-none.php:152
+#: single.php:164
+msgid "Post navigation"
+msgstr ""
+
+#. Template Name of the theme
+msgid "Sidebar left"
+msgstr ""
+
+#: src/admin/class-menu.php:61
+#: src/admin/class-menu.php:148
+msgid "creationell Theme settings"
+msgstr ""
+
+#: src/admin/class-menu.php:62
+msgid "Theme settings"
+msgstr ""
+
+#: src/admin/class-menu.php:149
+msgid "No theme settings page is available to you."
+msgstr ""
+
+#: src/admin/class-module-page.php:136
+#: src/admin/class-module-page.php:191
+msgid "Theme modules"
+msgstr ""
+
+#: src/admin/class-module-page.php:137
+#: src/settings/transfer/class-modules-section.php:92
+msgid "Modules"
+msgstr ""
+
+#: src/admin/class-module-page.php:194
+msgid "You can only view the modules."
+msgstr ""
+
+#: src/admin/class-module-page.php:402
+msgid "You are not allowed to switch theme modules."
+msgstr ""
+
+#: src/admin/class-module-page.php:418
+msgid "Theme modules and their state"
+msgstr ""
+
+#: src/admin/class-module-page.php:419
+#: src/admin/class-transfer-page.php:1043
+msgid "Module"
+msgstr ""
+
+#: src/admin/class-module-page.php:421
+msgid "State"
+msgstr ""
+
+#: src/admin/class-module-page.php:422
+#: src/admin/class-transfer-page.php:858
+msgid "Reason"
+msgstr ""
+
+#: src/admin/class-module-page.php:425
+#: src/admin/class-transfer-page.php:863
+#: src/admin/class-transfer-page.php:915
+msgid "Action"
+msgstr ""
+
+#. translators: %s: title of the module.
+#: src/admin/class-module-page.php:468
+#, php-format
+msgid "State of %s"
+msgstr ""
+
+#: src/admin/class-module-page.php:484
+#: src/admin/class-transfer-page.php:1392
+#: src/settings/acf/class-options-pages.php:125
+msgid "Save"
+msgstr ""
+
+#. translators: %s: title of the module.
+#: src/admin/class-module-page.php:526
+#, php-format
+msgid "Switch %s off?"
+msgstr ""
+
+#: src/admin/class-module-page.php:535
+msgid "Nothing is deleted; the settings of the module stay stored."
+msgstr ""
+
+#: src/admin/class-module-page.php:536
+msgid "While the module is off, its blocks show nothing on the website. Nothing is deleted: the contents keep the blocks and show them again once the module is on."
+msgstr ""
+
+#: src/admin/class-module-page.php:559
+msgid "More contents use the blocks of this module now. Check the list and confirm again."
+msgstr ""
+
+#: src/admin/class-module-page.php:560
+msgid "Confirm that you understand the consequences."
+msgstr ""
+
+#: src/admin/class-module-page.php:568
+msgid "I understand the consequences"
+msgstr ""
+
+#: src/admin/class-module-page.php:573
+msgid "Switch off"
+msgstr ""
+
+#. translators: %s: title of the module.
+#: src/admin/class-module-page.php:596
+#, php-format
+msgid "Contents with blocks of %s"
+msgstr ""
+
+#: src/admin/class-module-page.php:597
+msgid "Location"
+msgstr ""
+
+#: src/admin/class-module-page.php:598
+msgid "Contents"
+msgstr ""
+
+#: src/admin/class-module-page.php:599
+msgid "Revisions and trash"
+msgstr ""
+
+#: src/admin/class-module-page.php:613
+msgid "Contents that use the blocks, newest first:"
+msgstr ""
+
+#. translators: %d: ID of the content.
+#: src/admin/class-module-page.php:617
+#, php-format
+msgid "Content %d without title"
+msgstr ""
+
+#. translators: 1: title of the module, 2: reason, e.g. "The plugin x/x.php is not active".
+#: src/admin/class-module-page.php:648
+#, php-format
+msgid "%1$s stays off: %2$s."
+msgstr ""
+
+#: src/admin/class-module-page.php:654
+msgid "The module reported an error while switching; the new state applies anyway. The PHP error log names the error."
+msgstr ""
+
+#: src/admin/class-module-page.php:686
+msgid "The module or the state is unknown; nothing changed."
+msgstr ""
+
+#. translators: %s: title of the module.
+#: src/admin/class-module-page.php:698
+#, php-format
+msgid "%s is locked; nothing changed."
+msgstr ""
+
+#. translators: %s: title of the module.
+#: src/admin/class-module-page.php:705
+#, php-format
+msgid "%s already has this state; nothing changed."
+msgstr ""
+
+#. translators: %s: title of the module.
+#: src/admin/class-module-page.php:710
+#, php-format
+msgid "%s is now active."
+msgstr ""
+
+#. translators: %s: title of the module.
+#: src/admin/class-module-page.php:712
+#, php-format
+msgid "%s is now hidden."
+msgstr ""
+
+#. translators: %s: title of the module.
+#: src/admin/class-module-page.php:714
+#, php-format
+msgid "%s is now off."
+msgstr ""
+
+#: src/admin/class-module-page.php:730
+msgid "No backup of the theme settings is made when a module goes off; export the settings first to keep a copy."
+msgstr ""
+
+#: src/admin/class-module-page.php:743
+msgid "Active"
+msgstr ""
+
+#: src/admin/class-module-page.php:744
+#: src/admin/class-transfer-page.php:1431
+msgid "Hidden"
+msgstr ""
+
+#: src/admin/class-module-page.php:745
+#: src/admin/class-transfer-page.php:1430
+msgid "Off"
+msgstr ""
+
+#: src/admin/class-module-page.php:764
+msgid "Synced patterns"
+msgstr ""
+
+#: src/admin/class-module-page.php:765
+msgid "Template parts"
+msgstr ""
+
+#: src/admin/class-module-page.php:766
+msgid "Templates"
+msgstr ""
+
+#: src/admin/class-module-page.php:767
+msgid "Navigation menus"
+msgstr ""
+
+#: src/admin/class-module-page.php:768
+msgid "Revisions"
+msgstr ""
+
+#: src/admin/class-module-page.php:769
+msgid "Block widgets"
+msgstr ""
+
+#: src/admin/class-module-page.php:788
+#: src/admin/class-transfer-page.php:1335
+msgid "Default"
+msgstr ""
+
+#: src/admin/class-module-page.php:790
+msgid "Set by the child theme"
+msgstr ""
+
+#: src/admin/class-module-page.php:792
+msgid "Set on this page"
+msgstr ""
+
+#: src/admin/class-module-page.php:794
+msgid "Locked by the child theme"
+msgstr ""
+
+#. translators: %s: name of the constant, e.g. CREATIONELL_WP_THEME_MODULE_CONSENT.
+#: src/admin/class-module-page.php:797
+#, php-format
+msgid "Set by the constant %s in wp-config.php"
+msgstr ""
+
+#: src/admin/class-module-page.php:799
+msgid "The child theme or the constant sets a state the module does not know"
+msgstr ""
+
+#: src/admin/class-module-page.php:801
+msgid "The stored state is invalid; the default applies"
+msgstr ""
+
+#: src/admin/class-module-page.php:803
+msgid "Not installed"
+msgstr ""
+
+#: src/admin/class-module-page.php:805
+msgid "The manifest of the module is invalid"
+msgstr ""
+
+#: src/admin/class-module-page.php:807
+msgid "Blockstudio is not active"
+msgstr ""
+
+#: src/admin/class-module-page.php:809
+msgid "The required modules lead back to this module"
+msgstr ""
+
+#. translators: %s: plugin file, e.g. bs-swiper/main.php.
+#: src/admin/class-module-page.php:812
+#, php-format
+msgid "The older plugin %s is active"
+msgstr ""
+
+#. translators: %s: plugin file, e.g. contact-form-7/wp-contact-form-7.php.
+#: src/admin/class-module-page.php:815
+#, php-format
+msgid "The plugin %s is not active"
+msgstr ""
+
+#. translators: %s: title of the required module.
+#: src/admin/class-module-page.php:818
+#, php-format
+msgid "The module %s is off"
+msgstr ""
+
+#: src/admin/class-settings-notices.php:131
+msgid "Read only: you may view these settings but not change them."
+msgstr ""
+
+#. translators: 1: label of the setting, 2: reason.
+#: src/admin/class-settings-notices.php:145
+#, php-format
+msgid "Not saved: %1$s: %2$s"
+msgstr ""
+
+#. translators: %s: comma-separated labels of settings.
+#: src/admin/class-settings-notices.php:154
+#, php-format
+msgid "Saved: %s."
+msgstr ""
+
+#. translators: %s: comma-separated labels of settings.
+#: src/admin/class-settings-notices.php:158
+#, php-format
+msgid "Back to the default: %s."
+msgstr ""
+
+#. translators: %s: titles of the modules, separated by commas.
+#: src/admin/class-theme-switch-notice.php:106
+#, php-format
+msgid "After a theme switch, the blocks of %s are missing; the cookie banner and the consent lock are gone."
+msgstr ""
+
+#. translators: %s: titles of the modules, separated by commas.
+#: src/admin/class-theme-switch-notice.php:110
+#, php-format
+msgid "After a theme switch, the blocks of %s are missing."
+msgstr ""
+
+#: src/admin/class-theme-switch-notice.php:112
+msgid "After a theme switch, the cookie banner and the consent lock are gone."
+msgstr ""
+
+#: src/admin/class-transfer-page.php:373
+#: src/admin/class-transfer-page.php:374
+#: src/admin/class-transfer-page.php:726
+msgid "Import/Export"
+msgstr ""
+
+#. translators: 1: result of the import, 2: title of the admin page.
+#: src/admin/class-transfer-page.php:429
+#, php-format
+msgid "%1$s – %2$s"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:718
+msgid "You are not allowed to open this page."
+msgstr ""
+
+#: src/admin/class-transfer-page.php:749
+msgid "You can only view import and export."
+msgstr ""
+
+#: src/admin/class-transfer-page.php:758
+msgid "Backup created."
+msgstr ""
+
+#: src/admin/class-transfer-page.php:760
+msgid "Import cancelled. Nothing was changed."
+msgstr ""
+
+#: src/admin/class-transfer-page.php:779
+#: src/admin/class-transfer-page.php:1488
+msgid "Export"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:780
+msgid "Downloads the settings as a JSON file. Sensitive values are never exported."
+msgstr ""
+
+#: src/admin/class-transfer-page.php:783
+#: src/admin/class-transfer-page.php:859
+#: src/admin/class-transfer-page.php:917
+#: src/admin/class-transfer-page.php:996
+msgid "Sections"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:792
+#: src/admin/class-transfer-page.php:918
+#: src/admin/class-transfer-page.php:995
+msgid "Languages"
+msgstr ""
+
+#. translators: %s: language code, e.g. "de".
+#: src/admin/class-transfer-page.php:796
+#, php-format
+msgid "%s (default language)"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:800
+msgid "Download file"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:817
+#: src/admin/class-transfer-page.php:1489
+msgid "Import"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:818
+msgid "The import shows a preview first; nothing changes before you confirm it. The current settings are backed up before the import."
+msgstr ""
+
+#: src/admin/class-transfer-page.php:823
+msgid "Settings file"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:827
+msgid "JSON, at most 1 MB"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:831
+msgid "Show preview"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:844
+msgid "Backups"
+msgstr ""
+
+#. translators: %d: number of backups the theme keeps.
+#: src/admin/class-transfer-page.php:848
+#, php-format
+msgid "The theme keeps the last %d backups. It makes one before every import, restore and module switch."
+msgstr ""
+
+#: src/admin/class-transfer-page.php:854
+msgid "No backups yet."
+msgstr ""
+
+#: src/admin/class-transfer-page.php:857
+#: src/admin/class-transfer-page.php:914
+msgid "Time"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:860
+#: src/admin/class-transfer-page.php:919
+msgid "Person"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:865
+msgid "Backups, newest first"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:877
+msgid "Restore …"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:886
+msgid "Back up now"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:902
+msgid "Log"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:903
+msgid "The log keeps who exported, imported, restored or backed up which sections, for 90 days. It stores no values."
+msgstr ""
+
+#: src/admin/class-transfer-page.php:906
+msgid "No log entries yet."
+msgstr ""
+
+#. translators: %d: number of entries.
+#: src/admin/class-transfer-page.php:912
+#, php-format
+msgid "Last %d log entries"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:916
+msgid "Channel"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:927
+msgid "Admin"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:959
+msgid "Preview"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:960
+msgid "Check what the import changes. Nothing has been changed yet."
+msgstr ""
+
+#: src/admin/class-transfer-page.php:970
+msgctxt "button"
+msgid "Import"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:990
+#: src/admin/class-transfer-page.php:1491
+msgid "Backup"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:990
+msgid "File"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:991
+msgid "Exported from"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:992
+msgid "Exported at"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:993
+msgid "Theme version"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:994
+#: src/settings/acf/class-options-pages.php:202
+#: src/settings/class-registry.php:160
+msgid "Bootstrap line"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:999
+msgid "Not in the file (sensitive)"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1020
+msgid "Warnings"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1043
+#: src/admin/class-transfer-page.php:1155
+msgid "Setting"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1047
+#: src/admin/class-transfer-page.php:1155
+#: src/wpml/class-language-switcher.php:187
+msgid "Language"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1047
+#: src/admin/class-transfer-page.php:1155
+msgid "Current"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1047
+#: src/admin/class-transfer-page.php:1155
+msgid "New"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1047
+#: src/admin/class-transfer-page.php:1155
+msgid "Result"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1068
+msgid "All languages"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1089
+msgid "Module changes"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1090
+msgid "The import switches modules. Published contents that use them may look different or lose functions:"
+msgstr ""
+
+#. translators: 1: module title, 2: number of published contents.
+#: src/admin/class-transfer-page.php:1095
+#, php-format
+msgid "%1$s: used in %2$d published content"
+msgid_plural "%1$s: used in %2$d published contents"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/admin/class-transfer-page.php:1110
+msgid "I understand the consequences of the module changes"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1126
+msgid "No import result is available anymore."
+msgstr ""
+
+#. translators: 1: number of changed values, 2: number of skipped values, 3: number of rejected values.
+#: src/admin/class-transfer-page.php:1136
+#, php-format
+msgid "%1$d changed, %2$d skipped, %3$d rejected."
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1143
+msgid "Backup made before the import:"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1144
+msgid "Restore this backup …"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1154
+#: src/admin/class-transfer-page.php:1363
+msgid "Rejected"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1154
+#: src/admin/class-transfer-page.php:1362
+msgid "Skipped"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1162
+msgid "Back to Import/Export"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1174
+msgid "Import finished"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1174
+msgid "Nothing was imported"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1217
+msgid "Go to the field"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1339
+msgid "Yes"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1339
+msgid "No"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1361
+msgid "Changes"
+msgstr ""
+
+#. translators: %d: number of published contents.
+#: src/admin/class-transfer-page.php:1375
+#, php-format
+msgid "Used in %d published content."
+msgid_plural "Used in %d published contents."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/admin/class-transfer-page.php:1393
+msgid "Reset to the default"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1394
+msgid "Switch the module"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1395
+msgid "Unchanged"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1396
+msgid "Not in the file"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1397
+msgid "Locked on this site"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1398
+msgid "Not translatable"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1399
+msgid "Unknown setting"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1400
+msgid "Setting removed in a theme update"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1401
+msgid "Setting renamed in a theme update"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1402
+msgid "Sensitive, never imported"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1403
+msgid "Language not active on this site"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1404
+msgid "Not available in the Bootstrap line of this site"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1405
+msgid "The Bootstrap line is never imported"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1406
+msgid "Unknown part of the file"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1407
+msgid "Module unchanged"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1408
+msgid "Module locked on this site"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1409
+msgid "You may not change this setting"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1410
+msgid "Invalid value"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1411
+msgid "Contrast too low"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1412
+msgid "Referenced content not found on this site"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1413
+msgid "You may not switch this module"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1414
+msgid "Invalid module state"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1415
+msgid "Needs your confirmation"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1429
+msgid "On"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1446
+msgid "The file comes from another Bootstrap line. The import never switches the line; settings of the other line are skipped. Switch the line first if you need them."
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1449
+msgid "The file comes from a newer theme version. Settings this version does not know are skipped."
+msgstr ""
+
+#. translators: 1: old format version, 2: new format version.
+#: src/admin/class-transfer-page.php:1454
+#, php-format
+msgid "The file was converted from format version %1$s to %2$s."
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1469
+msgid "Before an import"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1470
+msgid "Before a restore"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1471
+msgid "Before a module switch"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1472
+msgid "Manual"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1473
+msgid "Before a Bootstrap line switch"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1490
+msgid "Restore"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1552
+msgid "Unknown or deleted user"
+msgstr ""
+
+#: src/admin/class-transfer-page.php:1623
+msgid "The backup or the log could not be stored. Nothing was changed."
+msgstr ""
+
+#. translators: %s: names of the constants, separated by commas.
+#: src/assets/class-bootstrap-bridge.php:133
+#, php-format
+msgid "Bootstrap loads twice: the creationell Theme loads Bootstrap, and CreaBootstrapBlocks loads its own copy because wp-config.php sets %s to true. Remove these constants or set them to false."
+msgstr ""
+
+#. translators: 1: Bootstrap version of the plugin, 2: Bootstrap version of the theme.
+#: src/assets/class-bootstrap-bridge.php:319
+#, php-format
+msgid "CreaBootstrapBlocks is built for Bootstrap %1$s, the creationell Theme loads Bootstrap %2$s. The blocks run on the Bootstrap of the theme; update the plugin or the theme so that both use the same version."
+msgstr ""
+
+#: src/assets/class-bootstrap-bridge.php:320
+#: src/assets/class-bootstrap-bridge.php:321
+msgid "unknown"
+msgstr ""
+
+#. translators: 1: folder name of the child theme, 2: reason in English.
+#: src/child/class-child-theme.php:271
+#, php-format
+msgid "The child theme %1$s needs a fix in its style.css: %2$s The creationell Theme uses the project styles of a child theme only for the Bootstrap lines it declares."
+msgstr ""
+
+#: src/compiler/class-custom-stylesheet.php:364
+msgid "You are not allowed to rebuild the stylesheet."
+msgstr ""
+
+#. translators: %s: error message of the compiler, in English.
+#: src/compiler/class-custom-stylesheet.php:402
+#, php-format
+msgid "The stylesheet of the design settings could not be built; the previous stylesheet stays active. Error: %s"
+msgstr ""
+
+#: src/compiler/class-custom-stylesheet.php:407
+msgid "The stylesheet does not match the current design settings, theme files or child theme files."
+msgstr ""
+
+#: src/compiler/class-custom-stylesheet.php:419
+msgid "Rebuild the stylesheet"
+msgstr ""
+
+#. translators: %s: script handles with their consent category, e.g. "my-analytics (analytics)".
+#: src/consent/class-script-marker.php:297
+#, php-format
+msgid "These scripts wait for consent, but no consent provider is active, so they never run: %s. Switch on the consent module or remove the marking."
+msgstr ""
+
+#: src/core/class-site-editor-lock.php:167
+msgid "Fonts are managed in the design settings of the theme."
+msgstr ""
+
+#. translators: 1: required PHP version, 2: required WordPress version, 3: running PHP version, 4: running WordPress version.
+#: src/core/class-theme.php:135
+#, php-format
+msgid "The creationell Theme needs PHP %1$s and WordPress %2$s or newer; this site runs PHP %3$s and WordPress %4$s. The theme functions stay off until the server and WordPress are updated."
+msgstr ""
+
+#. translators: %s: URL of the update manifest.
+#: src/core/class-theme.php:162
+#, php-format
+msgid "The creationell Theme looks for updates at %s (set by CREATIONELL_WP_THEME_MANIFEST_URL) instead of the official manifest. Use this only for tests."
+msgstr ""
+
+#. translators: %s: value of the constant.
+#: src/core/class-theme.php:173
+#, php-format
+msgid "CREATIONELL_WP_THEME_MANIFEST_URL is set to %s, which is no https URL. The creationell Theme ignores it and uses the official update manifest."
+msgstr ""
+
+#: src/modules/class-module-catalog.php:169
+msgid "Contact Form 7"
+msgstr ""
+
+#: src/modules/class-module-catalog.php:170
+msgid "Consent"
+msgstr ""
+
+#: src/modules/class-module-catalog.php:171
+msgid "Header and footer"
+msgstr ""
+
+#: src/modules/class-module-catalog.php:172
+msgid "WooCommerce"
+msgstr ""
+
+#. translators: 1: module title, 2: plugin file such as bs-grid/main.php.
+#: src/modules/class-module-gate.php:391
+#, php-format
+msgid "The theme module %1$s stays off while the plugin %2$s is active, which the module replaces. Deactivate the plugin to use the module."
+msgstr ""
+
+#. translators: 1: module title, 2: error message in English.
+#: src/modules/class-module-gate.php:414
+#, php-format
+msgid "The theme module %1$s failed to load and stays off for this request: %2$s"
+msgstr ""
+
+#: src/posts/class-slider-config.php:136
+#: template-parts/post-slider/slider.php:76
+msgid "Pause slideshow"
+msgstr ""
+
+#: src/posts/class-slider-config.php:137
+msgid "Play slideshow"
+msgstr ""
+
+#: src/posts/class-slider-config.php:248
+#: template-parts/post-slider/slider.php:74
+msgid "Previous slide"
+msgstr ""
+
+#: src/posts/class-slider-config.php:249
+#: template-parts/post-slider/slider.php:75
+msgid "Next slide"
+msgstr ""
+
+#: src/posts/class-slider-config.php:250
+msgid "This is the first slide"
+msgstr ""
+
+#: src/posts/class-slider-config.php:251
+msgid "This is the last slide"
+msgstr ""
+
+#. translators: Keep {{index}}: Swiper replaces it with the number of the slide.
+#: src/posts/class-slider-config.php:253
+msgid "Go to slide {{index}}"
+msgstr ""
+
+#. translators: Keep {{index}} and {{slidesLength}}: Swiper replaces them with the number of the slide and the number of slides.
+#: src/posts/class-slider-config.php:255
+msgid "{{index}} / {{slidesLength}}"
+msgstr ""
+
+#: src/posts/class-slider-config.php:256
+msgctxt "role description of the post slider"
+msgid "carousel"
+msgstr ""
+
+#: src/posts/class-slider-config.php:257
+msgctxt "role description of one slide of the post slider"
+msgid "slide"
+msgstr ""
+
+#: src/settings/acf/class-acf-adapter.php:184
+msgid "The theme settings pages \"Texts\" and \"Design\" need the plugin ACF Pro. Without it the site keeps the saved settings and the defaults, but they cannot be changed in the admin."
+msgstr ""
+
+#. translators: 1: effective value of the setting, 2: where the value comes from, e.g. "theme default".
+#: src/settings/acf/class-acf-adapter.php:314
+#, php-format
+msgid "Effective: %1$s · Origin: %2$s"
+msgstr ""
+
+#: src/settings/acf/class-acf-adapter.php:387
+msgid "(none)"
+msgstr ""
+
+#. translators: 1: title of a page, 2: ID of the page.
+#: src/settings/acf/class-acf-adapter.php:393
+#, php-format
+msgid "%1$s (ID %2$d)"
+msgstr ""
+
+#: src/settings/acf/class-acf-adapter.php:394
+msgid "(no title)"
+msgstr ""
+
+#. translators: %s: label of the setting.
+#: src/settings/acf/class-acf-adapter.php:429
+#, php-format
+msgid "Reset to default: %s"
+msgstr ""
+
+#. translators: %s: name of a PHP constant.
+#: src/settings/acf/class-acf-adapter.php:609
+#, php-format
+msgid "Set by the constant %s."
+msgstr ""
+
+#: src/settings/acf/class-acf-adapter.php:614
+msgid "Locked by the child theme."
+msgstr ""
+
+#: src/settings/acf/class-acf-adapter.php:617
+#: src/settings/class-setter.php:349
+msgid "Choose one language; settings cannot be saved for all languages at once."
+msgstr ""
+
+#: src/settings/acf/class-acf-adapter.php:620
+msgid "The same in every language; change it in the default language."
+msgstr ""
+
+#: src/settings/acf/class-acf-adapter.php:623
+msgid "You may view this setting but not change it."
+msgstr ""
+
+#: src/settings/acf/class-acf-adapter.php:640
+msgid "default language"
+msgstr ""
+
+#: src/settings/acf/class-acf-adapter.php:643
+msgid "child theme default"
+msgstr ""
+
+#: src/settings/acf/class-acf-adapter.php:644
+msgid "saved value"
+msgstr ""
+
+#: src/settings/acf/class-acf-adapter.php:645
+msgid "child theme lock"
+msgstr ""
+
+#: src/settings/acf/class-acf-adapter.php:646
+msgid "site constant"
+msgstr ""
+
+#: src/settings/acf/class-acf-adapter.php:647
+msgid "theme default"
+msgstr ""
+
+#: src/settings/acf/class-acf-adapter.php:674
+msgid "yes"
+msgstr ""
+
+#: src/settings/acf/class-acf-adapter.php:674
+msgid "no"
+msgstr ""
+
+#: src/settings/acf/class-acf-adapter.php:681
+msgid "(empty)"
+msgstr ""
+
+#: src/settings/acf/class-field-factory.php:188
+msgid "System sans-serif"
+msgstr ""
+
+#: src/settings/acf/class-field-factory.php:189
+msgid "System serif"
+msgstr ""
+
+#: src/settings/acf/class-field-factory.php:190
+msgid "Same as body font"
+msgstr ""
+
+#: src/settings/acf/class-options-pages.php:112
+msgid "Texts"
+msgstr ""
+
+#: src/settings/acf/class-options-pages.php:113
+msgid "Design"
+msgstr ""
+
+#: src/settings/acf/class-options-pages.php:164
+msgid "The settings were processed."
+msgstr ""
+
+#: src/settings/acf/class-options-pages.php:312
+msgid "Dismiss this notice"
+msgstr ""
+
+#: src/settings/acf/class-options-pages.php:360
+msgid "Colors"
+msgstr ""
+
+#: src/settings/acf/class-options-pages.php:361
+msgid "Fonts"
+msgstr ""
+
+#. translators: %d: number of the active Bootstrap line, e.g. 5.
+#: src/settings/acf/class-options-pages.php:381
+#, php-format
+msgid "The theme uses Bootstrap line %d. Only the agency can switch the line."
+msgstr ""
+
+#. translators: %d: number of a Bootstrap line, e.g. 6.
+#: src/settings/acf/class-options-pages.php:389
+#, php-format
+msgid "Bootstrap line %d is not included in this theme version."
+msgstr ""
+
+#. translators: 1: name of the constant, 2: requested line, 3: reason in English, 4: line in use.
+#: src/settings/class-bootstrap-line.php:189
+#, php-format
+msgid "%1$s asks for Bootstrap line %2$d: %3$s The creationell Theme keeps line %4$d."
+msgstr ""
+
+#: src/settings/class-font-catalog.php:206
+msgid "System font (sans-serif)"
+msgstr ""
+
+#: src/settings/class-font-catalog.php:207
+msgid "System font (serif)"
+msgstr ""
+
+#: src/settings/class-registry.php:161
+msgid "Major Bootstrap version the theme styles and scripts are built on."
+msgstr ""
+
+#. translators: %d: maximum number of characters.
+#: src/settings/class-sanitizer.php:127
+#, php-format
+msgid "Use at most %d characters."
+msgstr ""
+
+#: src/settings/class-sanitizer.php:130
+msgid "This value is not allowed here."
+msgstr ""
+
+#: src/settings/class-sanitizer.php:357
+msgid "Enter a color as #rrggbb, for example #0d6efd."
+msgstr ""
+
+#: src/settings/class-sanitizer.php:358
+msgid "Choose a font from the list."
+msgstr ""
+
+#: src/settings/class-sanitizer.php:359
+msgid "Enter a valid email address."
+msgstr ""
+
+#: src/settings/class-sanitizer.php:360
+msgid "Enter a web address starting with https:// or http://."
+msgstr ""
+
+#: src/settings/class-sanitizer.php:361
+msgid "Use digits, spaces and + ( ) . / - only."
+msgstr ""
+
+#: src/settings/class-sanitizer.php:362
+msgid "Choose one of the available values."
+msgstr ""
+
+#: src/settings/class-sanitizer.php:363
+msgid "Enter a whole number."
+msgstr ""
+
+#: src/settings/class-sanitizer.php:364
+msgid "Choose yes or no."
+msgstr ""
+
+#: src/settings/class-sanitizer.php:365
+msgid "Enter text."
+msgstr ""
+
+#: src/settings/class-setter.php:333
+msgid "This setting does not exist."
+msgstr ""
+
+#: src/settings/class-setter.php:337
+msgid "Modules are switched on the modules page or with the module commands."
+msgstr ""
+
+#: src/settings/class-setter.php:340
+msgid "You are not allowed to change this setting."
+msgstr ""
+
+#: src/settings/class-setter.php:343
+msgid "The Bootstrap line cannot be switched in this theme version."
+msgstr ""
+
+#: src/settings/class-setter.php:346
+msgid "This setting is locked by the child theme or a constant."
+msgstr ""
+
+#: src/settings/class-setter.php:353
+msgid "This setting is the same in every language; change it in the default language."
+msgstr ""
+
+#: src/settings/class-setter.php:356
+msgid "The language code is invalid."
+msgstr ""
+
+#: src/settings/class-setter.php:554
+msgid "white or black text"
+msgstr ""
+
+#. translators: 1: foreground color name, 2: background color name, 3: contrast ratio, 4: minimum ratio.
+#: src/settings/class-setter.php:562
+#, php-format
+msgid "%1$s on %2$s has a contrast of %3$s:1, at least %4$s:1 is needed."
+msgstr ""
+
+#: src/settings/class-theme-json-tokens.php:259
+#: theme.json
+msgctxt "Color name"
+msgid "Primary"
+msgstr ""
+
+#: src/settings/class-theme-json-tokens.php:260
+#: theme.json
+msgctxt "Color name"
+msgid "Secondary"
+msgstr ""
+
+#: src/settings/class-theme-json-tokens.php:261
+#: theme.json
+msgctxt "Color name"
+msgid "Success"
+msgstr ""
+
+#: src/settings/class-theme-json-tokens.php:262
+#: theme.json
+msgctxt "Color name"
+msgid "Info"
+msgstr ""
+
+#: src/settings/class-theme-json-tokens.php:263
+#: theme.json
+msgctxt "Color name"
+msgid "Warning"
+msgstr ""
+
+#: src/settings/class-theme-json-tokens.php:264
+#: theme.json
+msgctxt "Color name"
+msgid "Danger"
+msgstr ""
+
+#: src/settings/class-theme-json-tokens.php:265
+#: theme.json
+msgctxt "Color name"
+msgid "Light"
+msgstr ""
+
+#: src/settings/class-theme-json-tokens.php:266
+#: theme.json
+msgctxt "Color name"
+msgid "Dark"
+msgstr ""
+
+#: src/settings/class-theme-json-tokens.php:280
+msgctxt "Font family name"
+msgid "Body"
+msgstr ""
+
+#: src/settings/class-theme-json-tokens.php:281
+msgctxt "Font family name"
+msgid "Headings"
+msgstr ""
+
+#: src/settings/definitions/design.php:33
+msgid "Primary color"
+msgstr ""
+
+#: src/settings/definitions/design.php:34
+msgid "Buttons, links and highlights."
+msgstr ""
+
+#: src/settings/definitions/design.php:45
+msgid "Secondary color"
+msgstr ""
+
+#: src/settings/definitions/design.php:56
+msgid "Success color"
+msgstr ""
+
+#: src/settings/definitions/design.php:67
+msgid "Info color"
+msgstr ""
+
+#: src/settings/definitions/design.php:78
+msgid "Warning color"
+msgstr ""
+
+#: src/settings/definitions/design.php:89
+msgid "Danger color"
+msgstr ""
+
+#: src/settings/definitions/design.php:100
+msgid "Light color"
+msgstr ""
+
+#: src/settings/definitions/design.php:111
+msgid "Dark color"
+msgstr ""
+
+#: src/settings/definitions/design.php:122
+msgid "Text color"
+msgstr ""
+
+#: src/settings/definitions/design.php:133
+msgid "Background color"
+msgstr ""
+
+#: src/settings/definitions/design.php:143
+msgid "Body font"
+msgstr ""
+
+#: src/settings/definitions/design.php:153
+msgid "Headings font"
+msgstr ""
+
+#: src/settings/definitions/design.php:154
+msgid "Without an own font the headings use the body font."
+msgstr ""
+
+#: src/settings/definitions/texts.php:41
+msgid "Links, bold, italic and line breaks are allowed. Empty shows the copyright line."
+msgstr ""
+
+#: src/settings/definitions/texts.php:52
+msgid "Address"
+msgstr ""
+
+#: src/settings/definitions/texts.php:62
+msgid "Phone"
+msgstr ""
+
+#: src/settings/transfer/class-importer.php:157
+msgid "This theme version does not know this part of the file."
+msgstr ""
+
+#: src/settings/transfer/class-modules-section.php:135
+msgid "The file has no state for this module; it stays as it is."
+msgstr ""
+
+#: src/settings/transfer/class-modules-section.php:272
+msgid "The child theme or a constant holds the state of this module."
+msgstr ""
+
+#: src/settings/transfer/class-modules-section.php:274
+msgid "You are not allowed to switch modules."
+msgstr ""
+
+#: src/settings/transfer/class-modules-section.php:276
+msgid "This module or state does not exist on this site."
+msgstr ""
+
+#. translators: %d: number of live contents.
+#: src/settings/transfer/class-modules-section.php:281
+#, php-format
+msgid "Switching this module off affects %d live content; confirm the module changes."
+msgid_plural "Switching this module off affects %d live contents; confirm the module changes."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/settings/transfer/class-settings-section.php:192
+msgid "Sensitive settings are left out of every export and never imported."
+msgstr ""
+
+#: src/settings/transfer/class-settings-section.php:206
+msgid "This language is not active on this site."
+msgstr ""
+
+#. translators: %s: setting key.
+#: src/settings/transfer/class-settings-section.php:290
+#, php-format
+msgid "The file has another value for %s; that value is imported."
+msgstr ""
+
+#: src/settings/transfer/class-settings-section.php:308
+msgid "The page, file or term this setting points to does not exist on this site."
+msgstr ""
+
+#: src/settings/transfer/class-settings-section.php:344
+msgid "The file has no value for this setting; it stays as it is."
+msgstr ""
+
+#: src/settings/transfer/class-settings-section.php:363
+msgid "The Bootstrap line is never imported; it is part of the code of the site."
+msgstr ""
+
+#: src/settings/transfer/class-settings-section.php:369
+msgid "This setting has no counterpart in the Bootstrap line of this site."
+msgstr ""
+
+#. translators: %s: setting key in the file.
+#: src/settings/transfer/class-settings-section.php:373
+#, php-format
+msgid "Mapped from %s of the other Bootstrap line."
+msgstr ""
+
+#. translators: %s: new setting key.
+#: src/settings/transfer/class-settings-section.php:386
+#, php-format
+msgid "This setting is now called %s; the value under the new name is imported."
+msgstr ""
+
+#. translators: %s: former setting key.
+#: src/settings/transfer/class-settings-section.php:391
+#, php-format
+msgid "Renamed from %s."
+msgstr ""
+
+#. translators: %s: new setting key.
+#: src/settings/transfer/class-settings-section.php:393
+#, php-format
+msgid "This setting is now called %s and is imported under that name."
+msgstr ""
+
+#. translators: %s: theme version.
+#: src/settings/transfer/class-settings-section.php:398
+#, php-format
+msgid "This setting was removed in theme version %s."
+msgstr ""
+
+#: src/settings/transfer/class-settings-section.php:400
+msgid "This theme version does not know this setting."
+msgstr ""
+
+#: src/settings/transfer/class-settings-section.php:414
+msgid "Sensitive settings are never imported."
+msgstr ""
+
+#: src/settings/transfer/class-settings-section.php:418
+msgid "Module switches are imported in the section Modules."
+msgstr ""
+
+#: src/settings/transfer/class-settings-section.php:419
+msgid "This setting is never imported."
+msgstr ""
+
+#: src/settings/transfer/class-settings-section.php:423
+msgid "This setting differs per language; the file must list it per language."
+msgstr ""
+
+#: src/settings/transfer/class-settings-section.php:426
+msgid "This setting is the same in every language; the file must list it without a language."
+msgstr ""
+
+#: src/settings/transfer/enum-transfer-error.php:53
+msgid "The file could not be uploaded. Please try again."
+msgstr ""
+
+#: src/settings/transfer/enum-transfer-error.php:54
+msgid "The file is larger than 1 MB."
+msgstr ""
+
+#: src/settings/transfer/enum-transfer-error.php:55
+msgid "Only JSON files ending in .json can be imported."
+msgstr ""
+
+#: src/settings/transfer/enum-transfer-error.php:56
+msgid "The file does not contain valid JSON."
+msgstr ""
+
+#: src/settings/transfer/enum-transfer-error.php:57
+msgid "The file is not a settings export of this theme."
+msgstr ""
+
+#: src/settings/transfer/enum-transfer-error.php:58
+msgid "The file does not match the export format."
+msgstr ""
+
+#: src/settings/transfer/enum-transfer-error.php:59
+msgid "The file comes from a newer theme version. Update the theme first."
+msgstr ""
+
+#: src/settings/transfer/enum-transfer-error.php:60
+msgid "The file uses an older format that this theme version cannot convert."
+msgstr ""
+
+#: src/settings/transfer/enum-transfer-error.php:61
+msgid "Choose a single language in the language switcher first; all languages at once are not supported."
+msgstr ""
+
+#: src/settings/transfer/enum-transfer-error.php:62
+msgid "Import and export are not available while the multilingual mode of ACF Extended is active."
+msgstr ""
+
+#: src/settings/transfer/enum-transfer-error.php:63
+msgid "You are not allowed to import or export settings."
+msgstr ""
+
+#: src/settings/transfer/enum-transfer-error.php:64
+msgid "The import could not be found. Upload the file again."
+msgstr ""
+
+#: src/settings/transfer/enum-transfer-error.php:65
+msgid "The import has expired. Upload the file again."
+msgstr ""
+
+#: src/settings/transfer/enum-transfer-error.php:66
+msgid "The import was started by another user."
+msgstr ""
+
+#: src/settings/transfer/enum-transfer-error.php:67
+msgid "Select at least one section."
+msgstr ""
+
+#: src/settings/transfer/enum-transfer-error.php:68
+msgid "Confirm the module changes before importing."
+msgstr ""
+
+#: src/settings/transfer/enum-transfer-error.php:69
+msgid "Nothing was imported because some values were rejected."
+msgstr ""
+
+#: src/settings/transfer/enum-transfer-error.php:70
+msgid "The backup could not be found."
+msgstr ""
+
+#. translators: 1: version of the theme, 2: Bootstrap line, e.g. 5.
+#: src/update/class-theme-updater.php:715
+#, php-format
+msgid "Version %1$s of the creationell Theme does not contain Bootstrap line %2$d, which this site uses, so WordPress does not offer the update. Switch the site to a Bootstrap line of the new version first, as the theme documentation describes, then update."
+msgstr ""
+
+#: src/update/enum-update-error.php:131
+msgid "The update package of the creationell Theme must be downloaded over HTTPS."
+msgstr ""
+
+#: src/update/enum-update-error.php:132
+msgid "The update manifest of the creationell Theme could not be loaded, so the package cannot be verified. Please try again later."
+msgstr ""
+
+#: src/update/enum-update-error.php:133
+msgid "The update manifest of the creationell Theme carries no usable SHA-256 checksum for the package, so the package is not installed."
+msgstr ""
+
+#: src/update/enum-update-error.php:134
+msgid "The downloaded package of the creationell Theme does not match the SHA-256 checksum of the update manifest and was deleted."
+msgstr ""
+
+#: src/update/enum-update-error.php:135
+msgid "The update package of the creationell Theme could not be downloaded."
+msgstr ""
+
+#: src/update/enum-update-error.php:136
+msgid "The offered package of the creationell Theme is not the one named in the current update manifest. Check for updates again, then retry."
+msgstr ""
+
+#: src/update/enum-update-error.php:137
+msgid "The new version of the creationell Theme needs a newer WordPress or PHP version than this site runs."
+msgstr ""
+
+#: src/update/enum-update-error.php:138
+msgid "The new version of the creationell Theme does not contain the Bootstrap line this site uses. Switch the site to a line of the new version before updating."
+msgstr ""
+
+#: src/update/enum-update-error.php:139
+msgid "Automatic updates of the creationell Theme are disabled; update the theme by hand."
+msgstr ""
+
+#: src/update/enum-update-error.php:140
+msgid "The update package of the creationell Theme does not unpack to the folder creationell-wp-theme; the installed theme stays unchanged."
+msgstr ""
+
+#. translators: %s: native name of the current language, e.g. "Deutsch".
+#: src/wpml/class-language-switcher.php:456
+#, php-format
+msgid "Language: %s. Change language"
+msgstr ""
+
+#: src/wpml/class-language-switcher.php:511
+msgid "(home page)"
+msgstr ""
+
+#: src/wpml/class-wpml-integration.php:191
+msgid "WPML String Translation is not active; corrections of theme texts and further languages need it."
+msgstr ""
+
+#: src/wpml/class-wpml-integration.php:194
+msgid "ACF Multilingual (ACFML) is not active; the translated settings cannot be translated per language."
+msgstr ""
+
+#. translators: %s: comma-separated language codes.
+#: src/wpml/class-wpml-integration.php:199
+#, php-format
+msgid "The settings snapshots do not match the languages %s; open any admin page to rebuild them."
+msgstr ""
+
+#. translators: %s: comma-separated option names.
+#: src/wpml/class-wpml-integration.php:204
+#, php-format
+msgid "Global settings were saved per language (%s); the theme ignores these rows. Keep the global settings page out of the multilang module of ACF Extended and delete the rows."
+msgstr ""
+
+#: src/wpml/class-wpml-integration.php:207
+msgid "The theme has no wpml-config.xml; WPML does not know which block texts to translate."
+msgstr ""
+
+#. translators: %s: WPML URL mode, e.g. "parameter".
+#: src/wpml/class-wpml-integration.php:211
+#, php-format
+msgid "WPML uses the URL mode \"%s\"; the theme is tested with language directories."
+msgstr ""
+
+#: template-parts/header/actions.php:100
+msgid "Open search"
+msgstr ""
+
+#: template-parts/header/navbar.php:44
+msgid "Main menu"
+msgstr ""
+
+#: template-parts/header/navbar.php:170
+msgid "Menu"
+msgstr ""
+
+#: template-parts/header/navbar.php:271
+msgid "Toggle main menu"
+msgstr ""
+
+#: template-parts/loop/cards-grid-term.php:46
+#: template-parts/loop/cards-horizontal-term.php:49
+#: template-parts/loop/cards-overlay-term.php:51
+msgid "item"
+msgid_plural "items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: template-parts/loop/cards-grid-term.php:284
+#: template-parts/loop/cards-grid.php:255
+#: template-parts/loop/cards-horizontal-term.php:324
+#: template-parts/loop/cards-horizontal.php:295
+#: template-parts/loop/cards-overlay-term.php:301
+#: template-parts/loop/cards-overlay.php:267
+msgid "Read more »"
+msgstr ""
+
+#: template-parts/loop/content-none.php:17
+msgid "Nothing Found for"
+msgstr ""
+
+#: template-parts/loop/content-none.php:24
+msgid "Sorry, but nothing matched your search terms. Please try again with some different keywords."
+msgstr ""
+
+#: template-parts/loop/content-none.php:26
+msgid "New search"
+msgstr ""
+
+#: template-parts/loop/loop-none.php:17
+msgid "No content found."
+msgstr ""
+
+#: template-parts/post-lists/card-grid.php:68
+#: template-parts/post-lists/card-hero.php:77
+#: template-parts/post-lists/card-list.php:76
+#: template-parts/post-lists/panel.php:60
+msgid "Read more"
+msgstr ""
+
+#: template-parts/post-lists/empty.php:17
+msgid "No posts found."
+msgstr ""
+
+#: template-parts/post-lists/pagination.php:37
+msgid "Post list navigation"
+msgstr ""
+
+#. translators: %d: number of the paginated post list on the page, from 2.
+#: template-parts/post-lists/pagination.php:39
+#, php-format
+msgid "Post list navigation %d"
+msgstr ""
+
+#: modules/consent/blocks/consent-link/block.json
+msgctxt "block title"
+msgid "Cookie settings link"
+msgstr ""
+
+#: modules/consent/blocks/consent-link/block.json
+msgctxt "block description"
+msgid "Link or button that opens the cookie settings."
+msgstr ""
+
+#: modules/consent/blocks/consent-link/block.json
+msgctxt "block keyword"
+msgid "cookie"
+msgstr ""
+
+#: modules/consent/blocks/consent-link/block.json
+msgctxt "block keyword"
+msgid "consent"
+msgstr ""
+
+#: modules/consent/blocks/consent-link/block.json
+msgctxt "block keyword"
+msgid "privacy"
+msgstr ""
+
+#: modules/header-footer/blocks/contact/block.json
+msgctxt "block title"
+msgid "Contact"
+msgstr ""
+
+#: modules/header-footer/blocks/contact/block.json
+msgctxt "block description"
+msgid "Address, phone and email of the theme settings."
+msgstr ""
+
+#: modules/header-footer/blocks/contact/block.json
+msgctxt "block keyword"
+msgid "contact"
+msgstr ""
+
+#: modules/header-footer/blocks/contact/block.json
+msgctxt "block keyword"
+msgid "address"
+msgstr ""
+
+#: modules/header-footer/blocks/contact/block.json
+msgctxt "block keyword"
+msgid "phone"
+msgstr ""
+
+#: modules/header-footer/blocks/contact/block.json
+msgctxt "block keyword"
+msgid "email"
+msgstr ""
+
+#: modules/header-footer/blocks/footer-menu/block.json
+msgctxt "block title"
+msgid "Footer menu"
+msgstr ""
+
+#: modules/header-footer/blocks/footer-menu/block.json
+msgctxt "block description"
+msgid "Menu assigned to the location Footer menu."
+msgstr ""
+
+#: modules/header-footer/blocks/footer-menu/block.json
+#: modules/header-footer/blocks/footer-text/block.json
+msgctxt "block keyword"
+msgid "footer"
+msgstr ""
+
+#: modules/header-footer/blocks/footer-menu/block.json
+#: modules/header-footer/blocks/navbar/block.json
+msgctxt "block keyword"
+msgid "menu"
+msgstr ""
+
+#: modules/header-footer/blocks/footer-menu/block.json
+#: modules/header-footer/blocks/navbar/block.json
+msgctxt "block keyword"
+msgid "navigation"
+msgstr ""
+
+#: modules/header-footer/blocks/footer-text/block.json
+msgctxt "block title"
+msgid "Footer text"
+msgstr ""
+
+#: modules/header-footer/blocks/footer-text/block.json
+msgctxt "block description"
+msgid "Footer text of the theme settings, or the copyright line without it, with the footer links of the theme."
+msgstr ""
+
+#: modules/header-footer/blocks/footer-text/block.json
+msgctxt "block keyword"
+msgid "copyright"
+msgstr ""
+
+#: modules/header-footer/blocks/footer-text/block.json
+msgctxt "block keyword"
+msgid "text"
+msgstr ""
+
+#: modules/header-footer/blocks/language-switcher/block.json
+msgctxt "block title"
+msgid "Language switcher"
+msgstr ""
+
+#: modules/header-footer/blocks/language-switcher/block.json
+msgctxt "block description"
+msgid "Links to the page in the other languages of WPML; shows nothing without WPML."
+msgstr ""
+
+#: modules/header-footer/blocks/language-switcher/block.json
+msgctxt "block keyword"
+msgid "language"
+msgstr ""
+
+#: modules/header-footer/blocks/language-switcher/block.json
+msgctxt "block keyword"
+msgid "translation"
+msgstr ""
+
+#: modules/header-footer/blocks/language-switcher/block.json
+msgctxt "block keyword"
+msgid "WPML"
+msgstr ""
+
+#: modules/header-footer/blocks/logo/block.json
+msgctxt "block title"
+msgid "Logo"
+msgstr ""
+
+#: modules/header-footer/blocks/logo/block.json
+msgctxt "block description"
+msgid "Logo of the site from the theme files, with a variant for the dark color scheme; the site name without logo files."
+msgstr ""
+
+#: modules/header-footer/blocks/logo/block.json
+msgctxt "block keyword"
+msgid "logo"
+msgstr ""
+
+#: modules/header-footer/blocks/logo/block.json
+msgctxt "block keyword"
+msgid "brand"
+msgstr ""
+
+#: modules/header-footer/blocks/navbar/block.json
+msgctxt "block title"
+msgid "Navbar"
+msgstr ""
+
+#: modules/header-footer/blocks/navbar/block.json
+msgctxt "block description"
+msgid "Main menu of the header with logo, search and a menu that opens from the side on small screens."
+msgstr ""
+
+#: modules/header-footer/blocks/navbar/block.json
+msgctxt "block keyword"
+msgid "header"
+msgstr ""
+
+#: modules/header-footer/blocks/search/block.json
+msgctxt "block title"
+msgid "Search form"
+msgstr ""
+
+#: modules/header-footer/blocks/search/block.json
+msgctxt "block description"
+msgid "Search form of the theme."
+msgstr ""
+
+#: modules/header-footer/blocks/search/block.json
+msgctxt "block keyword"
+msgid "search"
+msgstr ""
+
+#: modules/header-footer/blocks/social-links/block.json
+msgctxt "block title"
+msgid "Social links"
+msgstr ""
+
+#: modules/header-footer/blocks/social-links/block.json
+msgctxt "block description"
+msgid "Links to the social media profiles of the theme settings."
+msgstr ""
+
+#: modules/header-footer/blocks/social-links/block.json
+msgctxt "block keyword"
+msgid "social"
+msgstr ""
+
+#: modules/header-footer/blocks/social-links/block.json
+msgctxt "block keyword"
+msgid "links"
+msgstr ""
+
+#: modules/header-footer/blocks/social-links/block.json
+msgctxt "block keyword"
+msgid "profiles"
+msgstr ""
+
+#: modules/post-lists/blocks/post-accordion/block.json
+msgctxt "block title"
+msgid "Post accordion"
+msgstr ""
+
+#: modules/post-lists/blocks/post-accordion/block.json
+msgctxt "block description"
+msgid "Posts as accordion or tabs, with the excerpt or the full content."
+msgstr ""
+
+#: modules/post-lists/blocks/post-accordion/block.json
+#: modules/post-lists/blocks/post-list/block.json
+#: modules/post-slider/blocks/post-slider/block.json
+#: modules/related-posts/blocks/related-posts/block.json
+msgctxt "block keyword"
+msgid "posts"
+msgstr ""
+
+#: modules/post-lists/blocks/post-accordion/block.json
+msgctxt "block keyword"
+msgid "accordion"
+msgstr ""
+
+#: modules/post-lists/blocks/post-accordion/block.json
+msgctxt "block keyword"
+msgid "tabs"
+msgstr ""
+
+#: modules/post-lists/blocks/post-accordion/block.json
+msgctxt "block keyword"
+msgid "faq"
+msgstr ""
+
+#: modules/post-lists/blocks/post-list/block.json
+msgctxt "block title"
+msgid "Post list"
+msgstr ""
+
+#: modules/post-lists/blocks/post-list/block.json
+msgctxt "block description"
+msgid "Posts as grid, list or large image cards, chosen by type, terms or by hand."
+msgstr ""
+
+#: modules/post-lists/blocks/post-list/block.json
+msgctxt "block keyword"
+msgid "grid"
+msgstr ""
+
+#: modules/post-lists/blocks/post-list/block.json
+msgctxt "block keyword"
+msgid "list"
+msgstr ""
+
+#: modules/post-lists/blocks/post-list/block.json
+msgctxt "block keyword"
+msgid "query"
+msgstr ""
+
+#: modules/post-slider/blocks/post-slider/block.json
+msgctxt "block title"
+msgid "Post slider"
+msgstr ""
+
+#: modules/post-slider/blocks/post-slider/block.json
+msgctxt "block description"
+msgid "Posts as a slider of cards or large image cards, chosen by type, terms or by hand."
+msgstr ""
+
+#: modules/post-slider/blocks/post-slider/block.json
+msgctxt "block keyword"
+msgid "slider"
+msgstr ""
+
+#: modules/post-slider/blocks/post-slider/block.json
+msgctxt "block keyword"
+msgid "carousel"
+msgstr ""
+
+#: modules/post-slider/blocks/post-slider/block.json
+msgctxt "block keyword"
+msgid "slideshow"
+msgstr ""
+
+#: modules/related-posts/blocks/related-posts/block.json
+msgctxt "block title"
+msgid "Related posts"
+msgstr ""
+
+#: modules/related-posts/blocks/related-posts/block.json
+msgctxt "block description"
+msgid "Posts that share a category or tag with the current post, as a grid or a slider."
+msgstr ""
+
+#: modules/related-posts/blocks/related-posts/block.json
+msgctxt "block keyword"
+msgid "related"
+msgstr ""
+
+#: modules/related-posts/blocks/related-posts/block.json
+msgctxt "block keyword"
+msgid "similar"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Header"
+msgstr ""
+
+#: theme.json
+msgctxt "Template part name"
+msgid "Footer"
+msgstr ""

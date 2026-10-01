@@ -1,0 +1,122 @@
+/*
+ * Admin page "Import/Export" of the theme settings.
+ *
+ * Loaded only on this page (admin_enqueue_scripts, handle
+ * creationell-wp-theme-admin-transfer). Hand-written and not built: it uses
+ * logical properties only, so the same file serves left-to-right and
+ * right-to-left admin languages.
+ */
+
+/* Wide tables scroll inside their region, so the page reflows at 400 % without horizontal page scrolling. */
+.creationell-wp-theme-transfer-scroll {
+	max-inline-size: 100%;
+	overflow-x: auto;
+	margin-block: 1em;
+}
+
+/* The region takes the keyboard focus for scrolling; keep the focus visible, also in Windows high contrast mode. */
+.creationell-wp-theme-transfer-scroll:focus-visible,
+.creationell-wp-theme-transfer [tabindex="-1"]:focus-visible {
+	outline: 2px solid #2271b1;
+	outline-offset: 2px;
+}
+
+.creationell-wp-theme-transfer-table caption {
+	padding-block: 0.5em;
+	font-weight: 600;
+	text-align: start;
+}
+
+.creationell-wp-theme-transfer-table th,
+.creationell-wp-theme-transfer-table td {
+	vertical-align: top;
+	overflow-wrap: anywhere;
+}
+
+/* Choices of the export: one per line, with targets of at least 24 x 24 px. */
+.creationell-wp-theme-transfer-choices {
+	margin-block: 1em;
+}
+
+.creationell-wp-theme-transfer-choices legend,
+.creationell-wp-theme-transfer-confirm legend {
+	font-weight: 600;
+}
+
+.creationell-wp-theme-transfer-choices p,
+.creationell-wp-theme-transfer-confirm p {
+	margin-block: 0.25em;
+}
+
+.creationell-wp-theme-transfer input[type="checkbox"] {
+	min-inline-size: 24px;
+	min-block-size: 24px;
+	margin-inline-end: 0.25em;
+	vertical-align: middle;
+}
+
+.creationell-wp-theme-transfer .button,
+.creationell-wp-theme-transfer input[type="file"] {
+	min-block-size: 32px;
+}
+
+.creationell-wp-theme-transfer-table .button {
+	white-space: nowrap;
+}
+
+/* Import and cancel side by side below the preview. */
+.creationell-wp-theme-transfer form:has(> .creationell-wp-theme-transfer-buttons) {
+	display: inline-block;
+	margin-inline-end: 0.5em;
+}
+
+/* Confirmation of module switches. */
+.creationell-wp-theme-transfer-confirm {
+	margin-block: 1em;
+	padding: 0.5em 1em;
+	border: 1px solid #d63638;
+	background-color: #fcf0f1;
+}
+
+/* Error text next to a field; the text carries the information, the colour only supports it. */
+.creationell-wp-theme-transfer-field-error {
+	color: #b32d2e;
+	font-weight: 600;
+}
+
+/* Header of the file in the preview. */
+.creationell-wp-theme-transfer-header {
+	display: grid;
+	grid-template-columns: max-content 1fr;
+	gap: 0.25em 1em;
+}
+
+.creationell-wp-theme-transfer-header dt {
+	font-weight: 600;
+}
+
+.creationell-wp-theme-transfer-header dd {
+	margin-inline-start: 0;
+	overflow-wrap: anywhere;
+}
+
+@media (max-width: 600px) {
+	.creationell-wp-theme-transfer-header {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* Color: a swatch next to the hex value, which carries the information. */
+.creationell-wp-theme-transfer-swatch {
+	display: inline-block;
+	inline-size: 1.5em;
+	block-size: 1.5em;
+	margin-inline-end: 0.5em;
+	vertical-align: middle;
+	border: 1px solid #50575e;
+	border-radius: 2px;
+}
+
+.creationell-wp-theme-transfer-default {
+	font-style: italic;
+}

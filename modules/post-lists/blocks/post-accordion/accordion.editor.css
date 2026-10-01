@@ -1,0 +1,24 @@
+/**
+ * Block creationell-theme/post-accordion in the editor canvas only (Blockstudio loads *.editor.css there).
+ *
+ * The canvas runs no Bootstrap script, so every panel stays open and the tab
+ * panels show one below the other; the author sees all posts of the block.
+ *
+ * @package Creationell\WpTheme
+ * @since   1.0.0
+ */
+
+.creationell-theme-post-accordion .accordion-collapse.collapse:not(.show) {
+	display: block;
+}
+
+.creationell-theme-post-accordion .tab-content > .tab-pane {
+	display: block;
+	opacity: 1;
+}
+
+.creationell-theme-post-accordion .tab-content > .tab-pane + .tab-pane {
+	margin-block-start: 1.5rem;
+	padding-block-start: 1.5rem;
+	border-block-start: var(--bs-border-width, 1px) solid var(--bs-border-color, currentcolor);
+}

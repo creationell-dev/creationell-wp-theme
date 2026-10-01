@@ -1,0 +1,335 @@
+{
+	"$schema": "https://blockstudio.dev/schema/block",
+	"apiVersion": 3,
+	"name": "creationell-theme/post-slider",
+	"title": "Post slider",
+	"category": "creationell-theme",
+	"icon": "slides",
+	"description": "Posts as a slider of cards or large image cards, chosen by type, terms or by hand.",
+	"keywords": [
+		"posts",
+		"slider",
+		"carousel",
+		"slideshow"
+	],
+	"textdomain": "creationell-wp-theme",
+	"supports": {
+		"html": false,
+		"anchor": true,
+		"align": true
+	},
+	"example": {
+		"attributes": {
+			"layout": "columns",
+			"columns": 3,
+			"postsPerPage": 3
+		}
+	},
+	"blockstudio": {
+		"attributes": [
+			{
+				"id": "layout",
+				"type": "select",
+				"label": "Layout",
+				"default": "columns",
+				"options": [
+					{
+						"value": "columns",
+						"label": "Cards in columns"
+					},
+					{
+						"value": "heroes",
+						"label": "Large image cards"
+					}
+				]
+			},
+			{
+				"id": "columns",
+				"type": "number",
+				"label": "Columns",
+				"help": "Cards side by side on large screens; small screens show fewer.",
+				"default": 3,
+				"min": 1,
+				"max": 4,
+				"step": 1,
+				"conditions": [
+					[
+						{
+							"id": "layout",
+							"operator": "==",
+							"value": "columns"
+						}
+					]
+				]
+			},
+			{
+				"id": "effect",
+				"type": "select",
+				"label": "Transition",
+				"default": "slide",
+				"options": [
+					{
+						"value": "slide",
+						"label": "Slide"
+					},
+					{
+						"value": "fade",
+						"label": "Fade"
+					}
+				],
+				"conditions": [
+					[
+						{
+							"id": "layout",
+							"operator": "==",
+							"value": "heroes"
+						}
+					]
+				]
+			},
+			{
+				"id": "loop",
+				"type": "toggle",
+				"label": "Loop",
+				"help": "After the last slide the first follows.",
+				"default": false
+			},
+			{
+				"id": "autoplay",
+				"type": "toggle",
+				"label": "Play automatically",
+				"help": "Moves on by itself and shows a button to pause. Visitors who prefer less motion start it themselves.",
+				"default": false
+			},
+			{
+				"id": "navigation",
+				"type": "toggle",
+				"label": "Show arrows",
+				"default": true
+			},
+			{
+				"id": "paginationDots",
+				"type": "toggle",
+				"label": "Show dots",
+				"default": true
+			},
+			{
+				"id": "postType",
+				"type": "select",
+				"label": "Post type",
+				"default": "post",
+				"populate": {
+					"type": "function",
+					"function": "get_post_types",
+					"arguments": [
+						{
+							"public": true
+						},
+						"objects"
+					],
+					"returnFormat": {
+						"value": "name",
+						"label": "label"
+					}
+				}
+			},
+			{
+				"id": "taxonomy",
+				"type": "select",
+				"label": "Taxonomy",
+				"help": "Shows only posts with one of the terms below.",
+				"allowNull": true,
+				"default": "",
+				"populate": {
+					"type": "function",
+					"function": "get_taxonomies",
+					"arguments": [
+						{
+							"public": true
+						},
+						"objects"
+					],
+					"returnFormat": {
+						"value": "name",
+						"label": "label"
+					}
+				}
+			},
+			{
+				"id": "terms",
+				"type": "text",
+				"label": "Term IDs",
+				"help": "IDs of the terms of the taxonomy, separated by commas.",
+				"default": ""
+			},
+			{
+				"id": "postIds",
+				"type": "select",
+				"multiple": true,
+				"label": "Selected posts",
+				"help": "Shows only these posts. Leave empty for the newest posts.",
+				"default": [],
+				"populate": {
+					"type": "query",
+					"query": "posts",
+					"fetch": true,
+					"arguments": {
+						"post_type": "any",
+						"numberposts": 20
+					},
+					"returnFormat": {
+						"value": "id"
+					}
+				}
+			},
+			{
+				"id": "parentId",
+				"type": "select",
+				"label": "Parent page",
+				"help": "Shows only the child pages of this page.",
+				"allowNull": true,
+				"default": 0,
+				"populate": {
+					"type": "query",
+					"query": "posts",
+					"fetch": true,
+					"arguments": {
+						"post_type": "page",
+						"numberposts": 20
+					},
+					"returnFormat": {
+						"value": "id"
+					}
+				}
+			},
+			{
+				"id": "orderBy",
+				"type": "select",
+				"label": "Order by",
+				"default": "date",
+				"options": [
+					{
+						"value": "date",
+						"label": "Date"
+					},
+					{
+						"value": "title",
+						"label": "Title"
+					},
+					{
+						"value": "menu_order",
+						"label": "Menu order"
+					},
+					{
+						"value": "modified",
+						"label": "Last modified"
+					},
+					{
+						"value": "rand",
+						"label": "Random"
+					},
+					{
+						"value": "post__in",
+						"label": "Order of the selected posts"
+					}
+				]
+			},
+			{
+				"id": "order",
+				"type": "select",
+				"label": "Direction",
+				"default": "DESC",
+				"options": [
+					{
+						"value": "DESC",
+						"label": "Descending"
+					},
+					{
+						"value": "ASC",
+						"label": "Ascending"
+					}
+				]
+			},
+			{
+				"id": "postsPerPage",
+				"type": "number",
+				"label": "Number of posts",
+				"default": 6,
+				"min": 1,
+				"max": 50,
+				"step": 1
+			},
+			{
+				"id": "excludeCurrent",
+				"type": "toggle",
+				"label": "Leave out the current post",
+				"default": true
+			},
+			{
+				"id": "showImage",
+				"type": "toggle",
+				"label": "Show image",
+				"default": true
+			},
+			{
+				"id": "showCategories",
+				"type": "toggle",
+				"label": "Show categories",
+				"default": true
+			},
+			{
+				"id": "showMeta",
+				"type": "toggle",
+				"label": "Show date and author",
+				"default": true
+			},
+			{
+				"id": "showExcerpt",
+				"type": "toggle",
+				"label": "Show excerpt",
+				"default": true
+			},
+			{
+				"id": "showReadMore",
+				"type": "toggle",
+				"label": "Show read more",
+				"default": true
+			},
+			{
+				"id": "showTags",
+				"type": "toggle",
+				"label": "Show tags",
+				"default": false
+			},
+			{
+				"id": "headingLevel",
+				"type": "select",
+				"label": "Heading level",
+				"help": "Level of the post titles, to fit the headings around the block.",
+				"default": 2,
+				"options": [
+					{
+						"value": 2,
+						"label": "Heading 2"
+					},
+					{
+						"value": 3,
+						"label": "Heading 3"
+					},
+					{
+						"value": 4,
+						"label": "Heading 4"
+					},
+					{
+						"value": 5,
+						"label": "Heading 5"
+					},
+					{
+						"value": 6,
+						"label": "Heading 6"
+					}
+				]
+			}
+		]
+	}
+}

@@ -1,0 +1,130 @@
+/*
+ * creationell Theme consent module: CookieConsent in the look of Bootstrap.
+ *
+ * Maps the variables of CookieConsent to the Bootstrap variables of the theme:
+ * font, surfaces, text, links, borders and radii from the body variables, both
+ * button sets from the --bs-btn-* values that the class btn-primary sets on the
+ * root element #creationell-theme-consent. Theme colors and the dark mode
+ * (data-bs-theme) therefore apply without own colors. Only var(--bs-*) and
+ * var(--cc-*), logical properties, no color literals. The additions marked with
+ * a finding come from the spike report S-CC (decision B).
+ */
+#cc-main {
+	--cc-font-family: var(--bs-body-font-family);
+	--cc-bg: var(--bs-body-bg);
+	--cc-primary-color: var(--bs-body-color);
+	--cc-secondary-color: var(--bs-secondary-color);
+	--cc-link-color: var(--bs-link-color);
+	--cc-separator-border-color: var(--bs-border-color);
+	--cc-modal-border-radius: var(--bs-border-radius-lg);
+	--cc-btn-border-radius: var(--bs-border-radius);
+	--cc-pm-toggle-border-radius: var(--bs-border-radius-pill);
+	--cc-btn-primary-bg: var(--bs-btn-bg);
+	--cc-btn-primary-color: var(--bs-btn-color);
+	--cc-btn-primary-border-color: var(--bs-btn-border-color);
+	--cc-btn-primary-hover-bg: var(--bs-btn-hover-bg);
+	--cc-btn-primary-hover-color: var(--bs-btn-hover-color);
+	--cc-btn-primary-hover-border-color: var(--bs-btn-hover-border-color);
+	--cc-btn-secondary-bg: var(--bs-btn-bg);
+	--cc-btn-secondary-color: var(--bs-btn-color);
+	--cc-btn-secondary-border-color: var(--bs-btn-border-color);
+	--cc-btn-secondary-hover-bg: var(--bs-btn-hover-bg);
+	--cc-btn-secondary-hover-color: var(--bs-btn-hover-color);
+	--cc-btn-secondary-hover-border-color: var(--bs-btn-hover-border-color);
+	--cc-toggle-on-bg: var(--bs-btn-bg);
+	--cc-toggle-off-bg: var(--bs-secondary-color);
+	--cc-toggle-on-knob-bg: var(--bs-btn-color);
+	--cc-toggle-off-knob-bg: var(--bs-body-bg);
+	--cc-toggle-enabled-icon-color: var(--bs-btn-bg);
+	--cc-toggle-disabled-icon-color: var(--bs-secondary-color);
+	--cc-toggle-readonly-bg: var(--bs-secondary-bg);
+	--cc-toggle-readonly-knob-bg: var(--bs-body-bg);
+	--cc-toggle-readonly-knob-icon-color: var(--bs-secondary-color);
+	--cc-section-category-border: var(--bs-border-color);
+	--cc-cookie-category-block-bg: var(--bs-tertiary-bg);
+	--cc-cookie-category-block-border: var(--bs-border-color);
+	--cc-cookie-category-block-hover-bg: var(--bs-secondary-bg);
+	--cc-cookie-category-block-hover-border: var(--bs-border-color);
+	--cc-cookie-category-expanded-block-bg: transparent;
+	--cc-cookie-category-expanded-block-hover-bg: var(--bs-secondary-bg);
+	--cc-overlay-bg: rgba(var(--bs-black-rgb), 0.5);
+	--cc-webkit-scrollbar-bg: var(--bs-border-color);
+	--cc-webkit-scrollbar-hover-bg: var(--bs-secondary-color);
+	--cc-footer-bg: var(--bs-tertiary-bg);
+	--cc-footer-color: var(--bs-secondary-color);
+	--cc-footer-border-color: var(--bs-border-color);
+	/* Above sticky headers (1020, 1030), below offcanvas (1045) and modals (FS-13). */
+	--cc-z-index: 1044;
+	font-size: var(--bs-body-font-size);
+}
+
+/* Focus ring of the theme on every control of banner and dialog. */
+#cc-main :is(button, a, input):focus-visible {
+	outline: var(--bs-focus-ring-width) solid var(--bs-focus-ring-color);
+	outline-offset: 2px;
+}
+
+/*
+ * Equal buttons in the bar: CookieConsent puts a start margin on the second
+ * button inside equal grid columns, so it is narrower (spike finding F-6).
+ */
+#cc-main .cm.cm--bar:not(.cm--inline) .cm__btns .cm__btn-group .cm__btn + .cm__btn {
+	margin-inline: 0;
+	margin-block-start: 0;
+}
+
+#cc-main .cm--bar .cm__btn-group {
+	gap: 0.375rem;
+}
+
+/* At 400 % zoom the bar is taller than the viewport; it scrolls instead of cutting off its title (spike finding F-9). */
+#cc-main .cm--bar {
+	max-block-size: 100vh;
+	max-block-size: 100dvh;
+	overflow-y: auto;
+}
+
+/* Category switches reach the minimum target size of 24 x 24 px (spike finding F-7). */
+#cc-main .section__toggle,
+#cc-main .section__toggle-wrapper {
+	block-size: 24px;
+}
+
+/* The bar sets its own transition duration, so reduced motion needs both selectors (spike finding F-8). */
+@media (prefers-reduced-motion: reduce) {
+
+	#cc-main,
+	#cc-main .cm--bar {
+		--cc-modal-transition-duration: 0s;
+	}
+}
+
+/*
+ * The banner is not modal: focused elements scroll above it (FS-12), and the
+ * page gets room at its end, so the last element can scroll above it too
+ * (spike finding F-5). consent.js keeps the offset at the banner height. The
+ * room is a spacer after the page, not a padding of body: the theme gives html
+ * and body a height of 100 %, so a padding would stay inside that height and
+ * the page would not get longer (end-to-end case E-CB-08).
+ */
+html.show--consent {
+	scroll-padding-block-end: var(--creationell-theme-consent-offset, 0px);
+}
+
+html.show--consent body::after {
+	content: "";
+	display: block;
+	block-size: var(--creationell-theme-consent-offset, 0px);
+}
+
+/*
+ * The offcanvas menu of the theme sits in the sticky header, whose stacking
+ * context has z-index 1020, so its own 1045 never reaches the banner. While an
+ * offcanvas or modal is open the banner goes below the header (FS-13, E-CB-07).
+ * The preferences dialog closes both before it opens (consent.js), but
+ * Bootstrap removes the class show only at the end of the hide transition, and
+ * a hide can be prevented: so the rule never applies while the dialog is open.
+ */
+html:not(.show--preferences):has(.offcanvas.show, .offcanvas.showing, .modal.show) #cc-main {
+	--cc-z-index: 1019;
+}

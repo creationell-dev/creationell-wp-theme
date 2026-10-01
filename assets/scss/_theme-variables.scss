@@ -1,0 +1,45 @@
+// In this file you can override the default variables of Bootstrap
+// Do you want primary to be green? Just add "$primary: #00FF00;" to this file and the theme will automatically compile the scss for you.
+
+/*-----------------------------------------------------------------------------
+
+  ATTENTION! This is the parent-theme's file. Your work will be lost by the 
+  next update!
+
+  Wouldn't you prefer to use one of our child themes and be update-safe?
+
+  creationell Theme Child: 
+  https://github.com/bootscore/bootscore-child/releases/latest/download/bootscore-child.zip
+
+-----------------------------------------------------------------------------*/
+
+// Accessible defaults of the theme. Text colours reach 4.5:1 and focus rings and
+// field borders 3:1 on white and on the light grey backgrounds (bg-body-tertiary);
+// composer test:contrast checks every pair. Change them in the child theme only
+// together with that check.
+
+// Colours: primary 5.84:1 on white, 5.54:1 on #f8f9fa; secondary 6.09:1 and 5.78:1.
+// Settings of the design section (Token_Map) come first and win; keep !default on
+// every variable the map names. These values are the setting defaults.
+$primary:   #0b5ed7 !default;
+$secondary: #5c636a !default;
+
+// Same value as Bootstrap; needed here for the field borders below.
+$gray-600: #6c757d;
+
+// Focus ring in the full primary colour instead of 25 % opacity. The ring
+// variables of links, buttons, fields, pagination and the close button follow.
+$focus-ring-opacity: 1;
+
+// Width of the focus outline of buttons and menu entries (theme/_forms.scss);
+// the outline keeps the same distance from a button.
+$btn-focus-outline-width: .125rem;
+
+// Field borders 4.69:1 on white.
+$input-border-color:       $gray-600;
+$input-focus-border-color: $primary;
+$form-check-input-border:  var(--bs-border-width) solid $gray-600;
+
+// Inline code: Bootstrap pink 600 instead of pink, 6.45:1 on white and 5.66:1 on
+// light grey table cells (pink has 4.50:1 on white only).
+$code-color: #ab296a;

@@ -1,0 +1,80 @@
+/*--------------------------------------------------------------
+Forms
+--------------------------------------------------------------*/
+
+// Select
+select {
+  @extend .form-select;
+}
+
+
+:root {
+  // Form validation icons
+  --valid-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'><path fill='#{valid-icon-color($valid-icon-color)}' d='M2.3 6.73.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/></svg>");
+  --invalid-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='#{invalid-icon-color($invalid-icon-color)}'><circle cx='6' cy='6' r='4.5'/><path stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/><circle cx='6' cy='8.2' r='.6' fill='#{invalid-icon-color($invalid-icon-color)}' stroke='none'/></svg>");
+}
+
+
+// Colour of the focus rings of the theme, per colour mode (_theme-maps.scss); the
+// language switcher draws its ring in the emphasis colour instead.
+// A custom property of the theme, not --bs-focus-ring-color, which a plugin with
+// its own copy of Bootstrap may redefine (K-11).
+:root,
+[data-bs-theme="light"] {
+  --creationell-theme-focus-ring: #{$focus-ring-color};
+}
+
+[data-bs-theme="dark"] {
+  --creationell-theme-focus-ring: #{$focus-ring-color-dark};
+  --#{$prefix}focus-ring-color: #{$focus-ring-color-dark};
+}
+
+// Keyboard focus: Bootstrap removes the outline and draws a ring with box-shadow.
+// Forced colours modes drop the shadow, so a transparent outline stays in place
+// and becomes visible there.
+.form-control:focus,
+.form-select:focus,
+.form-check-input:focus,
+.nav-link:focus-visible,
+.page-link:focus-visible {
+  outline: $focus-ring-width solid transparent;
+}
+
+// Buttons: Bootstrap draws their ring at half opacity in a mix of text and border
+// colour (under 2:1 on white for filled buttons), and the utility .shadow of the
+// top button replaces the ring with !important. An outline with a gap in the
+// colour of the focus ring stays visible on filled buttons, next to .shadow and
+// in forced colours modes; it replaces the box-shadow ring.
+.btn {
+  --#{$prefix}btn-focus-box-shadow: 0 0 0 0 transparent;
+}
+
+.btn:focus-visible,
+.btn-check:focus-visible + .btn {
+  outline: $btn-focus-outline-width solid var(--creationell-theme-focus-ring);
+  outline-offset: $btn-focus-outline-width;
+}
+
+// Close buttons: Bootstrap draws their ring from --bs-btn-close-focus-shadow and
+// resets the outline. A plugin that loads its own copy of Bootstrap after the
+// theme redefines both: a faint ring (1.41:1) or none at all when its ring colour
+// is undefined (K-11). The outline of the buttons replaces the ring; the doubled
+// class outranks .btn-close:focus of such a copy. After a mouse click the ring of
+// the theme's own Bootstrap stays off, as on the buttons.
+.btn-close {
+  --#{$prefix}btn-close-focus-shadow: 0 0 0 0 transparent;
+}
+
+.btn-close.btn-close:focus-visible {
+  outline: $btn-focus-outline-width solid var(--creationell-theme-focus-ring);
+  outline-offset: $btn-focus-outline-width;
+  box-shadow: none;
+}
+
+// Menu entries: Bootstrap keeps the browser outline there and only lightens the
+// background (1.05:1 on white). A ring inside the entry, so the scrolling
+// offcanvas panel does not clip it.
+.dropdown-item:focus-visible {
+  outline: $btn-focus-outline-width solid var(--creationell-theme-focus-ring);
+  outline-offset: -$btn-focus-outline-width;
+}

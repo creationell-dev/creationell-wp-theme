@@ -1,0 +1,214 @@
+Generated file. Do not edit. Run: composer notices
+
+THIRD-PARTY NOTICES of the creationell WordPress theme
+
+The theme ships the components listed below. Each entry names the version,
+the source, the license (SPDX identifier), the copyright holder and the
+license text or the file in the theme that contains it.
+
+------------------------------------------------------------------------
+bootstrap (npm) 5.3.8
+Source: https://registry.npmjs.org/bootstrap/-/bootstrap-5.3.8.tgz
+License: MIT
+Copyright (c) 2011-2025 The Bootstrap Authors
+License text: assets/vendor/bootstrap-5/LICENSE
+
+------------------------------------------------------------------------
+bootstrap-icons (npm) 1.13.1
+Source: https://registry.npmjs.org/bootstrap-icons/-/bootstrap-icons-1.13.1.tgz
+License: MIT
+Copyright (c) 2019-2024 The Bootstrap Authors
+License text: assets/vendor/bootstrap-icons/LICENSE
+
+------------------------------------------------------------------------
+vanilla-cookieconsent (npm) 3.1.0
+Source: https://registry.npmjs.org/vanilla-cookieconsent/-/vanilla-cookieconsent-3.1.0.tgz
+License: MIT
+Copyright (c) 2020-2025 Orest Bida
+License text: assets/vendor/cookieconsent/LICENSE
+
+------------------------------------------------------------------------
+swiper (npm) 14.3.0
+Source: https://registry.npmjs.org/swiper/-/swiper-14.3.0.tgz
+License: MIT
+Copyright (c) 2019 Vladimir Kharlampidi
+License text: assets/vendor/swiper/LICENSE
+
+------------------------------------------------------------------------
+league/uri (Composer, scoped as Creationell\WpTheme\Vendor) 7.6.0
+Source: https://github.com/thephpleague/uri.git f625804987a0a9112d954f9209d91fec52182344
+License: MIT
+Copyright (c) 2015 ignace nyamagana butera
+License text: lib/league/uri/LICENSE
+
+------------------------------------------------------------------------
+league/uri-interfaces (Composer, scoped as Creationell\WpTheme\Vendor) 7.8.1
+Source: https://github.com/thephpleague/uri-interfaces.git 85d5c77c5d6d3af6c54db4a78246364908f3c928
+License: MIT
+Copyright (c) 2015 ignace nyamagana butera
+License text: lib/league/uri-interfaces/LICENSE
+
+------------------------------------------------------------------------
+moodlehq/rtlcss-php (Composer, scoped as Creationell\WpTheme\Vendor) 1.0.1
+Source: https://github.com/moodlehq/rtlcss-php.git e251ac75ae5a8ea8e745ae92a6d426fcb0797d84
+License: MIT
+Copyright (c) 2016 Martin Dougiamas
+Note: src/MoodleHQ/RTLCSS/RTLCSS.php replaced before scoping with a version adapted to sabberworm/php-css-parser 9, API changes only (original blob 1e14e805e2fed7261ec61cd397d8ed892ac49fb0)
+License text: lib/moodlehq/rtlcss-php/LICENSE
+
+------------------------------------------------------------------------
+psr/http-factory (Composer, scoped as Creationell\WpTheme\Vendor) 1.1.0
+Source: https://github.com/php-fig/http-factory.git 2b4765fddfe3b508ac62f829e852b1501d3f6e8a
+License: MIT
+Copyright (c) 2018 PHP-FIG
+License text: lib/psr/http-factory/LICENSE
+
+------------------------------------------------------------------------
+psr/http-message (Composer, scoped as Creationell\WpTheme\Vendor) 2.0
+Source: https://github.com/php-fig/http-message.git 402d35bcb92c70c026d1a6a9883f06b2ead23d71
+License: MIT
+Copyright (c) 2014 PHP Framework Interoperability Group
+License text: lib/psr/http-message/LICENSE
+
+------------------------------------------------------------------------
+sabberworm/php-css-parser (Composer, scoped as Creationell\WpTheme\Vendor) 9.5.0
+Source: https://github.com/MyIntervals/PHP-CSS-Parser.git f284e63b6e891e0c28631e54ba06c3ed102a9ef3
+License: MIT
+Copyright (c) 2011 Raphael Schweikert, https://www.sabberworm.com/
+License text: lib/sabberworm/php-css-parser/LICENSE
+
+------------------------------------------------------------------------
+scssphp/scssphp (Composer, scoped as Creationell\WpTheme\Vendor) 2.1.0
+Source: https://github.com/scssphp/scssphp.git d8450c2baf5fb07d00374999d0ea51276974d1b6
+License: MIT
+Copyright (c) 2015 Leaf Corcoran, https://scssphp.github.io/scssphp
+Note: src/SourceMap/Base64VLQ.php replaced before scoping with the MIT version from scssphp commit 97ffb86ac9a9a527cc793269247e66ecfba59f33 (blob 3823709dda2f30ae9bfcc6078fbc51edcff91fbf)
+License text: lib/scssphp/scssphp/LICENSE.md
+
+------------------------------------------------------------------------
+scssphp/source-span (Composer, scoped as Creationell\WpTheme\Vendor) 1.1.0
+Source: https://github.com/scssphp/source-span.git 37d653206daf11da1ee60b333984101bc4c27ba2
+License: MIT
+Copyright (c) 2024-present, the Scssphp project authors
+License text: lib/scssphp/source-span/LICENSE.md
+
+------------------------------------------------------------------------
+symfony/filesystem (Composer, scoped as Creationell\WpTheme\Vendor) 7.4.0
+Source: https://github.com/symfony/filesystem.git d551b38811096d0be9c4691d406991b47c0c630a
+License: MIT
+Copyright (c) 2004-present Fabien Potencier
+License text: lib/symfony/filesystem/LICENSE
+
+------------------------------------------------------------------------
+Bootscore 7.0.0-dev (commit bcd849eff16181cd2f9eedeca19dd8da195a8bb5 and 13 later commits)
+Source: https://github.com/bootscore/bootscore
+License: MIT
+Copyright (c) 2018 - The Bootscore Contributors
+Note: The theme is a renamed and reformatted fork of this base.
+License text:
+
+MIT License
+
+Copyright (c) 2018 - The Bootscore Contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+------------------------------------------------------------------------
+Underscores (as included in Bootscore 7.0.0-dev)
+Source: https://underscores.me/
+License: GPL-2.0-or-later
+Copyright (c) 2012-2024 Automattic, Inc.
+Note: Bootscore is based on this starter theme; templates and template tags keep parts of it.
+License text: LICENSE
+
+------------------------------------------------------------------------
+WP Bootstrap Starter (comments section script, as included in Bootscore 7.0.0-dev)
+Source: https://github.com/afterimagedesigns/wp-bootstrap-starter
+License: GPL-2.0-or-later
+Copyright (c) Afterimage Designs
+Note: Bootscore credits its comments section script to this theme; the code is treated as GPL-2.0-or-later.
+License text: LICENSE
+
+------------------------------------------------------------------------
+Bootstrap 5 WordPress Navbar Walker (as included in Bootscore 7.0.0-dev)
+Source: https://github.com/AlexWebLab/bootstrap-5-wordpress-navbar-walker
+License: MIT
+Copyright (c) AlexWebLab
+Note: Base of inc/class-creationell-wp-theme-nav-walker.php; copyright holder as named in the Bootscore credits.
+License text:
+
+MIT License
+
+Copyright (c) AlexWebLab
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+------------------------------------------------------------------------
+JPKCom Plugin Updater (downstream copy in CreaCaptcha 1.1.2, includes/class-plugin-updater.php)
+Source: https://github.com/creationell-dev/creationell-captcha
+License: GPL-2.0-or-later
+Copyright (c) Jean Pierre Kolb
+Note: Base of src/update/class-theme-updater.php, changed for theme updates; the file header lists the changes.
+License text: LICENSE
+
+------------------------------------------------------------------------
+bs Contact Form 7 5.4.2 (commit afc2d9ad0633eb2413e2f0d39ce32ab97da46232)
+Source: https://github.com/bootscore/bs-contact-form-7
+License: MIT
+Copyright (c) 2021 - The Bootscore Contributors
+Note: The acceptance and validation rules of modules/contact-form-7/assets/css/contact-form-7.css follow its stylesheet; the module replaces the plugin.
+License text:
+
+MIT License
+
+Copyright (c) 2021 - The Bootscore Contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

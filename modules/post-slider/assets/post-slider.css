@@ -1,0 +1,160 @@
+/**
+ * Module post-slider: layout of the post slider, its controls and its cards.
+ *
+ * Swiper brings the mechanics (swiper-bundle.min.css, loaded before this file
+ * in the front end); Bootstrap classes in the template part do most of the
+ * rest. Colors come only from the Bootstrap variables of the theme (--bs-*),
+ * so color settings and the dark mode apply. Logical properties only; no
+ * right-to-left copy needed. Loaded after creationell-wp-theme-main on pages
+ * with a post slider and in the editor canvas, where the block shows a static
+ * grid of cards.
+ *
+ * @package Creationell\WpTheme
+ * @since   1.0.0
+ */
+
+/* Slides of one row share the height of the tallest card. */
+.creationell-theme-post-slider .swiper-slide {
+	block-size: auto;
+}
+
+/*
+ * Until Swiper has started, and without it, the slides form a grid and the
+ * controls stay hidden: every post stays visible and reachable. The grid keys
+ * on the class swiper-initialized, which Swiper sets before it measures the
+ * slides; the controls key on data-initialized of the slider script.
+ */
+.creationell-theme-post-slider .swiper:not(.swiper-initialized) > .swiper-wrapper {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
+	gap: 1.5rem;
+	transform: none;
+}
+
+.creationell-theme-post-slider .swiper:not(.swiper-initialized) .swiper-slide {
+	inline-size: auto;
+}
+
+.creationell-theme-post-slider:not([data-initialized]) .creationell-theme-post-slider__pause,
+.creationell-theme-post-slider:not([data-initialized]) .creationell-theme-post-slider__controls {
+	display: none;
+}
+
+/* Arrows and dots sit below the slides, arrows at both ends of the dots. */
+.creationell-theme-post-slider__controls {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: .5rem;
+	margin-block-start: 1rem;
+}
+
+/* Swiper hides arrows and dots when all slides fit (watchOverflow). */
+.creationell-theme-post-slider__controls .swiper-button-lock,
+.creationell-theme-post-slider__controls .swiper-pagination-lock {
+	display: none;
+}
+
+/* Arrow and pause buttons keep a target size of at least 24 x 24 px (2.5.8) and show their icon centered. */
+.creationell-theme-post-slider__prev,
+.creationell-theme-post-slider__next,
+.creationell-theme-post-slider__pause {
+	min-block-size: 2.75rem;
+	min-inline-size: 2.75rem;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.creationell-theme-post-slider__prev:disabled,
+.creationell-theme-post-slider__next:disabled {
+	opacity: .5;
+}
+
+/*
+ * The dots: Swiper places them absolutely inside the slider; here they are a
+ * row of buttons in the control bar. Each button is 24 x 24 px (2.5.8), the
+ * visible dot is drawn inside it.
+ */
+.creationell-theme-post-slider .creationell-theme-post-slider__dots {
+	position: static;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	inline-size: auto;
+	transform: none;
+}
+
+.creationell-theme-post-slider .creationell-theme-post-slider__dots .swiper-pagination-bullet {
+	position: relative;
+	inline-size: 1.5rem;
+	block-size: 1.5rem;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background: transparent;
+	color: var(--bs-body-color);
+	opacity: 1;
+}
+
+.creationell-theme-post-slider .creationell-theme-post-slider__dots .swiper-pagination-bullet::before {
+	content: "";
+	position: absolute;
+	inset: .5rem;
+	border-radius: 50%;
+	background-color: currentcolor;
+	opacity: .35;
+}
+
+.creationell-theme-post-slider .creationell-theme-post-slider__dots .swiper-pagination-bullet-active::before {
+	inset: .375rem;
+	background-color: var(--bs-primary);
+	opacity: 1;
+}
+
+.creationell-theme-post-slider .creationell-theme-post-slider__dots .swiper-pagination-bullet:focus-visible {
+	outline: var(--bs-focus-ring-width, .25rem) solid var(--bs-focus-ring-color, currentcolor);
+	outline-offset: 0;
+}
+
+/*
+ * Hero cards: the image fills the card behind the text box, which grows with
+ * its text. The same rules as in the module post-lists, which may be off.
+ */
+.creationell-theme-post-slider .creationell-theme-post-hero {
+	min-block-size: 18rem;
+}
+
+.creationell-theme-post-slider .creationell-theme-post-hero > .card-img {
+	position: absolute;
+	inset: 0;
+}
+
+.creationell-theme-post-slider .creationell-theme-post-hero > .card-img-overlay {
+	position: relative;
+	flex-grow: 1;
+}
+
+.creationell-theme-post-slider--heroes .creationell-theme-post-hero {
+	min-block-size: 22rem;
+}
+
+/*
+ * The title link is stretched over the card; its focus ring would only frame the
+ * title. The whole card shows the ring instead (2.4.7), inside the card, since
+ * the slider clips what lies outside its slides.
+ */
+.creationell-theme-post-slider .creationell-theme-post-card:has(.stretched-link:focus-visible) {
+	outline: var(--bs-focus-ring-width, .25rem) solid var(--bs-focus-ring-color, currentcolor);
+	outline-offset: calc(-1 * var(--bs-focus-ring-width, .25rem));
+}
+
+.creationell-theme-post-slider .creationell-theme-post-card .stretched-link:focus-visible {
+	outline: 0;
+}
+
+/* Forced colors modes drop the box-shadow ring of Bootstrap; a transparent outline becomes visible there. */
+.creationell-theme-post-slider .btn:focus-visible {
+	outline: 2px solid transparent;
+}
