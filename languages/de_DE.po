@@ -780,21 +780,21 @@ msgstr "unbekannt"
 msgid "The child theme %1$s needs a fix in its style.css: %2$s The creationell Theme uses the project styles of a child theme only for the Bootstrap lines it declares."
 msgstr "Das Child-Theme %1$s braucht eine Korrektur in seiner style.css: %2$s Das creationell Theme nutzt die Projekt-Styles eines Child-Themes nur für die Bootstrap-Linien, die es angibt."
 
-#: src/compiler/class-custom-stylesheet.php:364
+#: src/compiler/class-custom-stylesheet.php:368
 msgid "You are not allowed to rebuild the stylesheet."
 msgstr "Du darfst das Stylesheet nicht neu erstellen."
 
 #. translators: %s: error message of the compiler, in English.
-#: src/compiler/class-custom-stylesheet.php:402
+#: src/compiler/class-custom-stylesheet.php:406
 #, php-format
 msgid "The stylesheet of the design settings could not be built; the previous stylesheet stays active. Error: %s"
 msgstr "Das Stylesheet der Design-Einstellungen konnte nicht erstellt werden; das bisherige Stylesheet bleibt aktiv. Fehler: %s"
 
-#: src/compiler/class-custom-stylesheet.php:407
+#: src/compiler/class-custom-stylesheet.php:411
 msgid "The stylesheet does not match the current design settings, theme files or child theme files."
 msgstr "Das Stylesheet passt nicht zu den aktuellen Design-Einstellungen, Theme-Dateien oder Child-Theme-Dateien."
 
-#: src/compiler/class-custom-stylesheet.php:419
+#: src/compiler/class-custom-stylesheet.php:423
 msgid "Rebuild the stylesheet"
 msgstr "Stylesheet neu erstellen"
 

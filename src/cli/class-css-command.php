@@ -21,8 +21,8 @@ defined( 'ABSPATH' ) || exit;
  *
  * "css build" compiles when the fingerprint changed or with --force and ends
  * with exit code 1 when the build failed; "css status" shows the stored state,
- * whether it is stale and the right-to-left languages, which always get the
- * package stylesheet. Both change no setting and need no --user. The
+ * whether it is stale and the right-to-left languages, for which the build
+ * adds a right-to-left file. Both change no setting and need no --user. The
  * class also collects the section "css" of "wp creationell-theme doctor".
  *
  * Example:
@@ -56,11 +56,11 @@ final class Css_Command {
 	public const FORMATS = array( 'table', 'json' );
 
 	/**
-	 * Language codes written right to left, as WordPress.org lists the locales; the individual stylesheet is left to right only.
+	 * Language codes written right to left, as WordPress.org lists the locales.
 	 *
 	 * @since 1.0.0
 	 */
-	public const RTL_LANGUAGES = array( 'ar', 'arc', 'ary', 'azb', 'ckb', 'dv', 'fa', 'haz', 'he', 'ps', 'sd', 'skr', 'ug', 'ur', 'yi' );
+	public const RTL_LANGUAGES = Language::RTL_LANGUAGES;
 
 	/**
 	 * Registers the command and the doctor section; runs on cli_init.
@@ -119,7 +119,7 @@ final class Css_Command {
 		WP_CLI::success(
 			sprintf(
 				'Built %1$s for line %2$d in %3$s s (peak memory %4$s MiB).',
-				$state['files']['ltr'],
+				implode( ', ', array_filter( array( $state['files']['ltr'], $state['files']['rtl'] ) ) ),
 				$state['line'],
 				number_format( $state['seconds'], 2, '.', '' ),
 				number_format( $state['peak_bytes'] / 1048576, 1, '.', '' )
@@ -132,8 +132,9 @@ final class Css_Command {
 	 *
 	 * Fields: the stored state (status ok, package or failed, line, fingerprint,
 	 * files, theme version, time, seconds, peak memory, error), "stale" (a build
-	 * would change the stylesheet) and "rtl_languages" (active languages that get
-	 * the package stylesheet). Computes the fingerprint; the front end never does.
+	 * would change the stylesheet) and "rtl_languages" (active languages written
+	 * right to left; with them the build adds files.rtl). Computes the
+	 * fingerprint; the front end never does.
 	 *
 	 * ## OPTIONS
 	 *
@@ -183,7 +184,8 @@ final class Css_Command {
 	 * Collects the doctor section "css": the status of "css status" with warnings.
 	 *
 	 * Warnings: a failed build, a stale stylesheet, and right-to-left languages
-	 * while an individual stylesheet is active (they keep the package colors).
+	 * while the individual stylesheet has no right-to-left file (they keep the
+	 * package stylesheet until the next build).
 	 *
 	 * @since 1.0.0
 	 *
@@ -198,8 +200,8 @@ final class Css_Command {
 		if ( $status['stale'] ) {
 			$warnings[] = 'The stylesheet does not match the design settings or the SCSS files; run wp creationell-theme css build.';
 		}
-		if ( 'package' !== $status['status'] && array() !== $status['rtl_languages'] ) {
-			$warnings[] = sprintf( 'The right-to-left languages %s get the package stylesheet without the design settings; the individual stylesheet is built left to right only.', implode( ', ', $status['rtl_languages'] ) );
+		if ( 'package' !== $status['status'] && array() !== $status['rtl_languages'] && '' === $status['files']['rtl'] ) {
+			$warnings[] = sprintf( 'The right-to-left languages %s get the package stylesheet without the design settings until the stylesheet is rebuilt; run wp creationell-theme css build.', implode( ', ', $status['rtl_languages'] ) );
 		}
 		if ( array() !== $warnings ) {
 			$status['warnings'] = $warnings;
@@ -212,34 +214,15 @@ final class Css_Command {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return array{schema: int, status: string, line: int, fingerprint: string, files: array{ltr: string, root_vars: string}, theme_version: string, built_at: int, seconds: float, peak_bytes: int, error: string|null, stale: bool, rtl_languages: array<int, string>} Status.
+	 * @return array{schema: int, status: string, line: int, fingerprint: string, files: array{ltr: string, rtl: string, root_vars: string}, theme_version: string, built_at: int, seconds: float, peak_bytes: int, error: string|null, stale: bool, rtl_languages: array<int, string>} Status.
 	 */
 	private static function collect(): array {
 		$stylesheet = Custom_Stylesheet::instance();
 		$status     = $stylesheet->state();
 
 		$status['stale']         = $stylesheet->is_stale();
-		$status['rtl_languages'] = self::rtl_languages();
+		$status['rtl_languages'] = Language::instance()->rtl();
 		return $status;
-	}
-
-	/**
-	 * Returns the active languages written right to left.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @return array<int, string> Language codes in the order of the active languages.
-	 */
-	private static function rtl_languages(): array {
-		$language = Language::instance();
-		$rtl      = array();
-		foreach ( $language->active() as $code ) {
-			$prefix = strtolower( explode( '_', str_replace( '-', '_', $language->locale( $code ) ) )[0] );
-			if ( in_array( $prefix, self::RTL_LANGUAGES, true ) ) {
-				$rtl[] = $code;
-			}
-		}
-		return $rtl;
 	}
 
 	/**

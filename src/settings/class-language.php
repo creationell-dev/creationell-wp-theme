@@ -56,6 +56,13 @@ final class Language {
 	public const WPML_ACTIVE = 'wpml_active_languages';
 
 	/**
+	 * Language parts of the locales written right to left, as WordPress.org lists them.
+	 *
+	 * @since 1.0.0
+	 */
+	public const RTL_LANGUAGES = array( 'ar', 'arc', 'ary', 'azb', 'ckb', 'dv', 'fa', 'haz', 'he', 'ps', 'sd', 'skr', 'ug', 'ur', 'yi' );
+
+	/**
 	 * Shared instance.
 	 *
 	 * @var self|null
@@ -146,6 +153,27 @@ final class Language {
 	public function active(): array {
 		$codes = array_keys( $this->wpml_languages() );
 		return array() === $codes ? array( $this->default() ) : $codes;
+	}
+
+	/**
+	 * Returns the active languages written right to left.
+	 *
+	 * A language counts when the language part of its locale is one of
+	 * RTL_LANGUAGES ("ar" for ar or ar_EG); without WPML that is the site locale.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return array<int, string> Language codes in the order of the active languages.
+	 */
+	public function rtl(): array {
+		$rtl = array();
+		foreach ( $this->active() as $code ) {
+			$prefix = strtolower( explode( '_', str_replace( '-', '_', $this->locale( $code ) ) )[0] );
+			if ( in_array( $prefix, self::RTL_LANGUAGES, true ) ) {
+				$rtl[] = $code;
+			}
+		}
+		return $rtl;
 	}
 
 	/**

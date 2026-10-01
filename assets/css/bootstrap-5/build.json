@@ -1,11 +1,11 @@
 {
     "line": 5,
-    "fingerprint": "dc37cb26b8229c2a5b7bc715142138258e030c9d3ce216245d4c0ce049b6277a",
+    "fingerprint": "1cc46b996cebd6157b4595c56d5b93a72f78b752a0a9c1c5c7f95b5b7bd3a6d1",
     "versions": {
         "bootstrap": "5.3.8",
         "scssphp/scssphp": "2.1.0",
         "sabberworm/php-css-parser": "9.5.0",
         "moodlehq/rtlcss-php": "1.0.1",
-        "creationell/line-5": "2"
+        "creationell/line-5": "5"
     }
 }

@@ -1,6 +1,6 @@
 # creationell Theme
 
-**Version:** 0.1.0
+**Version:** 0.1.1
 
 **Requires at least:** 7.1
 
@@ -237,6 +237,22 @@ GPL-2.0-or-later, see `LICENSE`. Licenses of the included third-party code:
 `THIRD-PARTY-NOTICES`.
 
 ## Changelog
+
+### 0.1.1
+
+- Right to left: the package ships `theme-rtl.min.css`, which WordPress loads
+  for languages written right to left (Arabic, Hebrew, Farsi, ...). While such
+  a language is active, the stylesheet of the design settings gets a
+  right-to-left copy as well; the new fingerprint makes installed sites build
+  their individual stylesheet once. After a right-to-left language is switched
+  on, it gets the package stylesheet without the design colours until the
+  stylesheet is rebuilt (saving the design settings or
+  `wp creationell-theme css build`; `doctor` warns). An editor whose profile
+  language is written right to left sees the package stylesheet without the
+  design colours in the editor of a left-to-right site.
+- Saving the design settings replaces the left-to-right and the right-to-left
+  stylesheet as one change: when one of them cannot be written, neither is
+  replaced.
 
 ### 0.1.0
 

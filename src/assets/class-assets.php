@@ -17,7 +17,8 @@ defined( 'ABSPATH' ) || exit;
  *
  * The handles are public: plugins may order their assets against them.
  * - creationell-wp-theme-main: compiled stylesheet from Stylesheet_Locator::main() in the head;
- *   WordPress swaps in theme-rtl.min.css for right-to-left languages once the package ships it.
+ *   WordPress swaps in its "-rtl" counterpart (theme-rtl.min.css of the package or
+ *   theme-<fp12>-rtl.min.css of the individual stylesheet) for right-to-left languages.
  * - creationell-wp-theme-icons: the vendored Bootstrap Icons font, only with CreaBootstrapBlocks
  *   or when the filter creationell_wp_theme_load_icon_font returns true.
  * - creationell-wp-theme-child-style: style.css of the active child theme, after the main stylesheet.

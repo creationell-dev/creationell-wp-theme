@@ -15,6 +15,7 @@ use Creationell\WpTheme\Core\Capabilities;
 use Creationell\WpTheme\Assets\Stylesheet_Locator;
 use Creationell\WpTheme\Settings\Bootstrap_Line;
 use Creationell\WpTheme\Settings\Font_Catalog;
+use Creationell\WpTheme\Settings\Language;
 use Creationell\WpTheme\Settings\Registry;
 use Creationell\WpTheme\Settings\Settings;
 use Creationell\WpTheme\Settings\Token_Map;
@@ -34,9 +35,12 @@ defined( 'ABSPATH' ) || exit;
  * assets/scss/ and assets/scss/child-defaults/ (empty partials the child
  * replaces) and assets/vendor/; (3) with every value at its default and no child
  * SCSS the package stylesheet applies: state "package", own files deleted;
- * (4) the same fingerprint with the file in place builds nothing; (5) the memory
+ * (4) the same fingerprint with the files in place builds nothing; (5) the memory
  * limit is raised (context creationell_wp_theme_compile) and the compiler writes
- * theme-<fp12>.min.css, left to right only; (6) root-vars-<fp12>.min.css follows
+ * theme-<fp12>.min.css and, while a language written right to left is active
+ * (Language::rtl()), theme-<fp12>-rtl.min.css; the directions are part of the
+ * fingerprint, so a new right-to-left language makes the stylesheet stale;
+ * (6) root-vars-<fp12>.min.css follows
  * for the editor screens; (7) the state option is written and older files except
  * the previous build are deleted. A failure writes the state "failed" with the
  * error, keeps the previous files active and shows an admin notice; it never
@@ -155,7 +159,7 @@ final class Custom_Stylesheet {
 	 *
 	 * @since 1.0.0
 	 */
-	public const FILE_PATTERN = '~^(?:theme|root-vars)-[0-9a-f]{12}\.min\.css$~D';
+	public const FILE_PATTERN = '~^(?:theme-[0-9a-f]{12}(?:-rtl)?|root-vars-[0-9a-f]{12})\.min\.css$~D';
 
 	/**
 	 * Absolute path that the admin notice shortens (Custom_Stylesheet::short_path()).
@@ -177,11 +181,11 @@ final class Custom_Stylesheet {
 	private const SERVER_PATH = '~(?:(?<![\w.\~/\x5c-])|(?<=file://))(?:[A-Za-z]:[/\x5c]|\x5c\x5c(?!\x5c)|/(?!/))(?:[^\s\x22()\[\]<>/\x5c]++[/\x5c]|(?!(?:[^\s\x22()\[\]<>/\x5c.]*+\.)++(?i:scss|sass|css|php|phar|inc|json|map|js|mjs|txt|log|tmp)(?::\d++)*+[:,;\x27]{0,2}+\x20)[^\s\x22()\[\]<>/\x5c]++(?:\x20(?!(?:[^\s\x22()\[\]<>/\x5c.]*+\.)++(?i:scss|sass|css|php|phar|inc|json|map|js|mjs|txt|log|tmp)(?::\d++)*+[:,;\x27]{0,2}+\x20)[^\s\x22()\[\]<>/\x5c]++|\x20?+\([^\s\x22()\[\]<>/\x5c]++(?:\x20[^\s\x22()\[\]<>/\x5c]++)*+\)(?=[/\x5c]))*+[/\x5c])*+[^\s\x22()\[\]<>/\x5c]++~';
 
 	/**
-	 * Directions of the individual stylesheet: left to right only; right to left uses the package.
+	 * Directions of the individual stylesheet; right to left only while a language written right to left is active.
 	 *
 	 * @since 1.0.0
 	 */
-	public const DIRECTIONS = array( 'ltr' );
+	public const DIRECTIONS = array( 'ltr', 'rtl' );
 
 	/**
 	 * Shared instance.
@@ -490,7 +494,7 @@ final class Custom_Stylesheet {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return array{schema: int, status: string, line: int, fingerprint: string, files: array{ltr: string, root_vars: string}, theme_version: string, built_at: int, seconds: float, peak_bytes: int, error: string|null} State; "package" without a stored one.
+	 * @return array{schema: int, status: string, line: int, fingerprint: string, files: array{ltr: string, rtl: string, root_vars: string}, theme_version: string, built_at: int, seconds: float, peak_bytes: int, error: string|null} State; "package" without a stored one.
 	 */
 	public function state(): array {
 		return self::stored() ?? self::package_state( Bootstrap_Line::instance()->active() );
@@ -499,8 +503,12 @@ final class Custom_Stylesheet {
 	/**
 	 * Returns the active individual file of a kind for the locator.
 	 *
-	 * Only a stored build of the active line with its file in place counts, and
-	 * only for left-to-right requests; otherwise the package applies.
+	 * Only a stored build of the active line with its file in place counts;
+	 * otherwise the package applies. A right-to-left request also needs the
+	 * right-to-left file of the build: the main stylesheet is then still the
+	 * left-to-right file, which WordPress replaces with its "-rtl" file
+	 * (wp_style_add_data( ..., 'rtl', 'replace' ) in Assets); without it the
+	 * package applies to both kinds.
 	 *
 	 * @since 1.0.0
 	 *
@@ -509,12 +517,15 @@ final class Custom_Stylesheet {
 	 */
 	public static function active( string $kind ): ?array {
 		$state = self::stored();
-		if ( null === $state || 'package' === $state['status'] || is_rtl() || Bootstrap_Line::instance()->active() !== $state['line'] ) {
+		if ( null === $state || 'package' === $state['status'] || Bootstrap_Line::instance()->active() !== $state['line'] ) {
 			return null;
 		}
 		$name   = 'root_vars' === $kind ? $state['files']['root_vars'] : $state['files']['ltr'];
 		$target = self::target();
 		if ( '' === $name || null === $target || ! is_file( $target['dir'] . '/' . $name ) ) {
+			return null;
+		}
+		if ( is_rtl() && ( '' === $state['files']['rtl'] || ! is_file( $target['dir'] . '/' . $state['files']['rtl'] ) ) ) {
 			return null;
 		}
 		return array(
@@ -553,7 +564,7 @@ final class Custom_Stylesheet {
 	 *
 	 * @param string $reason Trigger, e.g. "settings", "cli", "cron", "notice".
 	 * @param bool   $force  Whether to compile even with the same fingerprint.
-	 * @return array{schema: int, status: string, line: int, fingerprint: string, files: array{ltr: string, root_vars: string}, theme_version: string, built_at: int, seconds: float, peak_bytes: int, error: string|null} State.
+	 * @return array{schema: int, status: string, line: int, fingerprint: string, files: array{ltr: string, rtl: string, root_vars: string}, theme_version: string, built_at: int, seconds: float, peak_bytes: int, error: string|null} State.
 	 */
 	public function build( string $reason, bool $force = false ): array {
 		unset( $reason );
@@ -597,12 +608,12 @@ final class Custom_Stylesheet {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param Stylesheet_Compiler_Interface                                                                                                                                                                               $compiler    Compiler of the line.
-	 * @param array{line: int, custom: bool, variables: array<string, Scss_Value>, import_paths: array<int, string>, child_version: string|null}                                                                          $plan Plan.
-	 * @param string                                                                                                                                                                                                      $fingerprint Fingerprint.
-	 * @param array{dir: string, url: string}                                                                                                                                                                             $target    Target folder and URL.
-	 * @param array{schema: int, status: string, line: int, fingerprint: string, files: array{ltr: string, root_vars: string}, theme_version: string, built_at: int, seconds: float, peak_bytes: int, error: string|null} $previous Previous state.
-	 * @return array{schema: int, status: string, line: int, fingerprint: string, files: array{ltr: string, root_vars: string}, theme_version: string, built_at: int, seconds: float, peak_bytes: int, error: string|null} State.
+	 * @param Stylesheet_Compiler_Interface                                                                                                                                                                                            $compiler    Compiler of the line.
+	 * @param array{line: int, custom: bool, variables: array<string, Scss_Value>, import_paths: array<int, string>, child_version: string|null, directions: array<int, string>}                                                       $plan Plan.
+	 * @param string                                                                                                                                                                                                                   $fingerprint Fingerprint.
+	 * @param array{dir: string, url: string}                                                                                                                                                                                          $target    Target folder and URL.
+	 * @param array{schema: int, status: string, line: int, fingerprint: string, files: array{ltr: string, rtl: string, root_vars: string}, theme_version: string, built_at: int, seconds: float, peak_bytes: int, error: string|null} $previous Previous state.
+	 * @return array{schema: int, status: string, line: int, fingerprint: string, files: array{ltr: string, rtl: string, root_vars: string}, theme_version: string, built_at: int, seconds: float, peak_bytes: int, error: string|null} State.
 	 * @throws RuntimeException When the compiler cannot extract the root custom properties.
 	 * @throws Throwable        When extracting or writing the root custom properties fails; the new files are removed first.
 	 */
@@ -619,21 +630,23 @@ final class Custom_Stylesheet {
 				$plan['variables'],
 				$target['dir'],
 				'theme-' . $fp12,
-				self::DIRECTIONS
+				$plan['directions']
 			)
 		);
-		if ( ! $result->ok || ! isset( $result->files['ltr'] ) ) {
+		$rtl    = in_array( 'rtl', $plan['directions'], true );
+		if ( ! $result->ok || ! isset( $result->files['ltr'] ) || ( $rtl && ! isset( $result->files['rtl'] ) ) ) {
 			return $this->fail( $previous, $result->error ?? 'The compiler wrote no stylesheet.', $result->seconds, $result->peak_bytes );
 		}
-		$main = 'theme-' . $fp12 . '.min.css';
-		$vars = 'root-vars-' . $fp12 . '.min.css';
+		$main  = 'theme-' . $fp12 . '.min.css';
+		$right = $rtl ? 'theme-' . $fp12 . '-rtl.min.css' : '';
+		$vars  = 'root-vars-' . $fp12 . '.min.css';
 		try {
 			$root = $compiler->root_vars( self::read( $result->files['ltr'] ) );
 			Atomic_File_Writer::write( $target['dir'] . '/' . $vars, is_string( $root ) ? $root : '' );
 		} catch ( Throwable $error ) {
-			// The previous files stay active; the new stylesheet of this build would be an orphan until the next cleanup.
+			// The previous files stay active; the new stylesheets of this build would be orphans until the next cleanup.
 			$active = 'package' === $previous['status'] ? array() : array_values( $previous['files'] );
-			foreach ( array( $main, $vars ) as $name ) {
+			foreach ( array_filter( array( $main, $right, $vars ) ) as $name ) {
 				if ( ! in_array( $name, $active, true ) ) {
 					wp_delete_file( $target['dir'] . '/' . $name );
 				}
@@ -648,6 +661,7 @@ final class Custom_Stylesheet {
 			'fingerprint'   => $fingerprint,
 			'files'         => array(
 				'ltr'       => $main,
+				'rtl'       => $right,
 				'root_vars' => $vars,
 			),
 			'theme_version' => Stylesheet_Locator::theme_version(),
@@ -657,21 +671,20 @@ final class Custom_Stylesheet {
 			'error'         => null,
 		);
 		$this->save( $state );
-		$keep = array( $main, $vars );
+		$keep = array( $main, $right, $vars );
 		if ( 'package' !== $previous['status'] ) {
-			$keep[] = $previous['files']['ltr'];
-			$keep[] = $previous['files']['root_vars'];
+			$keep = array_merge( $keep, array_values( $previous['files'] ) );
 		}
-		$this->delete_files( $keep );
+		$this->delete_files( array_values( array_filter( $keep ) ) );
 		return $state;
 	}
 
 	/**
-	 * Collects what a build compiles: line, variables, import paths and whether anything differs from the package.
+	 * Collects what a build compiles: line, variables, import paths, directions and whether anything differs from the package.
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return array{line: int, custom: bool, variables: array<string, Scss_Value>, import_paths: array<int, string>, child_version: string|null} Plan.
+	 * @return array{line: int, custom: bool, variables: array<string, Scss_Value>, import_paths: array<int, string>, child_version: string|null, directions: array<int, string>} Plan.
 	 * @throws \InvalidArgumentException When a value is no valid SCSS value.
 	 */
 	private function plan(): array {
@@ -708,6 +721,7 @@ final class Custom_Stylesheet {
 			'variables'     => $variables,
 			'import_paths'  => $paths,
 			'child_version' => null === $child ? null : self::child_version( dirname( $child, 2 ) ),
+			'directions'    => array() === Language::instance()->rtl() ? array( 'ltr' ) : self::DIRECTIONS,
 		);
 	}
 
@@ -716,8 +730,8 @@ final class Custom_Stylesheet {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param array{line: int, custom: bool, variables: array<string, Scss_Value>, import_paths: array<int, string>, child_version: string|null} $plan Plan.
-	 * @param Stylesheet_Compiler_Interface|null                                                                                                 $compiler Compiler; null gets the one of the line.
+	 * @param array{line: int, custom: bool, variables: array<string, Scss_Value>, import_paths: array<int, string>, child_version: string|null, directions: array<int, string>} $plan Plan.
+	 * @param Stylesheet_Compiler_Interface|null                                                                                                                                 $compiler Compiler; null gets the one of the line.
 	 * @return string Fingerprint, 64 hex digits.
 	 * @throws \InvalidArgumentException When a source file cannot be read.
 	 */
@@ -728,23 +742,24 @@ final class Custom_Stylesheet {
 		if ( is_file( $entry ) && ! in_array( $entry, $sources, true ) ) {
 			$sources[] = $entry;
 		}
-		return Fingerprint::compute( $plan['line'], $compiler->versions(), $sources, $plan['variables'], self::DIRECTIONS, Stylesheet_Locator::theme_version(), $plan['child_version'] );
+		return Fingerprint::compute( $plan['line'], $compiler->versions(), $sources, $plan['variables'], $plan['directions'], Stylesheet_Locator::theme_version(), $plan['child_version'] );
 	}
 
 	/**
-	 * Tells whether a state holds the build of a fingerprint with its file in place.
+	 * Tells whether a state holds the build of a fingerprint with its stylesheets in place.
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param array{schema: int, status: string, line: int, fingerprint: string, files: array{ltr: string, root_vars: string}, theme_version: string, built_at: int, seconds: float, peak_bytes: int, error: string|null} $state State.
-	 * @param int                                                                                                                                                                                                         $line        Active line.
-	 * @param string                                                                                                                                                                                                      $fingerprint Fingerprint.
+	 * @param array{schema: int, status: string, line: int, fingerprint: string, files: array{ltr: string, rtl: string, root_vars: string}, theme_version: string, built_at: int, seconds: float, peak_bytes: int, error: string|null} $state State.
+	 * @param int                                                                                                                                                                                                                      $line        Active line.
+	 * @param string                                                                                                                                                                                                                   $fingerprint Fingerprint.
 	 * @return bool True when nothing needs to be built.
 	 */
 	private function current( array $state, int $line, string $fingerprint ): bool {
 		$target = self::target();
 		return 'package' !== $state['status'] && $state['line'] === $line && $state['fingerprint'] === $fingerprint
-			&& '' !== $state['files']['ltr'] && null !== $target && is_file( $target['dir'] . '/' . $state['files']['ltr'] );
+			&& '' !== $state['files']['ltr'] && null !== $target && is_file( $target['dir'] . '/' . $state['files']['ltr'] )
+			&& ( '' === $state['files']['rtl'] || is_file( $target['dir'] . '/' . $state['files']['rtl'] ) );
 	}
 
 	/**
@@ -887,11 +902,11 @@ final class Custom_Stylesheet {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param array{schema: int, status: string, line: int, fingerprint: string, files: array{ltr: string, root_vars: string}, theme_version: string, built_at: int, seconds: float, peak_bytes: int, error: string|null} $previous Previous state.
-	 * @param string                                                                                                                                                                                                      $error      Error message.
-	 * @param float                                                                                                                                                                                                       $seconds    Seconds of the attempt.
-	 * @param int                                                                                                                                                                                                         $peak_bytes Peak memory of the attempt.
-	 * @return array{schema: int, status: string, line: int, fingerprint: string, files: array{ltr: string, root_vars: string}, theme_version: string, built_at: int, seconds: float, peak_bytes: int, error: string|null} State.
+	 * @param array{schema: int, status: string, line: int, fingerprint: string, files: array{ltr: string, rtl: string, root_vars: string}, theme_version: string, built_at: int, seconds: float, peak_bytes: int, error: string|null} $previous Previous state.
+	 * @param string                                                                                                                                                                                                                   $error      Error message.
+	 * @param float                                                                                                                                                                                                                    $seconds    Seconds of the attempt.
+	 * @param int                                                                                                                                                                                                                      $peak_bytes Peak memory of the attempt.
+	 * @return array{schema: int, status: string, line: int, fingerprint: string, files: array{ltr: string, rtl: string, root_vars: string}, theme_version: string, built_at: int, seconds: float, peak_bytes: int, error: string|null} State.
 	 */
 	private function fail( array $previous, string $error, float $seconds, int $peak_bytes ): array {
 		return $this->save(
@@ -913,8 +928,8 @@ final class Custom_Stylesheet {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param array{schema: int, status: string, line: int, fingerprint: string, files: array{ltr: string, root_vars: string}, theme_version: string, built_at: int, seconds: float, peak_bytes: int, error: string|null} $state State.
-	 * @return array{schema: int, status: string, line: int, fingerprint: string, files: array{ltr: string, root_vars: string}, theme_version: string, built_at: int, seconds: float, peak_bytes: int, error: string|null} The same state.
+	 * @param array{schema: int, status: string, line: int, fingerprint: string, files: array{ltr: string, rtl: string, root_vars: string}, theme_version: string, built_at: int, seconds: float, peak_bytes: int, error: string|null} $state State.
+	 * @return array{schema: int, status: string, line: int, fingerprint: string, files: array{ltr: string, rtl: string, root_vars: string}, theme_version: string, built_at: int, seconds: float, peak_bytes: int, error: string|null} The same state.
 	 */
 	private function save( array $state ): array {
 		update_option( self::STATE_OPTION, $state, true );
@@ -940,7 +955,7 @@ final class Custom_Stylesheet {
 	 * @since 1.0.0
 	 *
 	 * @param int $line Active line.
-	 * @return array{schema: int, status: string, line: int, fingerprint: string, files: array{ltr: string, root_vars: string}, theme_version: string, built_at: int, seconds: float, peak_bytes: int, error: string|null} State.
+	 * @return array{schema: int, status: string, line: int, fingerprint: string, files: array{ltr: string, rtl: string, root_vars: string}, theme_version: string, built_at: int, seconds: float, peak_bytes: int, error: string|null} State.
 	 */
 	private static function package_state( int $line ): array {
 		return array(
@@ -950,6 +965,7 @@ final class Custom_Stylesheet {
 			'fingerprint'   => '',
 			'files'         => array(
 				'ltr'       => '',
+				'rtl'       => '',
 				'root_vars' => '',
 			),
 			'theme_version' => Stylesheet_Locator::theme_version(),
@@ -977,7 +993,7 @@ final class Custom_Stylesheet {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return array{schema: int, status: string, line: int, fingerprint: string, files: array{ltr: string, root_vars: string}, theme_version: string, built_at: int, seconds: float, peak_bytes: int, error: string|null}|null State, or null when missing or of another form.
+	 * @return array{schema: int, status: string, line: int, fingerprint: string, files: array{ltr: string, rtl: string, root_vars: string}, theme_version: string, built_at: int, seconds: float, peak_bytes: int, error: string|null}|null State, or null when missing or of another form.
 	 */
 	private static function stored(): ?array {
 		$state = get_option( self::STATE_OPTION, null );
@@ -987,6 +1003,7 @@ final class Custom_Stylesheet {
 		$files = is_array( $state['files'] ?? null ) ? $state['files'] : array();
 		$names = array(
 			'ltr'       => self::file_name( $files['ltr'] ?? null ),
+			'rtl'       => self::file_name( $files['rtl'] ?? null ),
 			'root_vars' => self::file_name( $files['root_vars'] ?? null ),
 		);
 		$error = $state['error'] ?? null;

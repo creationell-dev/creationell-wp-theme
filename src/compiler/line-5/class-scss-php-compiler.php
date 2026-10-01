@@ -33,14 +33,19 @@ use RuntimeException;
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Compiles the theme SCSS with the scoped scssphp and minifies it with the scoped CSS parser.
+ * Compiles the theme SCSS with the scoped scssphp and minifies and flips it with the scoped CSS parser.
  *
- * Steps: scssphp in expanded style without charset and source map, with the
- * variables of the request; empty custom properties (`--x: ;`) get a placeholder,
- * because the parser would drop them; the parser renders the compact stylesheet;
- * the placeholder becomes a space again; the charset rule and the license banners
- * of License_Banner go in front. This theme version builds the left-to-right
- * stylesheet only.
+ * Steps: (1) scssphp in expanded style without charset and
+ * source map, with the variables of the request (intermediate()); (2)
+ * Rtl_Preprocessor puts a placeholder into empty custom properties (`--x: ;`),
+ * which the parser would drop, and, right to left, applies the value
+ * directives; (3) the parser reads the stylesheet strictly; (4) right to left,
+ * Rtl_Port flips the document; the compact rendering follows; (5)
+ * Rtl_Postprocessor restores the empty values and puts the charset rule and the
+ * license banners in front. compile() builds every requested direction first
+ * and then writes <target_basename>.min.css and <target_basename>-rtl.min.css
+ * as one change (Atomic_File_Writer::write_all()): an error of the chain or of
+ * a write replaces no file.
  *
  * @since 1.0.0
  */
@@ -58,21 +63,21 @@ final class Scss_Php_Compiler implements Stylesheet_Compiler_Interface {
 	 *
 	 * @since 1.0.0
 	 */
-	public const DIRECTIONS = array( 'ltr' );
+	public const DIRECTIONS = array( 'ltr', 'rtl' );
 
 	/**
 	 * Revision of the compiler classes; a change of their output raises it, as it changes the fingerprint.
 	 *
 	 * @since 1.0.0
 	 */
-	public const REVISION = '2';
+	public const REVISION = '5';
 
 	/**
 	 * Placeholder for the value of an empty custom property while the parser holds the stylesheet.
 	 *
 	 * @since 1.0.0
 	 */
-	public const EMPTY_VALUE = '__creationell_empty__';
+	public const EMPTY_VALUE = Rtl_Preprocessor::EMPTY_VALUE;
 
 	/**
 	 * Selectors of the rules that root_vars() keeps.
@@ -178,12 +183,12 @@ final class Scss_Php_Compiler implements Stylesheet_Compiler_Interface {
 	}
 
 	/**
-	 * Compiles a request and writes <target_basename>.min.css.
+	 * Compiles a request and writes <target_basename>.min.css and, right to left, <target_basename>-rtl.min.css.
 	 *
 	 * @since 1.0.0
 	 *
 	 * @param Compile_Request $request What to compile and where to write it.
-	 * @return Compile_Result Files, fingerprint and messages, or the error; on an error nothing is written.
+	 * @return Compile_Result Files by direction, fingerprint and messages, or the error; on an error nothing is written.
 	 */
 	public function compile( Compile_Request $request ): Compile_Result {
 		$start       = microtime( true );
@@ -196,9 +201,13 @@ final class Scss_Php_Compiler implements Stylesheet_Compiler_Interface {
 				$logger      = new Scss_Logger();
 				$expanded    = self::expanded( $request, $logger );
 				$messages    = $logger->messages();
-				$target      = rtrim( $request->target_dir, '/' ) . '/' . $request->target_basename . '.min.css';
-				Atomic_File_Writer::write( $target, License_Banner::for_line( self::LINE ) . self::minify( $expanded ) );
-				return new Compile_Result( true, array( 'ltr' => $target ), $fingerprint, $messages, null, microtime( true ) - $start, memory_get_peak_usage( true ) );
+				$stylesheets = $this->stylesheets( $expanded, $request->directions );
+				$files       = array();
+				foreach ( $stylesheets as $direction => $css ) {
+					$files[ $direction ] = rtrim( $request->target_dir, '/' ) . '/' . $request->target_basename . ( 'rtl' === $direction ? '-rtl' : '' ) . '.min.css';
+				}
+				Atomic_File_Writer::write_all( array_combine( array_values( $files ), array_values( $stylesheets ) ) );
+				return new Compile_Result( true, $files, $fingerprint, $messages, null, microtime( true ) - $start, memory_get_peak_usage( true ) );
 			}
 		} catch ( SassException $exception ) {
 			$error = 'SCSS error: ' . $exception->getMessage();
@@ -208,6 +217,50 @@ final class Scss_Php_Compiler implements Stylesheet_Compiler_Interface {
 			$error = $exception->getMessage();
 		}
 		return new Compile_Result( false, array(), $fingerprint, $messages, $error, microtime( true ) - $start, memory_get_peak_usage( true ) );
+	}
+
+	/**
+	 * Runs step 1 alone: the expanded stylesheet of scssphp, the input of Node RTLCSS in the RTL comparison of the repository.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param Compile_Request $request Request; the target is not used.
+	 * @return string Expanded stylesheet without charset rule.
+	 * @throws RuntimeException When the request cannot be compiled.
+	 * @throws SassException    When the SCSS does not compile.
+	 */
+	public function intermediate( Compile_Request $request ): string {
+		$error = $this->request_error( $request );
+		if ( null !== $error ) {
+			$exception = new RuntimeException( $error );
+			throw $exception;
+		}
+		return self::expanded( $request, new Scss_Logger() );
+	}
+
+	/**
+	 * Runs steps 2 to 5 on an expanded stylesheet, without writing.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string             $expanded   Expanded stylesheet of step 1.
+	 * @param array<int, string> $directions Directions "ltr" and "rtl".
+	 * @return array<string, string> Finished stylesheet by direction, in the order of the directions.
+	 * @throws SourceException          When the parser rejects the stylesheet.
+	 * @throws \InvalidArgumentException When a direction is unknown.
+	 * @throws RuntimeException         When the banner cannot be read.
+	 */
+	public function stylesheets( string $expanded, array $directions ): array {
+		$stylesheets = array();
+		foreach ( $directions as $direction ) {
+			$document = self::parse( Rtl_Preprocessor::prepare( $expanded, $direction ) );
+			if ( 'rtl' === $direction ) {
+				( new Rtl_Port( $document ) )->flip();
+			}
+			$stylesheets[ $direction ] = Rtl_Postprocessor::finish( self::render( $document ), self::LINE );
+			unset( $document );
+		}
+		return $stylesheets;
 	}
 
 	/**
@@ -225,14 +278,14 @@ final class Scss_Php_Compiler implements Stylesheet_Compiler_Interface {
 	 * @throws SourceException When the stylesheet cannot be parsed.
 	 */
 	public function root_vars( string $css ): string {
-		$document = self::parse( self::protect_empty( $css ) );
+		$document = self::parse( Rtl_Preprocessor::protect_empty( $css ) );
 		$roots    = new Document();
 		foreach ( $document->getContents() as $item ) {
 			if ( $item instanceof DeclarationBlock && self::is_root_rule( $item ) ) {
 				$roots->append( $item );
 			}
 		}
-		$rules = self::restore_empty( self::render( $roots ) );
+		$rules = Rtl_Postprocessor::restore_empty( self::render( $roots ) );
 		return '' === $rules ? '' : License_Banner::for_line( self::LINE ) . $rules;
 	}
 
@@ -254,12 +307,12 @@ final class Scss_Php_Compiler implements Stylesheet_Compiler_Interface {
 			return 'The request has no direction.';
 		}
 		foreach ( $request->directions as $direction ) {
-			if ( 'rtl' === $direction ) {
-				return 'Right-to-left output (rtl) is not available in this theme version.';
-			}
 			if ( ! in_array( $direction, self::DIRECTIONS, true ) ) {
 				return 'Unknown direction ' . $direction . '.';
 			}
+		}
+		if ( count( array_unique( $request->directions ) ) !== count( $request->directions ) ) {
+			return 'A direction is named twice.';
 		}
 		if ( 1 !== preg_match( '~^[a-z0-9][a-z0-9-]*$~iD', $request->target_basename ) ) {
 			return 'Invalid target base name: use letters, digits and hyphens.';
@@ -300,19 +353,6 @@ final class Scss_Php_Compiler implements Stylesheet_Compiler_Interface {
 	}
 
 	/**
-	 * Minifies a stylesheet with the CSS parser.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @param string $css Stylesheet.
-	 * @return string Compact stylesheet without comments.
-	 * @throws SourceException When the stylesheet cannot be parsed.
-	 */
-	private static function minify( string $css ): string {
-		return self::restore_empty( self::render( self::parse( self::protect_empty( $css ) ) ) );
-	}
-
-	/**
 	 * Parses a stylesheet strictly: an unknown construct fails instead of being dropped.
 	 *
 	 * @since 1.0.0
@@ -335,30 +375,6 @@ final class Scss_Php_Compiler implements Stylesheet_Compiler_Interface {
 	 */
 	private static function render( Document $document ): string {
 		return $document->render( OutputFormat::createCompact() );
-	}
-
-	/**
-	 * Replaces the empty value of custom properties with the placeholder.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @param string $css Stylesheet.
-	 * @return string Stylesheet with placeholders.
-	 */
-	private static function protect_empty( string $css ): string {
-		return (string) preg_replace( '~(--[A-Za-z0-9_-]+)\s*:\s*(?=[;}])~', '$1:' . self::EMPTY_VALUE, $css );
-	}
-
-	/**
-	 * Turns the placeholder back into the empty value " ".
-	 *
-	 * @since 1.0.0
-	 *
-	 * @param string $css Stylesheet with placeholders.
-	 * @return string Stylesheet.
-	 */
-	private static function restore_empty( string $css ): string {
-		return str_replace( self::EMPTY_VALUE, ' ', $css );
 	}
 
 	/**

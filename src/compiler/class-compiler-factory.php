@@ -40,6 +40,9 @@ final class Compiler_Factory {
 		}
 		require_once dirname( __DIR__, 2 ) . '/lib/autoload.php';
 		require_once __DIR__ . '/line-5/class-scss-logger.php';
+		require_once __DIR__ . '/line-5/class-rtl-preprocessor.php';
+		require_once __DIR__ . '/line-5/class-rtl-postprocessor.php';
+		require_once __DIR__ . '/line-5/class-rtl-port.php';
 		require_once __DIR__ . '/line-5/class-scss-php-compiler.php';
 		return new Scss_Php_Compiler();
 	}
