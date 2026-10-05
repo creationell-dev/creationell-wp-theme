@@ -249,17 +249,20 @@ final class Snapshot {
 	/**
 	 * Returns the backend values of a language.
 	 *
+	 * A snapshot of another theme version still serves its values: after an
+	 * update the front end keeps the stored settings until the admin, WP-CLI or
+	 * the build event rebuilds the snapshot. Readers check every value against
+	 * its definition, so a value the new version no longer accepts falls back
+	 * to the next layer.
+	 *
 	 * @since 1.0.0
 	 *
 	 * @param string|null $lang Language code; null or the default code for the default snapshot.
-	 * @return array<string, mixed> Scalar values by key; empty without snapshot or for a snapshot of another theme version.
+	 * @return array<string, mixed> Scalar values by key; empty without snapshot.
 	 */
 	public function values( ?string $lang = null ): array {
 		$payload = $this->read( Language::instance()->secondary( $lang ) );
-		if ( null === $payload || $payload['theme_version'] !== $this->theme_version ) {
-			return array();
-		}
-		return $payload['values'];
+		return null === $payload ? array() : $payload['values'];
 	}
 
 	/**

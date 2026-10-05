@@ -18,6 +18,7 @@ use Creationell\WpTheme\Settings\Font_Catalog;
 use Creationell\WpTheme\Settings\Language;
 use Creationell\WpTheme\Settings\Registry;
 use Creationell\WpTheme\Settings\Settings;
+use Creationell\WpTheme\Settings\Snapshot;
 use Creationell\WpTheme\Settings\Token_Map;
 use Creationell\WpTheme\Settings\Write_Context;
 use RuntimeException;
@@ -280,7 +281,9 @@ final class Custom_Stylesheet {
 	 * Builds the stylesheet from the cron event, or runs the follow-up of a cleanup.
 	 *
 	 * The follow-up is the same event with the arguments "cleanup" and the
-	 * names of the files a cleanup spared because they were young.
+	 * names of the files a cleanup spared because they were young. Before a
+	 * build the event rebuilds a stale settings snapshot: after an update of
+	 * the theme it belongs to the previous version.
 	 *
 	 * @since 1.0.0
 	 *
@@ -293,6 +296,7 @@ final class Custom_Stylesheet {
 			self::instance()->follow_up( is_array( $names ) ? $names : array() );
 			return;
 		}
+		Snapshot::instance()->maybe_rebuild();
 		self::instance()->build( 'cron' );
 	}
 

@@ -1,6 +1,6 @@
 {
     "line": 5,
-    "fingerprint": "415f6569c078ba388750172e56093b28caf77a4738cbf86ef9187580b76a0177",
+    "fingerprint": "fe44f1b482f04707b3a8fd2a9ed514aae1ed2fe571fda9715ca97fe31a95c62b",
     "versions": {
         "bootstrap": "5.3.8",
         "scssphp/scssphp": "2.1.0",

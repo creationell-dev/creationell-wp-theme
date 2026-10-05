@@ -1,6 +1,6 @@
 # creationell Theme
 
-**Version:** 0.2.0
+**Version:** 0.2.1
 
 **Requires at least:** 7.1
 
@@ -237,6 +237,14 @@ GPL-2.0-or-later, see `LICENSE`. Licenses of the included third-party code:
 `THIRD-PARTY-NOTICES`.
 
 ## Changelog
+
+### 0.2.1
+
+- After a theme update the site keeps its own colours, fonts and texts. Before,
+  the front end showed the defaults and the scheduled build switched to the
+  package stylesheet until the stylesheet was rebuilt by hand. Sites that
+  updated to 0.2.0 and still show the default colours need one
+  `wp creationell-theme css build` or the button of the admin notice.
 
 ### 0.2.0
 
