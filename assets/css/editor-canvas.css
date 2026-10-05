@@ -33,3 +33,99 @@
 	max-inline-size: 100%;
 	block-size: auto;
 }
+
+/*
+ * Blocks the editor renders itself. In the front end the theme gives them
+ * Bootstrap classes while they render (inc/blocks/block-widget-*.php); the
+ * editor shows the markup of WordPress, so these rules give it the same look:
+ * search as form-control and btn-outline-secondary, categories and latest posts
+ * as list-group with list-group-item.
+ */
+.editor-styles-wrapper .wp-block-search .wp-block-search__input {
+	min-inline-size: 0;
+	min-block-size: 0;
+	margin-inline-end: 0.5rem;
+	padding: 0.375rem 0.75rem;
+	font-size: var(--bs-body-font-size);
+	font-weight: var(--bs-body-font-weight);
+	line-height: var(--bs-body-line-height);
+	color: var(--bs-body-color);
+	background-color: var(--bs-body-bg);
+	border: var(--bs-border-width) solid var(--creationell-theme-input-border);
+	border-radius: var(--bs-border-radius);
+}
+
+.editor-styles-wrapper .wp-block-search .wp-block-search__button {
+	display: inline-block;
+	flex-shrink: 0;
+	margin-inline-start: 0;
+	padding: 0.375rem 0.75rem;
+	font-size: var(--bs-body-font-size);
+	font-weight: var(--bs-body-font-weight);
+	line-height: var(--bs-body-line-height);
+	white-space: nowrap;
+	color: var(--creationell-theme-btn-outline-secondary);
+	background-color: transparent;
+	border: var(--bs-border-width) solid var(--creationell-theme-btn-outline-secondary);
+	border-radius: var(--bs-border-radius);
+}
+
+.editor-styles-wrapper :is(.wp-block-categories-list, .wp-block-latest-posts__list) {
+	display: flex;
+	flex-direction: column;
+	margin-block: 0;
+	padding-inline-start: 0;
+	border-radius: var(--bs-border-radius);
+}
+
+.editor-styles-wrapper :is(.wp-block-categories-list, .wp-block-latest-posts__list) > li {
+	position: relative;
+	display: block;
+	margin: 0;
+	padding: 0.5rem 1rem;
+	line-height: var(--bs-body-line-height);
+	list-style: none;
+	color: var(--bs-secondary-color);
+	background-color: var(--bs-body-bg);
+	border: var(--bs-border-width) solid var(--bs-border-color);
+}
+
+.editor-styles-wrapper :is(.wp-block-categories-list, .wp-block-latest-posts__list) > li:first-child {
+	border-start-start-radius: inherit;
+	border-start-end-radius: inherit;
+}
+
+.editor-styles-wrapper :is(.wp-block-categories-list, .wp-block-latest-posts__list) > li:last-child {
+	border-end-start-radius: inherit;
+	border-end-end-radius: inherit;
+}
+
+/* Categories as in the front end: d-flex justify-content-between align-items-center. */
+.editor-styles-wrapper .wp-block-categories-list > li {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.editor-styles-wrapper :is(.wp-block-categories-list, .wp-block-latest-posts__list) > li + li {
+	border-block-start-width: 0;
+}
+
+.editor-styles-wrapper :is(.wp-block-categories-list, .wp-block-latest-posts__list) > li > a {
+	color: var(--bs-body-color);
+	text-decoration: none;
+}
+
+.editor-styles-wrapper .wp-block-latest-posts__list .wp-block-latest-posts__post-date {
+	display: block;
+	font-size: 0.875em;
+	color: var(--bs-secondary-color);
+}
+
+/*
+ * Widgets of a widget area keep the distance of the front end (class mb-4). In
+ * the widget editor the inner blocks of a widget area are the wrapper itself.
+ */
+.editor-styles-wrapper.wp-block-widget-area__inner-blocks > .block-editor-block-list__layout > .wp-block {
+	margin-block: 0 1.5rem;
+}

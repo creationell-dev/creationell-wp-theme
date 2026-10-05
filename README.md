@@ -1,6 +1,6 @@
 # creationell Theme
 
-**Version:** 0.1.1
+**Version:** 0.2.0
 
 **Requires at least:** 7.1
 
@@ -237,6 +237,38 @@ GPL-2.0-or-later, see `LICENSE`. Licenses of the included third-party code:
 `THIRD-PARTY-NOTICES`.
 
 ## Changelog
+
+### 0.2.0
+
+- Rights in the backend: the new page Theme settings > Rights lets an
+  administrator choose per area whether editors may use it (design, modules,
+  import and export, menus of header and footer; texts and header and footer
+  the other way round) and which administrators are restricted. The values of
+  the filter `creationell_wp_theme_capabilities` are defaults now; the new key
+  `locked` keeps an entry as the child theme sets it. Import and export never
+  carry rights.
+- The theme settings menu starts with Texts, then Design, Modules,
+  Import/Export and Rights; the empty entry of the main page is gone.
+- Dark colour mode (`data-bs-theme="dark"`): outline buttons and field borders
+  take colours derived from the primary colour that keep 4.5:1 and 3:1 on the
+  dark surfaces.
+- Cookie banner: the arrows of the preferences dialog and the locked switch of
+  "necessary" reach the contrast for controls; the help text of the imprint page
+  names where the privacy policy page comes from.
+- Bootstrap carousel: the control icons sit on a dark disc and show the focus
+  ring of the theme.
+- Search block: the button keeps the Bootstrap size (it took the global button
+  styles of WordPress before).
+- Widget editor: blocks show the fonts and the look of the front end, also in
+  the widgets of the Customizer.
+- Categories and latest posts blocks: the list group classes go on single tags;
+  category classes, names with parentheses and the class of the post title stay
+  whole, and the title is the one stretched link of an item.
+- The block editor loads no blocks and no patterns from the WordPress.org
+  directories.
+- WPML: `wp creationell-theme wpml status` reports when WPML has not loaded the
+  configuration of the theme; the editor hint of header and footer tells stored
+  and file parts apart.
 
 ### 0.1.1
 

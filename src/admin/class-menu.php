@@ -18,11 +18,12 @@ defined( 'ABSPATH' ) || exit;
  * Adds the main menu "Theme settings", the parent of all settings pages of the theme.
  *
  * The menu needs no ACF. Subpages (texts, design, modules, import and export)
- * use the parent slug SLUG and bring their own capabilities. WordPress links
- * the menu to the first entry of the submenu without checking its capability,
- * so collect() moves the first subpage the user may open to the front. Opening
- * the main page itself redirects there. Without such a subpage the main page
- * says so.
+ * use the parent slug SLUG and bring their own capabilities. collect() sorts
+ * them into ORDER. WordPress links the menu to the first entry of the submenu
+ * without checking its capability, so collect() moves the first subpage the
+ * user may open to the front and drops the entry of the main page, which has
+ * no content of its own. Opening the main page itself redirects there. Without
+ * such a subpage the main page keeps its entry and says so.
  *
  * @since 1.0.0
  */
@@ -41,6 +42,22 @@ final class Menu {
 	 * @since 1.0.0
 	 */
 	public const POSITION = 62;
+
+	/**
+	 * Slugs of the subpages in menu order; other subpages follow in the order they were added.
+	 *
+	 * The modules page is added before the ACF pages, so without this order
+	 * the menu started with the modules.
+	 *
+	 * @since 1.0.0
+	 */
+	public const ORDER = array(
+		'creationell-wp-theme-texts',
+		'creationell-wp-theme-design',
+		'creationell-wp-theme-modules',
+		'creationell-wp-theme-import-export',
+		'creationell-wp-theme-rights',
+	);
 
 	/**
 	 * URL of the first subpage the current user may open, null without one.
@@ -69,13 +86,16 @@ final class Menu {
 	}
 
 	/**
-	 * Moves the first subpage the current user may open to the front and remembers it; runs last on admin_menu.
+	 * Sorts the subpages, moves the first one the current user may open to the front and remembers it; runs last on admin_menu.
 	 *
 	 * All subpages exist only once admin_menu has run. WordPress links the main
 	 * menu to the first submenu entry, even when the user may not open it, and
-	 * checks the capabilities of the subpages before admin_menu only. Entries
+	 * checks the capabilities of the subpages before admin_menu only. Subpages
 	 * are reordered, never removed: without its entry, user_can_access_admin_page()
-	 * would check a subpage against the capability of the main menu.
+	 * would check a subpage against the capability of the main menu. The entry of
+	 * the main page goes once a subpage is the target: the main page stays
+	 * reachable through the main menu and only redirects. Without a target
+	 * the submenu stays as it is.
 	 *
 	 * @since 1.0.0
 	 *
@@ -88,20 +108,48 @@ final class Menu {
 		if ( ! isset( $submenu[ self::SLUG ] ) || ! is_array( $submenu[ self::SLUG ] ) ) {
 			return;
 		}
-		foreach ( $submenu[ self::SLUG ] as $key => $item ) {
-			if ( ! is_array( $item ) || ! isset( $item[1], $item[2] ) || ! is_string( $item[1] ) || ! is_string( $item[2] ) ) {
-				continue;
-			}
-			if ( self::SLUG === $item[2] || ! current_user_can( $item[1] ) ) {
+		$entries = $submenu[ self::SLUG ];
+		usort( $entries, static fn( mixed $a, mixed $b ): int => self::rank( $a ) <=> self::rank( $b ) );
+		foreach ( $entries as $key => $item ) {
+			if ( ! self::is_entry( $item ) || self::SLUG === $item[2] || ! current_user_can( $item[1] ) ) {
 				continue;
 			}
 			self::$target = str_contains( $item[2], '.php' ) ? admin_url( $item[2] ) : admin_url( 'admin.php?page=' . $item[2] );
 
-			// Same entry, new place; array_unshift() renumbers the keys from 0.
-			unset( $submenu[ self::SLUG ][ $key ] );
-			array_unshift( $submenu[ self::SLUG ], $item );
+			// Same entry, new place, without the main page; keys renumbered from 0.
+			unset( $entries[ $key ] );
+			array_unshift( $entries, $item );
+			$list = &$submenu[ self::SLUG ];
+			$list = array_values( array_filter( $entries, static fn( mixed $entry ): bool => ! self::is_entry( $entry ) || self::SLUG !== $entry[2] ) );
 			return;
 		}
+	}
+
+	/**
+	 * Returns the place of a submenu entry in ORDER, after all of ORDER for other entries.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param mixed $item Submenu entry.
+	 * @return int Place.
+	 */
+	private static function rank( mixed $item ): int {
+		$rank = self::is_entry( $item ) ? array_search( $item[2], self::ORDER, true ) : false;
+		return false === $rank ? count( self::ORDER ) : (int) $rank;
+	}
+
+	/**
+	 * Tells whether a submenu entry has a capability and a slug as strings.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param mixed $item Submenu entry.
+	 * @return bool Whether the entry is usable.
+	 *
+	 * @phpstan-assert-if-true array{0?: mixed, 1: string, 2: string} $item
+	 */
+	private static function is_entry( mixed $item ): bool {
+		return is_array( $item ) && isset( $item[1], $item[2] ) && is_string( $item[1] ) && is_string( $item[2] );
 	}
 
 	/**

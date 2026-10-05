@@ -29,6 +29,50 @@ select {
   --#{$prefix}focus-ring-color: #{$focus-ring-color-dark};
 }
 
+// Outline buttons and field borders per colour mode (_theme-maps.scss): Bootstrap
+// keeps the static light colours in the dark mode, too dark there. The custom
+// properties follow the nearest data-bs-theme, so a light part of a dark page stays
+// light. The light values are the ones of Bootstrap.
+:root,
+[data-bs-theme="light"] {
+  --creationell-theme-btn-outline-primary: #{$primary};
+  --creationell-theme-btn-outline-primary-hover: #{color-contrast($primary)};
+  --creationell-theme-btn-outline-secondary: #{$secondary};
+  --creationell-theme-btn-outline-secondary-hover: #{color-contrast($secondary)};
+  --creationell-theme-input-border: #{$input-border-color};
+}
+
+[data-bs-theme="dark"] {
+  --creationell-theme-btn-outline-primary: #{$btn-outline-primary-color-dark};
+  --creationell-theme-btn-outline-primary-hover: #{$btn-outline-primary-hover-color-dark};
+  --creationell-theme-btn-outline-secondary: #{$btn-outline-secondary-color-dark};
+  --creationell-theme-btn-outline-secondary-hover: #{$btn-outline-secondary-hover-color-dark};
+  --creationell-theme-input-border: #{$input-border-color-dark};
+}
+
+@each $color in (primary, secondary) {
+  .btn-outline-#{$color} {
+    --#{$prefix}btn-color: var(--creationell-theme-btn-outline-#{$color});
+    --#{$prefix}btn-border-color: var(--creationell-theme-btn-outline-#{$color});
+    --#{$prefix}btn-hover-color: var(--creationell-theme-btn-outline-#{$color}-hover);
+    --#{$prefix}btn-hover-bg: var(--creationell-theme-btn-outline-#{$color});
+    --#{$prefix}btn-hover-border-color: var(--creationell-theme-btn-outline-#{$color});
+    --#{$prefix}btn-active-color: var(--creationell-theme-btn-outline-#{$color}-hover);
+    --#{$prefix}btn-active-bg: var(--creationell-theme-btn-outline-#{$color});
+    --#{$prefix}btn-active-border-color: var(--creationell-theme-btn-outline-#{$color});
+    --#{$prefix}btn-disabled-color: var(--creationell-theme-btn-outline-#{$color});
+    --#{$prefix}btn-disabled-border-color: var(--creationell-theme-btn-outline-#{$color});
+  }
+}
+
+// Same specificity as Bootstrap's rules, later in the stylesheet; focus, validation
+// and checked states keep their own colours.
+.form-control,
+.form-select,
+.form-check-input {
+  border-color: var(--creationell-theme-input-border);
+}
+
 // Keyboard focus: Bootstrap removes the outline and draws a ring with box-shadow.
 // Forced colours modes drop the shadow, so a transparent outline stays in place
 // and becomes visible there.

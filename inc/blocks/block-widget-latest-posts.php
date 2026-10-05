@@ -29,26 +29,30 @@ if ( ! function_exists( 'creationell_wp_theme_block_widget_latest_posts_classes'
 			return $block_content;
 		}
 
-		$search  = array(
-			'wp-block-latest-posts__list',
-			'<li',
-			'wp-post-image',
-			'<a',
-			'wp-block-latest-posts__post-author',
-			'wp-block-latest-posts__post-date',
-			'wp-block-latest-posts__post-excerpt',
-		);
-		$replace = array(
-			'wp-block-latest-posts__list creationell-theme-list-group list-group',
-			'<li class="list-group-item list-group-item-action"',
-			'wp-post-image rounded mb-3',
-			'<a class="stretched-link text-decoration-none"',
-			'small text-body-secondary',
-			'small text-body-secondary d-block',
-			'wp-block-latest-posts__post-excerpt mb-0',
-		);
-
-		$block_content = str_replace( $search, $replace, $block_content );
+		// Classes go on single tags: the title link is the one stretched link of an
+		// item, other links keep their own class attribute.
+		$tags = new WP_HTML_Tag_Processor( $block_content );
+		while ( $tags->next_tag() ) {
+			$tag = $tags->get_tag();
+			if ( 'UL' === $tag && creationell_wp_theme_tag_has_class( $tags, 'wp-block-latest-posts__list' ) ) {
+				creationell_wp_theme_tag_classes( $tags, array( 'creationell-theme-list-group', 'list-group' ) );
+			} elseif ( 'LI' === $tag ) {
+				creationell_wp_theme_tag_classes( $tags, array( 'list-group-item', 'list-group-item-action' ) );
+			} elseif ( 'IMG' === $tag && creationell_wp_theme_tag_has_class( $tags, 'wp-post-image' ) ) {
+				creationell_wp_theme_tag_classes( $tags, array( 'rounded', 'mb-3' ) );
+			} elseif ( 'A' === $tag && creationell_wp_theme_tag_has_class( $tags, 'wp-block-latest-posts__post-title' ) ) {
+				creationell_wp_theme_tag_classes( $tags, array( 'stretched-link', 'text-decoration-none' ) );
+			} elseif ( 'A' === $tag ) {
+				creationell_wp_theme_tag_classes( $tags, array( 'text-decoration-none' ) );
+			} elseif ( creationell_wp_theme_tag_has_class( $tags, 'wp-block-latest-posts__post-author' ) ) {
+				creationell_wp_theme_tag_classes( $tags, array( 'small', 'text-body-secondary' ), array( 'wp-block-latest-posts__post-author' ) );
+			} elseif ( creationell_wp_theme_tag_has_class( $tags, 'wp-block-latest-posts__post-date' ) ) {
+				creationell_wp_theme_tag_classes( $tags, array( 'small', 'text-body-secondary', 'd-block' ), array( 'wp-block-latest-posts__post-date' ) );
+			} elseif ( creationell_wp_theme_tag_has_class( $tags, 'wp-block-latest-posts__post-excerpt' ) ) {
+				creationell_wp_theme_tag_classes( $tags, array( 'mb-0' ) );
+			}
+		}
+		$block_content = $tags->get_updated_html();
 
 		/**
 		 * Filters the HTML of the latest posts block after the theme added its Bootstrap classes.

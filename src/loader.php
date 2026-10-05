@@ -25,6 +25,7 @@ require_once __DIR__ . '/core/class-environment.php';
 require_once __DIR__ . '/core/class-theme-support.php';
 require_once __DIR__ . '/core/class-theme.php';
 require_once __DIR__ . '/core/class-capabilities.php';
+require_once __DIR__ . '/core/class-rights-store.php';
 require_once __DIR__ . '/core/class-site-editor-lock.php';
 require_once __DIR__ . '/core/class-template-part-gate.php';
 require_once __DIR__ . '/admin/class-notices.php';
@@ -105,6 +106,7 @@ require_once __DIR__ . '/settings/acf/class-options-pages.php';
 require_once __DIR__ . '/settings/acf/class-acf-adapter.php';
 require_once __DIR__ . '/admin/class-settings-notices.php';
 require_once __DIR__ . '/admin/class-module-page.php';
+require_once __DIR__ . '/admin/class-rights-page.php';
 require_once __DIR__ . '/admin/class-theme-switch-notice.php';
 require_once __DIR__ . '/consent/interface-consent-provider.php';
 require_once __DIR__ . '/consent/class-consent-gate.php';
@@ -163,6 +165,7 @@ require_once dirname( __DIR__ ) . '/inc/tinymce-editor.php';          // Fix bod
 require_once dirname( __DIR__ ) . '/inc/blocks/patterns.php'; // Register pattern category and script to hide wp-block classes.
 
 // Widgets.
+require_once dirname( __DIR__ ) . '/inc/blocks/block-classes.php';               // Classes on single tags of block markup.
 require_once dirname( __DIR__ ) . '/inc/blocks/block-widget-archives.php';        // Archive block.
 require_once dirname( __DIR__ ) . '/inc/blocks/block-widget-calendar.php';        // Calendar block.
 require_once dirname( __DIR__ ) . '/inc/blocks/block-widget-categories.php';      // Categories block.
@@ -175,6 +178,9 @@ require_once dirname( __DIR__ ) . '/inc/blocks/block-buttons.php'; // Button blo
 require_once dirname( __DIR__ ) . '/inc/blocks/block-code.php';    // Code block.
 require_once dirname( __DIR__ ) . '/inc/blocks/block-quote.php';   // Quote block.
 require_once dirname( __DIR__ ) . '/inc/blocks/block-table.php';   // Table block.
+
+// No block directory and no patterns from WordPress.org.
+require_once dirname( __DIR__ ) . '/inc/blocks/wordpress-org-directories.php';
 
 /**
  * Filters whether blocks and patterns without theme styles are disabled.

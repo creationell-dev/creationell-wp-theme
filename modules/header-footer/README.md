@@ -109,10 +109,17 @@ same slug, in every active language. While one is missing:
 Parts that exist only as theme files need no translation: their texts come
 from the theme settings and the translations of the theme. In a language
 other than the default language, the Site Editor warns while a part has no
-linked translation there, also a part that is still the theme file. For a
-stored part the Site Editor edits the part of the default language there,
-and saving overwrites it; no unlinked copy appears (checked with WordPress
-7.1 and WPML 5.0).
+linked translation there, also a part that is still the theme file, and
+tells which case applies:
+
+- For a stored part the Site Editor edits the part of the default language
+  there, and saving overwrites it.
+- For a part that is still the theme file, saving creates a separate part in
+  that language, not linked to the default language; the default language
+  keeps the theme file, and WPML then treats the new part as an original
+  without translations.
+
+Both checked with WordPress 7.1 and WPML 5.0.
 
 ## Going back
 

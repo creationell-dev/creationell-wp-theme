@@ -11,6 +11,7 @@ namespace Creationell\WpTheme\Core;
 
 use Creationell\WpTheme\Admin\Menu;
 use Creationell\WpTheme\Admin\Module_Page;
+use Creationell\WpTheme\Admin\Rights_Page;
 use Creationell\WpTheme\Admin\Notices;
 use Creationell\WpTheme\Admin\Theme_Switch_Notice;
 use Creationell\WpTheme\Admin\Transfer_Page;
@@ -83,6 +84,9 @@ final class Theme {
 		Consent_Gate::register_hooks();
 		add_action( 'enqueue_block_assets', array( Editor_Assets::class, 'enqueue_canvas' ), 5, 0 );
 		add_action( 'admin_enqueue_scripts', array( Editor_Assets::class, 'enqueue_color_vars' ), 10, 1 );
+		add_filter( 'block_editor_settings_all', array( Editor_Assets::class, 'widget_editor_styles' ), 10, 2 );
+		add_action( 'admin_enqueue_scripts', array( Editor_Assets::class, 'enqueue_widget_canvas' ), 10, 1 );
+		add_action( 'customize_controls_enqueue_scripts', array( Editor_Assets::class, 'enqueue_widget_canvas' ), 10, 0 );
 		Bootstrap_Bridge::register_order_hooks();
 		add_action( 'cli_init', array( Bootstrap_Bridge::class, 'add_doctor_section' ), 10, 0 );
 		add_action( 'cli_init', array( Doctor_Command::class, 'register' ), 10, 0 );
@@ -94,6 +98,7 @@ final class Theme {
 		add_action( 'admin_menu', array( Menu::class, 'collect' ), PHP_INT_MAX, 0 );
 		add_action( 'admin_init', array( Menu::class, 'redirect' ), 10, 0 );
 		Module_Page::register_hooks();
+		Rights_Page::register_hooks();
 		Theme_Switch_Notice::register_hooks();
 		add_action( 'after_setup_theme', array( Acf_Adapter::class, 'boot' ), 10, 0 );
 		add_action( 'cli_init', array( Child_Command::class, 'register' ), 10, 0 );

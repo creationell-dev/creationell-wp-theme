@@ -31,12 +31,15 @@ defined( 'ABSPATH' ) || exit;
  * The theme translates nothing itself and has no language fallback of its
  * own.
  *
- * Header and footer are translated with WPML only: in a language without a
+ * Header and footer are translated with WPML only. In a language without a
  * linked translation the Site Editor edits the stored part of the default
- * language, and saving there overwrites it; no unlinked copy appears (checked
- * in a browser with WordPress 7.1 and WPML 5.0). The dashboard therefore
- * shows the missing translations, and the Site Editor warns in such a
- * language. Both go to users with the template parts capability.
+ * language, and saving there overwrites it; a part that is still the theme
+ * file is saved as a separate part in that language, without a link to the
+ * default language, which keeps the file (both checked in a browser with
+ * WordPress 7.1 and WPML 5.0). The dashboard therefore shows the missing
+ * translations, and the Site Editor warns in such a language and tells which
+ * case applies to which part. Both go to users with the template parts
+ * capability.
  *
  * @since 1.0.0
  */
@@ -198,7 +201,9 @@ final class Part_Translations {
 		if ( array() === $slugs ) {
 			return;
 		}
-		$message = wp_json_encode( self::editor_message( $slugs, $lang, $language->default() ), JSON_HEX_TAG | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE );
+		$stored  = array_values( array_filter( $slugs, static fn( string $slug ): bool => array() !== Template_Part_Gate::stored_parts( $slug ) ) );
+		$files   = array_values( array_diff( $slugs, $stored ) );
+		$message = wp_json_encode( self::editor_message( $slugs, $stored, $files, $lang, $language->default() ), JSON_HEX_TAG | JSON_HEX_AMP | JSON_UNESCAPED_UNICODE );
 		$id      = wp_json_encode( self::EDITOR_NOTICE );
 		if ( false === $message || false === $id ) {
 			return;
@@ -310,21 +315,64 @@ final class Part_Translations {
 	/**
 	 * Builds the text of the Site Editor notice.
 	 *
+	 * Names the parts, then what saving does: a stored part of the default
+	 * language is overwritten; for a part that is still the theme file a
+	 * separate, unlinked part appears in the current language, and the default
+	 * language keeps the file. Ends with the way to translate them.
+	 *
 	 * @since 1.0.0
 	 *
 	 * @param array<int, string> $slugs        Parts without a usable part in the language.
+	 * @param array<int, string> $stored       Those of them stored in the database.
+	 * @param array<int, string> $files        Those of them that exist only as theme files.
 	 * @param string             $lang         Current language code.
 	 * @param string             $default_lang Default language code.
 	 * @return string Plain text.
 	 */
-	private static function editor_message( array $slugs, string $lang, string $default_lang ): string {
-		return sprintf(
-			/* translators: 1: language code, e.g. "en", 2: comma-separated part names, 3: code of the default language. */
-			__( 'No linked translation into %1$s exists for: %2$s. Saving here overwrites the part of the default language %3$s. Translate header and footer with WPML first, or switch the admin language to %3$s.', 'creationell-wp-theme' ),
-			$lang,
-			implode( ', ', array_map( static fn( string $slug ): string => self::name( $slug ), $slugs ) ),
+	private static function editor_message( array $slugs, array $stored, array $files, string $lang, string $default_lang ): string {
+		$sentences = array(
+			sprintf(
+				/* translators: 1: language code, e.g. "en", 2: comma-separated part names. */
+				__( 'No linked translation into %1$s exists for: %2$s.', 'creationell-wp-theme' ),
+				$lang,
+				self::names( $slugs )
+			),
+		);
+		if ( array() !== $stored ) {
+			$sentences[] = sprintf(
+				/* translators: 1: comma-separated part names, 2: code of the default language. */
+				__( 'For %1$s: saving here overwrites the part of the default language %2$s.', 'creationell-wp-theme' ),
+				self::names( $stored ),
+				$default_lang
+			);
+		}
+		if ( array() !== $files ) {
+			$sentences[] = sprintf(
+				/* translators: 1: comma-separated part names, 2: language code, e.g. "en", 3: code of the default language. */
+				__( 'For %1$s: saving here creates a separate part in %2$s that is not linked to the default language %3$s, which keeps the theme file.', 'creationell-wp-theme' ),
+				self::names( $files ),
+				$lang,
+				$default_lang
+			);
+		}
+		$sentences[] = sprintf(
+			/* translators: %s: code of the default language. */
+			__( 'Switch the admin language to %s to edit header and footer, then translate them with WPML.', 'creationell-wp-theme' ),
 			$default_lang
 		);
+		return implode( ' ', $sentences );
+	}
+
+	/**
+	 * Returns the names of parts inside a sentence, separated by commas.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array<int, string> $slugs Part slugs.
+	 * @return string Translated names.
+	 */
+	private static function names( array $slugs ): string {
+		return implode( ', ', array_map( static fn( string $slug ): string => self::name( $slug ), $slugs ) );
 	}
 
 	/**

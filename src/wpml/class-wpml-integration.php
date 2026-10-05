@@ -75,6 +75,13 @@ final class Wpml_Integration {
 	public const TESTED_URL_MODE = 'directory';
 
 	/**
+	 * Sync mode "display as translated" of WPML, which the wpml-config.xml of the theme sets for wp_template_part.
+	 *
+	 * @since 1.0.0
+	 */
+	public const SYNC_DISPLAY_AS_TRANSLATED = 2;
+
+	/**
 	 * Tells whether WPML is active and set up.
 	 *
 	 * True when ICL_SITEPRESS_VERSION is defined and the filter
@@ -140,8 +147,8 @@ final class Wpml_Integration {
 	 * usable translation, Part_Translations::missing(); the doctor section
 	 * header_footer warns about them), findings (id, level, message).
 	 * Findings: wpml.st_missing, wpml.acfml_missing, wpml.snapshot_stale,
-	 * wpml.acfe_multilang, wpml.config_missing (warnings) and
-	 * wpml.url_mode_untested (info). Without WPML only active false, the
+	 * wpml.acfe_multilang, wpml.config_missing, wpml.config_not_loaded
+	 * (warnings) and wpml.url_mode_untested (info). Without WPML only active false, the
 	 * versions, config_file and no finding. Call it after init; the messages
 	 * are translated.
 	 *
@@ -206,12 +213,35 @@ final class Wpml_Integration {
 		if ( ! $status['config_file'] ) {
 			$findings[] = self::finding( 'wpml.config_missing', 'warning', __( 'The theme has no wpml-config.xml; WPML does not know which block texts to translate.', 'creationell-wp-theme' ) );
 		}
+		if ( $status['config_file'] && ! self::config_loaded() ) {
+			$findings[] = self::finding( 'wpml.config_not_loaded', 'warning', __( 'WPML has not loaded the wpml-config.xml of the theme: template parts are not shown as translated, for example after "wp theme activate". Open Appearance > Themes in the admin once; WPML then reads the file.', 'creationell-wp-theme' ) );
+		}
 		if ( self::TESTED_URL_MODE !== $status['url_mode'] ) {
 			/* translators: %s: WPML URL mode, e.g. "parameter". */
 			$findings[] = self::finding( 'wpml.url_mode_untested', 'info', sprintf( __( 'WPML uses the URL mode "%s"; the theme is tested with language directories.', 'creationell-wp-theme' ), $status['url_mode'] ?? 'unknown' ) );
 		}
 		$status['findings'] = $findings;
 		return $status;
+	}
+
+	/**
+	 * Tells whether WPML uses the setting of the theme's wpml-config.xml for template parts.
+	 *
+	 * WPML reads the configuration files when Appearance > Themes is opened,
+	 * not after a theme switch with WP-CLI; until then wp_template_part keeps
+	 * the previous sync mode (seen in E1: 1 instead of 2).
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return bool False when custom_posts_sync_option holds another mode or no mode for wp_template_part; true without the setting.
+	 */
+	private static function config_loaded(): bool {
+		$sync = apply_filters( 'wpml_setting', null, 'custom_posts_sync_option' );
+		if ( ! is_array( $sync ) ) {
+			return true;
+		}
+		$mode = $sync['wp_template_part'] ?? null;
+		return is_numeric( $mode ) && self::SYNC_DISPLAY_AS_TRANSLATED === (int) $mode;
 	}
 
 	/**

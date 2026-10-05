@@ -7,13 +7,13 @@
 // small margin; composer test:contrast checks the pairs). The secondary
 // background (bg-body-secondary) is not part of the check. A child theme may set
 // $focus-ring-color-dark in its _project-variables.scss.
-@function creationell-focus-ring-dark($color, $backgrounds) {
+@function creationell-tint-for-dark($color, $backgrounds, $minimum) {
   $weight: 0%;
   @while $weight < 100% {
     $tint: tint-color($color, $weight);
     $reached: true;
     @each $background in $backgrounds {
-      @if contrast-ratio($background, $tint) < 3.1 {
+      @if contrast-ratio($background, $tint) < $minimum {
         $reached: false;
       }
     }
@@ -25,6 +25,10 @@
   @return $white;
 }
 
+@function creationell-focus-ring-dark($color, $backgrounds) {
+  @return creationell-tint-for-dark($color, $backgrounds, 3.1);
+}
+
 // A ring colour that is no colour (a custom property, currentcolor) serves both modes.
 $focus-ring-color-dark: null !default;
 @if not $focus-ring-color-dark {
@@ -34,6 +38,29 @@ $focus-ring-color-dark: null !default;
     $focus-ring-color-dark: $focus-ring-color;
   }
 }
+
+// Outline buttons and field borders of the dark colour mode: Bootstrap keeps the
+// static colours there, the outline secondary button reached 2.2:1 and the field
+// border 2.8:1. Like the ring, the colours are tinted until they reach 4.5:1
+// (text) and 3:1 (border) on the dark page and its tertiary background, for any
+// primary colour of the design settings; the hover text is the contrast colour of
+// the tint (composer test:contrast checks the pairs). A child theme may set the
+// variables in its _project-variables.scss.
+$creationell-dark-surfaces: ($body-bg-dark, $body-tertiary-bg-dark);
+$btn-outline-primary-color-dark: null !default;
+$btn-outline-secondary-color-dark: null !default;
+$input-border-color-dark: null !default;
+@if not $btn-outline-primary-color-dark {
+  $btn-outline-primary-color-dark: creationell-tint-for-dark($primary, $creationell-dark-surfaces, 4.6);
+}
+@if not $btn-outline-secondary-color-dark {
+  $btn-outline-secondary-color-dark: creationell-tint-for-dark($secondary, $creationell-dark-surfaces, 4.6);
+}
+@if not $input-border-color-dark {
+  $input-border-color-dark: creationell-tint-for-dark($input-border-color, $creationell-dark-surfaces, 3.1);
+}
+$btn-outline-primary-hover-color-dark: color-contrast($btn-outline-primary-color-dark);
+$btn-outline-secondary-hover-color-dark: color-contrast($btn-outline-secondary-color-dark);
 
 // The rings of fields, menus, pagination, accordion and close button take their
 // colour from --creationell-theme-focus-ring (theme/_forms.scss), so they follow

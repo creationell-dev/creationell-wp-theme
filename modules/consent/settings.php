@@ -68,7 +68,7 @@ return array(
 		group: 'consent',
 		validate: static fn( mixed $value ): bool => is_int( $value ) && $value >= 0,
 		label: static fn(): string => __( 'Imprint page', 'creationell-wp-theme' ),
-		description: static fn(): string => __( 'Linked in the cookie banner next to the privacy policy page of the site. None hides the link.', 'creationell-wp-theme' ),
+		description: static fn(): string => __( 'Linked in the cookie banner after the privacy policy page. The privacy policy page comes from Settings > Privacy. The banner links both pages only when they are published. None hides the imprint link.', 'creationell-wp-theme' ),
 	),
 	new Definition(
 		key: 'consent_revision',

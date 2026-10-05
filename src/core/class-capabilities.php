@@ -20,8 +20,10 @@ defined( 'ABSPATH' ) || exit;
  * pages read-only and edit template parts; the agency (manage_options) manages
  * design, modules, import and export, menus and the Bootstrap line. A child
  * theme opens single areas to editors, takes basic areas back to the agency or
- * restricts administrators of the customer, all through the one filter
- * creationell_wp_theme_capabilities. The Bootstrap line is never opened.
+ * restricts administrators of the customer through the one filter
+ * creationell_wp_theme_capabilities; its values are defaults, which the agency
+ * may change on the rights page (Rights_Store), unless the child theme locks
+ * them ("locked"). The Bootstrap line is never opened.
  *
  * Other code checks the capabilities only with current_user_can() or user_can().
  *
@@ -91,6 +93,13 @@ final class Capabilities {
 	 * @since 1.0.0
 	 */
 	public const SWITCH_BOOTSTRAP_LINE = 'creationell_wp_theme_switch_bootstrap_line';
+
+	/**
+	 * Rights page of the theme settings; agency only, never unlocked.
+	 *
+	 * @since 1.0.0
+	 */
+	public const MANAGE_RIGHTS = 'creationell_wp_theme_manage_rights';
 
 	/**
 	 * Areas a child theme may open to editors (key "unlock" of the filter).
@@ -163,18 +172,89 @@ final class Capabilities {
 	}
 
 	/**
-	 * Returns the value the filter starts with: nothing unlocked, nothing revoked, no restricted administrator.
+	 * Returns the value the filter starts with: nothing unlocked, nothing revoked, no restricted administrator, nothing locked.
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return array{unlock: array<string, bool>, revoke: array<string, bool>, restricted_admins: list<string>} Defaults.
+	 * @return array{unlock: array<string, bool>, revoke: array<string, bool>, restricted_admins: list<string>, locked: list<string>} Defaults.
 	 */
 	public static function defaults(): array {
 		return array(
 			'unlock'            => array_fill_keys( self::UNLOCKABLE, false ),
 			'revoke'            => array_fill_keys( self::REVOCABLE, false ),
 			'restricted_admins' => array(),
+			'locked'            => array(),
 		);
+	}
+
+	/**
+	 * Returns who may use the areas: the defaults of the child theme with the entries of the rights page.
+	 *
+	 * An entry set on the rights page (Rights_Store) replaces the default of the
+	 * child theme unless the child theme locks it. The filter runs on each call,
+	 * so it may depend on the request; nothing is cached.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return array{unlock: array<string, bool>, revoke: array<string, bool>, restricted_admins: list<string>} Rights.
+	 */
+	public static function config(): array {
+		$child  = self::child();
+		$stored = Rights_Store::read();
+		$config = array(
+			'unlock'            => $child['unlock'],
+			'revoke'            => $child['revoke'],
+			'restricted_admins' => $child['restricted_admins'],
+		);
+		foreach ( array( 'unlock', 'revoke' ) as $group ) {
+			foreach ( $stored[ $group ] as $area => $switch ) {
+				if ( ! in_array( $area, $child['locked'], true ) ) {
+					$config[ $group ][ $area ] = $switch;
+				}
+			}
+		}
+		if ( array_key_exists( 'restricted_admins', $stored ) && ! in_array( 'restricted_admins', $child['locked'], true ) ) {
+			$config['restricted_admins'] = $stored['restricted_admins'];
+		}
+		return $config;
+	}
+
+	/**
+	 * Returns where the value of an entry comes from.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string $key Area of "unlock" or "revoke", or "restricted_admins".
+	 * @return string "locked" (child theme fixes it), "backend" (rights page), "child" (default of the child theme) or "theme".
+	 */
+	public static function origin( string $key ): string {
+		$child = self::child();
+		if ( in_array( $key, $child['locked'], true ) ) {
+			return 'locked';
+		}
+		$stored = Rights_Store::read();
+		if ( isset( $stored['unlock'][ $key ] ) || isset( $stored['revoke'][ $key ] ) || ( 'restricted_admins' === $key && array_key_exists( 'restricted_admins', $stored ) ) ) {
+			return 'backend';
+		}
+		$defaults = self::defaults();
+		foreach ( array( 'unlock', 'revoke' ) as $group ) {
+			if ( isset( $child[ $group ][ $key ] ) && $child[ $group ][ $key ] !== $defaults[ $group ][ $key ] ) {
+				return 'child';
+			}
+		}
+		return 'restricted_admins' === $key && array() !== $child['restricted_admins'] ? 'child' : 'theme';
+	}
+
+	/**
+	 * Tells whether the child theme locks an entry, so the rights page cannot change it.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string $key Area of "unlock" or "revoke", or "restricted_admins".
+	 * @return bool True when locked.
+	 */
+	public static function is_locked( string $key ): bool {
+		return in_array( $key, self::child()['locked'], true );
 	}
 
 	/**
@@ -183,14 +263,14 @@ final class Capabilities {
 	 * An invalid part falls back to its default and is reported once per
 	 * request with _doing_it_wrong(): a value that is no array, "unlock" or
 	 * "revoke" that is no array, unknown keys and areas, values that are no
-	 * boolean, and logins that are no non-empty string. The filter runs on each
-	 * call, so it may depend on the request; the value is not stored.
+	 * boolean, logins that are no non-empty string and entries of "locked" that
+	 * name no area of "unlock" or "revoke" and are not "restricted_admins".
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return array{unlock: array<string, bool>, revoke: array<string, bool>, restricted_admins: list<string>} Checked value.
+	 * @return array{unlock: array<string, bool>, revoke: array<string, bool>, restricted_admins: list<string>, locked: list<string>} Checked value.
 	 */
-	public static function config(): array {
+	private static function child(): array {
 		$defaults = self::defaults();
 
 		/**
@@ -200,9 +280,12 @@ final class Capabilities {
 		 * modules, import_export, menus. "revoke" takes an area of the editors
 		 * back to the agency (manage_options): basic, template_parts.
 		 * "restricted_admins" lists user logins of administrators who may use
-		 * only the unlocked areas; they never switch the Bootstrap line. The
+		 * only the unlocked areas; they never switch the Bootstrap line. These
+		 * values are defaults: the agency may change them on the rights page of
+		 * the theme settings. "locked" lists the entries (areas or
+		 * "restricted_admins") that keep the value of the child theme. The
 		 * Bootstrap line is never unlocked. The filter changes no role and
-		 * writes nothing to the database; an import never changes it.
+		 * writes nothing to the database; an import never changes rights.
 		 *
 		 * Example, in the functions.php of a child theme:
 		 *
@@ -211,13 +294,14 @@ final class Capabilities {
 		 *         static function ( array $caps ): array {
 		 *             $caps['unlock']['design']    = true;
 		 *             $caps['restricted_admins'][] = 'customer-admin';
+		 *             $caps['locked'][]            = 'design';
 		 *             return $caps;
 		 *         }
 		 *     );
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param array{unlock: array<string, bool>, revoke: array<string, bool>, restricted_admins: array<int, string>} $caps Defaults: nothing unlocked, nothing revoked, no restricted administrator.
+		 * @param array{unlock: array<string, bool>, revoke: array<string, bool>, restricted_admins: array<int, string>, locked: array<int, string>} $caps Defaults: nothing unlocked, nothing revoked, no restricted administrator, nothing locked.
 		 */
 		$value = apply_filters( 'creationell_wp_theme_capabilities', $defaults );
 		if ( ! is_array( $value ) ) {
@@ -235,6 +319,7 @@ final class Capabilities {
 			'unlock'            => self::switches( $value, 'unlock', self::UNLOCKABLE ),
 			'revoke'            => self::switches( $value, 'revoke', self::REVOCABLE ),
 			'restricted_admins' => self::logins( $value ),
+			'locked'            => self::locked( $value ),
 		);
 	}
 
@@ -242,7 +327,8 @@ final class Capabilities {
 	 * Maps a meta capability of the theme to primitive capabilities; runs on map_meta_cap.
 	 *
 	 * Other capabilities pass unchanged. A restricted administrator gets
-	 * do_not_allow for every area that is not unlocked and for the Bootstrap line.
+	 * do_not_allow for every area that is not unlocked, for the Bootstrap line
+	 * and for the rights page.
 	 *
 	 * @since 1.0.0
 	 *
@@ -254,6 +340,9 @@ final class Capabilities {
 	 */
 	public static function map_meta_cap( array $caps, string $cap, int $user_id, array $args = array() ): array {
 		unset( $args );
+		if ( self::MANAGE_RIGHTS === $cap ) {
+			return array( self::is_restricted( $user_id, self::config()['restricted_admins'] ) ? self::DENY : self::AGENCY );
+		}
 		$area = array_search( $cap, self::area_caps(), true );
 		if ( false === $area ) {
 			return $caps;
@@ -341,6 +430,34 @@ final class Capabilities {
 			$logins[] = $login;
 		}
 		return $logins;
+	}
+
+	/**
+	 * Reads the entries the child theme locks from the filter value.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array<mixed> $value Filter value.
+	 * @return list<string> Areas of "unlock" and "revoke" and "restricted_admins"; other entries are left out.
+	 */
+	private static function locked( array $value ): array {
+		if ( ! array_key_exists( 'locked', $value ) ) {
+			return array();
+		}
+		if ( ! is_array( $value['locked'] ) ) {
+			self::report( '"locked" must be a list of areas' );
+			return array();
+		}
+		$known  = array_merge( self::UNLOCKABLE, self::REVOCABLE, array( 'restricted_admins' ) );
+		$locked = array();
+		foreach ( $value['locked'] as $entry ) {
+			if ( ! is_string( $entry ) || ! in_array( $entry, $known, true ) ) {
+				self::report( sprintf( 'Unknown entry "%s" in "locked"', is_scalar( $entry ) ? (string) $entry : gettype( $entry ) ) );
+				continue;
+			}
+			$locked[] = $entry;
+		}
+		return array_values( array_unique( $locked ) );
 	}
 
 	/**

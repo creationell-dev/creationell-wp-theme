@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-01T15:17:00+00:00\n"
+"POT-Creation-Date: 2026-10-05T13:33:20+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: creationell-wp-theme\n"
@@ -130,33 +130,33 @@ msgstr ""
 msgid "Skip to footer"
 msgstr ""
 
-#: inc/blocks/block-widget-search.php:254
+#: inc/blocks/block-widget-search.php:257
 msgid "Header search (menu)"
 msgstr ""
 
 #. translators: %d: number of the search form in the collapsible header menu, from 2.
-#: inc/blocks/block-widget-search.php:257
+#: inc/blocks/block-widget-search.php:260
 #, php-format
 msgid "Header search (menu) %d"
 msgstr ""
 
-#: inc/blocks/block-widget-search.php:260
+#: inc/blocks/block-widget-search.php:263
 msgid "Header search"
 msgstr ""
 
 #. translators: %d: number of the search form in the header, from 2.
-#: inc/blocks/block-widget-search.php:263
+#: inc/blocks/block-widget-search.php:266
 #, php-format
 msgid "Header search %d"
 msgstr ""
 
-#: inc/blocks/block-widget-search.php:314
+#: inc/blocks/block-widget-search.php:317
 #: searchform.php:34
 msgid "Site search"
 msgstr ""
 
 #. translators: %d: number of the search form outside the header, from 2.
-#: inc/blocks/block-widget-search.php:317
+#: inc/blocks/block-widget-search.php:320
 #, php-format
 msgid "Site search %d"
 msgstr ""
@@ -480,6 +480,7 @@ msgstr[1] ""
 
 #: modules/consent/inc/class-texts.php:287
 #: src/admin/class-module-page.php:420
+#: src/admin/class-rights-page.php:360
 msgid "Description"
 msgstr ""
 
@@ -560,7 +561,7 @@ msgid "Imprint page"
 msgstr ""
 
 #: modules/consent/settings.php:71
-msgid "Linked in the cookie banner next to the privacy policy page of the site. None hides the link."
+msgid "Linked in the cookie banner after the privacy policy page. The privacy policy page comes from Settings > Privacy. The banner links both pages only when they are published. None hides the imprint link."
 msgstr ""
 
 #: modules/consent/settings.php:82
@@ -909,33 +910,51 @@ msgid "You may only edit the menus of the header and footer."
 msgstr ""
 
 #. translators: 1: part name, e.g. "footer", 2: comma-separated language codes, 3: part slug.
-#: modules/header-footer/inc/class-part-translations.php:231
+#: modules/header-footer/inc/class-part-translations.php:236
 #, php-format
 msgid "The %1$s translation into %2$s has a slug other than \"%3$s\"; pages in these languages show the %1$s of the theme file."
 msgstr ""
 
 #. translators: 1: part name, e.g. "header", 2: comma-separated language codes.
-#: modules/header-footer/inc/class-part-translations.php:240
+#: modules/header-footer/inc/class-part-translations.php:245
 #, php-format
 msgid "The %1$s has no translation into %2$s; pages in these languages show the %1$s of the default language."
 msgstr ""
 
-#: modules/header-footer/inc/class-part-translations.php:245
+#: modules/header-footer/inc/class-part-translations.php:250
 msgid "Translate header and footer with WPML only, not by switching the language in the Site Editor."
 msgstr ""
 
-#. translators: 1: language code, e.g. "en", 2: comma-separated part names, 3: code of the default language.
-#: modules/header-footer/inc/class-part-translations.php:323
+#. translators: 1: language code, e.g. "en", 2: comma-separated part names.
+#: modules/header-footer/inc/class-part-translations.php:336
 #, php-format
-msgid "No linked translation into %1$s exists for: %2$s. Saving here overwrites the part of the default language %3$s. Translate header and footer with WPML first, or switch the admin language to %3$s."
+msgid "No linked translation into %1$s exists for: %2$s."
 msgstr ""
 
-#: modules/header-footer/inc/class-part-translations.php:340
+#. translators: 1: comma-separated part names, 2: code of the default language.
+#: modules/header-footer/inc/class-part-translations.php:344
+#, php-format
+msgid "For %1$s: saving here overwrites the part of the default language %2$s."
+msgstr ""
+
+#. translators: 1: comma-separated part names, 2: language code, e.g. "en", 3: code of the default language.
+#: modules/header-footer/inc/class-part-translations.php:352
+#, php-format
+msgid "For %1$s: saving here creates a separate part in %2$s that is not linked to the default language %3$s, which keeps the theme file."
+msgstr ""
+
+#. translators: %s: code of the default language.
+#: modules/header-footer/inc/class-part-translations.php:360
+#, php-format
+msgid "Switch the admin language to %s to edit header and footer, then translate them with WPML."
+msgstr ""
+
+#: modules/header-footer/inc/class-part-translations.php:388
 msgctxt "template part name inside a sentence"
 msgid "header"
 msgstr ""
 
-#: modules/header-footer/inc/class-part-translations.php:341
+#: modules/header-footer/inc/class-part-translations.php:389
 msgctxt "template part name inside a sentence"
 msgid "footer"
 msgstr ""
@@ -1773,16 +1792,16 @@ msgstr ""
 msgid "Sidebar left"
 msgstr ""
 
-#: src/admin/class-menu.php:61
-#: src/admin/class-menu.php:148
+#: src/admin/class-menu.php:78
+#: src/admin/class-menu.php:196
 msgid "creationell Theme settings"
 msgstr ""
 
-#: src/admin/class-menu.php:62
+#: src/admin/class-menu.php:79
 msgid "Theme settings"
 msgstr ""
 
-#: src/admin/class-menu.php:149
+#: src/admin/class-menu.php:197
 msgid "No theme settings page is available to you."
 msgstr ""
 
@@ -1792,6 +1811,7 @@ msgid "Theme modules"
 msgstr ""
 
 #: src/admin/class-module-page.php:137
+#: src/admin/class-rights-page.php:284
 #: src/settings/transfer/class-modules-section.php:92
 msgid "Modules"
 msgstr ""
@@ -1835,6 +1855,7 @@ msgid "State of %s"
 msgstr ""
 
 #: src/admin/class-module-page.php:484
+#: src/admin/class-rights-page.php:459
 #: src/admin/class-transfer-page.php:1392
 #: src/settings/acf/class-options-pages.php:125
 msgid "Save"
@@ -1994,10 +2015,12 @@ msgid "Set by the child theme"
 msgstr ""
 
 #: src/admin/class-module-page.php:792
+#: src/admin/class-rights-page.php:497
 msgid "Set on this page"
 msgstr ""
 
 #: src/admin/class-module-page.php:794
+#: src/admin/class-rights-page.php:498
 msgid "Locked by the child theme"
 msgstr ""
 
@@ -2049,6 +2072,169 @@ msgstr ""
 msgid "The module %s is off"
 msgstr ""
 
+#: src/admin/class-rights-page.php:108
+#: src/admin/class-rights-page.php:109
+#: src/admin/class-rights-page.php:190
+msgid "Rights"
+msgstr ""
+
+#: src/admin/class-rights-page.php:192
+msgid "Choose who may use the areas of the theme settings. The child theme sets the defaults; what it locks cannot be changed here. Import and export never change rights."
+msgstr ""
+
+#: src/admin/class-rights-page.php:209
+msgid "You are not allowed to change the rights."
+msgstr ""
+
+#: src/admin/class-rights-page.php:283
+#: src/settings/acf/class-options-pages.php:113
+msgid "Design"
+msgstr ""
+
+#: src/admin/class-rights-page.php:285
+msgid "Import and export"
+msgstr ""
+
+#: src/admin/class-rights-page.php:286
+msgid "Menus of header and footer"
+msgstr ""
+
+#: src/admin/class-rights-page.php:287
+#: src/settings/acf/class-options-pages.php:112
+msgid "Texts"
+msgstr ""
+
+#: src/admin/class-rights-page.php:288
+#: src/modules/class-module-catalog.php:171
+msgid "Header and footer"
+msgstr ""
+
+#: src/admin/class-rights-page.php:289
+msgid "Restricted administrators"
+msgstr ""
+
+#. translators: %s: title of the area.
+#. translators: %s: comma-separated labels of settings.
+#: src/admin/class-rights-page.php:333
+#: src/admin/class-settings-notices.php:154
+#, php-format
+msgid "Saved: %s."
+msgstr ""
+
+#. translators: %s: title of the area.
+#: src/admin/class-rights-page.php:335
+#, php-format
+msgid "Unchanged: %s."
+msgstr ""
+
+#. translators: %s: title of the area.
+#. translators: %s: comma-separated labels of settings.
+#: src/admin/class-rights-page.php:337
+#: src/admin/class-settings-notices.php:158
+#, php-format
+msgid "Back to the default: %s."
+msgstr ""
+
+#. translators: %s: title of the area.
+#: src/admin/class-rights-page.php:339
+#, php-format
+msgid "Not saved: the child theme locks %s."
+msgstr ""
+
+#: src/admin/class-rights-page.php:340
+msgid "Not saved: the choice is not valid."
+msgstr ""
+
+#: src/admin/class-rights-page.php:341
+msgid "Not saved: you cannot restrict your own account."
+msgstr ""
+
+#: src/admin/class-rights-page.php:342
+msgid "Not saved: the database did not store the value."
+msgstr ""
+
+#: src/admin/class-rights-page.php:358
+msgid "Areas of the theme settings and who may use them"
+msgstr ""
+
+#: src/admin/class-rights-page.php:359
+msgid "Area"
+msgstr ""
+
+#: src/admin/class-rights-page.php:361
+msgid "Who may use it"
+msgstr ""
+
+#: src/admin/class-rights-page.php:362
+msgid "Origin"
+msgstr ""
+
+#. translators: %s: title of the area.
+#: src/admin/class-rights-page.php:373
+#, php-format
+msgid "Who may use %s"
+msgstr ""
+
+#: src/admin/class-rights-page.php:375
+msgid "Agency only"
+msgstr ""
+
+#: src/admin/class-rights-page.php:376
+msgid "Agency and editors"
+msgstr ""
+
+#: src/admin/class-rights-page.php:405
+msgid "Administrators marked here cannot use the areas of the agency (design, modules, import and export, menus) unless they are open to editors; they never see this page and never switch the Bootstrap line. They keep the other rights of an administrator in WordPress; the restriction holds firmly only when the child theme locks it."
+msgstr ""
+
+#. translators: 1: display name, 2: user login.
+#: src/admin/class-rights-page.php:419
+#, php-format
+msgid "%1$s (%2$s, your account cannot be restricted)"
+msgstr ""
+
+#. translators: 1: display name, 2: user login.
+#: src/admin/class-rights-page.php:421
+#, php-format
+msgid "%1$s (%2$s)"
+msgstr ""
+
+#: src/admin/class-rights-page.php:461
+msgid "Back to the default"
+msgstr ""
+
+#: src/admin/class-rights-page.php:475
+msgid "Colors and fonts."
+msgstr ""
+
+#: src/admin/class-rights-page.php:476
+msgid "Switching theme modules on and off."
+msgstr ""
+
+#: src/admin/class-rights-page.php:477
+msgid "Exporting and importing the theme settings."
+msgstr ""
+
+#: src/admin/class-rights-page.php:478
+msgid "The menus assigned to the header and the footer."
+msgstr ""
+
+#: src/admin/class-rights-page.php:479
+msgid "Texts such as the footer, the contact details and the cookie banner."
+msgstr ""
+
+#: src/admin/class-rights-page.php:480
+msgid "Header and footer in the Site Editor."
+msgstr ""
+
+#: src/admin/class-rights-page.php:495
+msgid "Default of the theme"
+msgstr ""
+
+#: src/admin/class-rights-page.php:496
+msgid "Default of the child theme"
+msgstr ""
+
 #: src/admin/class-settings-notices.php:131
 msgid "Read only: you may view these settings but not change them."
 msgstr ""
@@ -2057,18 +2243,6 @@ msgstr ""
 #: src/admin/class-settings-notices.php:145
 #, php-format
 msgid "Not saved: %1$s: %2$s"
-msgstr ""
-
-#. translators: %s: comma-separated labels of settings.
-#: src/admin/class-settings-notices.php:154
-#, php-format
-msgid "Saved: %s."
-msgstr ""
-
-#. translators: %s: comma-separated labels of settings.
-#: src/admin/class-settings-notices.php:158
-#, php-format
-msgid "Back to the default: %s."
 msgstr ""
 
 #. translators: %s: titles of the modules, separated by commas.
@@ -2586,19 +2760,19 @@ msgid "Fonts are managed in the design settings of the theme."
 msgstr ""
 
 #. translators: 1: required PHP version, 2: required WordPress version, 3: running PHP version, 4: running WordPress version.
-#: src/core/class-theme.php:135
+#: src/core/class-theme.php:140
 #, php-format
 msgid "The creationell Theme needs PHP %1$s and WordPress %2$s or newer; this site runs PHP %3$s and WordPress %4$s. The theme functions stay off until the server and WordPress are updated."
 msgstr ""
 
 #. translators: %s: URL of the update manifest.
-#: src/core/class-theme.php:162
+#: src/core/class-theme.php:167
 #, php-format
 msgid "The creationell Theme looks for updates at %s (set by CREATIONELL_WP_THEME_MANIFEST_URL) instead of the official manifest. Use this only for tests."
 msgstr ""
 
 #. translators: %s: value of the constant.
-#: src/core/class-theme.php:173
+#: src/core/class-theme.php:178
 #, php-format
 msgid "CREATIONELL_WP_THEME_MANIFEST_URL is set to %s, which is no https URL. The creationell Theme ignores it and uses the official update manifest."
 msgstr ""
@@ -2609,10 +2783,6 @@ msgstr ""
 
 #: src/modules/class-module-catalog.php:170
 msgid "Consent"
-msgstr ""
-
-#: src/modules/class-module-catalog.php:171
-msgid "Header and footer"
 msgstr ""
 
 #: src/modules/class-module-catalog.php:172
@@ -2703,67 +2873,67 @@ msgid "(no title)"
 msgstr ""
 
 #. translators: %s: label of the setting.
-#: src/settings/acf/class-acf-adapter.php:429
+#: src/settings/acf/class-acf-adapter.php:435
 #, php-format
 msgid "Reset to default: %s"
 msgstr ""
 
 #. translators: %s: name of a PHP constant.
-#: src/settings/acf/class-acf-adapter.php:609
+#: src/settings/acf/class-acf-adapter.php:615
 #, php-format
 msgid "Set by the constant %s."
 msgstr ""
 
-#: src/settings/acf/class-acf-adapter.php:614
+#: src/settings/acf/class-acf-adapter.php:620
 msgid "Locked by the child theme."
 msgstr ""
 
-#: src/settings/acf/class-acf-adapter.php:617
+#: src/settings/acf/class-acf-adapter.php:623
 #: src/settings/class-setter.php:349
 msgid "Choose one language; settings cannot be saved for all languages at once."
 msgstr ""
 
-#: src/settings/acf/class-acf-adapter.php:620
+#: src/settings/acf/class-acf-adapter.php:626
 msgid "The same in every language; change it in the default language."
 msgstr ""
 
-#: src/settings/acf/class-acf-adapter.php:623
+#: src/settings/acf/class-acf-adapter.php:629
 msgid "You may view this setting but not change it."
 msgstr ""
 
-#: src/settings/acf/class-acf-adapter.php:640
+#: src/settings/acf/class-acf-adapter.php:646
 msgid "default language"
 msgstr ""
 
-#: src/settings/acf/class-acf-adapter.php:643
+#: src/settings/acf/class-acf-adapter.php:649
 msgid "child theme default"
 msgstr ""
 
-#: src/settings/acf/class-acf-adapter.php:644
+#: src/settings/acf/class-acf-adapter.php:650
 msgid "saved value"
 msgstr ""
 
-#: src/settings/acf/class-acf-adapter.php:645
+#: src/settings/acf/class-acf-adapter.php:651
 msgid "child theme lock"
 msgstr ""
 
-#: src/settings/acf/class-acf-adapter.php:646
+#: src/settings/acf/class-acf-adapter.php:652
 msgid "site constant"
 msgstr ""
 
-#: src/settings/acf/class-acf-adapter.php:647
+#: src/settings/acf/class-acf-adapter.php:653
 msgid "theme default"
 msgstr ""
 
-#: src/settings/acf/class-acf-adapter.php:674
+#: src/settings/acf/class-acf-adapter.php:680
 msgid "yes"
 msgstr ""
 
-#: src/settings/acf/class-acf-adapter.php:674
+#: src/settings/acf/class-acf-adapter.php:680
 msgid "no"
 msgstr ""
 
-#: src/settings/acf/class-acf-adapter.php:681
+#: src/settings/acf/class-acf-adapter.php:687
 msgid "(empty)"
 msgstr ""
 
@@ -2777,14 +2947,6 @@ msgstr ""
 
 #: src/settings/acf/class-field-factory.php:190
 msgid "Same as body font"
-msgstr ""
-
-#: src/settings/acf/class-options-pages.php:112
-msgid "Texts"
-msgstr ""
-
-#: src/settings/acf/class-options-pages.php:113
-msgid "Design"
 msgstr ""
 
 #: src/settings/acf/class-options-pages.php:164
@@ -3283,32 +3445,36 @@ msgstr ""
 msgid "(home page)"
 msgstr ""
 
-#: src/wpml/class-wpml-integration.php:191
+#: src/wpml/class-wpml-integration.php:198
 msgid "WPML String Translation is not active; corrections of theme texts and further languages need it."
 msgstr ""
 
-#: src/wpml/class-wpml-integration.php:194
+#: src/wpml/class-wpml-integration.php:201
 msgid "ACF Multilingual (ACFML) is not active; the translated settings cannot be translated per language."
 msgstr ""
 
 #. translators: %s: comma-separated language codes.
-#: src/wpml/class-wpml-integration.php:199
+#: src/wpml/class-wpml-integration.php:206
 #, php-format
 msgid "The settings snapshots do not match the languages %s; open any admin page to rebuild them."
 msgstr ""
 
 #. translators: %s: comma-separated option names.
-#: src/wpml/class-wpml-integration.php:204
+#: src/wpml/class-wpml-integration.php:211
 #, php-format
 msgid "Global settings were saved per language (%s); the theme ignores these rows. Keep the global settings page out of the multilang module of ACF Extended and delete the rows."
 msgstr ""
 
-#: src/wpml/class-wpml-integration.php:207
+#: src/wpml/class-wpml-integration.php:214
 msgid "The theme has no wpml-config.xml; WPML does not know which block texts to translate."
 msgstr ""
 
+#: src/wpml/class-wpml-integration.php:217
+msgid "WPML has not loaded the wpml-config.xml of the theme: template parts are not shown as translated, for example after \"wp theme activate\". Open Appearance > Themes in the admin once; WPML then reads the file."
+msgstr ""
+
 #. translators: %s: WPML URL mode, e.g. "parameter".
-#: src/wpml/class-wpml-integration.php:211
+#: src/wpml/class-wpml-integration.php:221
 #, php-format
 msgid "WPML uses the URL mode \"%s\"; the theme is tested with language directories."
 msgstr ""

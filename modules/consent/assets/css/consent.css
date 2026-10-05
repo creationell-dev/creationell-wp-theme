@@ -37,9 +37,14 @@
 	--cc-toggle-off-knob-bg: var(--bs-body-bg);
 	--cc-toggle-enabled-icon-color: var(--bs-btn-bg);
 	--cc-toggle-disabled-icon-color: var(--bs-secondary-color);
-	--cc-toggle-readonly-bg: var(--bs-secondary-bg);
-	--cc-toggle-readonly-knob-bg: var(--bs-body-bg);
-	--cc-toggle-readonly-knob-icon-color: var(--bs-secondary-color);
+	/*
+	 * The locked switch of "necessary" shows "on" like the other switches, with
+	 * the lock icon in the knob: the button pair of the theme, at least 4.5:1
+	 * (WCAG 1.4.11 asks 3:1; light grey under a white knob was 1.2:1).
+	 */
+	--cc-toggle-readonly-bg: var(--bs-btn-bg);
+	--cc-toggle-readonly-knob-bg: var(--bs-btn-color);
+	--cc-toggle-readonly-knob-icon-color: var(--bs-btn-bg);
 	--cc-section-category-border: var(--bs-border-color);
 	--cc-cookie-category-block-bg: var(--bs-tertiary-bg);
 	--cc-cookie-category-block-border: var(--bs-border-color);
@@ -56,6 +61,35 @@
 	/* Above sticky headers (1020, 1030), below offcanvas (1045) and modals (FS-13). */
 	--cc-z-index: 1044;
 	font-size: var(--bs-body-font-size);
+}
+
+/*
+ * Dark colour mode: the primary color is checked against white only and is
+ * too dark on the dark surfaces (about 2.3:1), so switches that are on or
+ * locked take the light primary tint with a dark knob (WCAG 1.4.11).
+ */
+[data-bs-theme="dark"] #cc-main,
+#cc-main[data-bs-theme="dark"] {
+	--cc-toggle-on-bg: var(--bs-primary-text-emphasis);
+	--cc-toggle-on-knob-bg: var(--bs-body-bg);
+	--cc-toggle-enabled-icon-color: var(--bs-primary-text-emphasis);
+	--cc-toggle-readonly-bg: var(--bs-primary-text-emphasis);
+	--cc-toggle-readonly-knob-bg: var(--bs-body-bg);
+	--cc-toggle-readonly-knob-icon-color: var(--bs-primary-text-emphasis);
+}
+
+/*
+ * Section arrows: CookieConsent paints the circle with the colour of the
+ * locked switch and the arrow with the text colour of the secondary button,
+ * white on light grey (1.2:1). Text colour and surface give the pair of the
+ * body text in both colour modes (WCAG 1.4.11).
+ */
+#cc-main .pm__section--expandable .pm__section-arrow {
+	background: var(--cc-primary-color);
+}
+
+#cc-main .pm__section--expandable .pm__section-arrow svg {
+	stroke: var(--cc-bg);
 }
 
 /* Focus ring of the theme on every control of banner and dialog. */

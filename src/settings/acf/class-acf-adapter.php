@@ -407,7 +407,9 @@ final class Acf_Adapter {
 	 * Prints the reset button after a theme field with a backend value; action acf/render_field.
 	 *
 	 * The button submits the form (FS-14: no writing GET); the options page runs
-	 * the reset after its save.
+	 * the reset after its save. ACF renders some field types, such as the
+	 * post_object of a page setting, as another type with a nested
+	 * acf_render_field(); the button belongs to the outer run only.
 	 *
 	 * @since 1.0.0
 	 *
@@ -417,6 +419,10 @@ final class Acf_Adapter {
 	public function render_field( mixed $field ): void {
 		$key = Field_Factory::setting_key( $field );
 		if ( null === $key || ! is_array( $field ) || true !== ( $field[ self::RESET_FLAG ] ?? false ) ) {
+			return;
+		}
+		$hooks = $GLOBALS['wp_current_filter'] ?? array();
+		if ( is_array( $hooks ) && count( array_keys( $hooks, 'acf/render_field', true ) ) > 1 ) {
 			return;
 		}
 		printf(

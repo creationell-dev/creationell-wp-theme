@@ -3,6 +3,41 @@ Block Widgets
 --------------------------------------------------------------*/
 
 
+// Search block: the button keeps its text on one line and its width, the input takes
+// the rest. The body class text-break would break the button text inside a word, the
+// button then shrank and input and button grew to two lines.
+.wp-block-search__btn {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.wp-block-search__input {
+  min-width: 0;
+}
+
+// Bootstrap carousel: the white control icons sat at half opacity on the slide
+// and vanished on light images, and the controls showed no focus ring. A dark
+// disc keeps the icon readable on any image (WCAG 1.4.11; the dark colour mode
+// of Bootstrap inverts icon and disc together). The ring follows the theme,
+// inside the control, with a gap in the page colour.
+.carousel-control-prev,
+.carousel-control-next {
+  opacity: 1;
+
+  &:focus-visible {
+    outline: $btn-focus-outline-width solid var(--creationell-theme-focus-ring);
+    outline-offset: -($btn-focus-outline-width * 2);
+    box-shadow: inset 0 0 0 $btn-focus-outline-width var(--#{$prefix}body-bg);
+  }
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(var(--#{$prefix}black-rgb), .6);
+  background-size: 50% 50%;
+  border-radius: 50%;
+}
+
 // Add width-100 classes to block img if class is added to the figure
 figure.w-100 {
   img {

@@ -29,26 +29,25 @@ if ( ! function_exists( 'creationell_wp_theme_block_widget_categories_classes' )
 			return $block_content;
 		}
 
-		// Check if the block contains the 'wp-block-categories-list' class, exclude the dropdown.
-		if ( strpos( $block_content, 'wp-block-categories-list' ) !== false ) {
-			$search  = array(
-				'wp-block-categories-list',
-				'cat-item',
-				'current-cat',
-				'<a',
-				'(',
-				')',
-			);
-			$replace = array(
-				'wp-block-categories-list creationell-theme-list-group list-group',
-				'cat-item list-group-item list-group-item-action d-flex justify-content-between align-items-center',
-				'current-cat active',
-				'<a class="stretched-link text-decoration-none"',
-				'<span class="badge bg-primary-subtle text-primary-emphasis">',
-				'</span>',
-			);
-
-			$block_content = str_replace( $search, $replace, $block_content );
+		// The list only; the dropdown stays as it is. Classes go on single tags, so
+		// longer class names (cat-item-1, current-cat-parent) and names stay whole.
+		if ( false !== strpos( $block_content, 'wp-block-categories-list' ) ) {
+			$tags = new WP_HTML_Tag_Processor( $block_content );
+			while ( $tags->next_tag() ) {
+				$tag = $tags->get_tag();
+				if ( 'UL' === $tag && creationell_wp_theme_tag_has_class( $tags, 'wp-block-categories-list' ) ) {
+					creationell_wp_theme_tag_classes( $tags, array( 'creationell-theme-list-group', 'list-group' ) );
+				} elseif ( 'LI' === $tag && creationell_wp_theme_tag_has_class( $tags, 'cat-item' ) ) {
+					$current = creationell_wp_theme_tag_has_class( $tags, 'current-cat' ) ? array( 'active' ) : array();
+					creationell_wp_theme_tag_classes( $tags, array_merge( array( 'list-group-item', 'list-group-item-action', 'd-flex', 'justify-content-between', 'align-items-center' ), $current ) );
+				} elseif ( 'LI' === $tag && creationell_wp_theme_tag_has_class( $tags, 'cat-item-none' ) ) {
+					creationell_wp_theme_tag_classes( $tags, array( 'list-group-item', 'text-body-secondary' ) );
+				} elseif ( 'A' === $tag ) {
+					creationell_wp_theme_tag_classes( $tags, array( 'stretched-link', 'text-decoration-none' ) );
+				}
+			}
+			// The post count follows the link as " (3)"; parentheses in a name stay inside the link.
+			$block_content = (string) preg_replace( '~</a>\s*\(([^()<>]+)\)~u', '</a> <span class="badge bg-primary-subtle text-primary-emphasis">$1</span>', $tags->get_updated_html() );
 		}
 
 		/**
