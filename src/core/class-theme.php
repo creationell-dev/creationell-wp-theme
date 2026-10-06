@@ -32,6 +32,7 @@ use Creationell\WpTheme\Compiler\Custom_Stylesheet;
 use Creationell\WpTheme\Consent\Consent_Gate;
 use Creationell\WpTheme\Modules\Module_Gate;
 use Creationell\WpTheme\Settings\Acf\Acf_Adapter;
+use Creationell\WpTheme\Settings\Font_Catalog;
 use Creationell\WpTheme\Settings\Global_Styles_Lock;
 use Creationell\WpTheme\Settings\Registry;
 use Creationell\WpTheme\Settings\Snapshot;
@@ -79,6 +80,7 @@ final class Theme {
 		Module_Gate::register_hooks();
 		add_action( 'init', array( Vendor_Scripts::class, 'register' ), Vendor_Scripts::PRIORITY, 0 );
 		Theme_Json_Tokens::register_hooks();
+		Theme_Json_Tokens::set_fonts( Font_Catalog::theme_json_fonts( ... ) );
 		Global_Styles_Lock::register_hooks();
 		add_action( 'wp_enqueue_scripts', array( Assets::class, 'enqueue_frontend' ), 5, 0 );
 		Consent_Gate::register_hooks();

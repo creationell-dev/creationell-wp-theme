@@ -1,6 +1,6 @@
 # creationell Theme
 
-**Version:** 0.2.1
+**Version:** 0.2.2
 
 **Requires at least:** 7.1
 
@@ -237,6 +237,15 @@ GPL-2.0-or-later, see `LICENSE`. Licenses of the included third-party code:
 `THIRD-PARTY-NOTICES`.
 
 ## Changelog
+
+### 0.2.2
+
+- Fonts of the child theme load now. A font the child adds to the font
+  catalog (filter `creationell_wp_theme_font_catalog`) with files in
+  `assets/fonts/` gets its font-face rules, with `font-display: swap` and the
+  unicode range of the entry. Before, the stylesheet asked for the font but
+  WordPress printed no font-face rule, so browsers showed the system font.
+  Nothing to do after the update.
 
 ### 0.2.1
 

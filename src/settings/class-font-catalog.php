@@ -138,6 +138,27 @@ final class Font_Catalog {
 	}
 
 	/**
+	 * Returns stack and theme.json font faces of every font, the source of the font presets.
+	 *
+	 * Theme::boot() hands it to Theme_Json_Tokens::set_fonts(), so the core
+	 * prints the font-face rules of the chosen fonts.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return array<string, array{stack: string, faces: list<array<string, mixed>>}> Stack and font faces by font slug.
+	 */
+	public static function theme_json_fonts(): array {
+		$fonts = array();
+		foreach ( self::instance()->all() as $slug => $font ) {
+			$fonts[ $slug ] = array(
+				'stack' => $font->stack,
+				'faces' => $font->theme_json_faces(),
+			);
+		}
+		return $fonts;
+	}
+
+	/**
 	 * Returns a font by slug.
 	 *
 	 * @since 1.0.0

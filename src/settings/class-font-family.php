@@ -66,4 +66,34 @@ final class Font_Family {
 	public function name(): string {
 		return $this->name instanceof Closure ? ( $this->name )() : $this->name;
 	}
+
+	/**
+	 * Returns the font faces as fontFace entries of theme.json.
+	 *
+	 * The family name is the first name of the stack, so the font-face rules
+	 * serve the name the stylesheet asks for; the faces show with font-display
+	 * swap. A unicode range goes in only where the face has one.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return list<array<string, mixed>> Font faces of theme.json.
+	 */
+	public function theme_json_faces(): array {
+		$family = trim( explode( ',', $this->stack, 2 )[0], " \t\"'" );
+		$faces  = array();
+		foreach ( $this->faces as $face ) {
+			$entry = array(
+				'fontFamily'  => $family,
+				'fontWeight'  => $face['weight'],
+				'fontStyle'   => $face['style'],
+				'fontDisplay' => 'swap',
+				'src'         => array( $face['src'] ),
+			);
+			if ( isset( $face['unicode_range'] ) ) {
+				$entry['unicodeRange'] = $face['unicode_range'];
+			}
+			$faces[] = $entry;
+		}
+		return $faces;
+	}
 }
