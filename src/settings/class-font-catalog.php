@@ -42,7 +42,7 @@ final class Font_Catalog {
 	 *
 	 * @since 1.0.0
 	 */
-	public const SCRIPTS = array( 'latin', 'latin-ext', 'vietnamese', 'cyrillic', 'arabic' );
+	public const SCRIPTS = array( 'latin', 'latin-ext', 'vietnamese', 'cyrillic', 'arabic', 'cjk' );
 
 	/**
 	 * Stack of "system-sans": the $font-family-sans-serif default of Bootstrap 5.
@@ -64,6 +64,13 @@ final class Font_Catalog {
 	 * @since 1.0.0
 	 */
 	public const SRC_PATTERN = '~^file:\./assets/fonts/[A-Za-z0-9_-]+(?:\.[A-Za-z0-9_-]+)*\.woff2$~D';
+
+	/**
+	 * Generic font families of CSS; one of them as first name of a stack hides the font files.
+	 *
+	 * @since 1.0.0
+	 */
+	public const GENERIC_FAMILIES = array( 'serif', 'sans-serif', 'monospace', 'cursive', 'fantasy', 'system-ui', 'ui-serif', 'ui-sans-serif', 'ui-monospace', 'ui-rounded', 'math', 'emoji', 'fangsong' );
 
 	/**
 	 * Shared instance.
@@ -233,7 +240,7 @@ final class Font_Catalog {
 		 *
 		 * Each entry needs a slug (lower case letters, digits, hyphens) as key, a
 		 * name, a CSS font stack and the scripts it covers (latin, latin-ext,
-		 * vietnamese, cyrillic, arabic). Font files are optional and must lie in
+		 * vietnamese, cyrillic, arabic, cjk). Font files are optional and must lie in
 		 * assets/fonts/ of the child theme as .woff2; the core prints the font-face
 		 * rules for them. Invalid entries are dropped and reported.
 		 *
@@ -268,6 +275,8 @@ final class Font_Catalog {
 			$slug   = (string) $slug;
 			$family = $this->entry( $slug, $entry, $families );
 			if ( null !== $family ) {
+				$this->check_stack( $family );
+				$this->check_ranges( $family );
 				$families[ $slug ] = $family;
 			}
 		}
@@ -390,12 +399,60 @@ final class Font_Catalog {
 	}
 
 	/**
+	 * Reports a stack whose first name breaks the font-face rules WordPress prints; the entry stays.
+	 *
+	 * WordPress takes the family of every face from the first name of the
+	 * stack, removes its quotes and quotes it again only when it holds a space.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param Font_Family $family Font with faces.
+	 * @return void
+	 */
+	private function check_stack( Font_Family $family ): void {
+		if ( array() === $family->faces ) {
+			return;
+		}
+		$first  = trim( explode( ',', $family->stack, 2 )[0] );
+		$quoted = 1 === preg_match( '~^(["\'])(.*)\1$~sD', $first, $matches );
+		$name   = $quoted ? $matches[2] : $first;
+		if ( ! $quoted && in_array( strtolower( $name ), self::GENERIC_FAMILIES, true ) ) {
+			$this->report( $family->slug, 'stack_generic', sprintf( 'The font "%1$s" of the filter %2$s starts its stack with the generic family %3$s, so its font files are never used; put the name of the font first.', $family->slug, self::FILTER, $name ) );
+			return;
+		}
+		if ( $quoted && ! str_contains( $name, ' ' ) && ( 1 !== preg_match( '~^-?[A-Za-z][A-Za-z0-9_-]*$~D', $name ) || in_array( strtolower( $name ), self::GENERIC_FAMILIES, true ) ) ) {
+			$this->report( $family->slug, 'stack_name', sprintf( 'The font "%1$s" of the filter %2$s starts its stack with "%3$s"; WordPress prints that name without quotes, so browsers drop its font-face rules. Use letters, digits, "_" and "-" (no digit first) or a name with a space.', $family->slug, self::FILTER, $name ) );
+		}
+	}
+
+	/**
+	 * Reports face ranges with parts CSS does not allow; the entry stays.
+	 *
+	 * Browsers drop such a unicode-range as a whole and use the face for every
+	 * character, so an extra font would load on every page.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param Font_Family $family Font.
+	 * @return void
+	 */
+	private function check_ranges( Font_Family $family ): void {
+		foreach ( $family->faces as $face ) {
+			$invalid = isset( $face['unicode_range'] ) ? Unicode_Range::invalid_parts( $face['unicode_range'] ) : array();
+			if ( array() !== $invalid ) {
+				$this->report( $family->slug, 'unicode_range', sprintf( 'The font "%1$s" of the filter %2$s has a unicode range with parts CSS does not allow (%3$s); browsers then ignore the whole range of %4$s and load it for every page. Fix or remove these parts.', $family->slug, self::FILTER, implode( ', ', $invalid ), $face['src'] ) );
+				return;
+			}
+		}
+	}
+
+	/**
 	 * Records and reports a finding once.
 	 *
 	 * @since 1.0.0
 	 *
 	 * @param string $slug    Font slug; empty when unknown.
-	 * @param string $key     Setting key; empty for a dropped entry.
+	 * @param string $key     Setting key; empty for a dropped entry; stack_name, stack_generic or unicode_range for a kept entry with a problem.
 	 * @param string $message Message in English; not translated, it may come before init.
 	 * @return void
 	 */

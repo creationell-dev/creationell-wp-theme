@@ -120,3 +120,11 @@ iframe {
     background: rgba(0, 0, 0, 0.5);
   }
 }
+
+// "Read more" link of the post cards: a target of 24 px height (WCAG 2.5.8).
+// Without an excerpt it sits right under the title link of the card. Only inside
+// cards: other plugins and excerpt filters use the class name in running text.
+.card .read-more {
+  display: inline-block;
+  min-height: 24px;
+}

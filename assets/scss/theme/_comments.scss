@@ -31,6 +31,11 @@ Comments
   }
 }
 
+// WordPress class for hidden labels. The base rules stay as they were, so focus rules such as
+// .screen-reader-text:focus { width: auto; clip: auto !important } still show a focused element.
+// An unfocused element gets Bootstrap's visually-hidden rules with !important: block styles such
+// as .wp-block-search__label { width: 100% } come later and would otherwise widen the hidden
+// label and the whole page.
 .screen-reader-text {
   clip: rect(1px, 1px, 1px, 1px);
   position: absolute !important;
@@ -38,6 +43,10 @@ Comments
   width: 1px;
   overflow: hidden;
   word-wrap: normal !important;
+
+  &:not(:focus):not(:focus-within) {
+    @include visually-hidden();
+  }
 }
 
 #cancel-comment-reply-link {

@@ -11,6 +11,7 @@ namespace Creationell\WpTheme\Settings\Acf;
 
 use Closure;
 use Creationell\WpTheme\Admin\Notices;
+use Creationell\WpTheme\Admin\Font_Coverage_Notice;
 use Creationell\WpTheme\Admin\Settings_Notices;
 use Creationell\WpTheme\Settings\Definition;
 use Creationell\WpTheme\Settings\Language;
@@ -198,6 +199,7 @@ final class Acf_Adapter {
 		add_action( 'acf/input/admin_head', array( $this, 'admin_head' ), 20, 0 );
 		add_action( 'admin_enqueue_scripts', array( Options_Pages::class, 'enqueue_styles' ), 10, 0 );
 		add_action( 'admin_notices', array( Settings_Notices::class, 'render' ), 10, 0 );
+		add_action( 'admin_notices', array( Font_Coverage_Notice::class, 'render' ), 10, 0 );
 	}
 
 	/**

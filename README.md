@@ -1,6 +1,6 @@
 # creationell Theme
 
-**Version:** 0.2.2
+**Version:** 0.3.0
 
 **Requires at least:** 7.1
 
@@ -131,6 +131,11 @@ The texts of the theme are English, with the text domain
 site language is one of these. Further languages are translated per project
 with WPML; `wpml-config.xml` tells WPML which theme data to translate.
 
+Texts of the theme in further languages go through WPML String Translation
+(domain `creationell-wp-theme`); texts the consent banner shows come from PHP
+as well. From 0.3.0 on, each changelog entry lists under "New or changed
+texts" what was added or changed, so these languages can follow.
+
 ## Accessibility
 
 The templates aim at WCAG 2.2 level AA: labelled forms, named landmarks and
@@ -237,6 +242,37 @@ GPL-2.0-or-later, see `LICENSE`. Licenses of the included third-party code:
 `THIRD-PARTY-NOTICES`.
 
 ## Changelog
+
+### 0.3.0
+
+- Fonts and languages: the design page warns when a font of the design settings
+  does not cover a language of the site, with the scripts or the characters that
+  are missing. The check uses the character lists of Unicode CLDR for 14
+  languages, among them Arabic, Persian, Russian, Ukrainian, Chinese
+  (simplified and traditional) and Japanese; the section `settings` of
+  `wp creationell-theme doctor` lists the same gaps. The font catalog knows the
+  script `cjk`. Font stacks whose first name would break the font faces and
+  unicode ranges that browsers drop as a whole are reported.
+- Pages with a search block no longer scroll sideways. WordPress loads a width
+  for the search label after the theme stylesheet; the hidden label became as
+  wide as the page (2216 px at a 1280 px window). Visually hidden texts now keep
+  the Bootstrap rules with `!important` while they have no focus, so focus rules
+  of child themes and plugins (`.screen-reader-text:focus`) still show them.
+- The "read more" link of the post cards is at least 24 px high (WCAG 2.5.8).
+  Under cards without an excerpt it takes a few pixels more height.
+- Translations: the texts of the theme can be translated in WPML String
+  Translation; see "Translations" above. Right to left was checked in Arabic and
+  Persian with all blocks of CreaBootstrapBlocks: use CreaBootstrapBlocks 1.0.3
+  or later, it mirrors the left and right spacing of its blocks.
+
+#### New or changed texts
+
+- `The font "%1$s" (%2$s) does not cover %3$s: the script %4$s is missing.`
+  (plural: `… the scripts %4$s are missing.`)
+- `The font "%1$s" (%2$s) does not cover %3$s: these characters are missing: %4$s`
+- `(and %d more)`
+- `Latin`, `Latin Extended`, `Vietnamese`, `Cyrillic`, `Arabic`,
+  `CJK (Chinese and Japanese)`
 
 ### 0.2.2
 

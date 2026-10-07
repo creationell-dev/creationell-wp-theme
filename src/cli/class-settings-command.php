@@ -48,6 +48,13 @@ defined( 'ABSPATH' ) || exit;
 final class Settings_Command {
 
 	/**
+	 * Characters a coverage warning names before it counts the rest.
+	 *
+	 * @since 1.0.0
+	 */
+	public const MAX_CHARACTERS = 20;
+
+	/**
 	 * Command name below the theme namespace.
 	 *
 	 * @since 1.0.0
@@ -547,7 +554,7 @@ final class Settings_Command {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return array{catalog: array<string, array{name: string, scripts: array<int, string>, faces: int}>, locales: array<int, string>, coverage: array<string, array{font: string, missing: array<int, string>}>} Fonts.
+	 * @return array{catalog: array<string, array{name: string, scripts: array<int, string>, faces: int}>, locales: array<int, string>, coverage: array<string, array{font: string, missing: array<int, string>, gaps: array<string, array{scripts: list<string>, characters: list<string>}>}>} Fonts.
 	 */
 	private static function fonts(): array {
 		$catalog = Font_Catalog::instance();
@@ -566,9 +573,11 @@ final class Settings_Command {
 				continue;
 			}
 			$family           = $catalog->for_setting( $key );
+			$gaps             = null === $family ? array() : Font_Coverage::gaps( $family, $locales );
 			$coverage[ $key ] = array(
 				'font'    => null === $family ? Sanitizer::INHERIT : $family->slug,
-				'missing' => null === $family ? array() : Font_Coverage::missing( $family, $locales ),
+				'missing' => array_keys( $gaps ),
+				'gaps'    => $gaps,
 			);
 		}
 		return array(
@@ -622,17 +631,28 @@ final class Settings_Command {
 	 * @since 1.0.0
 	 *
 	 * @param array<int, array{key: string, source: string, message: string}>                            $findings Findings.
-	 * @param array{coverage: array<string, array{font: string, missing: array<int, string>}>}           $fonts    Fonts.
+	 * @param array<string, mixed>                                                                       $fonts    Fonts.
 	 * @param array<int, array{fg: string, bg: string, ratio: float, min: float, origins: array<mixed>}> $contrast Contrast failures.
 	 * @param bool                                                                                       $stale    Whether the snapshots are stale.
 	 * @param bool                                                                                       $acfe     Whether the multilang module of ACF Extended runs.
+	 * @phpstan-param array{coverage: array<string, array{font: string, missing: array<int, string>, gaps: array<string, array{scripts: list<string>, characters: list<string>}>}>} $fonts
 	 * @return array<int, string> Warnings in English.
 	 */
 	private static function warnings( array $findings, array $fonts, array $contrast, bool $stale, bool $acfe ): array {
 		$warnings = array_column( $findings, 'message' );
 		foreach ( $fonts['coverage'] as $key => $coverage ) {
-			if ( array() !== $coverage['missing'] ) {
-				$warnings[] = sprintf( 'The font %1$s of %2$s declares no glyphs for %3$s; browsers fall back to another font there.', $coverage['font'], $key, implode( ', ', $coverage['missing'] ) );
+			$scripts = array();
+			foreach ( $coverage['gaps'] as $locale => $gap ) {
+				if ( array() !== $gap['scripts'] ) {
+					$scripts[] = $locale;
+					continue;
+				}
+				$shown      = array_slice( $gap['characters'], 0, self::MAX_CHARACTERS );
+				$rest       = count( $gap['characters'] ) - count( $shown );
+				$warnings[] = sprintf( 'The font %1$s of %2$s lacks characters for %3$s: %4$s%5$s.', $coverage['font'], $key, $locale, implode( ' ', $shown ), $rest > 0 ? sprintf( ' and %d more', $rest ) : '' );
+			}
+			if ( array() !== $scripts ) {
+				$warnings[] = sprintf( 'The font %1$s of %2$s declares no glyphs for %3$s; browsers fall back to another font there.', $coverage['font'], $key, implode( ', ', $scripts ) );
 			}
 		}
 		foreach ( $contrast as $failure ) {

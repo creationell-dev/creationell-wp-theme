@@ -784,21 +784,21 @@ msgstr "unbekannt"
 msgid "The child theme %1$s needs a fix in its style.css: %2$s The creationell Theme uses the project styles of a child theme only for the Bootstrap lines it declares."
 msgstr "Das Child-Theme %1$s braucht eine Korrektur in seiner style.css: %2$s Das creationell Theme nutzt die Projekt-Styles eines Child-Themes nur für die Bootstrap-Linien, die es angibt."
 
-#: src/compiler/class-custom-stylesheet.php:368
+#: src/compiler/class-custom-stylesheet.php:372
 msgid "You are not allowed to rebuild the stylesheet."
 msgstr "Sie dürfen das Stylesheet nicht neu erstellen."
 
 #. translators: %s: error message of the compiler, in English.
-#: src/compiler/class-custom-stylesheet.php:406
+#: src/compiler/class-custom-stylesheet.php:410
 #, php-format
 msgid "The stylesheet of the design settings could not be built; the previous stylesheet stays active. Error: %s"
 msgstr "Das Stylesheet der Design-Einstellungen konnte nicht erstellt werden; das bisherige Stylesheet bleibt aktiv. Fehler: %s"
 
-#: src/compiler/class-custom-stylesheet.php:411
+#: src/compiler/class-custom-stylesheet.php:415
 msgid "The stylesheet does not match the current design settings, theme files or child theme files."
 msgstr "Das Stylesheet passt nicht zu den aktuellen Design-Einstellungen, Theme-Dateien oder Child-Theme-Dateien."
 
-#: src/compiler/class-custom-stylesheet.php:423
+#: src/compiler/class-custom-stylesheet.php:427
 msgid "Rebuild the stylesheet"
 msgstr "Stylesheet neu erstellen"
 
@@ -813,19 +813,19 @@ msgid "Fonts are managed in the design settings of the theme."
 msgstr "Schriften werden in den Design-Einstellungen des Themes verwaltet."
 
 #. translators: 1: required PHP version, 2: required WordPress version, 3: running PHP version, 4: running WordPress version.
-#: src/core/class-theme.php:140
+#: src/core/class-theme.php:142
 #, php-format
 msgid "The creationell Theme needs PHP %1$s and WordPress %2$s or newer; this site runs PHP %3$s and WordPress %4$s. The theme functions stay off until the server and WordPress are updated."
 msgstr "Das creationell Theme benötigt PHP %1$s und WordPress %2$s oder neuer; diese Website läuft mit PHP %3$s und WordPress %4$s. Die Theme-Funktionen bleiben ausgeschaltet, bis Server und WordPress aktualisiert sind."
 
 #. translators: %s: URL of the update manifest.
-#: src/core/class-theme.php:167
+#: src/core/class-theme.php:169
 #, php-format
 msgid "The creationell Theme looks for updates at %s (set by CREATIONELL_WP_THEME_MANIFEST_URL) instead of the official manifest. Use this only for tests."
 msgstr "Das creationell Theme sucht Updates unter %s (gesetzt durch CREATIONELL_WP_THEME_MANIFEST_URL) statt im offiziellen Manifest. Nutzen Sie das nur für Tests."
 
 #. translators: %s: value of the constant.
-#: src/core/class-theme.php:178
+#: src/core/class-theme.php:180
 #, php-format
 msgid "CREATIONELL_WP_THEME_MANIFEST_URL is set to %s, which is no https URL. The creationell Theme ignores it and uses the official update manifest."
 msgstr "CREATIONELL_WP_THEME_MANIFEST_URL ist auf %s gesetzt, das ist keine https-URL. Das creationell Theme ignoriert den Wert und nutzt das offizielle Update-Manifest."
@@ -878,92 +878,92 @@ msgstr "Das Theme-Modul %1$s bleibt aus, solange das Plugin %2$s aktiv ist, das 
 msgid "The theme module %1$s failed to load and stays off for this request: %2$s"
 msgstr "Das Theme-Modul %1$s konnte nicht geladen werden und bleibt für diese Anfrage aus: %2$s"
 
-#: src/settings/acf/class-acf-adapter.php:184
+#: src/settings/acf/class-acf-adapter.php:185
 msgid "The theme settings pages \"Texts\" and \"Design\" need the plugin ACF Pro. Without it the site keeps the saved settings and the defaults, but they cannot be changed in the admin."
 msgstr "Die Seiten „Texte“ und „Design“ der Theme-Einstellungen brauchen das Plugin ACF Pro. Ohne das Plugin behält die Website die gespeicherten Einstellungen und die Vorgaben, im Adminbereich lassen sie sich aber nicht ändern."
 
 #. translators: 1: effective value of the setting, 2: where the value comes from, e.g. "theme default".
-#: src/settings/acf/class-acf-adapter.php:314
+#: src/settings/acf/class-acf-adapter.php:316
 #, php-format
 msgid "Effective: %1$s · Origin: %2$s"
 msgstr "Wirksam: %1$s · Herkunft: %2$s"
 
-#: src/settings/acf/class-acf-adapter.php:387
+#: src/settings/acf/class-acf-adapter.php:389
 msgid "(none)"
 msgstr "(keine)"
 
 #. translators: 1: title of a page, 2: ID of the page.
-#: src/settings/acf/class-acf-adapter.php:393
+#: src/settings/acf/class-acf-adapter.php:395
 #, php-format
 msgid "%1$s (ID %2$d)"
 msgstr "%1$s (ID %2$d)"
 
-#: src/settings/acf/class-acf-adapter.php:394
+#: src/settings/acf/class-acf-adapter.php:396
 msgid "(no title)"
 msgstr "(kein Titel)"
 
 #. translators: %s: label of the setting.
-#: src/settings/acf/class-acf-adapter.php:435
+#: src/settings/acf/class-acf-adapter.php:437
 #, php-format
 msgid "Reset to default: %s"
 msgstr "Auf Vorgabe zurücksetzen: %s"
 
 #. translators: %s: name of a PHP constant.
-#: src/settings/acf/class-acf-adapter.php:615
+#: src/settings/acf/class-acf-adapter.php:617
 #, php-format
 msgid "Set by the constant %s."
 msgstr "Durch die Konstante %s gesetzt."
 
-#: src/settings/acf/class-acf-adapter.php:620
+#: src/settings/acf/class-acf-adapter.php:622
 msgid "Locked by the child theme."
 msgstr "Durch das Child-Theme gesperrt."
 
-#: src/settings/acf/class-acf-adapter.php:623
+#: src/settings/acf/class-acf-adapter.php:625
 #: src/settings/class-setter.php:349
 msgid "Choose one language; settings cannot be saved for all languages at once."
 msgstr "Wählen Sie eine Sprache; Einstellungen lassen sich nicht für alle Sprachen gleichzeitig speichern."
 
-#: src/settings/acf/class-acf-adapter.php:626
+#: src/settings/acf/class-acf-adapter.php:628
 msgid "The same in every language; change it in the default language."
 msgstr "Gilt in jeder Sprache gleich; ändern Sie den Wert in der Standardsprache."
 
-#: src/settings/acf/class-acf-adapter.php:629
+#: src/settings/acf/class-acf-adapter.php:631
 msgid "You may view this setting but not change it."
 msgstr "Sie dürfen diese Einstellung ansehen, aber nicht ändern."
 
-#: src/settings/acf/class-acf-adapter.php:646
+#: src/settings/acf/class-acf-adapter.php:648
 msgid "default language"
 msgstr "Standardsprache"
 
-#: src/settings/acf/class-acf-adapter.php:649
+#: src/settings/acf/class-acf-adapter.php:651
 msgid "child theme default"
 msgstr "Vorgabe des Child-Themes"
 
-#: src/settings/acf/class-acf-adapter.php:650
+#: src/settings/acf/class-acf-adapter.php:652
 msgid "saved value"
 msgstr "gespeicherter Wert"
 
-#: src/settings/acf/class-acf-adapter.php:651
+#: src/settings/acf/class-acf-adapter.php:653
 msgid "child theme lock"
 msgstr "Sperre des Child-Themes"
 
-#: src/settings/acf/class-acf-adapter.php:652
+#: src/settings/acf/class-acf-adapter.php:654
 msgid "site constant"
 msgstr "Konstante der Website"
 
-#: src/settings/acf/class-acf-adapter.php:653
+#: src/settings/acf/class-acf-adapter.php:655
 msgid "theme default"
 msgstr "Vorgabe des Themes"
 
-#: src/settings/acf/class-acf-adapter.php:680
+#: src/settings/acf/class-acf-adapter.php:682
 msgid "yes"
 msgstr "ja"
 
-#: src/settings/acf/class-acf-adapter.php:680
+#: src/settings/acf/class-acf-adapter.php:682
 msgid "no"
 msgstr "nein"
 
-#: src/settings/acf/class-acf-adapter.php:687
+#: src/settings/acf/class-acf-adapter.php:689
 msgid "(empty)"
 msgstr "(leer)"
 
@@ -1043,11 +1043,11 @@ msgstr "Die Bootstrap-Linie %d ist in dieser Theme-Version nicht enthalten."
 msgid "%1$s asks for Bootstrap line %2$d: %3$s The creationell Theme keeps line %4$d."
 msgstr "%1$s verlangt Bootstrap-Linie %2$d: %3$s Das creationell Theme bleibt bei Linie %4$d."
 
-#: src/settings/class-font-catalog.php:206
+#: src/settings/class-font-catalog.php:234
 msgid "System font (sans-serif)"
 msgstr "Systemschrift (ohne Serifen)"
 
-#: src/settings/class-font-catalog.php:207
+#: src/settings/class-font-catalog.php:235
 msgid "System font (serif)"
 msgstr "Systemschrift (mit Serifen)"
 
@@ -3864,3 +3864,49 @@ msgstr "Nicht gespeichert: Die Datenbank hat den Wert nicht übernommen."
 #: src/admin/class-rights-page.php:405
 msgid "Administrators marked here cannot use the areas of the agency (design, modules, import and export, menus) unless they are open to editors; they never see this page and never switch the Bootstrap line. They keep the other rights of an administrator in WordPress; the restriction holds firmly only when the child theme locks it."
 msgstr "Hier markierte Administratoren nutzen die Bereiche der Agentur (Design, Module, Import und Export, Menüs) nur, wenn sie für Redakteure geöffnet sind; diese Seite sehen sie nie, und die Bootstrap-Linie schalten sie nie um. Die übrigen Rechte eines Administrators in WordPress behalten sie; fest gilt die Einschränkung erst, wenn das Child-Theme sie sperrt."
+
+#. translators: 1: font name, 2: label of the font setting, 3: language, 4: comma-separated script names.
+#: src/admin/class-font-coverage-notice.php:132
+#, php-format
+msgid "The font \"%1$s\" (%2$s) does not cover %3$s: the script %4$s is missing."
+msgid_plural "The font \"%1$s\" (%2$s) does not cover %3$s: the scripts %4$s are missing."
+msgstr[0] "Die Schrift „%1$s“ (%2$s) deckt %3$s nicht ab: das Schriftsystem %4$s fehlt."
+msgstr[1] "Die Schrift „%1$s“ (%2$s) deckt %3$s nicht ab: die Schriftsysteme %4$s fehlen."
+
+#. translators: %d: number of further missing characters.
+#: src/admin/class-font-coverage-notice.php:145
+#, php-format
+msgid "(and %d more)"
+msgid_plural "(and %d more)"
+msgstr[0] "(und %d weiteres)"
+msgstr[1] "(und %d weitere)"
+
+#. translators: 1: font name, 2: label of the font setting, 3: language, 4: missing characters.
+#: src/admin/class-font-coverage-notice.php:149
+#, php-format
+msgid "The font \"%1$s\" (%2$s) does not cover %3$s: these characters are missing: %4$s"
+msgstr "Die Schrift „%1$s“ (%2$s) deckt %3$s nicht ab: diese Zeichen fehlen: %4$s"
+
+#: src/admin/class-font-coverage-notice.php:207
+msgid "Latin"
+msgstr "Lateinisch"
+
+#: src/admin/class-font-coverage-notice.php:208
+msgid "Latin Extended"
+msgstr "Lateinisch erweitert"
+
+#: src/admin/class-font-coverage-notice.php:209
+msgid "Vietnamese"
+msgstr "Vietnamesisch"
+
+#: src/admin/class-font-coverage-notice.php:210
+msgid "Cyrillic"
+msgstr "Kyrillisch"
+
+#: src/admin/class-font-coverage-notice.php:211
+msgid "Arabic"
+msgstr "Arabisch"
+
+#: src/admin/class-font-coverage-notice.php:212
+msgid "CJK (Chinese and Japanese)"
+msgstr "CJK (Chinesisch und Japanisch)"
