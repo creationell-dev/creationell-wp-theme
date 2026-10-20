@@ -227,6 +227,9 @@ final class Settings_Transfer_Command {
 	 * [--lang=<codes>]
 	 * : Comma-separated language codes; default: every active language.
 	 *
+	 * [--map-lang=<pairs>]
+	 * : Import the texts of a file language as another active language, e.g. en:fa or en:fa,de:fr. --lang then filters the target languages.
+	 *
 	 * [--dry-run]
 	 * : Show the plan and write nothing.
 	 *
@@ -248,6 +251,7 @@ final class Settings_Transfer_Command {
 	 * ## EXAMPLES
 	 *
 	 *     wp creationell-theme settings import settings.json --dry-run --user=admin
+	 *     wp creationell-theme settings import translated.json --map-lang=en:fa --dry-run --user=admin
 	 *     wp creationell-theme settings import settings.json --yes --format=json --user=admin
 	 *
 	 * @since 1.0.0
@@ -386,7 +390,7 @@ final class Settings_Transfer_Command {
 			self::fail( 'Name the backup ID, see wp creationell-theme settings backup list.' );
 		}
 		$file = self::attempt( static fn(): Transfer_File => Backup_Store::instance()->get( $id ) );
-		$this->run_import( $file, array(), array_diff_key( $assoc_args, array_flip( array( 'sections', 'lang', 'strict' ) ) ), $user_id, 'restore', $format );
+		$this->run_import( $file, array(), array_diff_key( $assoc_args, array_flip( array( 'sections', 'lang', 'strict', 'map-lang' ) ) ), $user_id, 'restore', $format );
 	}
 
 	/**
@@ -423,7 +427,13 @@ final class Settings_Transfer_Command {
 			$entries[]     = $entry;
 		}
 		if ( 'json' === $format ) {
-			self::json( $entries );
+			$objects = array();
+			foreach ( $entries as $entry ) {
+				// The language map is a JSON object even when empty or missing (entries before 0.4.0).
+				$entry['lang_map'] = (object) ( $entry['lang_map'] ?? array() );
+				$objects[]         = $entry;
+			}
+			self::json( $objects );
 			return;
 		}
 		$items = array();
@@ -466,7 +476,8 @@ final class Settings_Transfer_Command {
 		$strict   = ! empty( $assoc_args['strict'] );
 		$sections = isset( $assoc_args['sections'] ) ? self::sections( $assoc_args ) : $file->sections;
 		$langs    = self::langs( $assoc_args );
-		$plan     = self::attempt( static fn(): Import_Plan => $importer->plan( $file, new Import_Options( $sections, $langs, $user_id, 'cli', false, array(), $strict, $dry_run, $reason ), $migrated ) );
+		$lang_map = self::lang_map( $assoc_args );
+		$plan     = self::attempt( static fn(): Import_Plan => $importer->plan( $file, new Import_Options( $sections, $langs, $user_id, 'cli', false, array(), $strict, $dry_run, $reason, $lang_map ), $migrated ) );
 		// Nobody answers the question without the plan: it shows in every format when the command asks; JSON stays pure with --yes or --dry-run.
 		$asks = ! $dry_run && empty( $assoc_args['yes'] ) && $plan->has_writes( true );
 		if ( 'table' === $format || $asks ) {
@@ -474,7 +485,7 @@ final class Settings_Transfer_Command {
 		}
 
 		// The person saw the plan: --yes or the answer confirms its module switches with the counted live contents.
-		$confirmed = self::attempt( static fn(): Import_Options => new Import_Options( $sections, $langs, $user_id, 'cli', true, $plan->seen_live, $strict, $dry_run, $reason ) );
+		$confirmed = self::attempt( static fn(): Import_Options => new Import_Options( $sections, $langs, $user_id, 'cli', true, $plan->seen_live, $strict, $dry_run, $reason, $lang_map ) );
 		if ( $dry_run ) {
 			self::show_report( self::attempt( static fn(): Import_Report => $importer->apply( $plan, $confirmed ) ), $format, 'Dry run: nothing was written.' );
 			return;
@@ -613,6 +624,45 @@ final class Settings_Transfer_Command {
 	}
 
 	/**
+	 * Reads --map-lang into source => target; stops with lang_map_invalid for a bad pair.
+	 *
+	 * Empty pairs are skipped, as in --lang ("en:fa," is "en:fa"); both codes
+	 * must match the language pattern of the format, so a numeric code stops here
+	 * with the reason "format" instead of becoming an integer key.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array<string, mixed> $assoc_args Associative arguments.
+	 * @return array<string, string> Map; empty without the argument.
+	 */
+	private static function lang_map( array $assoc_args ): array {
+		$value = self::string_arg( $assoc_args, 'map-lang' );
+		$map   = array();
+		foreach ( null === $value ? array() : explode( ',', $value ) as $pair ) {
+			$pair = strtolower( trim( $pair ) );
+			if ( '' === $pair ) {
+				continue;
+			}
+			$parts  = explode( ':', $pair );
+			$source = trim( $parts[0] );
+			$target = trim( $parts[1] ?? '' );
+			if ( 2 !== count( $parts ) || 1 !== preg_match( Transfer_File::LANGUAGE_PATTERN, $source ) || 1 !== preg_match( Transfer_File::LANGUAGE_PATTERN, $target ) || isset( $map[ $source ] ) ) {
+				self::fail_transfer(
+					new Transfer_Exception(
+						Transfer_Error::LANG_MAP_INVALID,
+						array(
+							'reason' => 'format',
+							'detail' => $pair . ' is no pair source:target of language codes, or the source repeats',
+						)
+					)
+				);
+			}
+			$map[ $source ] = $target;
+		}
+		return $map;
+	}
+
+	/**
 	 * Returns the text of a warning code of the plan.
 	 *
 	 * @since 1.0.0
@@ -621,6 +671,9 @@ final class Settings_Transfer_Command {
 	 * @return string Text with the code.
 	 */
 	private static function warning_text( string $warning ): string {
+		if ( str_starts_with( $warning, 'lang_mapped:' ) ) {
+			return sprintf( '%s: the texts of a file language are imported as another language.', $warning );
+		}
 		if ( str_starts_with( $warning, 'migrated:' ) ) {
 			return sprintf( '%s: the file was converted from an older format.', $warning );
 		}

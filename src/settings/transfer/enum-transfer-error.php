@@ -40,6 +40,7 @@ enum Transfer_Error: string {
 	case CONFIRMATION_REQUIRED = 'confirmation_required';
 	case STRICT_REJECTED       = 'strict_rejected';
 	case BACKUP_NOT_FOUND      = 'backup_not_found';
+	case LANG_MAP_INVALID      = 'lang_map_invalid';
 
 	/**
 	 * Returns the translated message of the error.
@@ -68,6 +69,7 @@ enum Transfer_Error: string {
 			self::CONFIRMATION_REQUIRED => __( 'Confirm the module changes before importing.', 'creationell-wp-theme' ),
 			self::STRICT_REJECTED       => __( 'Nothing was imported because some values were rejected.', 'creationell-wp-theme' ),
 			self::BACKUP_NOT_FOUND      => __( 'The backup could not be found.', 'creationell-wp-theme' ),
+			self::LANG_MAP_INVALID      => __( 'The language assignment does not fit: a language is not in the file, is not active on this site, or gets the texts of two languages of the file.', 'creationell-wp-theme' ),
 		};
 	}
 }

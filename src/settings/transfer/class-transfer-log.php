@@ -28,7 +28,7 @@ defined( 'ABSPATH' ) || exit;
  *
  * @since 1.0.0
  *
- * @phpstan-type Log_Entry array{time: int, user_id: int, channel: string, action: string, sections: list<string>, langs: list<string>, counts: array<string, int>, backup_id: string|null, file_sha256: string|null}
+ * @phpstan-type Log_Entry array{time: int, user_id: int, channel: string, action: string, sections: list<string>, langs: list<string>, counts: array<string, int>, backup_id: string|null, file_sha256: string|null, lang_map?: array<string, string>}
  */
 final class Transfer_Log {
 
@@ -152,19 +152,20 @@ final class Transfer_Log {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param string             $action      One of ACTIONS.
-	 * @param string             $channel     One of CHANNELS.
-	 * @param int                $user_id     User who acted; 0 for none.
-	 * @param array<int, string> $sections    Sections involved.
-	 * @param array<int, string> $langs       Language codes involved.
-	 * @param array<string, int> $counts      Counts by name, e.g. "write", "skip" and "reject" of an import.
-	 * @param string|null        $backup_id   ID of the backup made or used.
-	 * @param string|null        $file_sha256 SHA-256 of the file in hex.
+	 * @param string                $action      One of ACTIONS.
+	 * @param string                $channel     One of CHANNELS.
+	 * @param int                   $user_id     User who acted; 0 for none.
+	 * @param array<int, string>    $sections    Sections involved.
+	 * @param array<int, string>    $langs       Language codes involved.
+	 * @param array<string, int>    $counts      Counts by name, e.g. "write", "skip" and "reject" of an import.
+	 * @param string|null           $backup_id   ID of the backup made or used.
+	 * @param string|null           $file_sha256 SHA-256 of the file in hex.
+	 * @param array<string, string> $lang_map Language map of the import; empty without one.
 	 * @return array<string, mixed> Stored entry.
 	 * @phpstan-return Log_Entry
 	 * @throws InvalidArgumentException When a field has no valid value; nothing is written then.
 	 */
-	public function add( string $action, string $channel, int $user_id, array $sections, array $langs, array $counts = array(), ?string $backup_id = null, ?string $file_sha256 = null ): array {
+	public function add( string $action, string $channel, int $user_id, array $sections, array $langs, array $counts = array(), ?string $backup_id = null, ?string $file_sha256 = null, array $lang_map = array() ): array {
 		if ( ! in_array( $action, self::ACTIONS, true ) ) {
 			throw new InvalidArgumentException( 'Unknown transfer log action.' );
 		}
@@ -180,6 +181,11 @@ final class Transfer_Log {
 		if ( null !== $file_sha256 && 1 !== preg_match( self::SHA256_PATTERN, $file_sha256 ) ) {
 			throw new InvalidArgumentException( 'Invalid SHA-256 in the transfer log.' );
 		}
+		foreach ( $lang_map as $source => $target ) {
+			if ( ! is_string( $source ) || 1 !== preg_match( Transfer_File::LANGUAGE_PATTERN, $source ) || ! is_string( $target ) || 1 !== preg_match( Transfer_File::LANGUAGE_PATTERN, $target ) ) {
+				throw new InvalidArgumentException( 'Invalid language map in the transfer log.' );
+			}
+		}
 		$entry = array(
 			'time'        => ( $this->clock )(),
 			'user_id'     => $user_id,
@@ -190,6 +196,7 @@ final class Transfer_Log {
 			'counts'      => self::counts( $counts ),
 			'backup_id'   => $backup_id,
 			'file_sha256' => $file_sha256,
+			'lang_map'    => $lang_map,
 		);
 
 		$oldest  = $entry['time'] - self::MAX_AGE;

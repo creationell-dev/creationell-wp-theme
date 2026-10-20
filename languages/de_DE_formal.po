@@ -110,7 +110,7 @@ msgstr "Schreiben Sie einen Kommentar an %s"
 
 #: comments.php:144
 #: src/admin/class-module-page.php:575
-#: src/admin/class-transfer-page.php:974
+#: src/admin/class-transfer-page.php:1014
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -991,7 +991,7 @@ msgstr "Design"
 
 #: src/admin/class-module-page.php:484
 #: src/admin/class-rights-page.php:459
-#: src/admin/class-transfer-page.php:1392
+#: src/admin/class-transfer-page.php:1616
 #: src/settings/acf/class-options-pages.php:125
 msgid "Save"
 msgstr "Speichern"
@@ -1000,7 +1000,7 @@ msgstr "Speichern"
 msgid "The settings were processed."
 msgstr "Die Einstellungen wurden verarbeitet."
 
-#: src/admin/class-transfer-page.php:994
+#: src/admin/class-transfer-page.php:1138
 #: src/settings/acf/class-options-pages.php:202
 #: src/settings/class-registry.php:160
 msgid "Bootstrap line"
@@ -1242,75 +1242,75 @@ msgstr "Adresse"
 msgid "Phone"
 msgstr "Telefon"
 
-#: src/settings/transfer/enum-transfer-error.php:53
+#: src/settings/transfer/enum-transfer-error.php:54
 msgid "The file could not be uploaded. Please try again."
 msgstr "Die Datei konnte nicht hochgeladen werden. Bitte versuchen Sie es erneut."
 
-#: src/settings/transfer/enum-transfer-error.php:54
+#: src/settings/transfer/enum-transfer-error.php:55
 msgid "The file is larger than 1 MB."
 msgstr "Die Datei ist größer als 1 MB."
 
-#: src/settings/transfer/enum-transfer-error.php:55
+#: src/settings/transfer/enum-transfer-error.php:56
 msgid "Only JSON files ending in .json can be imported."
 msgstr "Nur JSON-Dateien mit der Endung .json lassen sich importieren."
 
-#: src/settings/transfer/enum-transfer-error.php:56
+#: src/settings/transfer/enum-transfer-error.php:57
 msgid "The file does not contain valid JSON."
 msgstr "Die Datei enthält kein gültiges JSON."
 
-#: src/settings/transfer/enum-transfer-error.php:57
+#: src/settings/transfer/enum-transfer-error.php:58
 msgid "The file is not a settings export of this theme."
 msgstr "Die Datei ist kein Einstellungs-Export dieses Themes."
 
-#: src/settings/transfer/enum-transfer-error.php:58
+#: src/settings/transfer/enum-transfer-error.php:59
 msgid "The file does not match the export format."
 msgstr "Die Datei entspricht nicht dem Exportformat."
 
-#: src/settings/transfer/enum-transfer-error.php:59
+#: src/settings/transfer/enum-transfer-error.php:60
 msgid "The file comes from a newer theme version. Update the theme first."
 msgstr "Die Datei stammt aus einer neueren Theme-Version. Aktualisieren Sie zuerst das Theme."
 
-#: src/settings/transfer/enum-transfer-error.php:60
+#: src/settings/transfer/enum-transfer-error.php:61
 msgid "The file uses an older format that this theme version cannot convert."
 msgstr "Die Datei nutzt ein älteres Format, das diese Theme-Version nicht umwandeln kann."
 
-#: src/settings/transfer/enum-transfer-error.php:61
+#: src/settings/transfer/enum-transfer-error.php:62
 msgid "Choose a single language in the language switcher first; all languages at once are not supported."
 msgstr "Wählen Sie zuerst im Sprachumschalter eine einzelne Sprache; alle Sprachen gleichzeitig werden nicht unterstützt."
 
-#: src/settings/transfer/enum-transfer-error.php:62
+#: src/settings/transfer/enum-transfer-error.php:63
 msgid "Import and export are not available while the multilingual mode of ACF Extended is active."
 msgstr "Import und Export sind nicht verfügbar, solange der mehrsprachige Modus von ACF Extended aktiv ist."
 
-#: src/settings/transfer/enum-transfer-error.php:63
+#: src/settings/transfer/enum-transfer-error.php:64
 msgid "You are not allowed to import or export settings."
 msgstr "Sie dürfen keine Einstellungen importieren oder exportieren."
 
-#: src/settings/transfer/enum-transfer-error.php:64
+#: src/settings/transfer/enum-transfer-error.php:65
 msgid "The import could not be found. Upload the file again."
 msgstr "Der Import wurde nicht gefunden. Laden Sie die Datei erneut hoch."
 
-#: src/settings/transfer/enum-transfer-error.php:65
+#: src/settings/transfer/enum-transfer-error.php:66
 msgid "The import has expired. Upload the file again."
 msgstr "Der Import ist abgelaufen. Laden Sie die Datei erneut hoch."
 
-#: src/settings/transfer/enum-transfer-error.php:66
+#: src/settings/transfer/enum-transfer-error.php:67
 msgid "The import was started by another user."
 msgstr "Der Import wurde von einem anderen Benutzer gestartet."
 
-#: src/settings/transfer/enum-transfer-error.php:67
+#: src/settings/transfer/enum-transfer-error.php:68
 msgid "Select at least one section."
 msgstr "Wählen Sie mindestens einen Bereich aus."
 
-#: src/settings/transfer/enum-transfer-error.php:68
+#: src/settings/transfer/enum-transfer-error.php:69
 msgid "Confirm the module changes before importing."
 msgstr "Bestätigen Sie die Moduländerungen vor dem Import."
 
-#: src/settings/transfer/enum-transfer-error.php:69
+#: src/settings/transfer/enum-transfer-error.php:70
 msgid "Nothing was imported because some values were rejected."
 msgstr "Es wurde nichts importiert, weil einige Werte abgelehnt wurden."
 
-#: src/settings/transfer/enum-transfer-error.php:70
+#: src/settings/transfer/enum-transfer-error.php:71
 msgid "The backup could not be found."
 msgstr "Die Sicherung wurde nicht gefunden."
 
@@ -1360,8 +1360,7 @@ msgstr "Automatische Updates des creationell Theme sind abgeschaltet; aktualisie
 msgid "The update package of the creationell Theme does not unpack to the folder creationell-wp-theme; the installed theme stays unchanged."
 msgstr "Das Update-Paket des creationell Theme entpackt nicht in den Ordner creationell-wp-theme; das installierte Theme bleibt unverändert."
 
-#: src/admin/class-transfer-page.php:1047
-#: src/admin/class-transfer-page.php:1155
+#: src/admin/class-transfer-page.php:1234
 #: src/wpml/class-language-switcher.php:187
 msgid "Language"
 msgstr "Sprache"
@@ -1568,7 +1567,7 @@ msgid "We use necessary cookies and, with your consent, optional ones. You can c
 msgstr "Wir verwenden notwendige Cookies und, mit Ihrer Einwilligung, optionale. Sie können Ihre Auswahl jederzeit unter „Cookie-Einstellungen“ ändern."
 
 #: modules/consent/inc/class-texts.php:140
-#: src/settings/transfer/class-settings-section.php:115
+#: src/settings/transfer/class-settings-section.php:116
 msgid "Settings"
 msgstr "Einstellungen"
 
@@ -1706,464 +1705,461 @@ msgstr "Noch ist kein Menü für Kopf- oder Fußbereich zugewiesen."
 msgid "You may only edit the menus of the header and footer."
 msgstr "Sie dürfen nur die Menüs von Kopf- und Fußbereich bearbeiten."
 
-#: src/admin/class-transfer-page.php:373
-#: src/admin/class-transfer-page.php:374
-#: src/admin/class-transfer-page.php:726
+#: src/admin/class-transfer-page.php:380
+#: src/admin/class-transfer-page.php:381
+#: src/admin/class-transfer-page.php:742
 msgid "Import/Export"
 msgstr "Import/Export"
 
 #. translators: 1: result of the import, 2: title of the admin page.
-#: src/admin/class-transfer-page.php:429
+#: src/admin/class-transfer-page.php:436
 #, php-format
 msgid "%1$s – %2$s"
 msgstr "%1$s – %2$s"
 
-#: src/admin/class-transfer-page.php:718
+#: src/admin/class-transfer-page.php:734
 msgid "You are not allowed to open this page."
 msgstr "Sie dürfen diese Seite nicht öffnen."
 
-#: src/admin/class-transfer-page.php:749
+#: src/admin/class-transfer-page.php:765
 msgid "You can only view import and export."
 msgstr "Sie können Import und Export nur ansehen."
 
-#: src/admin/class-transfer-page.php:758
+#: src/admin/class-transfer-page.php:774
 msgid "Backup created."
 msgstr "Sicherung erstellt."
 
-#: src/admin/class-transfer-page.php:760
+#: src/admin/class-transfer-page.php:776
 msgid "Import cancelled. Nothing was changed."
 msgstr "Import abgebrochen. Nichts wurde geändert."
 
-#: src/admin/class-transfer-page.php:779
-#: src/admin/class-transfer-page.php:1488
+#: src/admin/class-transfer-page.php:795
+#: src/admin/class-transfer-page.php:1718
 msgid "Export"
 msgstr "Export"
 
-#: src/admin/class-transfer-page.php:780
+#: src/admin/class-transfer-page.php:796
 msgid "Downloads the settings as a JSON file. Sensitive values are never exported."
 msgstr "Lädt die Einstellungen als JSON-Datei herunter. Sensible Werte werden nie exportiert."
 
-#: src/admin/class-transfer-page.php:783
-#: src/admin/class-transfer-page.php:859
-#: src/admin/class-transfer-page.php:917
-#: src/admin/class-transfer-page.php:996
+#: src/admin/class-transfer-page.php:799
+#: src/admin/class-transfer-page.php:875
+#: src/admin/class-transfer-page.php:933
+#: src/admin/class-transfer-page.php:1140
 msgid "Sections"
 msgstr "Bereiche"
 
-#: src/admin/class-transfer-page.php:792
-#: src/admin/class-transfer-page.php:918
-#: src/admin/class-transfer-page.php:995
+#: src/admin/class-transfer-page.php:808
+#: src/admin/class-transfer-page.php:934
+#: src/admin/class-transfer-page.php:1139
 msgid "Languages"
 msgstr "Sprachen"
 
 #. translators: %s: language code, e.g. "de".
-#: src/admin/class-transfer-page.php:796
+#: src/admin/class-transfer-page.php:812
+#: src/admin/class-transfer-page.php:1108
 #, php-format
 msgid "%s (default language)"
 msgstr "%s (Standardsprache)"
 
-#: src/admin/class-transfer-page.php:800
+#: src/admin/class-transfer-page.php:816
 msgid "Download file"
 msgstr "Datei herunterladen"
 
-#: src/admin/class-transfer-page.php:817
-#: src/admin/class-transfer-page.php:1489
+#: src/admin/class-transfer-page.php:833
+#: src/admin/class-transfer-page.php:1719
 msgid "Import"
 msgstr "Import"
 
-#: src/admin/class-transfer-page.php:818
+#: src/admin/class-transfer-page.php:834
 msgid "The import shows a preview first; nothing changes before you confirm it. The current settings are backed up before the import."
 msgstr "Der Import zeigt zuerst eine Vorschau; nichts ändert sich, bevor Sie sie bestätigen. Vor dem Import werden die aktuellen Einstellungen gesichert."
 
-#: src/admin/class-transfer-page.php:823
+#: src/admin/class-transfer-page.php:839
 msgid "Settings file"
 msgstr "Einstellungsdatei"
 
-#: src/admin/class-transfer-page.php:827
+#: src/admin/class-transfer-page.php:843
 msgid "JSON, at most 1 MB"
 msgstr "JSON, höchstens 1 MB"
 
-#: src/admin/class-transfer-page.php:831
+#: src/admin/class-transfer-page.php:847
 msgid "Show preview"
 msgstr "Vorschau anzeigen"
 
-#: src/admin/class-transfer-page.php:844
+#: src/admin/class-transfer-page.php:860
 msgid "Backups"
 msgstr "Sicherungen"
 
 #. translators: %d: number of backups the theme keeps.
-#: src/admin/class-transfer-page.php:848
+#: src/admin/class-transfer-page.php:864
 #, php-format
 msgid "The theme keeps the last %d backups. It makes one before every import, restore and module switch."
 msgstr "Das Theme behält die letzten %d Sicherungen. Es legt vor jedem Import, jeder Wiederherstellung und jedem Modulwechsel eine an."
 
-#: src/admin/class-transfer-page.php:854
+#: src/admin/class-transfer-page.php:870
 msgid "No backups yet."
 msgstr "Noch keine Sicherungen."
 
-#: src/admin/class-transfer-page.php:857
-#: src/admin/class-transfer-page.php:914
+#: src/admin/class-transfer-page.php:873
+#: src/admin/class-transfer-page.php:930
 msgid "Time"
 msgstr "Zeitpunkt"
 
 #: src/admin/class-module-page.php:422
-#: src/admin/class-transfer-page.php:858
+#: src/admin/class-transfer-page.php:874
 msgid "Reason"
 msgstr "Grund"
 
-#: src/admin/class-transfer-page.php:860
-#: src/admin/class-transfer-page.php:919
+#: src/admin/class-transfer-page.php:876
+#: src/admin/class-transfer-page.php:935
 msgid "Person"
 msgstr "Person"
 
 #: src/admin/class-module-page.php:425
-#: src/admin/class-transfer-page.php:863
-#: src/admin/class-transfer-page.php:915
+#: src/admin/class-transfer-page.php:879
+#: src/admin/class-transfer-page.php:931
 msgid "Action"
 msgstr "Aktion"
 
-#: src/admin/class-transfer-page.php:865
+#: src/admin/class-transfer-page.php:881
 msgid "Backups, newest first"
 msgstr "Sicherungen, neueste zuerst"
 
-#: src/admin/class-transfer-page.php:877
+#: src/admin/class-transfer-page.php:893
 msgid "Restore …"
 msgstr "Wiederherstellen …"
 
-#: src/admin/class-transfer-page.php:886
+#: src/admin/class-transfer-page.php:902
 msgid "Back up now"
 msgstr "Jetzt sichern"
 
-#: src/admin/class-transfer-page.php:902
+#: src/admin/class-transfer-page.php:918
 msgid "Log"
 msgstr "Protokoll"
 
-#: src/admin/class-transfer-page.php:903
+#: src/admin/class-transfer-page.php:919
 msgid "The log keeps who exported, imported, restored or backed up which sections, for 90 days. It stores no values."
 msgstr "Das Protokoll hält 90 Tage lang fest, wer welche Bereiche exportiert, importiert, wiederhergestellt oder gesichert hat. Es speichert keine Werte."
 
-#: src/admin/class-transfer-page.php:906
+#: src/admin/class-transfer-page.php:922
 msgid "No log entries yet."
 msgstr "Noch keine Protokolleinträge."
 
 #. translators: %d: number of entries.
-#: src/admin/class-transfer-page.php:912
+#: src/admin/class-transfer-page.php:928
 #, php-format
 msgid "Last %d log entries"
 msgstr "Letzte %d Protokolleinträge"
 
-#: src/admin/class-transfer-page.php:916
+#: src/admin/class-transfer-page.php:932
 msgid "Channel"
 msgstr "Kanal"
 
-#: src/admin/class-transfer-page.php:927
+#: src/admin/class-transfer-page.php:943
 msgid "Admin"
 msgstr "Admin"
 
-#: src/admin/class-transfer-page.php:959
+#: src/admin/class-transfer-page.php:988
 msgid "Preview"
 msgstr "Vorschau"
 
-#: src/admin/class-transfer-page.php:960
+#: src/admin/class-transfer-page.php:989
 msgid "Check what the import changes. Nothing has been changed yet."
 msgstr "Prüfen Sie, was der Import ändert. Noch wurde nichts geändert."
 
-#: src/admin/class-transfer-page.php:990
-#: src/admin/class-transfer-page.php:1491
+#: src/admin/class-transfer-page.php:1134
+#: src/admin/class-transfer-page.php:1721
 msgid "Backup"
 msgstr "Sicherung"
 
-#: src/admin/class-transfer-page.php:990
+#: src/admin/class-transfer-page.php:1134
 msgid "File"
 msgstr "Datei"
 
-#: src/admin/class-transfer-page.php:991
+#: src/admin/class-transfer-page.php:1135
 msgid "Exported from"
 msgstr "Exportiert von"
 
-#: src/admin/class-transfer-page.php:992
+#: src/admin/class-transfer-page.php:1136
 msgid "Exported at"
 msgstr "Exportiert am"
 
-#: src/admin/class-transfer-page.php:993
+#: src/admin/class-transfer-page.php:1137
 msgid "Theme version"
 msgstr "Theme-Version"
 
-#: src/admin/class-transfer-page.php:999
+#: src/admin/class-transfer-page.php:1143
 msgid "Not in the file (sensitive)"
 msgstr "Nicht in der Datei (sensibel)"
 
-#: src/admin/class-transfer-page.php:1020
+#: src/admin/class-transfer-page.php:1164
 msgid "Warnings"
 msgstr "Warnungen"
 
 #: src/admin/class-module-page.php:419
-#: src/admin/class-transfer-page.php:1043
+#: src/admin/class-transfer-page.php:1233
 msgid "Module"
 msgstr "Modul"
 
-#: src/admin/class-transfer-page.php:1043
-#: src/admin/class-transfer-page.php:1155
+#: src/admin/class-transfer-page.php:1233
 msgid "Setting"
 msgstr "Einstellung"
 
-#: src/admin/class-transfer-page.php:1047
-#: src/admin/class-transfer-page.php:1155
+#: src/admin/class-transfer-page.php:1235
 msgid "Current"
 msgstr "Aktuell"
 
-#: src/admin/class-transfer-page.php:1047
-#: src/admin/class-transfer-page.php:1155
+#: src/admin/class-transfer-page.php:1236
 msgid "New"
 msgstr "Neu"
 
-#: src/admin/class-transfer-page.php:1047
-#: src/admin/class-transfer-page.php:1155
+#: src/admin/class-transfer-page.php:1237
 msgid "Result"
 msgstr "Ergebnis"
 
-#: src/admin/class-transfer-page.php:1068
+#: src/admin/class-transfer-page.php:1285
 msgid "All languages"
 msgstr "Alle Sprachen"
 
-#: src/admin/class-transfer-page.php:1089
+#: src/admin/class-transfer-page.php:1306
 msgid "Module changes"
 msgstr "Moduländerungen"
 
-#: src/admin/class-transfer-page.php:1090
+#: src/admin/class-transfer-page.php:1307
 msgid "The import switches modules. Published contents that use them may look different or lose functions:"
 msgstr "Der Import schaltet Module um. Veröffentlichte Inhalte, die diese Module nutzen, können anders aussehen oder Funktionen verlieren:"
 
 #. translators: 1: module title, 2: number of published contents.
-#: src/admin/class-transfer-page.php:1095
+#: src/admin/class-transfer-page.php:1312
 #, php-format
 msgid "%1$s: used in %2$d published content"
 msgid_plural "%1$s: used in %2$d published contents"
 msgstr[0] "%1$s: in %2$d veröffentlichtem Inhalt verwendet"
 msgstr[1] "%1$s: in %2$d veröffentlichten Inhalten verwendet"
 
-#: src/admin/class-transfer-page.php:1110
+#: src/admin/class-transfer-page.php:1327
 msgid "I understand the consequences of the module changes"
 msgstr "Ich habe die Folgen der Modulwechsel verstanden"
 
-#: src/admin/class-transfer-page.php:1126
+#: src/admin/class-transfer-page.php:1343
 msgid "No import result is available anymore."
 msgstr "Es liegt kein Importergebnis mehr vor."
 
 #. translators: 1: number of changed values, 2: number of skipped values, 3: number of rejected values.
-#: src/admin/class-transfer-page.php:1136
+#: src/admin/class-transfer-page.php:1353
 #, php-format
 msgid "%1$d changed, %2$d skipped, %3$d rejected."
 msgstr "%1$d geändert, %2$d übersprungen, %3$d abgelehnt."
 
-#: src/admin/class-transfer-page.php:1143
+#: src/admin/class-transfer-page.php:1360
 msgid "Backup made before the import:"
 msgstr "Sicherung vor dem Import:"
 
-#: src/admin/class-transfer-page.php:1144
+#: src/admin/class-transfer-page.php:1361
 msgid "Restore this backup …"
 msgstr "Diese Sicherung wiederherstellen …"
 
-#: src/admin/class-transfer-page.php:1154
-#: src/admin/class-transfer-page.php:1363
+#: src/admin/class-transfer-page.php:1369
+#: src/admin/class-transfer-page.php:1587
 msgid "Rejected"
 msgstr "Abgelehnt"
 
-#: src/admin/class-transfer-page.php:1154
-#: src/admin/class-transfer-page.php:1362
+#: src/admin/class-transfer-page.php:1369
+#: src/admin/class-transfer-page.php:1586
 msgid "Skipped"
 msgstr "Übersprungen"
 
-#: src/admin/class-transfer-page.php:1162
+#: src/admin/class-transfer-page.php:1384
 msgid "Back to Import/Export"
 msgstr "Zurück zu Import/Export"
 
-#: src/admin/class-transfer-page.php:1174
+#: src/admin/class-transfer-page.php:1396
 msgid "Import finished"
 msgstr "Import abgeschlossen"
 
-#: src/admin/class-transfer-page.php:1174
+#: src/admin/class-transfer-page.php:1396
 msgid "Nothing was imported"
 msgstr "Nichts wurde importiert"
 
-#: src/admin/class-transfer-page.php:1217
+#: src/admin/class-transfer-page.php:1441
 msgid "Go to the field"
 msgstr "Zum Feld"
 
 #: src/admin/class-module-page.php:788
-#: src/admin/class-transfer-page.php:1335
+#: src/admin/class-transfer-page.php:1559
 msgid "Default"
 msgstr "Standard"
 
-#: src/admin/class-transfer-page.php:1339
+#: src/admin/class-transfer-page.php:1563
 msgid "Yes"
 msgstr "Ja"
 
-#: src/admin/class-transfer-page.php:1339
+#: src/admin/class-transfer-page.php:1563
 msgid "No"
 msgstr "Nein"
 
-#: src/admin/class-transfer-page.php:1361
+#: src/admin/class-transfer-page.php:1585
 msgid "Changes"
 msgstr "Änderung"
 
 #. translators: %d: number of published contents.
-#: src/admin/class-transfer-page.php:1375
+#: src/admin/class-transfer-page.php:1599
 #, php-format
 msgid "Used in %d published content."
 msgid_plural "Used in %d published contents."
 msgstr[0] "In %d veröffentlichtem Inhalt verwendet."
 msgstr[1] "In %d veröffentlichten Inhalten verwendet."
 
-#: src/admin/class-transfer-page.php:1393
+#: src/admin/class-transfer-page.php:1617
 msgid "Reset to the default"
 msgstr "Auf den Standard zurücksetzen"
 
-#: src/admin/class-transfer-page.php:1394
+#: src/admin/class-transfer-page.php:1618
 msgid "Switch the module"
 msgstr "Modul umschalten"
 
-#: src/admin/class-transfer-page.php:1395
+#: src/admin/class-transfer-page.php:1619
 msgid "Unchanged"
 msgstr "Unverändert"
 
-#: src/admin/class-transfer-page.php:1396
+#: src/admin/class-transfer-page.php:1620
 msgid "Not in the file"
 msgstr "Nicht in der Datei"
 
-#: src/admin/class-transfer-page.php:1397
+#: src/admin/class-transfer-page.php:1621
 msgid "Locked on this site"
 msgstr "Auf dieser Website gesperrt"
 
-#: src/admin/class-transfer-page.php:1398
+#: src/admin/class-transfer-page.php:1622
 msgid "Not translatable"
 msgstr "Nicht übersetzbar"
 
-#: src/admin/class-transfer-page.php:1399
+#: src/admin/class-transfer-page.php:1623
 msgid "Unknown setting"
 msgstr "Unbekannte Einstellung"
 
-#: src/admin/class-transfer-page.php:1400
+#: src/admin/class-transfer-page.php:1624
 msgid "Setting removed in a theme update"
 msgstr "Einstellung in einem Theme-Update entfernt"
 
-#: src/admin/class-transfer-page.php:1401
+#: src/admin/class-transfer-page.php:1625
 msgid "Setting renamed in a theme update"
 msgstr "Einstellung in einem Theme-Update umbenannt"
 
-#: src/admin/class-transfer-page.php:1402
+#: src/admin/class-transfer-page.php:1626
 msgid "Sensitive, never imported"
 msgstr "Sensibel, wird nie importiert"
 
-#: src/admin/class-transfer-page.php:1403
+#: src/admin/class-transfer-page.php:1627
 msgid "Language not active on this site"
 msgstr "Sprache auf dieser Website nicht aktiv"
 
-#: src/admin/class-transfer-page.php:1404
+#: src/admin/class-transfer-page.php:1629
 msgid "Not available in the Bootstrap line of this site"
 msgstr "In der Bootstrap-Linie dieser Website nicht verfügbar"
 
-#: src/admin/class-transfer-page.php:1405
+#: src/admin/class-transfer-page.php:1630
 msgid "The Bootstrap line is never imported"
 msgstr "Die Bootstrap-Linie wird nie importiert"
 
-#: src/admin/class-transfer-page.php:1406
+#: src/admin/class-transfer-page.php:1631
 msgid "Unknown part of the file"
 msgstr "Unbekannter Teil der Datei"
 
-#: src/admin/class-transfer-page.php:1407
+#: src/admin/class-transfer-page.php:1632
 msgid "Module unchanged"
 msgstr "Modul unverändert"
 
-#: src/admin/class-transfer-page.php:1408
+#: src/admin/class-transfer-page.php:1633
 msgid "Module locked on this site"
 msgstr "Modul auf dieser Website gesperrt"
 
-#: src/admin/class-transfer-page.php:1409
+#: src/admin/class-transfer-page.php:1634
 msgid "You may not change this setting"
 msgstr "Sie dürfen diese Einstellung nicht ändern"
 
-#: src/admin/class-transfer-page.php:1410
+#: src/admin/class-transfer-page.php:1635
 msgid "Invalid value"
 msgstr "Ungültiger Wert"
 
-#: src/admin/class-transfer-page.php:1411
+#: src/admin/class-transfer-page.php:1636
 msgid "Contrast too low"
 msgstr "Kontrast zu gering"
 
-#: src/admin/class-transfer-page.php:1412
+#: src/admin/class-transfer-page.php:1637
 msgid "Referenced content not found on this site"
 msgstr "Verknüpfter Inhalt auf dieser Website nicht gefunden"
 
-#: src/admin/class-transfer-page.php:1413
+#: src/admin/class-transfer-page.php:1638
 msgid "You may not switch this module"
 msgstr "Sie dürfen dieses Modul nicht umschalten"
 
-#: src/admin/class-transfer-page.php:1414
+#: src/admin/class-transfer-page.php:1639
 msgid "Invalid module state"
 msgstr "Ungültiger Modulzustand"
 
-#: src/admin/class-transfer-page.php:1415
+#: src/admin/class-transfer-page.php:1640
 msgid "Needs your confirmation"
 msgstr "Braucht Ihre Bestätigung"
 
-#: src/admin/class-transfer-page.php:1429
+#: src/admin/class-transfer-page.php:1654
 msgid "On"
 msgstr "An"
 
 #: src/admin/class-module-page.php:745
-#: src/admin/class-transfer-page.php:1430
+#: src/admin/class-transfer-page.php:1655
 msgid "Off"
 msgstr "Aus"
 
 #: src/admin/class-module-page.php:744
-#: src/admin/class-transfer-page.php:1431
+#: src/admin/class-transfer-page.php:1656
 msgid "Hidden"
 msgstr "Ausgeblendet"
 
-#: src/admin/class-transfer-page.php:1446
+#: src/admin/class-transfer-page.php:1671
 msgid "The file comes from another Bootstrap line. The import never switches the line; settings of the other line are skipped. Switch the line first if you need them."
 msgstr "Die Datei stammt aus einer anderen Bootstrap-Linie. Der Import wechselt die Linie nie; Einstellungen der anderen Linie werden übersprungen. Wechseln Sie zuerst die Linie, wenn Sie diese Einstellungen brauchen."
 
-#: src/admin/class-transfer-page.php:1449
+#: src/admin/class-transfer-page.php:1674
 msgid "The file comes from a newer theme version. Settings this version does not know are skipped."
 msgstr "Die Datei stammt aus einer neueren Theme-Version. Einstellungen, die diese Version nicht kennt, werden übersprungen."
 
 #. translators: 1: old format version, 2: new format version.
-#: src/admin/class-transfer-page.php:1454
+#: src/admin/class-transfer-page.php:1679
 #, php-format
 msgid "The file was converted from format version %1$s to %2$s."
 msgstr "Die Datei wurde von Formatversion %1$s auf %2$s umgewandelt."
 
-#: src/admin/class-transfer-page.php:1469
+#: src/admin/class-transfer-page.php:1699
 msgid "Before an import"
 msgstr "Vor einem Import"
 
-#: src/admin/class-transfer-page.php:1470
+#: src/admin/class-transfer-page.php:1700
 msgid "Before a restore"
 msgstr "Vor einer Wiederherstellung"
 
-#: src/admin/class-transfer-page.php:1471
+#: src/admin/class-transfer-page.php:1701
 msgid "Before a module switch"
 msgstr "Vor einem Modulwechsel"
 
-#: src/admin/class-transfer-page.php:1472
+#: src/admin/class-transfer-page.php:1702
 msgid "Manual"
 msgstr "Manuell"
 
-#: src/admin/class-transfer-page.php:1473
+#: src/admin/class-transfer-page.php:1703
 msgid "Before a Bootstrap line switch"
 msgstr "Vor einem Wechsel der Bootstrap-Linie"
 
-#: src/admin/class-transfer-page.php:1490
+#: src/admin/class-transfer-page.php:1720
 msgid "Restore"
 msgstr "Wiederherstellung"
 
-#: src/admin/class-transfer-page.php:1552
+#: src/admin/class-transfer-page.php:1782
 msgid "Unknown or deleted user"
 msgstr "Unbekannter oder gelöschter Benutzer"
 
-#: src/admin/class-transfer-page.php:1623
+#: src/admin/class-transfer-page.php:1854
 msgid "The backup or the log could not be stored. Nothing was changed."
 msgstr "Die Sicherung oder das Protokoll konnte nicht gespeichert werden. Nichts wurde geändert."
 
@@ -2177,7 +2173,7 @@ msgctxt "Font family name"
 msgid "Headings"
 msgstr "Überschriften"
 
-#: src/settings/transfer/class-importer.php:157
+#: src/settings/transfer/class-importer.php:158
 msgid "This theme version does not know this part of the file."
 msgstr "Diese Theme-Version kennt diesen Teil der Datei nicht."
 
@@ -2211,87 +2207,87 @@ msgid_plural "Switching this module off affects %d live contents; confirm the mo
 msgstr[0] "Das Abschalten dieses Moduls betrifft %d veröffentlichten Inhalt; bestätigen Sie die Moduländerungen."
 msgstr[1] "Das Abschalten dieses Moduls betrifft %d veröffentlichte Inhalte; bestätigen Sie die Moduländerungen."
 
-#: src/settings/transfer/class-settings-section.php:192
+#: src/settings/transfer/class-settings-section.php:193
 msgid "Sensitive settings are left out of every export and never imported."
 msgstr "Sensible Einstellungen fehlen in jedem Export und werden nie importiert."
 
-#: src/settings/transfer/class-settings-section.php:206
+#: src/settings/transfer/class-settings-section.php:216
 msgid "This language is not active on this site."
 msgstr "Diese Sprache ist auf dieser Website nicht aktiv."
 
 #. translators: %s: setting key.
-#: src/settings/transfer/class-settings-section.php:290
+#: src/settings/transfer/class-settings-section.php:357
 #, php-format
 msgid "The file has another value for %s; that value is imported."
 msgstr "Die Datei enthält einen anderen Wert für %s; dieser Wert wird importiert."
 
-#: src/settings/transfer/class-settings-section.php:308
+#: src/settings/transfer/class-settings-section.php:375
 msgid "The page, file or term this setting points to does not exist on this site."
 msgstr "Die Seite, die Datei oder der Begriff, auf die diese Einstellung verweist, existiert auf dieser Website nicht."
 
-#: src/settings/transfer/class-settings-section.php:344
+#: src/settings/transfer/class-settings-section.php:411
 msgid "The file has no value for this setting; it stays as it is."
 msgstr "Die Datei enthält keinen Wert für diese Einstellung; sie bleibt, wie sie ist."
 
-#: src/settings/transfer/class-settings-section.php:363
+#: src/settings/transfer/class-settings-section.php:430
 msgid "The Bootstrap line is never imported; it is part of the code of the site."
 msgstr "Die Bootstrap-Linie wird nie importiert; sie gehört zum Code der Website."
 
-#: src/settings/transfer/class-settings-section.php:369
+#: src/settings/transfer/class-settings-section.php:436
 msgid "This setting has no counterpart in the Bootstrap line of this site."
 msgstr "Diese Einstellung hat keine Entsprechung in der Bootstrap-Linie dieser Website."
 
 #. translators: %s: setting key in the file.
-#: src/settings/transfer/class-settings-section.php:373
+#: src/settings/transfer/class-settings-section.php:440
 #, php-format
 msgid "Mapped from %s of the other Bootstrap line."
 msgstr "Aus %s der anderen Bootstrap-Linie übernommen."
 
 #. translators: %s: new setting key.
-#: src/settings/transfer/class-settings-section.php:386
+#: src/settings/transfer/class-settings-section.php:453
 #, php-format
 msgid "This setting is now called %s; the value under the new name is imported."
 msgstr "Diese Einstellung heißt jetzt %s; importiert wird der Wert unter dem neuen Namen."
 
 #. translators: %s: former setting key.
-#: src/settings/transfer/class-settings-section.php:391
+#: src/settings/transfer/class-settings-section.php:458
 #, php-format
 msgid "Renamed from %s."
 msgstr "Umbenannt aus %s."
 
 #. translators: %s: new setting key.
-#: src/settings/transfer/class-settings-section.php:393
+#: src/settings/transfer/class-settings-section.php:460
 #, php-format
 msgid "This setting is now called %s and is imported under that name."
 msgstr "Diese Einstellung heißt jetzt %s und wird unter diesem Namen importiert."
 
 #. translators: %s: theme version.
-#: src/settings/transfer/class-settings-section.php:398
+#: src/settings/transfer/class-settings-section.php:465
 #, php-format
 msgid "This setting was removed in theme version %s."
 msgstr "Diese Einstellung wurde in Theme-Version %s entfernt."
 
-#: src/settings/transfer/class-settings-section.php:400
+#: src/settings/transfer/class-settings-section.php:467
 msgid "This theme version does not know this setting."
 msgstr "Diese Theme-Version kennt diese Einstellung nicht."
 
-#: src/settings/transfer/class-settings-section.php:414
+#: src/settings/transfer/class-settings-section.php:481
 msgid "Sensitive settings are never imported."
 msgstr "Sensible Einstellungen werden nie importiert."
 
-#: src/settings/transfer/class-settings-section.php:418
+#: src/settings/transfer/class-settings-section.php:485
 msgid "Module switches are imported in the section Modules."
 msgstr "Modulzustände werden im Bereich Module importiert."
 
-#: src/settings/transfer/class-settings-section.php:419
+#: src/settings/transfer/class-settings-section.php:486
 msgid "This setting is never imported."
 msgstr "Diese Einstellung wird nie importiert."
 
-#: src/settings/transfer/class-settings-section.php:423
+#: src/settings/transfer/class-settings-section.php:490
 msgid "This setting differs per language; the file must list it per language."
 msgstr "Diese Einstellung unterscheidet sich je Sprache; die Datei muss sie je Sprache aufführen."
 
-#: src/settings/transfer/class-settings-section.php:426
+#: src/settings/transfer/class-settings-section.php:493
 msgid "This setting is the same in every language; the file must list it without a language."
 msgstr "Diese Einstellung ist in allen Sprachen gleich; die Datei muss sie ohne Sprache aufführen."
 
@@ -2320,7 +2316,7 @@ msgctxt "block keyword"
 msgid "privacy"
 msgstr "Datenschutz"
 
-#: src/admin/class-transfer-page.php:970
+#: src/admin/class-transfer-page.php:1010
 msgctxt "button"
 msgid "Import"
 msgstr "Importieren"
@@ -3887,26 +3883,127 @@ msgstr[1] "(und %d weitere)"
 msgid "The font \"%1$s\" (%2$s) does not cover %3$s: these characters are missing: %4$s"
 msgstr "Die Schrift „%1$s“ (%2$s) deckt %3$s nicht ab: diese Zeichen fehlen: %4$s"
 
-#: src/admin/class-font-coverage-notice.php:207
+#: src/admin/class-font-coverage-notice.php:209
 msgid "Latin"
 msgstr "Lateinisch"
 
-#: src/admin/class-font-coverage-notice.php:208
+#: src/admin/class-font-coverage-notice.php:210
 msgid "Latin Extended"
 msgstr "Lateinisch erweitert"
 
-#: src/admin/class-font-coverage-notice.php:209
+#: src/admin/class-font-coverage-notice.php:211
 msgid "Vietnamese"
 msgstr "Vietnamesisch"
 
-#: src/admin/class-font-coverage-notice.php:210
+#: src/admin/class-font-coverage-notice.php:212
 msgid "Cyrillic"
 msgstr "Kyrillisch"
 
-#: src/admin/class-font-coverage-notice.php:211
+#: src/admin/class-font-coverage-notice.php:213
 msgid "Arabic"
 msgstr "Arabisch"
 
-#: src/admin/class-font-coverage-notice.php:212
+#: src/admin/class-font-coverage-notice.php:214
 msgid "CJK (Chinese and Japanese)"
 msgstr "CJK (Chinesisch und Japanisch)"
+
+#: src/admin/class-transfer-page.php:1054
+msgid "Languages of the file"
+msgstr "Sprachen der Datei"
+
+#. translators: %s: language code in the file, e.g. "en".
+#: src/admin/class-transfer-page.php:1068
+#, php-format
+msgid "Texts in %s of the file"
+msgstr "Texte in %s aus der Datei"
+
+#. translators: %s: language code, e.g. "en".
+#: src/admin/class-transfer-page.php:1106
+#, php-format
+msgid "%s (as in the file)"
+msgstr "%s (wie in der Datei)"
+
+#: src/admin/class-transfer-page.php:1081
+msgid "do not import"
+msgstr "nicht importieren"
+
+#: src/admin/class-transfer-page.php:1088
+msgid "Update preview"
+msgstr "Vorschau aktualisieren"
+
+#. translators: %s: name of a section of settings, for example "Modules".
+#: src/admin/class-transfer-page.php:1202
+#, php-format
+msgid "%s: nothing changes."
+msgstr "%s: Es ändert sich nichts."
+
+#. translators: %d: number of modules.
+#: src/admin/class-transfer-page.php:1259
+#, php-format
+msgid "%d module stays unchanged"
+msgid_plural "%d modules stay unchanged"
+msgstr[0] "%d Modul bleibt unverändert"
+msgstr[1] "%d Module bleiben unverändert"
+
+#. translators: %d: number of settings.
+#: src/admin/class-transfer-page.php:1262
+#, php-format
+msgid "%d setting stays unchanged"
+msgid_plural "%d settings stay unchanged"
+msgstr[0] "%d Einstellung bleibt unverändert"
+msgstr[1] "%d Einstellungen bleiben unverändert"
+
+#: src/admin/class-transfer-page.php:1265
+msgid "unchanged"
+msgstr "unverändert"
+
+#: src/admin/class-transfer-page.php:1628
+msgid "Replaced by another language of the file"
+msgstr "Durch eine andere Sprache der Datei ersetzt"
+
+#. translators: 1: language code in the file, 2: language code on this site.
+#: src/admin/class-transfer-page.php:1684
+#, php-format
+msgid "The texts of language %1$s of the file are imported as %2$s."
+msgstr "Die Texte der Sprache %1$s aus der Datei werden als %2$s importiert."
+
+#. translators: %s: language code of the file, e.g. "en".
+#: src/settings/transfer/class-settings-section.php:206
+#, php-format
+msgid "Replaced by the texts of language %s from the file."
+msgstr "Ersetzt durch die Texte der Sprache %s aus der Datei."
+
+#. translators: %s: language code of the file, e.g. "en".
+#: src/settings/transfer/class-settings-section.php:269
+#, php-format
+msgid "From language %s of the file."
+msgstr "Aus der Sprache %s der Datei."
+
+#: src/settings/transfer/enum-transfer-error.php:72
+msgid "The language assignment does not fit: a language is not in the file, is not active on this site, or gets the texts of two languages of the file."
+msgstr "Die Zuordnung der Sprachen passt nicht: Eine Sprache steht nicht in der Datei, ist auf dieser Website nicht aktiv oder bekommt die Texte von zwei Sprachen der Datei."
+
+#. translators: 1: language name in the admin language, e.g. "English"; 2: language code in the file, e.g. "en".
+#: src/admin/class-transfer-page.php:1065
+#, php-format
+msgid "Texts in %1$s (%2$s) of the file"
+msgstr "Texte in %1$s (%2$s) aus der Datei"
+
+#. translators: 1: language name in the admin language, e.g. "English"; 2: language code, e.g. "en".
+#: src/admin/class-transfer-page.php:1114
+#, php-format
+msgid "%1$s (%2$s, as in the file)"
+msgstr "%1$s (%2$s, wie in der Datei)"
+
+#. translators: 1: language name in the admin language, e.g. "German"; 2: language code, e.g. "de".
+#: src/admin/class-transfer-page.php:1116
+#, php-format
+msgid "%1$s (%2$s, default language)"
+msgstr "%1$s (%2$s, Standardsprache)"
+
+#. translators: 1: language name in the admin language, e.g. "Persian"; 2: language code, e.g. "fa".
+#: src/admin/class-transfer-page.php:1118
+#, php-format
+msgctxt "language name and code"
+msgid "%1$s (%2$s)"
+msgstr "%1$s (%2$s)"

@@ -45,9 +45,13 @@ defined( 'ABSPATH' ) || exit;
  * filter auto_update_theme says no, and the gate refuses every automatic run,
  * also when a plugin forces automatic updates.
  *
- * The manifest is cached for a day in a transient; a failed fetch is remembered
- * for five minutes and a lock keeps parallel requests from fetching twice.
- * These three transients are the only data the theme writes to the database.
+ * The manifest is cached for a day in a site transient; a failed fetch is
+ * remembered for five minutes and a lock keeps parallel requests from fetching
+ * twice. All three are site transients because a theme update is a network-wide
+ * event: on multisite the manifest is fetched once for the network, not once per
+ * site (stored in the sitemeta table there, in the options table on a single
+ * site). These three site transients are the only data the updater writes to
+ * the database.
  * With WP_DEBUG the updater writes short lines to the PHP error log.
  *
  * Example:
@@ -491,8 +495,8 @@ final class Theme_Updater {
 			$themes[] = $options['theme'];
 		}
 		if ( in_array( self::THEME_SLUG, $themes, true ) ) {
-			delete_transient( self::CACHE_KEY );
-			delete_transient( self::FAILURE_KEY );
+			delete_site_transient( self::CACHE_KEY );
+			delete_site_transient( self::FAILURE_KEY );
 		}
 	}
 
@@ -513,33 +517,33 @@ final class Theme_Updater {
 			return null;
 		}
 		if ( ! $force ) {
-			$cached = get_transient( self::CACHE_KEY );
+			$cached = get_site_transient( self::CACHE_KEY );
 			if ( false !== $cached ) {
 				$manifest = Manifest::from_decoded( $cached );
 				if ( null !== $manifest ) {
 					return $manifest;
 				}
-				delete_transient( self::CACHE_KEY );
+				delete_site_transient( self::CACHE_KEY );
 				self::log( 'the cached manifest failed the checks; fetching it again.' );
 			}
-			if ( false !== get_transient( self::FAILURE_KEY ) ) {
+			if ( false !== get_site_transient( self::FAILURE_KEY ) ) {
 				return null;
 			}
 		}
-		if ( false !== get_transient( self::LOCK_KEY ) ) {
+		if ( false !== get_site_transient( self::LOCK_KEY ) ) {
 			return null;
 		}
 
-		set_transient( self::LOCK_KEY, 1, self::LOCK_TTL );
+		set_site_transient( self::LOCK_KEY, 1, self::LOCK_TTL );
 		$manifest = $this->fetch();
-		delete_transient( self::LOCK_KEY );
+		delete_site_transient( self::LOCK_KEY );
 
 		if ( null === $manifest ) {
-			set_transient( self::FAILURE_KEY, 1, self::FETCH_FAILURE_TTL );
+			set_site_transient( self::FAILURE_KEY, 1, self::FETCH_FAILURE_TTL );
 			return null;
 		}
-		set_transient( self::CACHE_KEY, $manifest->to_array(), self::CACHE_TTL );
-		delete_transient( self::FAILURE_KEY );
+		set_site_transient( self::CACHE_KEY, $manifest->to_array(), self::CACHE_TTL );
+		delete_site_transient( self::FAILURE_KEY );
 		return $manifest;
 	}
 
@@ -584,7 +588,7 @@ final class Theme_Updater {
 			'requires_php'      => null === $manifest ? '' : $manifest->requires_php,
 			'tested'            => null === $manifest ? '' : $manifest->tested,
 			'auto_updates'      => 'disabled',
-			'failure_cached'    => false !== get_transient( self::FAILURE_KEY ),
+			'failure_cached'    => false !== get_site_transient( self::FAILURE_KEY ),
 		);
 	}
 

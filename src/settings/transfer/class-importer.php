@@ -129,7 +129,7 @@ final class Importer {
 	 * @param array<int, string> $migrated Migration steps the file went through, e.g. "1->2".
 	 * @phpstan-param list<string> $migrated
 	 * @return Import_Plan Plan.
-	 * @throws Transfer_Exception With forbidden, language_all, acfe_multilang or nothing_selected.
+	 * @throws Transfer_Exception With forbidden, language_all, acfe_multilang, nothing_selected or lang_map_invalid.
 	 */
 	public function plan( Transfer_File $file, Import_Options $options, array $migrated = array() ): Import_Plan {
 		if ( ! user_can( $options->user_id, Capabilities::IMPORT_EXPORT ) ) {
@@ -146,6 +146,7 @@ final class Importer {
 		if ( array() === $selected ) {
 			Transfer_Exception::raise( Transfer_Error::NOTHING_SELECTED );
 		}
+		self::check_lang_map( $file, $options, $language->active() );
 
 		$sections = $this->sections();
 		$rows     = array();
@@ -172,7 +173,7 @@ final class Importer {
 				$seen_live[ $slug ] = null === $row->switch_result->scan ? 0 : $row->switch_result->scan->total_live();
 			}
 		}
-		return new Import_Plan( $file, $rows, $modules, $this->warnings( $file, $migrated ), array() !== $seen_live, $seen_live );
+		return new Import_Plan( $file, $rows, $modules, $this->warnings( $file, $migrated, $options ), array() !== $seen_live, $seen_live );
 	}
 
 	/**
@@ -228,7 +229,8 @@ final class Importer {
 			self::row_langs( $rows ),
 			$report->counts,
 			$backup_id,
-			hash( 'sha256', Json_Codec::encode( $plan->file->to_array() ) )
+			hash( 'sha256', Json_Codec::encode( $plan->file->to_array() ) ),
+			$options->lang_map
 		);
 
 		/**
@@ -278,14 +280,18 @@ final class Importer {
 	/**
 	 * Returns the warnings of a file.
 	 *
+	 * "lang_mapped:<source>-><target>" comes for each pair of the language map
+	 * whose source differs from the target and whose target the language filter keeps.
+	 *
 	 * @since 1.0.0
 	 *
 	 * @param Transfer_File      $file     File.
 	 * @param array<int, string> $migrated Migration steps.
+	 * @param Import_Options     $options  Options.
 	 * @return array<int, string> Warning codes.
 	 * @phpstan-return list<string>
 	 */
-	private function warnings( Transfer_File $file, array $migrated ): array {
+	private function warnings( Transfer_File $file, array $migrated, Import_Options $options ): array {
 		$warnings = array();
 		foreach ( $migrated as $step ) {
 			$warnings[] = 'migrated:' . $step;
@@ -296,7 +302,66 @@ final class Importer {
 		if ( version_compare( $file->theme_version, CREATIONELL_WP_THEME_VERSION, '>' ) ) {
 			$warnings[] = 'theme_newer';
 		}
+		foreach ( $options->lang_map as $source => $target ) {
+			if ( $source !== $target && $options->wants_lang( $target ) ) {
+				$warnings[] = 'lang_mapped:' . $source . '->' . $target;
+			}
+		}
 		return $warnings;
+	}
+
+	/**
+	 * Checks the language map against the file and the active languages.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param Transfer_File      $file    File.
+	 * @param Import_Options     $options Options.
+	 * @param array<int, string> $active  Active language codes.
+	 * @return void
+	 * @throws Transfer_Exception With lang_map_invalid and the reason source_missing, target_inactive, target_twice or format.
+	 */
+	private static function check_lang_map( Transfer_File $file, Import_Options $options, array $active ): void {
+		$targets = array();
+		foreach ( $options->lang_map as $source => $target ) {
+			if ( 1 !== preg_match( Transfer_File::LANGUAGE_PATTERN, (string) $source ) || 1 !== preg_match( Transfer_File::LANGUAGE_PATTERN, $target ) ) {
+				Transfer_Exception::raise(
+					Transfer_Error::LANG_MAP_INVALID,
+					array(
+						'reason' => 'format',
+						'detail' => $source . ':' . $target . ' is no pair of language codes',
+					)
+				);
+			}
+			if ( ! array_key_exists( $source, $file->translatable ) ) {
+				Transfer_Exception::raise(
+					Transfer_Error::LANG_MAP_INVALID,
+					array(
+						'reason' => 'source_missing',
+						'detail' => $source . ' is not in the file',
+					)
+				);
+			}
+			if ( ! in_array( $target, $active, true ) ) {
+				Transfer_Exception::raise(
+					Transfer_Error::LANG_MAP_INVALID,
+					array(
+						'reason' => 'target_inactive',
+						'detail' => $target . ' is not active on this site',
+					)
+				);
+			}
+			if ( isset( $targets[ $target ] ) ) {
+				Transfer_Exception::raise(
+					Transfer_Error::LANG_MAP_INVALID,
+					array(
+						'reason' => 'target_twice',
+						'detail' => $target . ' gets ' . $targets[ $target ] . ' and ' . $source,
+					)
+				);
+			}
+			$targets[ $target ] = (string) $source;
+		}
 	}
 
 	/**

@@ -196,6 +196,13 @@ final class Transfer_Page {
 	private const CONFIRM_ID = self::ID . '-confirm';
 
 	/**
+	 * Statuses of rows that change nothing; the preview and the result collapse them.
+	 *
+	 * @var array<int, Row_Status>
+	 */
+	private const QUIET = array( Row_Status::UNCHANGED, Row_Status::ABSENT, Row_Status::MODULE_UNCHANGED );
+
+	/**
 	 * Shared instance.
 	 *
 	 * @var self|null
@@ -592,17 +599,25 @@ final class Transfer_Page {
 		$user_id   = get_current_user_id();
 		$token     = self::arg( $post, 'token' );
 		$confirmed = '1' === self::arg( $post, 'confirm_modules' );
+		$carry     = null;
 		try {
-			$session  = Import_Session::load( $token, $user_id );
-			$parsed   = Importer::parse( $session['data'] );
+			$session = Import_Session::load( $token, $user_id );
+			$parsed  = Importer::parse( $session['data'] );
+			$restore = 'backup' === $session['source'];
+			$carry   = $restore ? null : self::map_arg( $post );
+			$chosen  = self::selection( $carry, $parsed['file'] );
+			if ( ! $chosen['valid'] ) {
+				Transfer_Exception::raise( Transfer_Error::LANG_MAP_INVALID );
+			}
 			$options  = new Import_Options(
 				sections: $parsed['file']->sections,
-				langs: null,
+				langs: $chosen['langs'],
 				user_id: $user_id,
 				channel: 'admin',
 				confirm_modules: $confirmed,
 				seen_live: self::arg_counts( $post, 'seen_live' ),
-				reason: 'backup' === $session['source'] ? 'restore' : 'import',
+				reason: $restore ? 'restore' : 'import',
+				lang_map: $chosen['lang_map'],
 			);
 			$importer = $this->importer();
 			$report   = $importer->apply( $importer->plan( $parsed['file'], $options, $parsed['migrated'] ), $options );
@@ -615,7 +630,8 @@ final class Transfer_Page {
 					'view'  => 'preview',
 					'token' => $token,
 					'error' => $exception->error->value,
-				)
+				),
+				$carry
 			);
 		} catch ( Exception $exception ) {
 			self::fail( $exception );
@@ -940,30 +956,54 @@ final class Transfer_Page {
 	 * @param int                 $user_id Current user.
 	 * @param Transfer_Error|null $error   Error of the last import attempt, or null.
 	 * @return void
+	 * @throws Transfer_Exception Never out of the method: the outer catch shows the start view; only the re-throw of a plan error other than the language map needs the tag.
 	 */
 	private function render_preview( int $user_id, ?Transfer_Error $error ): void {
 		$token = self::arg( $this->query, 'token' );
 		try {
-			$session = Import_Session::load( $token, $user_id );
-			$parsed  = Importer::parse( $session['data'] );
-			$options = new Import_Options( $parsed['file']->sections, null, $user_id, 'admin', false, array(), false, true, 'backup' === $session['source'] ? 'restore' : 'import' );
-			$plan    = $this->importer()->plan( $parsed['file'], $options, $parsed['migrated'] );
+			$session   = Import_Session::load( $token, $user_id );
+			$parsed    = Importer::parse( $session['data'] );
+			$restore   = 'backup' === $session['source'];
+			$selection = $restore ? null : self::map_arg( $this->query );
+			$chosen    = self::selection( $selection, $parsed['file'] );
+			$map_error = ! $chosen['valid'];
+			try {
+				$plan = $this->importer()->plan( $parsed['file'], self::preview_options( $parsed['file'], $user_id, $restore, $map_error ? self::selection( null, $parsed['file'] ) : $chosen ), $parsed['migrated'] );
+			} catch ( Transfer_Exception $exception ) {
+				if ( Transfer_Error::LANG_MAP_INVALID !== $exception->error ) {
+					throw $exception;
+				}
+				$map_error = true;
+				$chosen    = self::selection( null, $parsed['file'] );
+				$plan      = $this->importer()->plan( $parsed['file'], self::preview_options( $parsed['file'], $user_id, $restore, $chosen ), $parsed['migrated'] );
+			}
 		} catch ( Transfer_Exception $exception ) {
 			$this->render_start( true, $exception->error );
 			return;
 		}
 
-		if ( null !== $error ) {
+		if ( null !== $error && ! ( Transfer_Error::LANG_MAP_INVALID === $error && $map_error ) ) {
 			self::error_notice( $error );
 		}
 		echo '<h2>' . esc_html__( 'Preview', 'creationell-wp-theme' ) . "</h2>\n";
 		echo '<p>' . esc_html__( 'Check what the import changes. Nothing has been changed yet.', 'creationell-wp-theme' ) . "</p>\n";
 		self::render_header( $plan->file, $session['name'], 'backup' === $session['source'] );
 		self::render_warnings( $plan->warnings );
+		if ( $map_error ) {
+			self::error_notice( Transfer_Error::LANG_MAP_INVALID );
+		}
+		if ( ! $restore && array() !== $plan->file->translatable ) {
+			self::render_lang_map( $token, $plan->file, $map_error ? null : $selection, $map_error );
+		}
 		self::render_rows( $plan->rows, true );
 
 		self::form_open( self::ACTION_APPLY );
 		echo '<input type="hidden" name="token" value="' . esc_attr( $token ) . '">' . "\n";
+		if ( ! $map_error && null !== $selection ) {
+			foreach ( $selection as $source => $target ) {
+				echo '<input type="hidden" name="lang_map[' . esc_attr( $source ) . ']" value="' . esc_attr( $target ) . '">' . "\n";
+			}
+		}
 		if ( $plan->needs_confirmation ) {
 			self::render_confirmation( $plan, Transfer_Error::CONFIRMATION_REQUIRED === $error );
 		}
@@ -973,6 +1013,110 @@ final class Transfer_Page {
 		echo '<input type="hidden" name="token" value="' . esc_attr( $token ) . '">' . "\n";
 		echo '<p class="' . esc_attr( self::ID . '-buttons' ) . '"><button type="submit" class="button">' . esc_html__( 'Cancel', 'creationell-wp-theme' ) . "</button></p>\n";
 		echo "</form>\n";
+	}
+
+	/**
+	 * Options of a preview plan.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param Transfer_File                                                                 $file    File.
+	 * @param int                                                                           $user_id User.
+	 * @param bool                                                                          $restore Whether the file is a backup.
+	 * @param array{lang_map: array<string, string>, langs: list<string>|null, valid: bool} $chosen  Selection.
+	 * @return Import_Options Options of a dry run.
+	 */
+	private static function preview_options( Transfer_File $file, int $user_id, bool $restore, array $chosen ): Import_Options {
+		return new Import_Options( $file->sections, $chosen['langs'], $user_id, 'admin', false, array(), false, true, $restore ? 'restore' : 'import', $chosen['lang_map'] );
+	}
+
+	/**
+	 * Prints the GET form that chooses a target language per language of the file.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string                     $token     Import session.
+	 * @param Transfer_File              $file      File.
+	 * @param array<string, string>|null $selection Current selection; null for "as in the file".
+	 * @param bool                       $invalid   Whether the last selection was invalid.
+	 * @return void
+	 */
+	private static function render_lang_map( string $token, Transfer_File $file, ?array $selection, bool $invalid ): void {
+		$active   = self::languages();
+		$default  = Language::instance()->default();
+		$names    = array_filter( Language::instance()->names(), static fn( string $name, string $code ): bool => $name !== $code, ARRAY_FILTER_USE_BOTH );
+		$error_id = self::ID . '-langmap-error';
+		echo '<form method="get" action="' . esc_url( admin_url( 'admin.php' ) ) . '">' . "\n";
+		echo '<input type="hidden" name="page" value="' . esc_attr( self::SLUG ) . '">' . "\n";
+		echo '<input type="hidden" name="view" value="preview">' . "\n";
+		echo '<input type="hidden" name="token" value="' . esc_attr( $token ) . '">' . "\n";
+		echo '<fieldset id="' . esc_attr( self::ID . '-langmap' ) . '" class="' . esc_attr( self::ID . '-choices' ) . '"' . ( $invalid ? ' aria-describedby="' . esc_attr( $error_id ) . '"' : '' ) . '>';
+		echo '<legend>' . esc_html__( 'Languages of the file', 'creationell-wp-theme' ) . "</legend>\n";
+		if ( $invalid ) {
+			self::field_error( $error_id, Transfer_Error::LANG_MAP_INVALID );
+		}
+		foreach ( array_keys( $file->translatable ) as $source ) {
+			$source  = (string) $source;
+			$id      = self::ID . '-langmap-' . $source;
+			$current = $selection[ $source ] ?? ( in_array( $source, $active, true ) ? $source : '-' );
+			echo '<p><label for="' . esc_attr( $id ) . '">';
+			if ( isset( $names[ $source ] ) ) {
+				/* translators: 1: language name in the admin language, e.g. "English"; 2: language code in the file, e.g. "en". */
+				$label = sprintf( __( 'Texts in %1$s (%2$s) of the file', 'creationell-wp-theme' ), $names[ $source ], $source );
+			} else {
+				/* translators: %s: language code in the file, e.g. "en". */
+				$label = sprintf( __( 'Texts in %s of the file', 'creationell-wp-theme' ), $source );
+			}
+			echo esc_html( $label ) . '</label> ';
+			echo '<select id="' . esc_attr( $id ) . '" name="lang_map[' . esc_attr( $source ) . ']"' . ( $invalid ? ' aria-invalid="true"' : '' ) . '>';
+			$options = array();
+			if ( in_array( $source, $active, true ) ) {
+				$options[ $source ] = self::lang_map_option( $source, $names[ $source ] ?? null, 'file' );
+			}
+			foreach ( $active as $lang ) {
+				if ( ! isset( $options[ $lang ] ) ) {
+					$options[ $lang ] = self::lang_map_option( $lang, $names[ $lang ] ?? null, $lang === $default ? 'default' : '' );
+				}
+			}
+			$options['-'] = __( 'do not import', 'creationell-wp-theme' );
+			foreach ( $options as $value => $label ) {
+				echo '<option value="' . esc_attr( (string) $value ) . '"' . ( (string) $value === $current ? ' selected' : '' ) . '>' . esc_html( $label ) . '</option>';
+			}
+			echo "</select></p>\n";
+		}
+		echo "</fieldset>\n";
+		echo '<p class="' . esc_attr( self::ID . '-buttons' ) . '"><button type="submit" class="button">' . esc_html__( 'Update preview', 'creationell-wp-theme' ) . "</button></p>\n";
+		echo "</form>\n";
+	}
+
+	/**
+	 * Returns the label of one target language in the language map: name and code, or the code alone when WPML gives no name.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string      $code Language code, e.g. "fa".
+	 * @param string|null $name Name in the admin language, e.g. "Persian"; null without one.
+	 * @param string      $note "file" for the language of the file itself, "default" for the default language, "" for none.
+	 * @return string Label, e.g. "Persian (fa)" or "English (en, as in the file)".
+	 */
+	private static function lang_map_option( string $code, ?string $name, string $note ): string {
+		if ( null === $name ) {
+			return match ( $note ) {
+				/* translators: %s: language code, e.g. "en". */
+				'file'    => sprintf( __( '%s (as in the file)', 'creationell-wp-theme' ), $code ),
+				/* translators: %s: language code, e.g. "de". */
+				'default' => sprintf( __( '%s (default language)', 'creationell-wp-theme' ), $code ),
+				default   => $code,
+			};
+		}
+		return match ( $note ) {
+			/* translators: 1: language name in the admin language, e.g. "English"; 2: language code, e.g. "en". */
+			'file'    => sprintf( __( '%1$s (%2$s, as in the file)', 'creationell-wp-theme' ), $name, $code ),
+			/* translators: 1: language name in the admin language, e.g. "German"; 2: language code, e.g. "de". */
+			'default' => sprintf( __( '%1$s (%2$s, default language)', 'creationell-wp-theme' ), $name, $code ),
+			/* translators: 1: language name in the admin language, e.g. "Persian"; 2: language code, e.g. "fa". */
+			default   => sprintf( _x( '%1$s (%2$s)', 'language name and code', 'creationell-wp-theme' ), $name, $code ),
+		};
 	}
 
 	/**
@@ -1040,17 +1184,90 @@ final class Transfer_Page {
 			$groups[ $row->section ][] = $row;
 		}
 		foreach ( $groups as $section => $section_rows ) {
-			$first = Transfer_File::SECTION_MODULES === $section ? __( 'Module', 'creationell-wp-theme' ) : __( 'Setting', 'creationell-wp-theme' );
-			self::table_open(
-				( $preview ? 'preview-' : 'result-' ) . $section,
-				$labels[ $section ] ?? $section,
-				array( $first, __( 'Language', 'creationell-wp-theme' ), __( 'Current', 'creationell-wp-theme' ), __( 'New', 'creationell-wp-theme' ), __( 'Result', 'creationell-wp-theme' ) )
-			);
-			foreach ( $section_rows as $row ) {
-				self::row_html( $row );
+			$modules = Transfer_File::SECTION_MODULES === $section;
+			$label   = $labels[ $section ] ?? $section;
+			$name    = ( $preview ? 'preview-' : 'result-' ) . $section;
+			$loud    = array_values( array_filter( $section_rows, static fn( Plan_Row $row ): bool => ! self::is_quiet( $row ) ) );
+			$quiet   = array_values( array_filter( $section_rows, static fn( Plan_Row $row ): bool => self::is_quiet( $row ) ) );
+			if ( array() !== $loud ) {
+				self::table_open( $name, $label, self::row_headers( $modules ) );
+				foreach ( $loud as $row ) {
+					self::row_html( $row );
+				}
+				self::table_close();
+			} elseif ( $preview ) {
+				echo '<p class="' . esc_attr( self::ID . '-none' ) . '">' . esc_html(
+					sprintf(
+						/* translators: %s: name of a section of settings, for example "Modules". */
+						__( '%s: nothing changes.', 'creationell-wp-theme' ),
+						$label
+					)
+				) . "</p>\n";
 			}
-			self::table_close();
+			self::render_quiet( $name, $label, $quiet, $modules );
 		}
+	}
+
+	/**
+	 * Tells whether a row changes nothing.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param Plan_Row $row Row.
+	 * @return bool Whether its status is one of the quiet ones.
+	 */
+	private static function is_quiet( Plan_Row $row ): bool {
+		return in_array( $row->status, self::QUIET, true );
+	}
+
+	/**
+	 * Returns the column headers of a table of rows.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param bool $modules Whether the first column names modules instead of settings.
+	 * @return array<int, string> Headers.
+	 */
+	private static function row_headers( bool $modules ): array {
+		return array(
+			$modules ? __( 'Module', 'creationell-wp-theme' ) : __( 'Setting', 'creationell-wp-theme' ),
+			__( 'Language', 'creationell-wp-theme' ),
+			__( 'Current', 'creationell-wp-theme' ),
+			__( 'New', 'creationell-wp-theme' ),
+			__( 'Result', 'creationell-wp-theme' ),
+		);
+	}
+
+	/**
+	 * Prints quiet rows in a collapsed block with a count.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string               $name    Name of the table they belong to.
+	 * @param string               $label   Label of the table.
+	 * @param array<int, Plan_Row> $quiet   Quiet rows.
+	 * @param bool                 $modules Whether the rows are modules.
+	 * @return void
+	 */
+	private static function render_quiet( string $name, string $label, array $quiet, bool $modules ): void {
+		if ( array() === $quiet ) {
+			return;
+		}
+		$count = count( $quiet );
+		if ( $modules ) {
+			/* translators: %d: number of modules. */
+			$summary = _n( '%d module stays unchanged', '%d modules stay unchanged', $count, 'creationell-wp-theme' );
+		} else {
+			/* translators: %d: number of settings. */
+			$summary = _n( '%d setting stays unchanged', '%d settings stay unchanged', $count, 'creationell-wp-theme' );
+		}
+		echo '<details class="' . esc_attr( self::ID . '-quiet' ) . '"><summary>' . esc_html( sprintf( $summary, $count ) ) . "</summary>\n";
+		self::table_open( $name . '-quiet', $label . ' – ' . __( 'unchanged', 'creationell-wp-theme' ), self::row_headers( $modules ) );
+		foreach ( $quiet as $row ) {
+			self::row_html( $row );
+		}
+		self::table_close();
+		echo "</details>\n";
 	}
 
 	/**
@@ -1149,15 +1366,20 @@ final class Transfer_Page {
 			if ( array() === $rows ) {
 				continue;
 			}
-			self::table_open(
-				'result-' . $group,
-				'reject' === $group ? __( 'Rejected', 'creationell-wp-theme' ) : __( 'Skipped', 'creationell-wp-theme' ),
-				array( __( 'Setting', 'creationell-wp-theme' ), __( 'Language', 'creationell-wp-theme' ), __( 'Current', 'creationell-wp-theme' ), __( 'New', 'creationell-wp-theme' ), __( 'Result', 'creationell-wp-theme' ) )
-			);
-			foreach ( $rows as $row ) {
-				self::row_html( $row );
+			$label = 'reject' === $group ? __( 'Rejected', 'creationell-wp-theme' ) : __( 'Skipped', 'creationell-wp-theme' );
+			$loud  = 'reject' === $group ? $rows : array_values( array_filter( $rows, static fn( Plan_Row $row ): bool => ! self::is_quiet( $row ) ) );
+			if ( array() !== $loud ) {
+				self::table_open( 'result-' . $group, $label, self::row_headers( false ) );
+				foreach ( $loud as $row ) {
+					self::row_html( $row );
+				}
+				self::table_close();
 			}
-			self::table_close();
+			if ( 'skip' === $group ) {
+				$quiet = array_values( array_filter( $rows, static fn( Plan_Row $row ): bool => self::is_quiet( $row ) ) );
+				self::render_quiet( 'result-skip', $label, array_values( array_filter( $quiet, static fn( Plan_Row $row ): bool => Transfer_File::SECTION_MODULES !== $row->section ) ), false );
+				self::render_quiet( 'result-skip-modules', self::section_label_map()[ Transfer_File::SECTION_MODULES ] ?? Transfer_File::SECTION_MODULES, array_values( array_filter( $quiet, static fn( Plan_Row $row ): bool => Transfer_File::SECTION_MODULES === $row->section ) ), true );
+			}
 		}
 		echo '<p><a href="' . esc_url( self::url( array() ) ) . '">' . esc_html__( 'Back to Import/Export', 'creationell-wp-theme' ) . "</a></p>\n";
 	}
@@ -1211,6 +1433,8 @@ final class Transfer_Page {
 			$target = self::ID . '-section-' . ( $ids[0] ?? '' );
 		} elseif ( Transfer_Error::CONFIRMATION_REQUIRED === $error ) {
 			$target = self::CONFIRM_ID;
+		} elseif ( Transfer_Error::LANG_MAP_INVALID === $error ) {
+			$target = self::ID . '-langmap';
 		}
 		echo '<div class="notice notice-error"><p>' . esc_html( $error->message() );
 		if ( '' !== $target ) {
@@ -1401,6 +1625,7 @@ final class Transfer_Page {
 			Row_Status::RENAMED                   => __( 'Setting renamed in a theme update', 'creationell-wp-theme' ),
 			Row_Status::SENSITIVE_SKIPPED         => __( 'Sensitive, never imported', 'creationell-wp-theme' ),
 			Row_Status::LANGUAGE_INACTIVE         => __( 'Language not active on this site', 'creationell-wp-theme' ),
+			Row_Status::LANGUAGE_REPLACED         => __( 'Replaced by another language of the file', 'creationell-wp-theme' ),
 			Row_Status::LINE_UNMAPPED             => __( 'Not available in the Bootstrap line of this site', 'creationell-wp-theme' ),
 			Row_Status::LINE_NEVER_IMPORTED       => __( 'The Bootstrap line is never imported', 'creationell-wp-theme' ),
 			Row_Status::SECTION_UNKNOWN           => __( 'Unknown part of the file', 'creationell-wp-theme' ),
@@ -1452,6 +1677,11 @@ final class Transfer_Page {
 			$steps = explode( '->', substr( $warning, strlen( 'migrated:' ) ) );
 			/* translators: 1: old format version, 2: new format version. */
 			return sprintf( __( 'The file was converted from format version %1$s to %2$s.', 'creationell-wp-theme' ), $steps[0], $steps[1] ?? '' );
+		}
+		if ( str_starts_with( $warning, 'lang_mapped:' ) ) {
+			$pair = explode( '->', substr( $warning, strlen( 'lang_mapped:' ) ) );
+			/* translators: 1: language code in the file, 2: language code on this site. */
+			return sprintf( __( 'The texts of language %1$s of the file are imported as %2$s.', 'creationell-wp-theme' ), $pair[0], $pair[1] ?? '' );
 		}
 		return $warning;
 	}
@@ -1602,11 +1832,12 @@ final class Transfer_Page {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param array<string, string> $args Query arguments; codes only.
+	 * @param array<string, string>      $args     Query arguments; codes only.
+	 * @param array<string, string>|null $lang_map Language selection to carry back to the preview; null for none.
 	 * @return never
 	 */
-	private function redirect( array $args ): never {
-		wp_safe_redirect( self::url( $args ) );
+	private function redirect( array $args, ?array $lang_map = null ): never {
+		wp_safe_redirect( self::url( $args, $lang_map ) );
 		( $this->halt )();
 	}
 
@@ -1628,11 +1859,16 @@ final class Transfer_Page {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param array<string, string> $args Query arguments.
+	 * @param array<string, string>      $args     Query arguments.
+	 * @param array<string, string>|null $lang_map Language selection (file code to target code or "-"); appended as lang_map[<code>]=<value>.
 	 * @return string URL.
 	 */
-	private static function url( array $args ): string {
-		return add_query_arg( array_map( 'rawurlencode', $args ), admin_url( 'admin.php?page=' . self::SLUG ) );
+	private static function url( array $args, ?array $lang_map = null ): string {
+		$url = add_query_arg( array_map( 'rawurlencode', $args ), admin_url( 'admin.php?page=' . self::SLUG ) );
+		foreach ( $lang_map ?? array() as $source => $target ) {
+			$url .= '&' . rawurlencode( 'lang_map[' . $source . ']' ) . '=' . rawurlencode( $target );
+		}
+		return $url;
 	}
 
 	/**
@@ -1640,7 +1876,7 @@ final class Transfer_Page {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return array<string, string> Raw values by name; missing ones are left out.
+	 * @return array<string, mixed> Raw values by name; missing ones are left out; lang_map is an array.
 	 */
 	private static function request_query(): array {
 		$query = array();
@@ -1649,6 +1885,10 @@ final class Transfer_Page {
 			if ( is_string( $value ) ) {
 				$query[ $name ] = $value;
 			}
+		}
+		$map = filter_input( INPUT_GET, 'lang_map', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY );
+		if ( is_array( $map ) ) {
+			$query['lang_map'] = $map;
 		}
 		return $query;
 	}
@@ -1707,6 +1947,73 @@ final class Transfer_Page {
 			}
 		}
 		return $counts;
+	}
+
+	/**
+	 * Reads lang_map[<code>] of a request: sanitized codes, "-" for "do not import".
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array<mixed> $args Query or POST arguments.
+	 * @return array<string, string>|null Selection per file language; null without the argument.
+	 */
+	private static function map_arg( array $args ): ?array {
+		if ( ! isset( $args['lang_map'] ) || ! is_array( $args['lang_map'] ) ) {
+			return null;
+		}
+		$map = array();
+		foreach ( $args['lang_map'] as $source => $target ) {
+			$source = sanitize_key( (string) $source );
+			$target = is_string( $target ) ? ( '-' === $target ? '-' : sanitize_key( $target ) ) : '';
+			if ( '' !== $source ) {
+				$map[ $source ] = $target;
+			}
+		}
+		return $map;
+	}
+
+	/**
+	 * Turns a selection into the import options lang_map and langs.
+	 *
+	 * Only a target that differs from the file language becomes a map entry; "as in the file" never does.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array<string, string>|null $selection Selection per file language; null for "everything as in the file".
+	 * @param Transfer_File              $file      File.
+	 * @return array{lang_map: array<string, string>, langs: list<string>|null, valid: bool} Options; valid false when a code is not in the file or not active.
+	 */
+	private static function selection( ?array $selection, Transfer_File $file ): array {
+		if ( null === $selection ) {
+			return array(
+				'lang_map' => array(),
+				'langs'    => null,
+				'valid'    => true,
+			);
+		}
+		$active = self::languages();
+		$map    = array();
+		$langs  = array();
+		foreach ( $selection as $source => $target ) {
+			if ( ! array_key_exists( $source, $file->translatable ) || ( '-' !== $target && ! in_array( $target, $active, true ) ) ) {
+				return array(
+					'lang_map' => array(),
+					'langs'    => null,
+					'valid'    => false,
+				);
+			}
+			if ( '-' !== $target ) {
+				if ( $target !== $source ) {
+					$map[ $source ] = $target;
+				}
+				$langs[] = $target;
+			}
+		}
+		return array(
+			'lang_map' => $map,
+			'langs'    => array_values( array_unique( $langs ) ),
+			'valid'    => true,
+		);
 	}
 
 	/**

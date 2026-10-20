@@ -156,6 +156,26 @@ final class Language {
 	}
 
 	/**
+	 * Returns the names of the active languages.
+	 *
+	 * The name is the one WPML gives in the admin language (translated_name),
+	 * e.g. "Persian" in an English admin; a language without one keeps its code.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return array<string, string> Names by language code, in the order of active(); without WPML the default code as its own name.
+	 */
+	public function names(): array {
+		$languages = $this->wpml_languages();
+		$names     = array();
+		foreach ( $this->active() as $code ) {
+			$name           = $languages[ $code ]['translated_name'] ?? null;
+			$names[ $code ] = is_string( $name ) && '' !== trim( $name ) ? trim( $name ) : $code;
+		}
+		return $names;
+	}
+
+	/**
 	 * Returns the active languages written right to left.
 	 *
 	 * A language counts when the language part of its locale is one of

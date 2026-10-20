@@ -37,6 +37,7 @@ enum Row_Status: string {
 	case RENAMED                   = 'renamed';
 	case SENSITIVE_SKIPPED         = 'sensitive_skipped';
 	case LANGUAGE_INACTIVE         = 'language_inactive';
+	case LANGUAGE_REPLACED         = 'language_replaced';
 	case LINE_UNMAPPED             = 'line_unmapped';
 	case LINE_NEVER_IMPORTED       = 'line_never_imported';
 	case SECTION_UNKNOWN           = 'section_unknown';

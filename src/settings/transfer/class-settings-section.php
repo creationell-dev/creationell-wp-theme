@@ -38,7 +38,8 @@ defined( 'ABSPATH' ) || exit;
  * setter in a dry run, per language one set_many() for the values and one
  * reset_many() for the null values, so the contrast rules see all colors of the
  * file together. Registry keys without a value in the file stay as they are
- * ("absent"). apply() writes through the setter in the channel "import" and
+ * ("absent"). A language map plans the texts of a file language under its target;
+ * the file's own texts of that target are skipped as language_replaced. apply() writes through the setter in the channel "import" and
  * does not commit; the importer commits once after all sections.
  *
  * @since 1.0.0
@@ -194,23 +195,89 @@ final class Settings_Section implements Section_Interface {
 		$map    = $this->line_map( $file );
 		$active = Language::instance()->active();
 		$rows   = array_merge( $rows, $this->plan_part( $file->values, null, $file, $options, $map ) );
-		foreach ( $file->translatable as $lang => $values ) {
+		foreach ( self::parts( $file->translatable, $options->lang_map ) as $part ) {
+			$lang = $part['lang'];
 			if ( ! $options->wants_lang( $lang ) ) {
 				continue;
 			}
-			if ( in_array( $lang, $active, true ) ) {
-				$rows = array_merge( $rows, $this->plan_part( $values, $lang, $file, $options, $map ) );
+			if ( null !== $part['replaced_by'] ) {
+				foreach ( $part['values'] as $key => $value ) {
+					/* translators: %s: language code of the file, e.g. "en". */
+					$rows[] = self::row( (string) $key, $lang, null, $value, Row_Status::LANGUAGE_REPLACED, sprintf( __( 'Replaced by the texts of language %s from the file.', 'creationell-wp-theme' ), $part['replaced_by'] ) );
+				}
 				continue;
 			}
-			foreach ( $values as $key => $value ) {
-				$rows[] = self::row( $key, $lang, null, $value, Row_Status::LANGUAGE_INACTIVE, __( 'This language is not active on this site.', 'creationell-wp-theme' ) );
+			if ( in_array( $lang, $active, true ) ) {
+				$planned = $this->plan_part( $part['values'], $lang, $file, $options, $map );
+				$rows    = array_merge( $rows, $part['from'] === $lang ? $planned : self::mapped( $planned, $part['from'] ) );
+				continue;
+			}
+			foreach ( $part['values'] as $key => $value ) {
+				$rows[] = self::row( (string) $key, $lang, null, $value, Row_Status::LANGUAGE_INACTIVE, __( 'This language is not active on this site.', 'creationell-wp-theme' ) );
 			}
 		}
 		return $rows;
 	}
 
 	/**
+	 * Returns the translated parts of the file under their target language.
+	 *
+	 * A file language with a map entry goes to its target. A file language that
+	 * another file language is mapped to keeps its own code and names the
+	 * language that replaces it.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array<string, array<string, mixed>> $translatable Translated values per file language.
+	 * @param array<string, string>               $lang_map     Source => target.
+	 * @return list<array{lang: string, from: string, values: array<string, mixed>, replaced_by: string|null}> Parts in file order.
+	 */
+	private static function parts( array $translatable, array $lang_map ): array {
+		$sources = array();
+		foreach ( $lang_map as $source => $target ) {
+			if ( $source !== $target ) {
+				$sources[ $target ] = $source;
+			}
+		}
+		$parts = array();
+		foreach ( $translatable as $lang => $values ) {
+			$lang    = (string) $lang;
+			$target  = $lang_map[ $lang ] ?? $lang;
+			$parts[] = array(
+				'lang'        => $target,
+				'from'        => $lang,
+				'values'      => $values,
+				'replaced_by' => $target === $lang && isset( $sources[ $lang ] ) ? $sources[ $lang ] : null,
+			);
+		}
+		return $parts;
+	}
+
+	/**
+	 * Adds the file language to the messages of rows planned under another language.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param array<int, Plan_Row> $rows Rows.
+	 * @param string               $from Language code in the file.
+	 * @return array<int, Plan_Row> Rows.
+	 * @phpstan-param list<Plan_Row> $rows
+	 * @phpstan-return list<Plan_Row>
+	 */
+	private static function mapped( array $rows, string $from ): array {
+		/* translators: %s: language code of the file, e.g. "en". */
+		$note = sprintf( __( 'From language %s of the file.', 'creationell-wp-theme' ), $from );
+		return array_map(
+			static fn( Plan_Row $row ): Plan_Row => new Plan_Row( $row->section, $row->key, $row->lang, $row->current, $row->incoming, $row->status, '' === $row->message ? $note : $row->message . ' ' . $note, $row->switch_result ),
+			$rows
+		);
+	}
+
+	/**
 	 * Writes the rows "save" and "reset" through the setter, per language: first the values, then the default language, then the others.
+	 *
+	 * A write without a message of its own keeps the message of the plan, e.g.
+	 * "From language en of the file." on a mapped row.
 	 *
 	 * @since 1.0.0
 	 *
@@ -248,7 +315,7 @@ final class Settings_Section implements Section_Interface {
 			}
 			foreach ( $this->run( $sets, $resets, new Write_Context( 'import', $options->user_id, $lang ) ) as $key => $result ) {
 				$index          = $indexes[ $key ];
-				$rows[ $index ] = $rows[ $index ]->with_status( Row_Status::from_set_status( $result->status ), $result->message );
+				$rows[ $index ] = $rows[ $index ]->with_status( Row_Status::from_set_status( $result->status ), '' === $result->message ? $rows[ $index ]->message : $result->message );
 			}
 		}
 		return array_values( $rows );

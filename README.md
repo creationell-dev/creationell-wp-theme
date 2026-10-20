@@ -1,12 +1,14 @@
 # creationell Theme
 
-**Version:** 0.3.0
+**Version:** 0.4.0
 
 **Requires at least:** 7.1
 
 **Tested up to:** 7.1
 
 **Requires PHP:** 8.3
+
+**Update URI:** https://creationell-dev.github.io/creationell-wp-theme/
 
 Classic WordPress theme of creationell with Bootstrap 5, based on
 [Bootscore](https://bootscore.me/) (MIT). PHP templates render the pages; the
@@ -189,6 +191,21 @@ values.
 - Files have at most 1 MB and end in `.json`; nothing is stored in the media
   library.
 
+### Languages of the file
+
+The texts of a file language can be imported as another language of the site,
+for example English texts that were translated into Persian. In the preview,
+the fieldset "Languages of the file" has one select per file language, named
+with the language name and code (for example "Texts in English (en) of the
+file"): choose an active language of the site ("Persian (fa)"), "as in the
+file" or "do not import", then "Update preview". With WP-CLI: `wp creationell-theme settings import <file>
+--map-lang=en:fa` (comma-separated pairs `source:target`). `--lang` filters by
+target language. The mapping wins over the file's own texts of the target
+language (those rows are skipped as `language_replaced`). A language that is not
+in the file, not active, or used as target twice stops the import with
+`lang_map_invalid`; nothing is written. A restore of a backup never maps. The
+file format stays v1. Steps: `docs/golden-paths/import-texts-as-other-language.md`.
+
 ## Command line
 
 The theme adds the WP-CLI command `wp creationell-theme`. The commands below
@@ -242,6 +259,45 @@ GPL-2.0-or-later, see `LICENSE`. Licenses of the included third-party code:
 `THIRD-PARTY-NOTICES`.
 
 ## Changelog
+
+### 0.4.0
+
+- Import of settings with a language map: the texts of a file language can be
+  imported as another language of the site (admin select per file language,
+  WP-CLI `--map-lang=en:fa`). Mapping, `language_replaced`, the warning
+  `lang_mapped:<s>-><t>` (only for pairs whose source differs from the target
+  and whose target is imported) and the log field `lang_map` (a JSON object in
+  `log --format=json`, also when empty) are described under
+  "Languages of the file" above. Format v1 and existing calls are unchanged.
+- The preview and the result of an import collapse rows that stay unchanged
+  into a "N settings stay unchanged" disclosure; modules are counted apart.
+- The updater keeps its manifest cache, the marker of a failed fetch and its
+  lock in site transients instead of transients. On multisite the manifest is
+  fetched once for the network instead of once per site. A cache entry written
+  by 0.3.0 is no longer read and expires within a day.
+- Build: setup-php 2.40.0 in all workflows.
+
+#### New or changed texts
+
+- `Languages of the file`
+- `Texts in %1$s (%2$s) of the file`
+- `Texts in %s of the file` (file language that is not active on the site)
+- `%1$s (%2$s)` (context `language name and code`)
+- `%1$s (%2$s, as in the file)`
+- `%1$s (%2$s, default language)`
+- `%s (as in the file)` (language without a name from WPML)
+- `do not import`
+- `Update preview`
+- `Replaced by another language of the file`
+- `Replaced by the texts of language %s from the file.`
+- `From language %s of the file.`
+- `The texts of language %1$s of the file are imported as %2$s.`
+- `The language assignment does not fit: a language is not in the file, is not
+  active on this site, or gets the texts of two languages of the file.`
+- `%d setting stays unchanged` (plural: `%d settings stay unchanged`)
+- `%d module stays unchanged` (plural: `%d modules stay unchanged`)
+- `unchanged`
+- `%s: nothing changes.`
 
 ### 0.3.0
 

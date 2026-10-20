@@ -7,7 +7,7 @@
     <paths>
         <output>docs/api</output>
     </paths>
-    <version number="0.3.0">
+    <version number="0.4.0">
         <api>
             <source dsn=".">
                 <path>functions.php</path>

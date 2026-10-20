@@ -38,6 +38,15 @@ defined( 'ABSPATH' ) || exit;
 final class Import_Options {
 
 	/**
+	 * Texts of a file language imported as another language, source code => target code; always empty for a restore.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @var array<string, string>
+	 */
+	public readonly array $lang_map;
+
+	/**
 	 * Reasons of an import; a restore is an import of a backup.
 	 *
 	 * @since 1.0.0
@@ -58,8 +67,10 @@ final class Import_Options {
 	 * @param bool                    $strict          Whether a single rejected row stops the whole import.
 	 * @param bool                    $dry_run         Whether to report only and write nothing.
 	 * @param string                  $reason          "import" or "restore"; names the backup and the log entry.
+	 * @param array<string, string>   $lang_map        Texts of a file language imported as another language, source => target; ignored for a restore.
 	 * @phpstan-param list<string> $sections
 	 * @phpstan-param list<string>|null $langs
+	 * @phpstan-param array<string, string> $lang_map
 	 * @throws InvalidArgumentException When a field has no valid value.
 	 */
 	public function __construct(
@@ -72,6 +83,7 @@ final class Import_Options {
 		public readonly bool $strict = false,
 		public readonly bool $dry_run = false,
 		public readonly string $reason = 'import',
+		array $lang_map = array(),
 	) {
 		Export_Request::check_codes( $sections, 'section' );
 		if ( null !== $langs ) {
@@ -91,6 +103,12 @@ final class Import_Options {
 		if ( ! in_array( $reason, self::REASONS, true ) ) {
 			throw new InvalidArgumentException( esc_html( sprintf( 'Import reason %s is unknown.', $reason ) ) );
 		}
+		foreach ( $lang_map as $source => $target ) {
+			if ( ! is_string( $source ) || '' === $source || ! is_string( $target ) || '' === $target ) {
+				throw new InvalidArgumentException( 'The language map must map language codes to language codes.' );
+			}
+		}
+		$this->lang_map = 'restore' === $reason ? array() : $lang_map;
 	}
 
 	/**
