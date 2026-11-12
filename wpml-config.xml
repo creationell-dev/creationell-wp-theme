@@ -33,7 +33,7 @@
         </key>
       </key>
     </gutenberg-block>
-    <!-- CBB interim: begin cbb_version=1.0.1 -->
+    <!-- CBB interim: begin cbb_version=1.0.3 -->
     <gutenberg-block type="creabb/accordion-item" translate="1">
       <key name="blockstudio">
         <key name="attributes">

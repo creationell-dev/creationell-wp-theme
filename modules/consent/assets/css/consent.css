@@ -124,6 +124,32 @@
 	block-size: 24px;
 }
 
+/*
+ * The cookie table keeps its words whole (finding f2b5-03). A word-break the
+ * site lets the table inherit, such as break-word on body, would split the
+ * header "Service" or a service name in the middle, because it lets a column
+ * shrink below its longest word; only a word longer than its line may wrap.
+ */
+#cc-main .pm__table-th,
+#cc-main .pm__table-td {
+	word-break: normal;
+	overflow-wrap: break-word;
+}
+
+/*
+ * Below 640 px CookieConsent shows each cookie as label and value rows and
+ * gives the label a quarter of the row, so "Beschreibung" ends in an ellipsis.
+ * The label takes its own width instead, at least 10em so the values line
+ * up, at most half the row (f2b5-03).
+ */
+@media screen and (max-width: 640px) {
+	#cc-main .pm__table-td::before {
+		flex: 0 0 auto;
+		min-inline-size: 10em;
+		max-inline-size: 50%;
+	}
+}
+
 /* The bar sets its own transition duration, so reduced motion needs both selectors (spike finding F-8). */
 @media (prefers-reduced-motion: reduce) {
 

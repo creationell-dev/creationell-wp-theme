@@ -1,6 +1,6 @@
 # creationell Theme
 
-**Version:** 0.5.0
+**Version:** 0.5.1
 
 **Requires at least:** 7.1
 
@@ -265,6 +265,16 @@ GPL-2.0-or-later, see `LICENSE`. Licenses of the included third-party code:
 `THIRD-PARTY-NOTICES`.
 
 ## Changelog
+
+### 0.5.1
+
+- Cookie banner: the cookie table of the preferences dialog keeps its words
+  whole. A word-break the site lets the table inherit (for example
+  `word-break: break-word` on `body`) split the header "Service", service
+  names and cookie names in the middle; below 640 px CookieConsent cut the
+  column label "Description" with an ellipsis. The table now sets its own word
+  breaking, and on narrow screens the label takes its own width (at least
+  10em, at most half the row). Nothing to do after the update.
 
 ### 0.5.0
 
