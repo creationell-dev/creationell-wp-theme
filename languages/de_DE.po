@@ -109,8 +109,9 @@ msgid "Leave a Comment to %s"
 msgstr "Schreibe einen Kommentar an %s"
 
 #: comments.php:144
+#: src/admin/class-consent-services-page.php:1048
 #: src/admin/class-module-page.php:575
-#: src/admin/class-transfer-page.php:1014
+#: src/admin/class-transfer-page.php:1018
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -145,7 +146,7 @@ msgstr "%s – Startseite"
 msgid "Menu"
 msgstr "Menü"
 
-#: modules/consent/inc/class-texts.php:168
+#: modules/consent/inc/class-texts.php:207
 #: patterns/c-alert-danger.php:16
 #: sidebar.php:98
 #: template-parts/header/navbar.php:173
@@ -189,6 +190,7 @@ msgstr "Pingback:"
 #: inc/comments.php:50
 #: inc/comments.php:88
 #: inc/template-tags.php:241
+#: src/admin/class-consent-services-page.php:1207
 msgid "Edit"
 msgstr "Bearbeiten"
 
@@ -204,7 +206,8 @@ msgid "Your comment is awaiting moderation."
 msgstr "Dein Kommentar wartet auf Freischaltung."
 
 #: inc/comments.php:144
-#: modules/consent/inc/class-texts.php:286
+#: modules/consent/inc/class-texts.php:669
+#: src/admin/class-consent-services-page.php:1893
 msgid "Name"
 msgstr "Name"
 
@@ -722,16 +725,16 @@ msgstr "Vorheriger und nächster Beitrag"
 msgid "Sidebar left"
 msgstr "Seitenleiste links"
 
-#: src/admin/class-menu.php:78
-#: src/admin/class-menu.php:196
+#: src/admin/class-menu.php:79
+#: src/admin/class-menu.php:197
 msgid "creationell Theme settings"
 msgstr "Einstellungen des creationell Theme"
 
-#: src/admin/class-menu.php:79
+#: src/admin/class-menu.php:80
 msgid "Theme settings"
 msgstr "Theme-Einstellungen"
 
-#: src/admin/class-menu.php:197
+#: src/admin/class-menu.php:198
 msgid "No theme settings page is available to you."
 msgstr "Für dich ist keine Seite mit Theme-Einstellungen verfügbar."
 
@@ -745,9 +748,11 @@ msgstr "Nur lesend: Du darfst diese Einstellungen ansehen, aber nicht ändern."
 msgid "Not saved: %1$s: %2$s"
 msgstr "Nicht gespeichert: %1$s: %2$s"
 
+#. translators: %s: name of the service.
 #. translators: %s: title of the area.
 #. translators: %s: comma-separated labels of settings.
-#: src/admin/class-rights-page.php:333
+#: src/admin/class-consent-services-page.php:1130
+#: src/admin/class-rights-page.php:334
 #: src/admin/class-settings-notices.php:154
 #, php-format
 msgid "Saved: %s."
@@ -755,7 +760,7 @@ msgstr "Gespeichert: %s."
 
 #. translators: %s: title of the area.
 #. translators: %s: comma-separated labels of settings.
-#: src/admin/class-rights-page.php:337
+#: src/admin/class-rights-page.php:338
 #: src/admin/class-settings-notices.php:158
 #, php-format
 msgid "Back to the default: %s."
@@ -813,19 +818,19 @@ msgid "Fonts are managed in the design settings of the theme."
 msgstr "Schriften werden in den Design-Einstellungen des Themes verwaltet."
 
 #. translators: 1: required PHP version, 2: required WordPress version, 3: running PHP version, 4: running WordPress version.
-#: src/core/class-theme.php:142
+#: src/core/class-theme.php:146
 #, php-format
 msgid "The creationell Theme needs PHP %1$s and WordPress %2$s or newer; this site runs PHP %3$s and WordPress %4$s. The theme functions stay off until the server and WordPress are updated."
 msgstr "Das creationell Theme benötigt PHP %1$s und WordPress %2$s oder neuer; diese Website läuft mit PHP %3$s und WordPress %4$s. Die Theme-Funktionen bleiben ausgeschaltet, bis Server und WordPress aktualisiert sind."
 
 #. translators: %s: URL of the update manifest.
-#: src/core/class-theme.php:169
+#: src/core/class-theme.php:173
 #, php-format
 msgid "The creationell Theme looks for updates at %s (set by CREATIONELL_WP_THEME_MANIFEST_URL) instead of the official manifest. Use this only for tests."
 msgstr "Das creationell Theme sucht Updates unter %s (gesetzt durch CREATIONELL_WP_THEME_MANIFEST_URL) statt im offiziellen Manifest. Nutze das nur für Tests."
 
 #. translators: %s: value of the constant.
-#: src/core/class-theme.php:180
+#: src/core/class-theme.php:184
 #, php-format
 msgid "CREATIONELL_WP_THEME_MANIFEST_URL is set to %s, which is no https URL. The creationell Theme ignores it and uses the official update manifest."
 msgstr "CREATIONELL_WP_THEME_MANIFEST_URL ist auf %s gesetzt, das ist keine https-URL. Das creationell Theme ignoriert den Wert und nutzt das offizielle Update-Manifest."
@@ -857,7 +862,7 @@ msgstr "Contact Form 7"
 msgid "Consent"
 msgstr "Einwilligung"
 
-#: src/admin/class-rights-page.php:288
+#: src/admin/class-rights-page.php:289
 #: src/modules/class-module-catalog.php:171
 msgid "Header and footer"
 msgstr "Kopf- und Fußbereich"
@@ -918,6 +923,7 @@ msgstr "Durch die Konstante %s gesetzt."
 msgid "Locked by the child theme."
 msgstr "Durch das Child-Theme gesperrt."
 
+#: src/consent/class-consent-services-store.php:138
 #: src/settings/acf/class-acf-adapter.php:625
 #: src/settings/class-setter.php:349
 msgid "Choose one language; settings cannot be saved for all languages at once."
@@ -979,7 +985,7 @@ msgstr "Systemschrift mit Serifen"
 msgid "Same as body font"
 msgstr "Wie die Grundschrift"
 
-#: src/admin/class-rights-page.php:287
+#: src/admin/class-rights-page.php:288
 #: src/settings/acf/class-options-pages.php:112
 msgid "Texts"
 msgstr "Texte"
@@ -990,8 +996,8 @@ msgid "Design"
 msgstr "Design"
 
 #: src/admin/class-module-page.php:484
-#: src/admin/class-rights-page.php:459
-#: src/admin/class-transfer-page.php:1616
+#: src/admin/class-rights-page.php:460
+#: src/admin/class-transfer-page.php:1692
 #: src/settings/acf/class-options-pages.php:125
 msgid "Save"
 msgstr "Speichern"
@@ -1000,7 +1006,7 @@ msgstr "Speichern"
 msgid "The settings were processed."
 msgstr "Die Einstellungen wurden verarbeitet."
 
-#: src/admin/class-transfer-page.php:1138
+#: src/admin/class-transfer-page.php:1141
 #: src/settings/acf/class-options-pages.php:202
 #: src/settings/class-registry.php:160
 msgid "Bootstrap line"
@@ -1056,6 +1062,7 @@ msgid "Major Bootstrap version the theme styles and scripts are built on."
 msgstr "Bootstrap-Hauptversion, auf der Styles und Skripte des Themes aufbauen."
 
 #. translators: %d: maximum number of characters.
+#: src/consent/class-consent-services-validator.php:662
 #: src/settings/class-sanitizer.php:127
 #, php-format
 msgid "Use at most %d characters."
@@ -1315,7 +1322,7 @@ msgid "The backup could not be found."
 msgstr "Die Sicherung wurde nicht gefunden."
 
 #. translators: 1: version of the theme, 2: Bootstrap line, e.g. 5.
-#: src/update/class-theme-updater.php:715
+#: src/update/class-theme-updater.php:719
 #, php-format
 msgid "Version %1$s of the creationell Theme does not contain Bootstrap line %2$d, which this site uses, so WordPress does not offer the update. Switch the site to a Bootstrap line of the new version first, as the theme documentation describes, then update."
 msgstr "Version %1$s des creationell Theme enthält die Bootstrap-Linie %2$d nicht, die diese Website nutzt, deshalb bietet WordPress das Update nicht an. Stelle die Website zuerst auf eine Bootstrap-Linie der neuen Version um, wie in der Theme-Dokumentation beschrieben, und aktualisiere dann."
@@ -1360,7 +1367,7 @@ msgstr "Automatische Updates des creationell Theme sind abgeschaltet; aktualisie
 msgid "The update package of the creationell Theme does not unpack to the folder creationell-wp-theme; the installed theme stays unchanged."
 msgstr "Das Update-Paket des creationell Theme entpackt nicht in den Ordner creationell-wp-theme; das installierte Theme bleibt unverändert."
 
-#: src/admin/class-transfer-page.php:1234
+#: src/admin/class-transfer-page.php:1237
 #: src/wpml/class-language-switcher.php:187
 msgid "Language"
 msgstr "Sprache"
@@ -1538,6 +1545,8 @@ msgid "Link"
 msgstr "Link"
 
 #: modules/consent/inc/class-links.php:102
+#: modules/consent/inc/class-texts.php:766
+#: src/admin/class-consent-services-page.php:1896
 msgid "Privacy policy"
 msgstr "Datenschutzerklärung"
 
@@ -1546,98 +1555,104 @@ msgid "Imprint"
 msgstr "Impressum"
 
 #: modules/consent/inc/class-links.php:126
-#: modules/consent/inc/class-texts.php:164
+#: modules/consent/inc/class-texts.php:203
 msgid "Cookie settings"
 msgstr "Cookie-Einstellungen"
 
-#: modules/consent/inc/class-texts.php:131
+#: modules/consent/inc/class-texts.php:170
 msgid "Accept all"
 msgstr "Alle akzeptieren"
 
-#: modules/consent/inc/class-texts.php:132
+#: modules/consent/inc/class-texts.php:171
 msgid "Reject optional"
 msgstr "Optionale ablehnen"
 
-#: modules/consent/inc/class-texts.php:136
+#: modules/consent/inc/class-texts.php:175
 msgid "We use cookies"
 msgstr "Wir verwenden Cookies"
 
-#: modules/consent/inc/class-texts.php:137
+#: modules/consent/inc/class-texts.php:176
 msgid "We use necessary cookies and, with your consent, optional ones. You can change your choice at any time under “Cookie settings”."
 msgstr "Wir verwenden notwendige Cookies und, mit deiner Einwilligung, optionale. Du kannst deine Auswahl jederzeit unter „Cookie-Einstellungen“ ändern."
 
-#: modules/consent/inc/class-texts.php:140
+#: modules/consent/inc/class-texts.php:179
 #: src/settings/transfer/class-settings-section.php:116
 msgid "Settings"
 msgstr "Einstellungen"
 
-#: modules/consent/inc/class-texts.php:145
+#: modules/consent/inc/class-texts.php:184
 msgid "Our cookie settings have changed. Please check your choice."
 msgstr "Unsere Cookie-Einstellungen haben sich geändert. Bitte prüfe deine Auswahl."
 
-#: modules/consent/inc/class-texts.php:148
+#: modules/consent/inc/class-texts.php:187
 msgid "Choose which optional cookies we may use. Necessary cookies are always active. You can change your choice at any time."
 msgstr "Wähle, welche optionalen Cookies wir verwenden dürfen. Notwendige Cookies sind immer aktiv. Du kannst deine Auswahl jederzeit ändern."
 
-#: modules/consent/inc/class-texts.php:156
+#: modules/consent/inc/class-texts.php:195
 msgid "More information"
 msgstr "Weitere Informationen"
 
-#: modules/consent/inc/class-texts.php:167
+#: modules/consent/inc/class-texts.php:206
 msgid "Save settings"
 msgstr "Einstellungen speichern"
 
-#: modules/consent/inc/class-texts.php:268
+#: modules/consent/inc/class-texts.php:653
 msgid "Stores your cookie choice"
 msgstr "Speichert deine Cookie-Auswahl"
 
 #. translators: %d: number of days.
-#: modules/consent/inc/class-texts.php:270
+#: modules/consent/inc/class-texts.php:655
 #, php-format
 msgid "%d day"
 msgid_plural "%d days"
 msgstr[0] "%d Tag"
 msgstr[1] "%d Tage"
 
-#: modules/consent/inc/class-texts.php:287
+#: modules/consent/inc/class-texts.php:670
+#: src/admin/class-consent-services-page.php:1388
 #: src/admin/class-module-page.php:420
-#: src/admin/class-rights-page.php:360
+#: src/admin/class-rights-page.php:361
 msgid "Description"
 msgstr "Beschreibung"
 
-#: modules/consent/inc/class-texts.php:288
+#: modules/consent/inc/class-texts.php:671
+#: src/admin/class-consent-services-page.php:1902
 msgid "Duration"
 msgstr "Dauer"
 
-#: modules/consent/inc/class-texts.php:306
+#: modules/consent/inc/class-texts.php:789
+#: src/admin/class-consent-services-page.php:1005
 msgid "Necessary"
 msgstr "Notwendig"
 
-#: modules/consent/inc/class-texts.php:307
+#: modules/consent/inc/class-texts.php:790
 msgid "These cookies are needed for the website to work, for example to store your cookie choice."
 msgstr "Diese Cookies braucht die Website, um zu funktionieren, zum Beispiel um deine Cookie-Auswahl zu speichern."
 
-#: modules/consent/inc/class-texts.php:310
+#: modules/consent/inc/class-texts.php:793
+#: src/admin/class-consent-services-page.php:1006
 msgid "Functional"
 msgstr "Funktional"
 
-#: modules/consent/inc/class-texts.php:311
+#: modules/consent/inc/class-texts.php:794
 msgid "These cookies remember settings and enable extra functions, such as embedded content."
 msgstr "Diese Cookies merken sich Einstellungen und ermöglichen zusätzliche Funktionen, etwa eingebettete Inhalte."
 
-#: modules/consent/inc/class-texts.php:314
+#: modules/consent/inc/class-texts.php:797
+#: src/admin/class-consent-services-page.php:1007
 msgid "Statistics"
 msgstr "Statistik"
 
-#: modules/consent/inc/class-texts.php:315
+#: modules/consent/inc/class-texts.php:798
 msgid "These cookies help us understand how visitors use the website, so that we can improve it."
 msgstr "Diese Cookies helfen uns zu verstehen, wie Besucher die Website nutzen, damit wir das Angebot verbessern können."
 
-#: modules/consent/inc/class-texts.php:318
+#: modules/consent/inc/class-texts.php:801
+#: src/admin/class-consent-services-page.php:1008
 msgid "Marketing"
 msgstr "Marketing"
 
-#: modules/consent/inc/class-texts.php:319
+#: modules/consent/inc/class-texts.php:802
 msgid "These cookies are used to show relevant advertising and to measure its reach."
 msgstr "Diese Cookies dienen dazu, passende Werbung anzuzeigen und deren Reichweite zu messen."
 
@@ -1705,461 +1720,466 @@ msgstr "Noch ist kein Menü für Kopf- oder Fußbereich zugewiesen."
 msgid "You may only edit the menus of the header and footer."
 msgstr "Du darfst nur die Menüs von Kopf- und Fußbereich bearbeiten."
 
-#: src/admin/class-transfer-page.php:380
-#: src/admin/class-transfer-page.php:381
-#: src/admin/class-transfer-page.php:742
+#: src/admin/class-transfer-page.php:383
+#: src/admin/class-transfer-page.php:384
+#: src/admin/class-transfer-page.php:745
 msgid "Import/Export"
 msgstr "Import/Export"
 
 #. translators: 1: result of the import, 2: title of the admin page.
-#: src/admin/class-transfer-page.php:436
+#: src/admin/class-transfer-page.php:439
 #, php-format
 msgid "%1$s – %2$s"
 msgstr "%1$s – %2$s"
 
-#: src/admin/class-transfer-page.php:734
+#: src/admin/class-transfer-page.php:737
 msgid "You are not allowed to open this page."
 msgstr "Du darfst diese Seite nicht öffnen."
 
-#: src/admin/class-transfer-page.php:765
+#: src/admin/class-transfer-page.php:768
 msgid "You can only view import and export."
 msgstr "Du kannst Import und Export nur ansehen."
 
-#: src/admin/class-transfer-page.php:774
+#: src/admin/class-transfer-page.php:777
 msgid "Backup created."
 msgstr "Sicherung erstellt."
 
-#: src/admin/class-transfer-page.php:776
+#: src/admin/class-transfer-page.php:779
 msgid "Import cancelled. Nothing was changed."
 msgstr "Import abgebrochen. Nichts wurde geändert."
 
-#: src/admin/class-transfer-page.php:795
-#: src/admin/class-transfer-page.php:1718
+#: src/admin/class-transfer-page.php:798
+#: src/admin/class-transfer-page.php:1794
 msgid "Export"
 msgstr "Export"
 
-#: src/admin/class-transfer-page.php:796
+#: src/admin/class-transfer-page.php:799
 msgid "Downloads the settings as a JSON file. Sensitive values are never exported."
 msgstr "Lädt die Einstellungen als JSON-Datei herunter. Sensible Werte werden nie exportiert."
 
-#: src/admin/class-transfer-page.php:799
-#: src/admin/class-transfer-page.php:875
-#: src/admin/class-transfer-page.php:933
-#: src/admin/class-transfer-page.php:1140
+#: src/admin/class-transfer-page.php:802
+#: src/admin/class-transfer-page.php:879
+#: src/admin/class-transfer-page.php:937
+#: src/admin/class-transfer-page.php:1143
 msgid "Sections"
 msgstr "Bereiche"
 
-#: src/admin/class-transfer-page.php:808
-#: src/admin/class-transfer-page.php:934
-#: src/admin/class-transfer-page.php:1139
+#: src/admin/class-transfer-page.php:812
+#: src/admin/class-transfer-page.php:938
+#: src/admin/class-transfer-page.php:1142
 msgid "Languages"
 msgstr "Sprachen"
 
 #. translators: %s: language code, e.g. "de".
-#: src/admin/class-transfer-page.php:812
-#: src/admin/class-transfer-page.php:1108
+#: src/admin/class-transfer-page.php:816
+#: src/admin/class-transfer-page.php:1111
 #, php-format
 msgid "%s (default language)"
 msgstr "%s (Standardsprache)"
 
-#: src/admin/class-transfer-page.php:816
+#: src/admin/class-transfer-page.php:820
 msgid "Download file"
 msgstr "Datei herunterladen"
 
-#: src/admin/class-transfer-page.php:833
-#: src/admin/class-transfer-page.php:1719
+#: src/admin/class-consent-services-page.php:1258
+#: src/admin/class-transfer-page.php:837
+#: src/admin/class-transfer-page.php:1795
 msgid "Import"
 msgstr "Import"
 
-#: src/admin/class-transfer-page.php:834
+#: src/admin/class-transfer-page.php:838
 msgid "The import shows a preview first; nothing changes before you confirm it. The current settings are backed up before the import."
 msgstr "Der Import zeigt zuerst eine Vorschau; nichts ändert sich, bevor du sie bestätigst. Vor dem Import werden die aktuellen Einstellungen gesichert."
 
-#: src/admin/class-transfer-page.php:839
+#: src/admin/class-transfer-page.php:843
 msgid "Settings file"
 msgstr "Einstellungsdatei"
 
-#: src/admin/class-transfer-page.php:843
+#: src/admin/class-transfer-page.php:847
 msgid "JSON, at most 1 MB"
 msgstr "JSON, höchstens 1 MB"
 
-#: src/admin/class-transfer-page.php:847
+#: src/admin/class-transfer-page.php:851
 msgid "Show preview"
 msgstr "Vorschau anzeigen"
 
-#: src/admin/class-transfer-page.php:860
+#: src/admin/class-transfer-page.php:864
 msgid "Backups"
 msgstr "Sicherungen"
 
 #. translators: %d: number of backups the theme keeps.
-#: src/admin/class-transfer-page.php:864
+#: src/admin/class-transfer-page.php:868
 #, php-format
 msgid "The theme keeps the last %d backups. It makes one before every import, restore and module switch."
 msgstr "Das Theme behält die letzten %d Sicherungen. Es legt vor jedem Import, jeder Wiederherstellung und jedem Modulwechsel eine an."
 
-#: src/admin/class-transfer-page.php:870
+#: src/admin/class-transfer-page.php:874
 msgid "No backups yet."
 msgstr "Noch keine Sicherungen."
 
-#: src/admin/class-transfer-page.php:873
-#: src/admin/class-transfer-page.php:930
+#: src/admin/class-transfer-page.php:877
+#: src/admin/class-transfer-page.php:934
 msgid "Time"
 msgstr "Zeitpunkt"
 
 #: src/admin/class-module-page.php:422
-#: src/admin/class-transfer-page.php:874
+#: src/admin/class-transfer-page.php:878
 msgid "Reason"
 msgstr "Grund"
 
-#: src/admin/class-transfer-page.php:876
-#: src/admin/class-transfer-page.php:935
+#: src/admin/class-transfer-page.php:880
+#: src/admin/class-transfer-page.php:939
 msgid "Person"
 msgstr "Person"
 
 #: src/admin/class-module-page.php:425
-#: src/admin/class-transfer-page.php:879
-#: src/admin/class-transfer-page.php:931
+#: src/admin/class-transfer-page.php:883
+#: src/admin/class-transfer-page.php:935
 msgid "Action"
 msgstr "Aktion"
 
-#: src/admin/class-transfer-page.php:881
+#: src/admin/class-transfer-page.php:885
 msgid "Backups, newest first"
 msgstr "Sicherungen, neueste zuerst"
 
-#: src/admin/class-transfer-page.php:893
+#: src/admin/class-transfer-page.php:897
 msgid "Restore …"
 msgstr "Wiederherstellen …"
 
-#: src/admin/class-transfer-page.php:902
+#: src/admin/class-transfer-page.php:906
 msgid "Back up now"
 msgstr "Jetzt sichern"
 
-#: src/admin/class-transfer-page.php:918
+#: src/admin/class-transfer-page.php:922
 msgid "Log"
 msgstr "Protokoll"
 
-#: src/admin/class-transfer-page.php:919
+#: src/admin/class-transfer-page.php:923
 msgid "The log keeps who exported, imported, restored or backed up which sections, for 90 days. It stores no values."
 msgstr "Das Protokoll hält 90 Tage lang fest, wer welche Bereiche exportiert, importiert, wiederhergestellt oder gesichert hat. Es speichert keine Werte."
 
-#: src/admin/class-transfer-page.php:922
+#: src/admin/class-transfer-page.php:926
 msgid "No log entries yet."
 msgstr "Noch keine Protokolleinträge."
 
 #. translators: %d: number of entries.
-#: src/admin/class-transfer-page.php:928
+#: src/admin/class-transfer-page.php:932
 #, php-format
 msgid "Last %d log entries"
 msgstr "Letzte %d Protokolleinträge"
 
-#: src/admin/class-transfer-page.php:932
+#: src/admin/class-transfer-page.php:936
 msgid "Channel"
 msgstr "Kanal"
 
-#: src/admin/class-transfer-page.php:943
+#: src/admin/class-transfer-page.php:947
 msgid "Admin"
 msgstr "Admin"
 
-#: src/admin/class-transfer-page.php:988
+#: src/admin/class-transfer-page.php:992
 msgid "Preview"
 msgstr "Vorschau"
 
-#: src/admin/class-transfer-page.php:989
+#: src/admin/class-transfer-page.php:993
 msgid "Check what the import changes. Nothing has been changed yet."
 msgstr "Prüfe, was der Import ändert. Noch wurde nichts geändert."
 
-#: src/admin/class-transfer-page.php:1134
-#: src/admin/class-transfer-page.php:1721
+#: src/admin/class-transfer-page.php:1137
+#: src/admin/class-transfer-page.php:1797
 msgid "Backup"
 msgstr "Sicherung"
 
-#: src/admin/class-transfer-page.php:1134
+#: src/admin/class-transfer-page.php:1137
 msgid "File"
 msgstr "Datei"
 
-#: src/admin/class-transfer-page.php:1135
+#: src/admin/class-transfer-page.php:1138
 msgid "Exported from"
 msgstr "Exportiert von"
 
-#: src/admin/class-transfer-page.php:1136
+#: src/admin/class-transfer-page.php:1139
 msgid "Exported at"
 msgstr "Exportiert am"
 
-#: src/admin/class-transfer-page.php:1137
+#: src/admin/class-transfer-page.php:1140
 msgid "Theme version"
 msgstr "Theme-Version"
 
-#: src/admin/class-transfer-page.php:1143
+#: src/admin/class-transfer-page.php:1146
 msgid "Not in the file (sensitive)"
 msgstr "Nicht in der Datei (sensibel)"
 
-#: src/admin/class-transfer-page.php:1164
+#: src/admin/class-transfer-page.php:1167
 msgid "Warnings"
 msgstr "Warnungen"
 
 #: src/admin/class-module-page.php:419
-#: src/admin/class-transfer-page.php:1233
+#: src/admin/class-transfer-page.php:1236
 msgid "Module"
 msgstr "Modul"
 
-#: src/admin/class-transfer-page.php:1233
+#: src/admin/class-transfer-page.php:1236
 msgid "Setting"
 msgstr "Einstellung"
 
-#: src/admin/class-transfer-page.php:1235
+#: src/admin/class-transfer-page.php:1238
 msgid "Current"
 msgstr "Aktuell"
 
-#: src/admin/class-transfer-page.php:1236
+#: src/admin/class-transfer-page.php:1239
 msgid "New"
 msgstr "Neu"
 
-#: src/admin/class-transfer-page.php:1237
+#: src/admin/class-transfer-page.php:1240
 msgid "Result"
 msgstr "Ergebnis"
 
-#: src/admin/class-transfer-page.php:1285
+#: src/admin/class-transfer-page.php:1294
 msgid "All languages"
 msgstr "Alle Sprachen"
 
-#: src/admin/class-transfer-page.php:1306
+#: src/admin/class-transfer-page.php:1380
 msgid "Module changes"
 msgstr "Moduländerungen"
 
-#: src/admin/class-transfer-page.php:1307
+#: src/admin/class-transfer-page.php:1381
 msgid "The import switches modules. Published contents that use them may look different or lose functions:"
 msgstr "Der Import schaltet Module um. Veröffentlichte Inhalte, die diese Module nutzen, können anders aussehen oder Funktionen verlieren:"
 
 #. translators: 1: module title, 2: number of published contents.
-#: src/admin/class-transfer-page.php:1312
+#: src/admin/class-transfer-page.php:1386
 #, php-format
 msgid "%1$s: used in %2$d published content"
 msgid_plural "%1$s: used in %2$d published contents"
 msgstr[0] "%1$s: in %2$d veröffentlichtem Inhalt verwendet"
 msgstr[1] "%1$s: in %2$d veröffentlichten Inhalten verwendet"
 
-#: src/admin/class-transfer-page.php:1327
+#: src/admin/class-transfer-page.php:1401
 msgid "I understand the consequences of the module changes"
 msgstr "Ich habe die Folgen der Modulwechsel verstanden"
 
-#: src/admin/class-transfer-page.php:1343
+#: src/admin/class-transfer-page.php:1417
 msgid "No import result is available anymore."
 msgstr "Es liegt kein Importergebnis mehr vor."
 
 #. translators: 1: number of changed values, 2: number of skipped values, 3: number of rejected values.
-#: src/admin/class-transfer-page.php:1353
+#: src/admin/class-transfer-page.php:1427
 #, php-format
 msgid "%1$d changed, %2$d skipped, %3$d rejected."
 msgstr "%1$d geändert, %2$d übersprungen, %3$d abgelehnt."
 
-#: src/admin/class-transfer-page.php:1360
+#: src/admin/class-transfer-page.php:1434
 msgid "Backup made before the import:"
 msgstr "Sicherung vor dem Import:"
 
-#: src/admin/class-transfer-page.php:1361
+#: src/admin/class-transfer-page.php:1435
 msgid "Restore this backup …"
 msgstr "Diese Sicherung wiederherstellen …"
 
-#: src/admin/class-transfer-page.php:1369
-#: src/admin/class-transfer-page.php:1587
+#: src/admin/class-transfer-page.php:1443
+#: src/admin/class-transfer-page.php:1663
 msgid "Rejected"
 msgstr "Abgelehnt"
 
-#: src/admin/class-transfer-page.php:1369
-#: src/admin/class-transfer-page.php:1586
+#: src/admin/class-transfer-page.php:1443
+#: src/admin/class-transfer-page.php:1662
 msgid "Skipped"
 msgstr "Übersprungen"
 
-#: src/admin/class-transfer-page.php:1384
+#: src/admin/class-transfer-page.php:1458
 msgid "Back to Import/Export"
 msgstr "Zurück zu Import/Export"
 
-#: src/admin/class-transfer-page.php:1396
+#: src/admin/class-transfer-page.php:1470
 msgid "Import finished"
 msgstr "Import abgeschlossen"
 
-#: src/admin/class-transfer-page.php:1396
+#: src/admin/class-transfer-page.php:1470
 msgid "Nothing was imported"
 msgstr "Nichts wurde importiert"
 
-#: src/admin/class-transfer-page.php:1441
+#: src/admin/class-transfer-page.php:1515
 msgid "Go to the field"
 msgstr "Zum Feld"
 
 #: src/admin/class-module-page.php:788
-#: src/admin/class-transfer-page.php:1559
+#: src/admin/class-transfer-page.php:1635
 msgid "Default"
 msgstr "Standard"
 
-#: src/admin/class-transfer-page.php:1563
+#: src/admin/class-consent-services-page.php:1662
+#: src/admin/class-consent-services-page.php:1664
+#: src/admin/class-transfer-page.php:1639
 msgid "Yes"
 msgstr "Ja"
 
-#: src/admin/class-transfer-page.php:1563
+#: src/admin/class-consent-services-page.php:1662
+#: src/admin/class-consent-services-page.php:1664
+#: src/admin/class-transfer-page.php:1639
 msgid "No"
 msgstr "Nein"
 
-#: src/admin/class-transfer-page.php:1585
+#: src/admin/class-transfer-page.php:1661
 msgid "Changes"
 msgstr "Änderung"
 
 #. translators: %d: number of published contents.
-#: src/admin/class-transfer-page.php:1599
+#: src/admin/class-transfer-page.php:1675
 #, php-format
 msgid "Used in %d published content."
 msgid_plural "Used in %d published contents."
 msgstr[0] "In %d veröffentlichtem Inhalt verwendet."
 msgstr[1] "In %d veröffentlichten Inhalten verwendet."
 
-#: src/admin/class-transfer-page.php:1617
+#: src/admin/class-transfer-page.php:1693
 msgid "Reset to the default"
 msgstr "Auf den Standard zurücksetzen"
 
-#: src/admin/class-transfer-page.php:1618
+#: src/admin/class-transfer-page.php:1694
 msgid "Switch the module"
 msgstr "Modul umschalten"
 
-#: src/admin/class-transfer-page.php:1619
+#: src/admin/class-transfer-page.php:1695
 msgid "Unchanged"
 msgstr "Unverändert"
 
-#: src/admin/class-transfer-page.php:1620
+#: src/admin/class-transfer-page.php:1696
 msgid "Not in the file"
 msgstr "Nicht in der Datei"
 
-#: src/admin/class-transfer-page.php:1621
+#: src/admin/class-transfer-page.php:1697
 msgid "Locked on this site"
 msgstr "Auf dieser Website gesperrt"
 
-#: src/admin/class-transfer-page.php:1622
+#: src/admin/class-transfer-page.php:1698
 msgid "Not translatable"
 msgstr "Nicht übersetzbar"
 
-#: src/admin/class-transfer-page.php:1623
+#: src/admin/class-transfer-page.php:1699
 msgid "Unknown setting"
 msgstr "Unbekannte Einstellung"
 
-#: src/admin/class-transfer-page.php:1624
+#: src/admin/class-transfer-page.php:1700
 msgid "Setting removed in a theme update"
 msgstr "Einstellung in einem Theme-Update entfernt"
 
-#: src/admin/class-transfer-page.php:1625
+#: src/admin/class-transfer-page.php:1701
 msgid "Setting renamed in a theme update"
 msgstr "Einstellung in einem Theme-Update umbenannt"
 
-#: src/admin/class-transfer-page.php:1626
+#: src/admin/class-transfer-page.php:1702
 msgid "Sensitive, never imported"
 msgstr "Sensibel, wird nie importiert"
 
-#: src/admin/class-transfer-page.php:1627
+#: src/admin/class-transfer-page.php:1703
 msgid "Language not active on this site"
 msgstr "Sprache auf dieser Website nicht aktiv"
 
-#: src/admin/class-transfer-page.php:1629
+#: src/admin/class-transfer-page.php:1705
 msgid "Not available in the Bootstrap line of this site"
 msgstr "In der Bootstrap-Linie dieser Website nicht verfügbar"
 
-#: src/admin/class-transfer-page.php:1630
+#: src/admin/class-transfer-page.php:1706
 msgid "The Bootstrap line is never imported"
 msgstr "Die Bootstrap-Linie wird nie importiert"
 
-#: src/admin/class-transfer-page.php:1631
+#: src/admin/class-transfer-page.php:1707
 msgid "Unknown part of the file"
 msgstr "Unbekannter Teil der Datei"
 
-#: src/admin/class-transfer-page.php:1632
+#: src/admin/class-transfer-page.php:1708
 msgid "Module unchanged"
 msgstr "Modul unverändert"
 
-#: src/admin/class-transfer-page.php:1633
+#: src/admin/class-transfer-page.php:1709
 msgid "Module locked on this site"
 msgstr "Modul auf dieser Website gesperrt"
 
-#: src/admin/class-transfer-page.php:1634
+#: src/admin/class-transfer-page.php:1710
 msgid "You may not change this setting"
 msgstr "Du darfst diese Einstellung nicht ändern"
 
-#: src/admin/class-transfer-page.php:1635
+#: src/admin/class-transfer-page.php:1711
 msgid "Invalid value"
 msgstr "Ungültiger Wert"
 
-#: src/admin/class-transfer-page.php:1636
+#: src/admin/class-transfer-page.php:1712
 msgid "Contrast too low"
 msgstr "Kontrast zu gering"
 
-#: src/admin/class-transfer-page.php:1637
+#: src/admin/class-transfer-page.php:1713
 msgid "Referenced content not found on this site"
 msgstr "Verknüpfter Inhalt auf dieser Website nicht gefunden"
 
-#: src/admin/class-transfer-page.php:1638
+#: src/admin/class-transfer-page.php:1714
 msgid "You may not switch this module"
 msgstr "Du darfst dieses Modul nicht umschalten"
 
-#: src/admin/class-transfer-page.php:1639
+#: src/admin/class-transfer-page.php:1715
 msgid "Invalid module state"
 msgstr "Ungültiger Modulzustand"
 
-#: src/admin/class-transfer-page.php:1640
+#: src/admin/class-transfer-page.php:1716
 msgid "Needs your confirmation"
 msgstr "Braucht deine Bestätigung"
 
-#: src/admin/class-transfer-page.php:1654
+#: src/admin/class-transfer-page.php:1730
 msgid "On"
 msgstr "An"
 
 #: src/admin/class-module-page.php:745
-#: src/admin/class-transfer-page.php:1655
+#: src/admin/class-transfer-page.php:1731
 msgid "Off"
 msgstr "Aus"
 
 #: src/admin/class-module-page.php:744
-#: src/admin/class-transfer-page.php:1656
+#: src/admin/class-transfer-page.php:1732
 msgid "Hidden"
 msgstr "Ausgeblendet"
 
-#: src/admin/class-transfer-page.php:1671
+#: src/admin/class-transfer-page.php:1747
 msgid "The file comes from another Bootstrap line. The import never switches the line; settings of the other line are skipped. Switch the line first if you need them."
 msgstr "Die Datei stammt aus einer anderen Bootstrap-Linie. Der Import wechselt die Linie nie; Einstellungen der anderen Linie werden übersprungen. Wechsle zuerst die Linie, wenn du diese Einstellungen brauchst."
 
-#: src/admin/class-transfer-page.php:1674
+#: src/admin/class-transfer-page.php:1750
 msgid "The file comes from a newer theme version. Settings this version does not know are skipped."
 msgstr "Die Datei stammt aus einer neueren Theme-Version. Einstellungen, die diese Version nicht kennt, werden übersprungen."
 
 #. translators: 1: old format version, 2: new format version.
-#: src/admin/class-transfer-page.php:1679
+#: src/admin/class-transfer-page.php:1755
 #, php-format
 msgid "The file was converted from format version %1$s to %2$s."
 msgstr "Die Datei wurde von Formatversion %1$s auf %2$s umgewandelt."
 
-#: src/admin/class-transfer-page.php:1699
+#: src/admin/class-transfer-page.php:1775
 msgid "Before an import"
 msgstr "Vor einem Import"
 
-#: src/admin/class-transfer-page.php:1700
+#: src/admin/class-transfer-page.php:1776
 msgid "Before a restore"
 msgstr "Vor einer Wiederherstellung"
 
-#: src/admin/class-transfer-page.php:1701
+#: src/admin/class-transfer-page.php:1777
 msgid "Before a module switch"
 msgstr "Vor einem Modulwechsel"
 
-#: src/admin/class-transfer-page.php:1702
+#: src/admin/class-transfer-page.php:1778
 msgid "Manual"
 msgstr "Manuell"
 
-#: src/admin/class-transfer-page.php:1703
+#: src/admin/class-transfer-page.php:1779
 msgid "Before a Bootstrap line switch"
 msgstr "Vor einem Wechsel der Bootstrap-Linie"
 
-#: src/admin/class-transfer-page.php:1720
+#: src/admin/class-transfer-page.php:1796
 msgid "Restore"
 msgstr "Wiederherstellung"
 
-#: src/admin/class-transfer-page.php:1782
+#: src/admin/class-transfer-page.php:1877
 msgid "Unknown or deleted user"
 msgstr "Unbekannter oder gelöschter Benutzer"
 
-#: src/admin/class-transfer-page.php:1854
+#: src/admin/class-transfer-page.php:1949
 msgid "The backup or the log could not be stored. Nothing was changed."
 msgstr "Die Sicherung oder das Protokoll konnte nicht gespeichert werden. Nichts wurde geändert."
 
@@ -2211,83 +2231,84 @@ msgstr[1] "Das Abschalten dieses Moduls betrifft %d veröffentlichte Inhalte; be
 msgid "Sensitive settings are left out of every export and never imported."
 msgstr "Sensible Einstellungen fehlen in jedem Export und werden nie importiert."
 
+#: src/settings/transfer/class-consent-services-section.php:313
 #: src/settings/transfer/class-settings-section.php:216
 msgid "This language is not active on this site."
 msgstr "Diese Sprache ist auf dieser Website nicht aktiv."
 
 #. translators: %s: setting key.
-#: src/settings/transfer/class-settings-section.php:357
+#: src/settings/transfer/class-settings-section.php:335
 #, php-format
 msgid "The file has another value for %s; that value is imported."
 msgstr "Die Datei enthält einen anderen Wert für %s; dieser Wert wird importiert."
 
-#: src/settings/transfer/class-settings-section.php:375
+#: src/settings/transfer/class-settings-section.php:353
 msgid "The page, file or term this setting points to does not exist on this site."
 msgstr "Die Seite, die Datei oder der Begriff, auf die diese Einstellung verweist, existiert auf dieser Website nicht."
 
-#: src/settings/transfer/class-settings-section.php:411
+#: src/settings/transfer/class-settings-section.php:389
 msgid "The file has no value for this setting; it stays as it is."
 msgstr "Die Datei enthält keinen Wert für diese Einstellung; sie bleibt, wie sie ist."
 
-#: src/settings/transfer/class-settings-section.php:430
+#: src/settings/transfer/class-settings-section.php:408
 msgid "The Bootstrap line is never imported; it is part of the code of the site."
 msgstr "Die Bootstrap-Linie wird nie importiert; sie gehört zum Code der Website."
 
-#: src/settings/transfer/class-settings-section.php:436
+#: src/settings/transfer/class-settings-section.php:414
 msgid "This setting has no counterpart in the Bootstrap line of this site."
 msgstr "Diese Einstellung hat keine Entsprechung in der Bootstrap-Linie dieser Website."
 
 #. translators: %s: setting key in the file.
-#: src/settings/transfer/class-settings-section.php:440
+#: src/settings/transfer/class-settings-section.php:418
 #, php-format
 msgid "Mapped from %s of the other Bootstrap line."
 msgstr "Aus %s der anderen Bootstrap-Linie übernommen."
 
 #. translators: %s: new setting key.
-#: src/settings/transfer/class-settings-section.php:453
+#: src/settings/transfer/class-settings-section.php:431
 #, php-format
 msgid "This setting is now called %s; the value under the new name is imported."
 msgstr "Diese Einstellung heißt jetzt %s; importiert wird der Wert unter dem neuen Namen."
 
 #. translators: %s: former setting key.
-#: src/settings/transfer/class-settings-section.php:458
+#: src/settings/transfer/class-settings-section.php:436
 #, php-format
 msgid "Renamed from %s."
 msgstr "Umbenannt aus %s."
 
 #. translators: %s: new setting key.
-#: src/settings/transfer/class-settings-section.php:460
+#: src/settings/transfer/class-settings-section.php:438
 #, php-format
 msgid "This setting is now called %s and is imported under that name."
 msgstr "Diese Einstellung heißt jetzt %s und wird unter diesem Namen importiert."
 
 #. translators: %s: theme version.
-#: src/settings/transfer/class-settings-section.php:465
+#: src/settings/transfer/class-settings-section.php:443
 #, php-format
 msgid "This setting was removed in theme version %s."
 msgstr "Diese Einstellung wurde in Theme-Version %s entfernt."
 
-#: src/settings/transfer/class-settings-section.php:467
+#: src/settings/transfer/class-settings-section.php:445
 msgid "This theme version does not know this setting."
 msgstr "Diese Theme-Version kennt diese Einstellung nicht."
 
-#: src/settings/transfer/class-settings-section.php:481
+#: src/settings/transfer/class-settings-section.php:459
 msgid "Sensitive settings are never imported."
 msgstr "Sensible Einstellungen werden nie importiert."
 
-#: src/settings/transfer/class-settings-section.php:485
+#: src/settings/transfer/class-settings-section.php:463
 msgid "Module switches are imported in the section Modules."
 msgstr "Modulzustände werden im Bereich Module importiert."
 
-#: src/settings/transfer/class-settings-section.php:486
+#: src/settings/transfer/class-settings-section.php:464
 msgid "This setting is never imported."
 msgstr "Diese Einstellung wird nie importiert."
 
-#: src/settings/transfer/class-settings-section.php:490
+#: src/settings/transfer/class-settings-section.php:468
 msgid "This setting differs per language; the file must list it per language."
 msgstr "Diese Einstellung unterscheidet sich je Sprache; die Datei muss sie je Sprache aufführen."
 
-#: src/settings/transfer/class-settings-section.php:493
+#: src/settings/transfer/class-settings-section.php:471
 msgid "This setting is the same in every language; the file must list it without a language."
 msgstr "Diese Einstellung ist in allen Sprachen gleich; die Datei muss sie ohne Sprache aufführen."
 
@@ -2316,7 +2337,7 @@ msgctxt "block keyword"
 msgid "privacy"
 msgstr "Datenschutz"
 
-#: src/admin/class-transfer-page.php:1010
+#: src/admin/class-transfer-page.php:1014
 msgctxt "button"
 msgid "Import"
 msgstr "Importieren"
@@ -2617,12 +2638,12 @@ msgid "Set by the child theme"
 msgstr "Vom Child-Theme gesetzt"
 
 #: src/admin/class-module-page.php:792
-#: src/admin/class-rights-page.php:497
+#: src/admin/class-rights-page.php:499
 msgid "Set on this page"
 msgstr "Auf dieser Seite gesetzt"
 
 #: src/admin/class-module-page.php:794
-#: src/admin/class-rights-page.php:498
+#: src/admin/class-rights-page.php:500
 msgid "Locked by the child theme"
 msgstr "Vom Child-Theme gesperrt"
 
@@ -3236,6 +3257,7 @@ msgstr "Datum"
 
 #: modules/post-lists/i18n-strings.php:45
 #: modules/post-slider/i18n-strings.php:51
+#: src/admin/class-consent-services-page.php:1383
 msgid "Title"
 msgstr "Titel"
 
@@ -3747,93 +3769,94 @@ msgstr "Import und Export"
 msgid "Menus of header and footer"
 msgstr "Menüs in Kopf und Fuß"
 
-#: src/admin/class-rights-page.php:289
+#: src/admin/class-rights-page.php:290
 msgid "Restricted administrators"
 msgstr "Eingeschränkte Administratoren"
 
-#: src/admin/class-rights-page.php:340
+#: src/admin/class-rights-page.php:341
 msgid "Not saved: the choice is not valid."
 msgstr "Nicht gespeichert: Die Auswahl ist ungültig."
 
-#: src/admin/class-rights-page.php:341
+#: src/admin/class-rights-page.php:342
 msgid "Not saved: you cannot restrict your own account."
 msgstr "Nicht gespeichert: Dein eigenes Konto kannst du nicht einschränken."
 
-#: src/admin/class-rights-page.php:358
+#: src/admin/class-rights-page.php:359
 msgid "Areas of the theme settings and who may use them"
 msgstr "Bereiche der Theme-Einstellungen und wer sie nutzen darf"
 
-#: src/admin/class-rights-page.php:359
+#: src/admin/class-rights-page.php:360
 msgid "Area"
 msgstr "Bereich"
 
-#: src/admin/class-rights-page.php:361
+#: src/admin/class-rights-page.php:362
 msgid "Who may use it"
 msgstr "Wer darf ihn nutzen"
 
-#: src/admin/class-rights-page.php:362
+#: src/admin/class-consent-services-page.php:1180
+#: src/admin/class-rights-page.php:363
 msgid "Origin"
 msgstr "Herkunft"
 
 #. translators: %s: title of the area.
-#: src/admin/class-rights-page.php:373
+#: src/admin/class-rights-page.php:374
 #, php-format
 msgid "Who may use %s"
 msgstr "Wer darf %s nutzen"
 
-#: src/admin/class-rights-page.php:375
+#: src/admin/class-rights-page.php:376
 msgid "Agency only"
 msgstr "Nur Agentur"
 
-#: src/admin/class-rights-page.php:376
+#: src/admin/class-rights-page.php:377
 msgid "Agency and editors"
 msgstr "Agentur und Redakteure"
 
 #. translators: 1: display name, 2: user login.
-#: src/admin/class-rights-page.php:419
+#: src/admin/class-rights-page.php:420
 #, php-format
 msgid "%1$s (%2$s, your account cannot be restricted)"
 msgstr "%1$s (%2$s, dein Konto lässt sich nicht einschränken)"
 
 #. translators: 1: display name, 2: user login.
-#: src/admin/class-rights-page.php:421
+#: src/admin/class-rights-page.php:422
 #, php-format
 msgid "%1$s (%2$s)"
 msgstr "%1$s (%2$s)"
 
-#: src/admin/class-rights-page.php:461
+#: src/admin/class-rights-page.php:462
 msgid "Back to the default"
 msgstr "Auf Vorgabe zurücksetzen"
 
-#: src/admin/class-rights-page.php:475
+#: src/admin/class-rights-page.php:476
 msgid "Colors and fonts."
 msgstr "Farben und Schriften."
 
-#: src/admin/class-rights-page.php:476
+#: src/admin/class-rights-page.php:477
 msgid "Switching theme modules on and off."
 msgstr "Theme-Module ein- und ausschalten."
 
-#: src/admin/class-rights-page.php:477
+#: src/admin/class-rights-page.php:478
 msgid "Exporting and importing the theme settings."
 msgstr "Theme-Einstellungen exportieren und importieren."
 
-#: src/admin/class-rights-page.php:478
+#: src/admin/class-rights-page.php:479
 msgid "The menus assigned to the header and the footer."
 msgstr "Die Menüs, die Kopf- und Fußbereich zugewiesen sind."
 
-#: src/admin/class-rights-page.php:479
+#: src/admin/class-rights-page.php:481
 msgid "Texts such as the footer, the contact details and the cookie banner."
 msgstr "Texte wie Fußzeile, Kontaktdaten und Cookie-Banner."
 
-#: src/admin/class-rights-page.php:480
+#: src/admin/class-rights-page.php:482
 msgid "Header and footer in the Site Editor."
 msgstr "Kopf- und Fußbereich im Website-Editor."
 
-#: src/admin/class-rights-page.php:495
+#: src/admin/class-rights-page.php:497
 msgid "Default of the theme"
 msgstr "Vorgabe des Themes"
 
-#: src/admin/class-rights-page.php:496
+#: src/admin/class-rights-page.php:498
 msgid "Default of the child theme"
 msgstr "Vorgabe des Child-Themes"
 
@@ -3842,24 +3865,22 @@ msgid "Choose who may use the areas of the theme settings. The child theme sets 
 msgstr "Lege fest, wer die Bereiche der Theme-Einstellungen nutzen darf. Das Child-Theme setzt die Vorgaben; was es sperrt, lässt sich hier nicht ändern. Import und Export ändern nie Rechte."
 
 #. translators: %s: title of the area.
-#: src/admin/class-rights-page.php:339
+#: src/admin/class-rights-page.php:340
 #, php-format
 msgid "Not saved: the child theme locks %s."
 msgstr "Nicht gespeichert: %s ist vom Child-Theme gesperrt."
 
+#. translators: %s: name of the service.
 #. translators: %s: title of the area.
-#: src/admin/class-rights-page.php:335
+#: src/admin/class-consent-services-page.php:1131
+#: src/admin/class-rights-page.php:336
 #, php-format
 msgid "Unchanged: %s."
 msgstr "Unverändert: %s."
 
-#: src/admin/class-rights-page.php:342
+#: src/admin/class-rights-page.php:343
 msgid "Not saved: the database did not store the value."
 msgstr "Nicht gespeichert: Die Datenbank hat den Wert nicht übernommen."
-
-#: src/admin/class-rights-page.php:405
-msgid "Administrators marked here cannot use the areas of the agency (design, modules, import and export, menus) unless they are open to editors; they never see this page and never switch the Bootstrap line. They keep the other rights of an administrator in WordPress; the restriction holds firmly only when the child theme locks it."
-msgstr "Hier markierte Administratoren nutzen die Bereiche der Agentur (Design, Module, Import und Export, Menüs) nur, wenn sie für Redakteure geöffnet sind; diese Seite sehen sie nie, und die Bootstrap-Linie schalten sie nie um. Die übrigen Rechte eines Administrators in WordPress behalten sie; fest gilt die Einschränkung erst, wenn das Child-Theme sie sperrt."
 
 #. translators: 1: font name, 2: label of the font setting, 3: language, 4: comma-separated script names.
 #: src/admin/class-font-coverage-notice.php:132
@@ -3907,38 +3928,38 @@ msgstr "Arabisch"
 msgid "CJK (Chinese and Japanese)"
 msgstr "CJK (Chinesisch und Japanisch)"
 
-#: src/admin/class-transfer-page.php:1054
+#: src/admin/class-transfer-page.php:1058
 msgid "Languages of the file"
 msgstr "Sprachen der Datei"
 
 #. translators: %s: language code in the file, e.g. "en".
-#: src/admin/class-transfer-page.php:1068
+#: src/admin/class-transfer-page.php:1071
 #, php-format
 msgid "Texts in %s of the file"
 msgstr "Texte in %s aus der Datei"
 
 #. translators: %s: language code, e.g. "en".
-#: src/admin/class-transfer-page.php:1106
+#: src/admin/class-transfer-page.php:1109
 #, php-format
 msgid "%s (as in the file)"
 msgstr "%s (wie in der Datei)"
 
-#: src/admin/class-transfer-page.php:1081
+#: src/admin/class-transfer-page.php:1084
 msgid "do not import"
 msgstr "nicht importieren"
 
-#: src/admin/class-transfer-page.php:1088
+#: src/admin/class-transfer-page.php:1091
 msgid "Update preview"
 msgstr "Vorschau aktualisieren"
 
 #. translators: %s: name of a section of settings, for example "Modules".
-#: src/admin/class-transfer-page.php:1202
+#: src/admin/class-transfer-page.php:1205
 #, php-format
 msgid "%s: nothing changes."
 msgstr "%s: Es ändert sich nichts."
 
 #. translators: %d: number of modules.
-#: src/admin/class-transfer-page.php:1259
+#: src/admin/class-transfer-page.php:1262
 #, php-format
 msgid "%d module stays unchanged"
 msgid_plural "%d modules stay unchanged"
@@ -3946,35 +3967,36 @@ msgstr[0] "%d Modul bleibt unverändert"
 msgstr[1] "%d Module bleiben unverändert"
 
 #. translators: %d: number of settings.
-#: src/admin/class-transfer-page.php:1262
+#: src/admin/class-transfer-page.php:1265
 #, php-format
 msgid "%d setting stays unchanged"
 msgid_plural "%d settings stay unchanged"
 msgstr[0] "%d Einstellung bleibt unverändert"
 msgstr[1] "%d Einstellungen bleiben unverändert"
 
-#: src/admin/class-transfer-page.php:1265
+#: src/admin/class-transfer-page.php:1268
 msgid "unchanged"
 msgstr "unverändert"
 
-#: src/admin/class-transfer-page.php:1628
+#: src/admin/class-transfer-page.php:1704
 msgid "Replaced by another language of the file"
 msgstr "Durch eine andere Sprache der Datei ersetzt"
 
 #. translators: 1: language code in the file, 2: language code on this site.
-#: src/admin/class-transfer-page.php:1684
+#: src/admin/class-transfer-page.php:1760
 #, php-format
 msgid "The texts of language %1$s of the file are imported as %2$s."
 msgstr "Die Texte der Sprache %1$s aus der Datei werden als %2$s importiert."
 
 #. translators: %s: language code of the file, e.g. "en".
+#: src/settings/transfer/class-consent-services-section.php:311
 #: src/settings/transfer/class-settings-section.php:206
 #, php-format
 msgid "Replaced by the texts of language %s from the file."
 msgstr "Ersetzt durch die Texte der Sprache %s aus der Datei."
 
 #. translators: %s: language code of the file, e.g. "en".
-#: src/settings/transfer/class-settings-section.php:269
+#: src/settings/transfer/class-lang-parts.php:72
 #, php-format
 msgid "From language %s of the file."
 msgstr "Aus der Sprache %s der Datei."
@@ -3984,26 +4006,808 @@ msgid "The language assignment does not fit: a language is not in the file, is n
 msgstr "Die Zuordnung der Sprachen passt nicht: Eine Sprache steht nicht in der Datei, ist auf dieser Website nicht aktiv oder bekommt die Texte von zwei Sprachen der Datei."
 
 #. translators: 1: language name in the admin language, e.g. "English"; 2: language code in the file, e.g. "en".
-#: src/admin/class-transfer-page.php:1065
+#: src/admin/class-transfer-page.php:1068
 #, php-format
 msgid "Texts in %1$s (%2$s) of the file"
 msgstr "Texte in %1$s (%2$s) aus der Datei"
 
 #. translators: 1: language name in the admin language, e.g. "English"; 2: language code, e.g. "en".
-#: src/admin/class-transfer-page.php:1114
+#: src/admin/class-transfer-page.php:1117
 #, php-format
 msgid "%1$s (%2$s, as in the file)"
 msgstr "%1$s (%2$s, wie in der Datei)"
 
 #. translators: 1: language name in the admin language, e.g. "German"; 2: language code, e.g. "de".
-#: src/admin/class-transfer-page.php:1116
+#: src/admin/class-transfer-page.php:1119
 #, php-format
 msgid "%1$s (%2$s, default language)"
 msgstr "%1$s (%2$s, Standardsprache)"
 
 #. translators: 1: language name in the admin language, e.g. "Persian"; 2: language code, e.g. "fa".
-#: src/admin/class-transfer-page.php:1118
+#: src/admin/class-transfer-page.php:1121
 #, php-format
 msgctxt "language name and code"
 msgid "%1$s (%2$s)"
 msgstr "%1$s (%2$s)"
+
+#: modules/consent/inc/class-texts.php:674
+#: src/admin/class-consent-services-page.php:1177
+msgid "Service"
+msgstr "Dienst"
+
+#: modules/consent/inc/class-texts.php:763
+msgid "(opens in a new tab)"
+msgstr "(öffnet in einem neuen Tab)"
+
+#. translators: %s: name of the provider of a service.
+#: modules/consent/inc/class-texts.php:765
+#, php-format
+msgid "of %s (opens in a new tab)"
+msgstr "von %s (öffnet in einem neuen Tab)"
+
+#: modules/consent/inc/class-texts.php:769
+msgid "Also sets cookies on domains of the provider; the website cannot delete them."
+msgstr "Setzt auch Cookies auf Domains des Anbieters; die Website kann sie nicht löschen."
+
+#: src/admin/class-consent-services-page.php:225
+#: src/admin/class-consent-services-page.php:226
+#: src/admin/class-consent-services-page.php:371
+#: src/admin/class-rights-page.php:287
+#: src/settings/transfer/class-consent-services-section.php:77
+msgid "Cookies and services"
+msgstr "Cookies und Dienste"
+
+#. translators: %s: error message.
+#: src/admin/class-consent-services-page.php:315
+#, php-format
+msgid "Error: %s"
+msgstr "Fehler: %s"
+
+#: src/admin/class-consent-services-page.php:376
+msgid "The cookie consent module is off. The entries take effect as soon as it is switched on."
+msgstr "Das Modul Cookie-Einwilligung ist aus. Die Einträge wirken, sobald es eingeschaltet ist."
+
+#: src/admin/class-consent-services-page.php:378
+msgid "Go to the theme modules"
+msgstr "Zu den Modulen des Themes"
+
+#: src/admin/class-consent-services-page.php:381
+msgid "The services listed here appear in the cookie settings dialog. Their cookies, except those of the category Necessary, are deleted when a visitor withdraws the consent."
+msgstr "Die hier gelisteten Dienste erscheinen im Dialog der Cookie-Einstellungen. Die Cookies dieser Dienste werden gelöscht, wenn ein Besucher die Einwilligung widerruft, außer denen der Kategorie Notwendig."
+
+#. translators: %s: name of the service.
+#: src/admin/class-consent-services-page.php:393
+#: src/admin/class-consent-services-page.php:1417
+msgid "Add service"
+msgstr "Dienst hinzufügen"
+
+#: src/admin/class-consent-services-page.php:578
+#: src/admin/class-consent-services-page.php:1422
+msgid "Create new services in the default language."
+msgstr "Lege neue Dienste in der Standardsprache an."
+
+#. translators: 1: number of the cookie group, 2: label of the field.
+#: src/admin/class-consent-services-page.php:876
+#, php-format
+msgid "Cookie %1$d, %2$s"
+msgstr "Cookie %1$d, %2$s"
+
+#: src/admin/class-consent-services-page.php:948
+msgid "Choose an active language to edit the texts."
+msgstr "Wähle eine aktive Sprache, um die Texte zu bearbeiten."
+
+#: src/admin/class-consent-services-page.php:969
+msgid "Visitors who already made a choice are not asked about the changed services until the revision is raised."
+msgstr "Besucher, die schon gewählt haben, werden zu den geänderten Diensten erst gefragt, wenn die Revision erhöht ist."
+
+#: src/admin/class-consent-services-page.php:970
+msgid "Ask visitors again (raise revision)"
+msgstr "Besucher erneut fragen (Revision erhöhen)"
+
+#: src/admin/class-consent-services-page.php:1023
+#: src/admin/class-consent-services-page.php:1046
+msgid "Delete service"
+msgstr "Dienst löschen"
+
+#. translators: 1: name of the service, 2: number of cookies.
+#: src/admin/class-consent-services-page.php:1029
+#, php-format
+msgid "Delete the service %1$s with %2$d cookie? Its texts in all languages are deleted too."
+msgid_plural "Delete the service %1$s with %2$d cookies? Its texts in all languages are deleted too."
+msgstr[0] "Den Dienst %1$s mit %2$d Cookie löschen? Seine Texte in allen Sprachen werden ebenfalls gelöscht."
+msgstr[1] "Den Dienst %1$s mit %2$d Cookies löschen? Seine Texte in allen Sprachen werden ebenfalls gelöscht."
+
+#. translators: %s: title of the category of the preset.
+#: src/admin/class-consent-services-page.php:1102
+#, php-format
+msgid "This service comes from a preset in category %s. Cookies in Necessary are never deleted."
+msgstr "Dieser Dienst stammt aus einer Vorlage der Kategorie %s. Cookies unter Notwendig werden nie gelöscht."
+
+#. translators: %s: title of the category.
+#: src/admin/class-consent-services-page.php:1126
+#, php-format
+msgid "Error: the category texts were not saved; check the texts of %s."
+msgstr "Fehler: Die Kategorietexte wurden nicht gespeichert; prüfe die Texte von %s."
+
+#: src/admin/class-consent-services-page.php:1127
+msgid "Error: the category texts were not saved; check the marked fields."
+msgstr "Fehler: Die Kategorietexte wurden nicht gespeichert; prüfe die markierten Felder."
+
+#: src/admin/class-consent-services-page.php:1131
+msgid "Nothing changed."
+msgstr "Nichts geändert."
+
+#. translators: %s: name of the service.
+#: src/admin/class-consent-services-page.php:1133
+#, php-format
+msgid "Deleted: %s."
+msgstr "Gelöscht: %s."
+
+#. translators: %s: name of the service.
+#: src/admin/class-consent-services-page.php:1135
+#, php-format
+msgid "Preset added: %s."
+msgstr "Vorlage hinzugefügt: %s."
+
+#: src/admin/class-consent-services-page.php:1136
+msgid "Error: this preset is already in the list of services."
+msgstr "Fehler: Diese Vorlage steht schon in der Liste der Dienste."
+
+#: src/admin/class-consent-services-page.php:1137
+msgid "The category texts are saved."
+msgstr "Die Kategorietexte sind gespeichert."
+
+#: src/admin/class-consent-services-page.php:1139
+msgid "Error: the request is not valid; nothing was changed."
+msgstr "Fehler: Die Anfrage ist ungültig; nichts wurde geändert."
+
+#: src/admin/class-consent-services-page.php:1140
+msgid "Error: this service does not exist."
+msgstr "Fehler: Diesen Dienst gibt es nicht."
+
+#: src/admin/class-consent-services-page.php:1141
+msgid "The revision is raised: every visitor is asked again."
+msgstr "Die Revision ist erhöht: Jeder Besucher wird erneut gefragt."
+
+#: src/admin/class-consent-services-page.php:1142
+msgid "Error: the revision has changed in the meantime; it was not raised again."
+msgstr "Fehler: Die Revision hat sich inzwischen geändert; sie wurde nicht noch einmal erhöht."
+
+#: src/admin/class-consent-services-page.php:1143
+msgid "Error: the revision cannot be raised; it is at most 9999."
+msgstr "Fehler: Die Revision lässt sich nicht erhöhen; sie ist höchstens 9999."
+
+#: src/admin/class-consent-services-page.php:1144
+msgid "Error: the child theme or a constant locks the revision."
+msgstr "Fehler: Das Child-Theme oder eine Konstante sperrt die Revision."
+
+#: src/admin/class-consent-services-page.php:1172
+msgid "Services"
+msgstr "Dienste"
+
+#: src/admin/class-consent-services-page.php:1178
+#: src/admin/class-consent-services-page.php:1895
+msgid "Provider"
+msgstr "Anbieter"
+
+#: src/admin/class-consent-services-page.php:1179
+#: src/admin/class-consent-services-page.php:1578
+#: src/admin/class-consent-services-page.php:1704
+msgid "Cookies"
+msgstr "Cookies"
+
+#: src/admin/class-consent-services-page.php:1181
+msgid "Actions"
+msgstr "Aktionen"
+
+#: src/admin/class-consent-services-page.php:1193
+#: src/admin/class-consent-services-page.php:1695
+msgid "Operator of this website"
+msgstr "Betreiber dieser Website"
+
+#: src/admin/class-consent-services-page.php:1217
+msgid "Delete"
+msgstr "Löschen"
+
+#. translators: %s: name of the service whose cookie replaces the one of the child theme.
+#: src/admin/class-consent-services-page.php:1231
+#, php-format
+msgid "Child theme – replaced by %s"
+msgstr "Child-Theme – ersetzt durch %s"
+
+#: src/admin/class-consent-services-page.php:1232
+msgid "Child theme – read only"
+msgstr "Child-Theme – nur lesend"
+
+#: src/admin/class-consent-services-page.php:1237
+msgid "No services in this category."
+msgstr "Keine Dienste in dieser Kategorie."
+
+#: src/admin/class-consent-services-page.php:1253
+msgid "Backend"
+msgstr "Backend"
+
+#. translators: 1: name of the preset, 2: date the preset was checked, YYYY-MM-DD.
+#: src/admin/class-consent-services-page.php:1262
+#, php-format
+msgid "Preset %1$s, as of %2$s"
+msgstr "Vorlage %1$s, Stand %2$s"
+
+#. translators: %s: date of the newer preset, YYYY-MM-DD.
+#: src/admin/class-consent-services-page.php:1266
+#, php-format
+msgid "Preset newer: as of %s."
+msgstr "Vorlage neuer: Stand %s."
+
+#. translators: %s: date the preset was checked, YYYY-MM-DD.
+#: src/admin/class-consent-services-page.php:1282
+#, php-format
+msgid "Information from the provider's documents, as of %s. Not legally reviewed; check before going live."
+msgstr "Angaben aus den Unterlagen des Anbieters, Stand %s. Nicht rechtlich geprüft; vor dem Livegang prüfen."
+
+#: src/admin/class-consent-services-page.php:1291
+msgid "Sources:"
+msgstr "Quellen:"
+
+#: src/admin/class-consent-services-page.php:1308
+msgid "Add a preset"
+msgstr "Aus einer Vorlage hinzufügen"
+
+#: src/admin/class-consent-services-page.php:1314
+msgid "Preset"
+msgstr "Vorlage"
+
+#. translators: %s: name of the preset.
+#: src/admin/class-consent-services-page.php:1324
+#, php-format
+msgid "%s (already applied)"
+msgstr "%s (schon übernommen)"
+
+#: src/admin/class-consent-services-page.php:1329
+msgid "Add preset"
+msgstr "Vorlage hinzufügen"
+
+#: src/admin/class-consent-services-page.php:1331
+msgid "About the presets"
+msgstr "Über die Vorlagen"
+
+#: src/admin/class-consent-services-page.php:1351
+msgid "Category texts"
+msgstr "Kategorietexte"
+
+#: src/admin/class-consent-services-page.php:1353
+msgid "Choose a language in the admin bar to edit the category texts."
+msgstr "Wähle in der Werkzeugleiste eine Sprache, um die Kategorietexte zu bearbeiten."
+
+#. translators: 1: language name, e.g. "English"; 2: language code, e.g. "en".
+#: src/admin/class-consent-services-page.php:1369
+#: src/admin/class-consent-services-page.php:1442
+#, php-format
+msgid "Texts for: %1$s (%2$s)"
+msgstr "Texte für: %1$s (%2$s)"
+
+#: src/admin/class-consent-services-page.php:1371
+msgid "An empty field uses the text of the child theme or of the theme. The title has at most 120 characters, the description at most 2000; the description may contain links, bold and italic text and line breaks."
+msgstr "Ein leeres Feld nutzt den Text des Child-Themes oder des Themes. Der Titel hat höchstens 120 Zeichen, die Beschreibung höchstens 2000; die Beschreibung darf Links, fetten und kursiven Text und Zeilenumbrüche enthalten."
+
+#: src/admin/class-consent-services-page.php:1378
+msgid "Error: check the texts of this category."
+msgstr "Fehler: Prüfe die Texte dieser Kategorie."
+
+#: src/admin/class-consent-services-page.php:1393
+msgid "Save category texts"
+msgstr "Kategorietexte speichern"
+
+#. translators: %s: name of the service.
+#: src/admin/class-consent-services-page.php:1417
+#, php-format
+msgid "Edit service: %s"
+msgstr "Dienst bearbeiten: %s"
+
+#: src/admin/class-consent-services-page.php:1422
+msgid "Choose a language in the admin bar to edit the service."
+msgstr "Wähle in der Werkzeugleiste eine Sprache, um den Dienst zu bearbeiten."
+
+#: src/admin/class-consent-services-page.php:1437
+msgid "The entered values are no longer available; the stored values are shown."
+msgstr "Die eingegebenen Werte sind nicht mehr verfügbar; angezeigt werden die gespeicherten Werte."
+
+#. translators: 1: label of the field, 2: error message.
+#: src/admin/class-consent-services-page.php:1505
+#, php-format
+msgid "%1$s: %2$s"
+msgstr "%1$s: %2$s"
+
+#: src/admin/class-consent-services-page.php:1524
+msgid "The form arrived incomplete; check the server limit max_input_vars."
+msgstr "Das Formular kam unvollständig an; prüfe die Servergrenze max_input_vars."
+
+#: src/admin/class-consent-services-page.php:1525
+msgid "The service was changed in the meantime. Please reload."
+msgstr "Der Dienst wurde inzwischen geändert. Bitte lade die Seite neu."
+
+#: src/admin/class-consent-services-page.php:1526
+msgid "The service was not saved. Check the marked fields."
+msgstr "Der Dienst wurde nicht gespeichert. Prüfe die markierten Felder."
+
+#: src/admin/class-consent-services-page.php:1549
+msgid "Choose a category"
+msgstr "Kategorie wählen"
+
+#: src/admin/class-consent-services-page.php:1560
+msgid "Empty: the operator of this website."
+msgstr "Leer: der Betreiber dieser Website."
+
+#: src/admin/class-consent-services-page.php:1561
+msgid "Address of the privacy policy of the provider, starting with https://."
+msgstr "Adresse der Datenschutzerklärung des Anbieters, beginnend mit https://."
+
+#: src/admin/class-consent-services-page.php:1578
+msgid "A group with an empty name, purpose and duration is ignored."
+msgstr "Eine Gruppe mit leerem Namen, leerem Zweck und leerer Dauer wird ignoriert."
+
+#: src/admin/class-consent-services-page.php:1614
+msgid "Save service"
+msgstr "Dienst speichern"
+
+#: src/admin/class-consent-services-page.php:1616
+msgid "More cookies"
+msgstr "Weitere Cookies"
+
+#. translators: %d: most cookies of a service.
+#: src/admin/class-consent-services-page.php:1618
+#, php-format
+msgid "At most %d cookies per service."
+msgstr "Höchstens %d Cookies je Dienst."
+
+#: src/admin/class-consent-services-page.php:1637
+msgid "Change these fields in the default language."
+msgstr "Ändere diese Felder in der Standardsprache."
+
+#: src/admin/class-consent-services-page.php:1672
+msgid "Save texts"
+msgstr "Texte speichern"
+
+#: src/admin/class-consent-services-page.php:1697
+#: src/admin/class-consent-services-page.php:1704
+#: src/admin/class-transfer-page.php:1340
+msgid "None"
+msgstr "Keine"
+
+#: src/admin/class-consent-services-page.php:1717
+msgid "Back to the overview"
+msgstr "Zurück zur Übersicht"
+
+#. translators: %s: text of the default language.
+#: src/admin/class-consent-services-page.php:1862
+msgid "Standard language: no text."
+msgstr "Standardsprache: kein Text."
+
+#. translators: %s: text of the default language.
+#: src/admin/class-consent-services-page.php:1862
+#, php-format
+msgid "Standard language: %s"
+msgstr "Standardsprache: %s"
+
+#. translators: %d: number of the cookie group.
+#: src/admin/class-consent-services-page.php:1878
+#, php-format
+msgid "New cookie %d"
+msgstr "Neues Cookie %d"
+
+#. translators: 1: number of the cookie group, 2: cookie name.
+#: src/admin/class-consent-services-page.php:1881
+#, php-format
+msgid "Cookie %1$d: %2$s"
+msgstr "Cookie %1$d: %2$s"
+
+#: src/admin/class-consent-services-page.php:1894
+msgid "Category"
+msgstr "Kategorie"
+
+#: src/admin/class-consent-services-page.php:1897
+msgid "Purpose"
+msgstr "Zweck"
+
+#: src/admin/class-consent-services-page.php:1898
+msgid "Cookie name"
+msgstr "Cookie-Name"
+
+#: src/admin/class-consent-services-page.php:1899
+msgid "Kind of name"
+msgstr "Art des Namens"
+
+#: src/admin/class-consent-services-page.php:1900
+msgid "Set on this website"
+msgstr "Von dieser Website gesetzt"
+
+#: src/admin/class-consent-services-page.php:1901
+msgid "Also delete on the parent domain"
+msgstr "Auch auf der übergeordneten Domain löschen"
+
+#: src/admin/class-consent-services-page.php:1903
+msgid "Remove this cookie"
+msgstr "Dieses Cookie entfernen"
+
+#: src/admin/class-consent-services-page.php:1916
+msgid "Exact name"
+msgstr "Genauer Name"
+
+#: src/admin/class-consent-services-page.php:1917
+msgid "Starts with"
+msgstr "Beginnt mit"
+
+#: src/admin/class-consent-services-page.php:1918
+msgid "Regular expression"
+msgstr "Regulärer Ausdruck"
+
+#: src/admin/class-consent-services-page.php:2308
+#: src/consent/class-consent-service-catalog.php:89
+#: src/consent/class-consent-services-store.php:135
+#: src/settings/transfer/class-consent-services-section.php:201
+msgid "You are not allowed to change the cookies and services."
+msgstr "Du darfst die Cookies und Dienste nicht ändern."
+
+#: src/admin/class-consent-services-page.php:2319
+msgid "You are not allowed to raise the consent revision."
+msgstr "Du darfst die Revision der Einwilligung nicht erhöhen."
+
+#: src/admin/class-rights-page.php:406
+msgid "Administrators marked here cannot use the areas of the agency (design, modules, import and export, menus, cookies and services) unless they are open to editors; they never see this page and never switch the Bootstrap line. They keep the other rights of an administrator in WordPress; the restriction holds firmly only when the child theme locks it."
+msgstr "Hier markierte Administratoren nutzen die Bereiche der Agentur (Design, Module, Import und Export, Menüs, Cookies und Dienste) nur, wenn sie für Redakteure geöffnet sind; diese Seite sehen sie nie, und die Bootstrap-Linie schalten sie nie um. Die übrigen Rechte eines Administrators in WordPress behalten sie; fest gilt die Einschränkung erst, wenn das Child-Theme sie sperrt."
+
+#: src/admin/class-rights-page.php:480
+msgid "Consent services and their cookies in the cookie banner."
+msgstr "Dienste mit Einwilligung und ihre Cookies im Cookie-Banner."
+
+#. translators: %s: slug of a consent category, e.g. "analytics".
+#: src/admin/class-transfer-page.php:1320
+#, php-format
+msgid "Category texts: %s"
+msgstr "Kategorietexte: %s"
+
+#: src/admin/class-transfer-page.php:1358
+msgid "on this site"
+msgstr "auf dieser Website"
+
+#: src/admin/class-transfer-page.php:1361
+msgid "parent domain"
+msgstr "übergeordnete Domain"
+
+#: src/consent/class-consent-service-catalog.php:93
+msgid "This preset does not exist."
+msgstr "Diese Vorlage gibt es nicht."
+
+#: src/consent/class-consent-service-catalog.php:98
+msgid "This preset is already in the list of services."
+msgstr "Diese Vorlage steht schon in der Liste der Dienste."
+
+#: src/consent/class-consent-services-store.php:149
+#: src/consent/class-consent-services-store.php:163
+msgid "The cookies and services were not saved; correct the marked fields."
+msgstr "Die Cookies und Dienste wurden nicht gespeichert; korrigiere die markierten Felder."
+
+#. translators: %d: size limit in kilobytes.
+#: src/consent/class-consent-services-store.php:173
+#: src/consent/class-consent-services-validator.php:171
+#, php-format
+msgid "The list of services is too large; it may hold at most %d KB."
+msgstr "Die Liste der Dienste ist zu groß; sie darf höchstens %d KB umfassen."
+
+#: src/consent/class-consent-services-validator.php:659
+msgid "Fill in this field."
+msgstr "Fülle dieses Feld aus."
+
+#: src/consent/class-consent-services-validator.php:664
+msgid "This value is already in use."
+msgstr "Dieser Wert wird schon verwendet."
+
+#: src/consent/class-consent-services-validator.php:666
+#: src/settings/transfer/class-consent-services-section.php:366
+msgid "This consent category does not exist."
+msgstr "Diese Einwilligungskategorie gibt es nicht."
+
+#: src/consent/class-consent-services-validator.php:668
+msgid "Start each alternative with ^ and two letters; use only letters, digits, _, -, \\., \\d, ., [ ], one level of ( ) without a quantifier after it, |, $, and per alternative at most one group with |, two ? and one * or +."
+msgstr "Beginne jede Alternative mit ^ und zwei Buchstaben; verwende nur Buchstaben, Ziffern, _, -, \\., \\d, ., [ ], eine Ebene ( ) ohne Quantor dahinter, |, $ und je Alternative höchstens eine Gruppe mit |, zwei ? und ein * oder +."
+
+#: src/consent/class-consent-services-validator.php:670
+msgid "This cookie belongs to WordPress, the consent banner, the shop or WPML and must not be deleted."
+msgstr "Dieses Cookie gehört zu WordPress, zum Cookie-Banner, zum Shop oder zu WPML und darf nicht gelöscht werden."
+
+#: src/consent/class-consent-services-validator.php:672
+msgid "Enter an address that starts with http:// or https://."
+msgstr "Gib eine Adresse ein, die mit http:// oder https:// beginnt."
+
+#: src/consent/class-consent-services-validator.php:674
+msgid "Enter the date as YYYY-MM-DD."
+msgstr "Gib das Datum als JJJJ-MM-TT ein."
+
+#: src/consent/class-consent-services-validator.php:676
+msgid "Choose exact, prefix or regex."
+msgstr "Wähle exact, prefix oder regex."
+
+#: src/consent/class-consent-services-validator.php:678
+msgid "This value has an invalid format."
+msgstr "Dieser Wert hat ein ungültiges Format."
+
+#. translators: %d: maximum number of entries.
+#: src/consent/class-consent-services-validator.php:692
+#, php-format
+msgid "Use at most %d entries."
+msgstr "Verwende höchstens %d Einträge."
+
+#: src/consent/data/service-presets.php:29
+msgid "Matomo's own consent and opt-out cookies (mtm_consent*, mtm_cookie_consent) are never cleared."
+msgstr "Die eigenen Einwilligungs- und Opt-out-Cookies von Matomo (mtm_consent*, mtm_cookie_consent) werden nie gelöscht."
+
+#: src/consent/data/service-presets.php:30
+msgid "Measures visits to this website with Matomo, run by the operator of this website."
+msgstr "Misst die Besuche dieser Website mit Matomo, betrieben vom Betreiber dieser Website."
+
+#: src/consent/data/service-presets.php:37
+msgid "Recognises a returning visitor."
+msgstr "Erkennt einen wiederkehrenden Besucher."
+
+#: src/consent/data/service-presets.php:38
+msgid "13 months"
+msgstr "13 Monate"
+
+#: src/consent/data/service-presets.php:45
+msgid "Links the page views of one visit."
+msgstr "Verknüpft die Seitenaufrufe eines Besuchs."
+
+#: src/consent/data/service-presets.php:46
+#: src/consent/data/service-presets.php:62
+#: src/consent/data/service-presets.php:70
+#: src/consent/data/service-presets.php:207
+msgid "30 minutes"
+msgstr "30 Minuten"
+
+#: src/consent/data/service-presets.php:53
+msgid "Stores the website the visitor came from."
+msgstr "Speichert die Website, von der der Besucher kam."
+
+#: src/consent/data/service-presets.php:54
+#: src/consent/data/service-presets.php:232
+msgid "6 months"
+msgstr "6 Monate"
+
+#: src/consent/data/service-presets.php:61
+msgid "Stores custom data of the visit."
+msgstr "Speichert benutzerdefinierte Daten des Besuchs."
+
+#: src/consent/data/service-presets.php:69
+msgid "Links page views to a heatmap or session recording."
+msgstr "Ordnet Seitenaufrufe einer Heatmap oder Sitzungsaufzeichnung zu."
+
+#: src/consent/data/service-presets.php:77
+msgid "Checks whether the browser accepts cookies."
+msgstr "Prüft, ob der Browser Cookies annimmt."
+
+#: src/consent/data/service-presets.php:78
+msgid "Deleted right away"
+msgstr "Sofort gelöscht"
+
+#: src/consent/data/service-presets.php:94
+msgid "A custom cookie_prefix changes the cookie names; adjust them after adding."
+msgstr "Ein eigenes cookie_prefix ändert die Cookie-Namen; passe sie nach dem Hinzufügen an."
+
+#: src/consent/data/service-presets.php:95
+msgid "Measures visits to this website with Google Analytics."
+msgstr "Misst die Besuche dieser Website mit Google Analytics."
+
+#: src/consent/data/service-presets.php:102
+msgid "Distinguishes visitors."
+msgstr "Unterscheidet Besucher."
+
+#: src/consent/data/service-presets.php:103
+#: src/consent/data/service-presets.php:111
+#: src/consent/data/service-presets.php:191
+msgid "2 years"
+msgstr "2 Jahre"
+
+#: src/consent/data/service-presets.php:110
+msgid "Keeps the state of the session."
+msgstr "Hält den Zustand der Sitzung fest."
+
+#: src/consent/data/service-presets.php:125
+msgid "Sets no cookies of its own. Choose the category by the tags it loads and add those services too."
+msgstr "Setzt keine eigenen Cookies. Wähle die Kategorie nach den Tags, die er lädt, und füge diese Dienste ebenfalls hinzu."
+
+#: src/consent/data/service-presets.php:126
+msgid "Loads the tags configured for this website."
+msgstr "Lädt die für diese Website eingerichteten Tags."
+
+#: src/consent/data/service-presets.php:141
+msgid "Also applies to youtube-nocookie.com: cookies are set once a video plays."
+msgstr "Gilt auch für youtube-nocookie.com: Cookies werden gesetzt, sobald ein Video läuft."
+
+#: src/consent/data/service-presets.php:142
+msgid "Shows embedded YouTube videos."
+msgstr "Zeigt eingebettete YouTube-Videos."
+
+#: src/consent/data/service-presets.php:149
+msgid "Protects against abuse."
+msgstr "Schützt vor Missbrauch."
+
+#: src/consent/data/service-presets.php:150
+msgid "Session"
+msgstr "Sitzung"
+
+#: src/consent/data/service-presets.php:157
+msgid "Used for security and advertising."
+msgstr "Dient der Sicherheit und der Werbung."
+
+#: src/consent/data/service-presets.php:158
+msgid "180 days"
+msgstr "180 Tage"
+
+#: src/consent/data/service-presets.php:165
+msgid "Stores player settings."
+msgstr "Speichert Einstellungen des Players."
+
+#: src/consent/data/service-presets.php:166
+msgid "8 months"
+msgstr "8 Monate"
+
+#: src/consent/data/service-presets.php:182
+msgid "With the player parameter dnt=1 Vimeo sets no new cookies except bot protection. Vimeo's help page writes the Cloudflare cookie as _cf_bm; Cloudflare's own name is __cf_bm."
+msgstr "Mit dem Player-Parameter dnt=1 setzt Vimeo außer dem Bot-Schutz keine neuen Cookies. Die Hilfeseite von Vimeo schreibt das Cloudflare-Cookie als _cf_bm; Cloudflare selbst nennt es __cf_bm."
+
+#: src/consent/data/service-presets.php:183
+msgid "Shows embedded Vimeo videos."
+msgstr "Zeigt eingebettete Vimeo-Videos."
+
+#: src/consent/data/service-presets.php:190
+msgid "Measures video views for the video owner."
+msgstr "Misst Videoaufrufe für den Inhaber des Videos."
+
+#: src/consent/data/service-presets.php:198
+msgid "Stores player settings such as volume and captions."
+msgstr "Speichert Einstellungen des Players wie Lautstärke und Untertitel."
+
+#: src/consent/data/service-presets.php:199
+#: src/consent/data/service-presets.php:336
+#: src/consent/data/service-presets.php:400
+msgid "1 year"
+msgstr "1 Jahr"
+
+#: src/consent/data/service-presets.php:206
+msgid "Protects against bots (Cloudflare)."
+msgstr "Schützt vor Bots (Cloudflare)."
+
+#: src/consent/data/service-presets.php:223
+msgid "Google documents no cookies for map embeds; the names come from consent vendors."
+msgstr "Google dokumentiert keine Cookies für eingebettete Karten; die Namen stammen von Anbietern von Einwilligungslösungen."
+
+#: src/consent/data/service-presets.php:224
+msgid "Shows embedded Google maps."
+msgstr "Zeigt eingebettete Google-Karten."
+
+#: src/consent/data/service-presets.php:231
+msgid "Stores preferences."
+msgstr "Speichert Präferenzen."
+
+#: src/consent/data/service-presets.php:239
+#: src/consent/data/service-presets.php:240
+#: src/consent/data/service-presets.php:247
+#: src/consent/data/service-presets.php:248
+#: src/consent/data/service-presets.php:272
+#: src/consent/data/service-presets.php:280
+#: src/consent/data/service-presets.php:287
+#: src/consent/data/service-presets.php:288
+#: src/consent/data/service-presets.php:295
+#: src/consent/data/service-presets.php:296
+#: src/consent/data/service-presets.php:376
+#: src/consent/data/service-presets.php:423
+#: src/consent/data/service-presets.php:431
+msgid "Not documented"
+msgstr "Nicht dokumentiert"
+
+#: src/consent/data/service-presets.php:263
+msgid "This website and Meta may be joint controllers. Meta documents no durations."
+msgstr "Diese Website und Meta können gemeinsam Verantwortliche sein. Meta dokumentiert keine Speicherdauern."
+
+#: src/consent/data/service-presets.php:264
+msgid "Measures the effect of ads on Facebook and Instagram."
+msgstr "Misst die Wirkung von Anzeigen auf Facebook und Instagram."
+
+#: src/consent/data/service-presets.php:271
+msgid "Identifies the browser for ad measurement."
+msgstr "Erkennt den Browser für die Anzeigenmessung."
+
+#: src/consent/data/service-presets.php:279
+msgid "Stores the ad click ID."
+msgstr "Speichert die Klick-ID der Anzeige."
+
+#: src/consent/data/service-presets.php:312
+msgid "Measures conversions from LinkedIn ads and enables retargeting."
+msgstr "Misst Conversions aus LinkedIn-Anzeigen und ermöglicht Retargeting."
+
+#: src/consent/data/service-presets.php:319
+msgid "Identifies LinkedIn members for conversion tracking and retargeting."
+msgstr "Erkennt LinkedIn-Mitglieder für Conversion-Tracking und Retargeting."
+
+#: src/consent/data/service-presets.php:320
+#: src/consent/data/service-presets.php:352
+msgid "30 days"
+msgstr "30 Tage"
+
+#: src/consent/data/service-presets.php:327
+msgid "Decides whether LinkedIn analytics may run."
+msgstr "Entscheidet, ob die Analyse von LinkedIn laufen darf."
+
+#: src/consent/data/service-presets.php:328
+msgid "1 day"
+msgstr "1 Tag"
+
+#: src/consent/data/service-presets.php:335
+msgid "Identifies the browser."
+msgstr "Erkennt den Browser."
+
+#: src/consent/data/service-presets.php:343
+msgid "Selects the data centre."
+msgstr "Wählt das Rechenzentrum."
+
+#: src/consent/data/service-presets.php:344
+msgid "24 hours"
+msgstr "24 Stunden"
+
+#: src/consent/data/service-presets.php:351
+msgid "Syncs ad IDs."
+msgstr "Gleicht Werbe-IDs ab."
+
+#: src/consent/data/service-presets.php:367
+msgid "Google calls this cookie necessary; whether it needs consent is disputed."
+msgstr "Google nennt dieses Cookie notwendig; ob es eine Einwilligung braucht, ist umstritten."
+
+#: src/consent/data/service-presets.php:368
+msgid "Protects forms against spam and abuse."
+msgstr "Schützt Formulare vor Spam und Missbrauch."
+
+#: src/consent/data/service-presets.php:375
+msgid "Provides the risk analysis."
+msgstr "Liefert die Risikoanalyse."
+
+#: src/consent/data/service-presets.php:391
+msgid "Set only when a visitor ticks the box to save their details."
+msgstr "Wird nur gesetzt, wenn ein Besucher das Speichern seiner Angaben ankreuzt."
+
+#: src/consent/data/service-presets.php:392
+msgid "Remembers name, email and website for the comment form."
+msgstr "Merkt sich Name, E-Mail-Adresse und Website für das Kommentarformular."
+
+#: src/consent/data/service-presets.php:399
+msgid "Fills in the comment form with the saved details."
+msgstr "Füllt das Kommentarformular mit den gespeicherten Angaben aus."
+
+#: src/consent/data/service-presets.php:415
+msgid "Remembers the language of this website."
+msgstr "Merkt sich die Sprache dieser Website."
+
+#: src/consent/data/service-presets.php:422
+msgid "Stores the current language."
+msgstr "Speichert die aktuelle Sprache."
+
+#: src/consent/data/service-presets.php:430
+msgid "Stores the browser language for the language redirect."
+msgstr "Speichert die Browsersprache für die Sprachweiterleitung."
+
+#: src/consent/data/service-presets.php:438
+msgid "Stores the language chosen in the language switcher."
+msgstr "Speichert die im Sprachumschalter gewählte Sprache."
+
+#: src/consent/data/service-presets.php:439
+msgid "Set by the site administrator"
+msgstr "Vom Administrator der Website festgelegt"
+
+#: src/settings/transfer/class-consent-services-section.php:369
+msgid "Import the default language as well: this service is not on this site."
+msgstr "Importiere auch die Standardsprache: Diesen Dienst gibt es auf dieser Website nicht."
+
+#. translators: %s: why the service was rejected, e.g. "This value is already in use."
+#: src/settings/transfer/class-consent-services-section.php:530
+#, php-format
+msgid "The service itself is not imported: %s"
+msgstr "Der Dienst selbst wird nicht importiert: %s"

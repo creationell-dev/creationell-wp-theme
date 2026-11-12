@@ -10,6 +10,8 @@ declare(strict_types=1);
 namespace Creationell\WpTheme\Modules\Consent;
 
 use Closure;
+use Creationell\WpTheme\Consent\Consent_Categories;
+use Creationell\WpTheme\Consent\Consent_Cookie_Name;
 use Creationell\WpTheme\Consent\Consent_Gate;
 
 // Exit if accessed directly.
@@ -88,17 +90,28 @@ final class Config_Builder {
 	private Closure $setting;
 
 	/**
-	 * Takes the texts and the settings reader; without them it uses the defaults of the module.
+	 * Returns the host of the site, for the cookie domains of the withdrawal list.
+	 *
+	 * @var Closure
+	 * @phpstan-var Closure(): string
+	 */
+	private Closure $host;
+
+	/**
+	 * Takes the texts, the settings reader and the host reader; without them it uses the defaults of the module.
 	 *
 	 * @since 1.0.0
 	 *
 	 * @param Texts|null   $texts   Texts of the banner and the dialog.
 	 * @param Closure|null $setting Returns the value of a setting key.
+	 * @param Closure|null $host    Returns the host of the site; by default the host of home_url() (site URL of the current language, not the request header, which could poison a page cache).
 	 * @phpstan-param (Closure(string): mixed)|null $setting
+	 * @phpstan-param (Closure(): string)|null $host
 	 */
-	public function __construct( ?Texts $texts = null, ?Closure $setting = null ) {
+	public function __construct( ?Texts $texts = null, ?Closure $setting = null, ?Closure $host = null ) {
 		$this->setting = $setting ?? static fn( string $key ): mixed => creationell_wp_theme_setting( $key );
 		$this->texts   = $texts ?? new Texts( null, $this->setting );
+		$this->host    = $host ?? static fn(): string => (string) wp_parse_url( home_url(), PHP_URL_HOST );
 	}
 
 	/**
@@ -220,7 +233,7 @@ final class Config_Builder {
 					'equalWeightButtons' => true,
 				),
 			),
-			'categories'             => self::categories(),
+			'categories'             => $this->categories(),
 			'language'               => $language,
 		);
 	}
@@ -232,10 +245,11 @@ final class Config_Builder {
 	 *
 	 * @return array<string, array<string, mixed>> Categories by name.
 	 */
-	private static function categories(): array {
-		$details    = Texts::details();
+	private function categories(): array {
+		$details    = $this->texts->merged_details();
+		$host       = ( $this->host )();
 		$categories = array();
-		foreach ( creationell_wp_theme_consent_categories() as $category ) {
+		foreach ( Consent_Categories::all() as $category ) {
 			if ( Consent_Gate::NECESSARY === $category ) {
 				$categories[ $category ] = array(
 					'enabled'  => true,
@@ -244,7 +258,7 @@ final class Config_Builder {
 				continue;
 			}
 			$categories[ $category ] = array( 'enabled' => false );
-			$cookies                 = self::clear_list( $details[ $category ]['cookies'] ?? array() );
+			$cookies                 = self::clear_list( is_array( $details[ $category ]['cookies'] ?? null ) ? $details[ $category ]['cookies'] : array(), $host );
 			if ( array() !== $cookies ) {
 				$categories[ $category ]['autoClear'] = array(
 					'cookies'    => $cookies,
@@ -258,15 +272,55 @@ final class Config_Builder {
 	/**
 	 * Returns the cookies CookieConsent deletes on withdrawal; drops regular expressions PHP cannot compile.
 	 *
+	 * A backend cookie (key "match") is deleted only when the site sets it
+	 * (first_party), by its pattern, and with parent_domain once more on the
+	 * parent domain of the host. A cookie of the detail filter with
+	 * first_party false is skipped; its domain is kept only when the host lies
+	 * in it.
+	 *
 	 * @since 1.0.0
 	 *
-	 * @param array<int, array{name: string, is_regex: bool, description: mixed, duration: mixed}> $cookies Cookies of the category.
-	 * @return array<int, array{name: string, is_regex: bool}> Names and regex flags.
+	 * @param array<mixed> $cookies Cookies of the category from Texts::merged_details().
+	 * @param string       $host    Host of the site.
+	 * @return array<int, array{name: string, is_regex: bool, domain?: string}> Names, regex flags and domains.
 	 */
-	private static function clear_list( array $cookies ): array {
+	private static function clear_list( array $cookies, string $host ): array {
 		$list = array();
 		foreach ( $cookies as $cookie ) {
-			if ( $cookie['is_regex'] && ! self::compiles( $cookie['name'] ) ) {
+			if ( ! is_array( $cookie ) || ! is_string( $cookie['name'] ?? null ) ) {
+				continue;
+			}
+			$is_regex = true === ( $cookie['is_regex'] ?? false );
+			if ( array_key_exists( 'match', $cookie ) ) {
+				if ( true !== ( $cookie['first_party'] ?? false ) ) {
+					continue;
+				}
+				$pattern = is_string( $cookie['pattern'] ?? null ) ? $cookie['pattern'] : $cookie['name'];
+				if ( $is_regex && ! self::compiles( $pattern ) ) {
+					// Unreachable after the validator; kept as a guard.
+					_doing_it_wrong(
+						__METHOD__,
+						esc_html( sprintf( 'The cookie pattern "%1$s" of the service %2$s (filter %3$s) is no valid regular expression; the cookie is not deleted on withdrawal.', $pattern, is_string( $cookie['service_id'] ?? null ) ? $cookie['service_id'] : '', Texts::FILTER_SERVICES ) ),
+						'1.0.0'
+					);
+					continue;
+				}
+				$entry  = array(
+					'name'     => $pattern,
+					'is_regex' => $is_regex,
+				);
+				$list[] = $entry;
+				$parent = true === ( $cookie['parent_domain'] ?? false ) ? Consent_Cookie_Name::parent_domain( $host ) : null;
+				if ( null !== $parent ) {
+					$entry['domain'] = $parent;
+					$list[]          = $entry;
+				}
+				continue;
+			}
+			if ( false === ( $cookie['first_party'] ?? null ) ) {
+				continue;
+			}
+			if ( $is_regex && ! self::compiles( $cookie['name'] ) ) {
 				_doing_it_wrong(
 					__METHOD__,
 					esc_html( sprintf( 'The cookie pattern "%1$s" of the filter %2$s is no valid regular expression; the cookie is not deleted on withdrawal.', $cookie['name'], Texts::FILTER_DETAILS ) ),
@@ -274,10 +328,15 @@ final class Config_Builder {
 				);
 				continue;
 			}
-			$list[] = array(
+			$entry  = array(
 				'name'     => $cookie['name'],
-				'is_regex' => $cookie['is_regex'],
+				'is_regex' => $is_regex,
 			);
+			$domain = is_string( $cookie['domain'] ?? null ) ? Consent_Cookie_Name::host_matches( $host, $cookie['domain'] ) : null;
+			if ( null !== $domain ) {
+				$entry['domain'] = $domain;
+			}
+			$list[] = $entry;
 		}
 		return $list;
 	}

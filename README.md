@@ -1,6 +1,6 @@
 # creationell Theme
 
-**Version:** 0.4.0
+**Version:** 0.5.0
 
 **Requires at least:** 7.1
 
@@ -104,6 +104,7 @@ One place per setting; editors change texts and, with the module
 | Menus of header and footer | Appearance > Menus (with the module: Header & Footer > Menus) | administrators; editors only with the module active and the menus unlocked by the child theme, and then only these two menus |
 | Colors and fonts | Theme settings > Design; never in the Site Editor (its styles have no effect) | administrators; editors when the child theme unlocks the design |
 | Modules | Theme settings > Modules | administrators; editors when the child theme unlocks the modules |
+| Consent services and cookies | Theme settings > Cookies and services | administrators; editors when the child theme unlocks the consent area (`unlock['consent']`) |
 
 ## Updates
 
@@ -220,6 +221,11 @@ only read; each one has `--format=json` for scripts.
 | `wp creationell-theme update status` | Installed and offered version, manifest state |
 | `wp creationell-theme wpml status` | State of the WPML integration |
 
+`wp creationell-theme consent services add-preset|delete` write the services
+of the cookie banner (`list` and `presets` read them); all four need
+`--user=<login>` of a person with `creationell_wp_theme_manage_consent`. Details
+in `modules/consent/README.md`.
+
 ## For developers
 
 - `src/README.md`: the theme core in `src/` (loading, naming, public
@@ -259,6 +265,154 @@ GPL-2.0-or-later, see `LICENSE`. Licenses of the included third-party code:
 `THIRD-PARTY-NOTICES`.
 
 ## Changelog
+
+### 0.5.0
+
+- Cookies and services: the new page *Theme settings > Cookies and services*
+  keeps the services of the cookie banner and their cookies in the backend,
+  without ACF. It needs the capability `creationell_wp_theme_manage_consent`
+  (area `consent`: administrators; editors when the child theme unlocks it) and
+  exists while the module `consent` is installed. 11 presets (Matomo, Google
+  Analytics 4, Google Tag Manager, YouTube, Vimeo, Google Maps, Meta Pixel,
+  LinkedIn Insight Tag, Google reCAPTCHA, WordPress comments, WPML) fill in a
+  service from the documents of the provider with their check date; they are
+  "not legally reviewed". Purposes, durations and category texts are kept per
+  language and fall back to the default language. Cookie names are exact names,
+  prefixes or regular expressions of a safe subset; cookies of WordPress, the
+  consent banner, the shop and WPML are refused outside the category Necessary.
+  A button raises the consent revision. Details in the module README.
+- Cookie banner: each category lists its services with provider, purpose and
+  privacy policy; the cookie table gets the column "Service". A withdrawal
+  deletes the cookies the site sets itself, on request also on the parent
+  domain; cookies of other domains are listed, not deleted. The new filters
+  `creationell_wp_theme_consent_services` and
+  `creationell_wp_theme_consent_service_presets` and the action
+  `creationell_wp_theme_consent_services_saved` join the module; cookies of the
+  filter `creationell_wp_theme_consent_category_details` may set `service`,
+  `first_party` and `domain`. Without backend entries the banner output is the
+  same as in 0.4.0.
+- Import and export: the new section `consent_services` carries the services
+  and their texts per language. The language map (admin select and
+  `--map-lang`) also offers languages that only this section has. The preview
+  checks the services against the merged list, so it shows what the import
+  would refuse. A restore of `consent_services` replaces the services and the
+  texts of the backup's languages that are active on the site; the preview
+  lists every text it deletes in them, and rejected values stay as they are.
+  Texts of other languages stay, except those of a service the restore
+  removes: they go in every language, without a row of their own.
+- WP-CLI: `wp creationell-theme consent services list|presets|add-preset|delete`;
+  `wp creationell-theme doctor` counts the services per category under the key
+  `services` of the section `consent` and warns about a list above 64 KB,
+  newer presets and child theme cookies a backend cookie replaces.
+
+#### Notes for the update
+
+- A child theme that sets every key of `unlock` to `true` now also opens
+  `unlock['consent']`: editors may then change the cookies and services. Set
+  `unlock['consent']` to `false` (or use the rights page) to keep the area
+  with the administrators.
+- Theme 0.4.0 imports files of 0.5.0 but skips the section `consent_services`
+  as `section_unknown`; on 0.4.0 `--map-lang` only knows the languages of the
+  section `settings`.
+- With WPML String Translation active, a site whose WPML language `de` uses the
+  locale `de_DE` cannot show the formal address (`de_DE_formal`) through the
+  theme: String Translation switches the locale. Set the locale of the WPML
+  language `de` to `de_DE_formal` for the formal address. This is a setting of
+  the site, not a change of the theme.
+
+#### New or changed texts
+
+- Cookie banner: `Service`, `(opens in a new tab)`,
+  `of %s (opens in a new tab)`, `Also sets cookies on domains of the provider;
+  the website cannot delete them.`
+- Rights page: `Cookies and services`,
+  `Consent services and their cookies in the cookie banner.` and the changed
+  `Administrators marked here cannot use the areas of the agency (design,
+  modules, import and export, menus, cookies and services) unless they are open
+  to editors; they never see this page and never switch the Bootstrap line.
+  They keep the other rights of an administrator in WordPress; the restriction
+  holds firmly only when the child theme locks it.` (adds "cookies and
+  services")
+- Page *Cookies and services*, labels: `Services`, `Provider`,
+  `Cookies`, `Actions`, `Delete`, `Backend`, `Preset`, `Sources:`,
+  `Category`, `Purpose`, `Cookie name`, `Kind of name`, `Set on this website`,
+  `Also delete on the parent domain`, `Remove this cookie`, `Exact name`,
+  `Starts with`, `Regular expression`, `None`, `Operator of this website`,
+  `Category texts`, `Choose a category`, `More cookies`, `New cookie %d`,
+  `Cookie %1$d: %2$s`, `Cookie %1$d, %2$s`, `%1$s: %2$s`, `Error: %s`,
+  `Texts for: %1$s (%2$s)`, `Standard language: %s`,
+  `Standard language: no text.`, `%s (already applied)`,
+  `Preset %1$s, as of %2$s`, `Preset newer: as of %s.`,
+  `Child theme – replaced by %s`, `Child theme – read only`
+- Page *Cookies and services*, buttons, links and headings: `Add service`,
+  `Edit service: %s`, `Delete service`, `Save service`, `Save texts`,
+  `Save category texts`, `Add a preset`, `Add preset`, `About the presets`,
+  `Back to the overview`, `Go to the theme modules`,
+  `Ask visitors again (raise revision)`
+- Page *Cookies and services*, notes:
+  `The cookie consent module is off. The entries take effect as soon as it is
+  switched on.`
+- `The services listed here appear in the cookie settings dialog. Their cookies,
+  except those of the category Necessary, are deleted when a visitor withdraws
+  the consent.`
+- `Visitors who already made a choice are not asked about the changed services
+  until the revision is raised.`
+- `Information from the provider's documents, as of %s. Not legally reviewed;
+  check before going live.`
+- `This service comes from a preset in category %s. Cookies in Necessary are
+  never deleted.`
+- `An empty field uses the text of the child theme or of the theme. The title
+  has at most 120 characters, the description at most 2000; the description
+  may contain links, bold and italic text and line breaks.`
+- `Empty: the operator of this website.`
+- `Address of the privacy policy of the provider, starting with https://.`
+- `A group with an empty name, purpose and duration is ignored.`
+- `At most %d cookies per service.`
+- `No services in this category.`
+- `Change these fields in the default language.`
+- `Create new services in the default language.`
+- `Choose an active language to edit the texts.`
+- `Choose a language in the admin bar to edit the category texts.`
+- `Choose a language in the admin bar to edit the service.`
+- `The entered values are no longer available; the stored values are shown.`
+- `Delete the service %1$s with %2$d cookie? Its texts in all languages are
+  deleted too.` (plural: `Delete the service %1$s with %2$d cookies? Its texts
+  in all languages are deleted too.`)
+- Page *Cookies and services*, results: `Nothing changed.`, `Deleted: %s.`,
+  `Preset added: %s.`, `The category texts are saved.`,
+  `The revision is raised: every visitor is asked again.`,
+  `Error: this preset is already in the list of services.`,
+  `Error: the request is not valid; nothing was changed.`,
+  `Error: this service does not exist.`,
+  `Error: check the texts of this category.`,
+  `Error: the category texts were not saved; check the texts of %s.`,
+  `Error: the category texts were not saved; check the marked fields.`,
+  `Error: the revision has changed in the meantime; it was not raised again.`,
+  `Error: the revision cannot be raised; it is at most 9999.`,
+  `Error: the child theme or a constant locks the revision.`,
+  `The form arrived incomplete; check the server limit max_input_vars.`,
+  `The service was changed in the meantime. Please reload.`,
+  `The service was not saved. Check the marked fields.`,
+  `You are not allowed to raise the consent revision.`
+- Saving, presets and checks: `You are not allowed to change the cookies and
+  services.`, `The cookies and services were not saved; correct the marked
+  fields.`, `The list of services is too large; it may hold at most %d KB.`,
+  `This preset does not exist.`,
+  `This preset is already in the list of services.`, `Fill in this field.`,
+  `This value is already in use.`, `This consent category does not exist.`,
+  `This value has an invalid format.`, `Use at most %d entries.`,
+  `Enter an address that starts with http:// or https://.`,
+  `Enter the date as YYYY-MM-DD.`, `Choose exact, prefix or regex.`,
+  `This cookie belongs to WordPress, the consent banner, the shop or WPML and
+  must not be deleted.`
+- `Start each alternative with ^ and two letters; use only letters, digits, _,
+  -, \., \d, ., [ ], one level of ( ) without a quantifier after it, |, $, and
+  per alternative at most one group with |, two ? and one * or +.`
+- Import and export: `Category texts: %s`, `on this site`, `parent domain`,
+  `Import the default language as well: this service is not on this site.`,
+  `The service itself is not imported: %s`
+- The texts of the presets (purposes, durations and notes) in
+  `src/consent/data/service-presets.php`.
 
 ### 0.4.0
 

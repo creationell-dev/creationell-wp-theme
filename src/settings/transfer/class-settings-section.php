@@ -233,24 +233,7 @@ final class Settings_Section implements Section_Interface {
 	 * @return list<array{lang: string, from: string, values: array<string, mixed>, replaced_by: string|null}> Parts in file order.
 	 */
 	private static function parts( array $translatable, array $lang_map ): array {
-		$sources = array();
-		foreach ( $lang_map as $source => $target ) {
-			if ( $source !== $target ) {
-				$sources[ $target ] = $source;
-			}
-		}
-		$parts = array();
-		foreach ( $translatable as $lang => $values ) {
-			$lang    = (string) $lang;
-			$target  = $lang_map[ $lang ] ?? $lang;
-			$parts[] = array(
-				'lang'        => $target,
-				'from'        => $lang,
-				'values'      => $values,
-				'replaced_by' => $target === $lang && isset( $sources[ $lang ] ) ? $sources[ $lang ] : null,
-			);
-		}
-		return $parts;
+		return Lang_Parts::parts( $translatable, $lang_map );
 	}
 
 	/**
@@ -265,12 +248,7 @@ final class Settings_Section implements Section_Interface {
 	 * @phpstan-return list<Plan_Row>
 	 */
 	private static function mapped( array $rows, string $from ): array {
-		/* translators: %s: language code of the file, e.g. "en". */
-		$note = sprintf( __( 'From language %s of the file.', 'creationell-wp-theme' ), $from );
-		return array_map(
-			static fn( Plan_Row $row ): Plan_Row => new Plan_Row( $row->section, $row->key, $row->lang, $row->current, $row->incoming, $row->status, '' === $row->message ? $note : $row->message . ' ' . $note, $row->switch_result ),
-			$rows
-		);
+		return Lang_Parts::mapped( $rows, $from );
 	}
 
 	/**

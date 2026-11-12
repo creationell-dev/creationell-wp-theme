@@ -13,6 +13,7 @@ use Closure;
 use Creationell\WpTheme\Compiler\Atomic_File_Writer;
 use Creationell\WpTheme\Core\Capabilities;
 use Creationell\WpTheme\Settings\Transfer\Backup_Store;
+use Creationell\WpTheme\Settings\Transfer\Consent_Services_Section;
 use Creationell\WpTheme\Settings\Transfer\Export_Request;
 use Creationell\WpTheme\Settings\Transfer\Exporter;
 use Creationell\WpTheme\Settings\Transfer\Import_Options;
@@ -170,7 +171,7 @@ final class Settings_Transfer_Command {
 	 * : Replace an existing file.
 	 *
 	 * [--sections=<sections>]
-	 * : Comma-separated sections; default: settings,modules.
+	 * : Comma-separated sections; default: every section, consent_services only for a user who may manage the consent.
 	 *
 	 * [--lang=<codes>]
 	 * : Comma-separated language codes; default: every active language.
@@ -198,7 +199,7 @@ final class Settings_Transfer_Command {
 				self::fail( sprintf( 'The file %s exists. Use --force to replace it.', $path ) );
 			}
 		}
-		$request = self::attempt( static fn(): Export_Request => new Export_Request( self::sections( $assoc_args ), self::langs( $assoc_args ), $user_id, 'cli' ) );
+		$request = self::attempt( static fn(): Export_Request => new Export_Request( isset( $assoc_args['sections'] ) ? self::sections( $assoc_args ) : self::default_sections( $user_id ), self::langs( $assoc_args ), $user_id, 'cli' ) );
 		$json    = self::attempt( static fn(): string => Json_Codec::encode( Exporter::instance()->export( $request )->to_array() ) );
 		if ( null === $path ) {
 			WP_CLI::line( rtrim( $json, "\n" ) );
@@ -222,7 +223,7 @@ final class Settings_Transfer_Command {
 	 * : Path of the JSON file.
 	 *
 	 * [--sections=<sections>]
-	 * : Comma-separated sections; default: every section of the file.
+	 * : Comma-separated sections; default: every section of the file, without consent_services for a user who may not manage the consent.
 	 *
 	 * [--lang=<codes>]
 	 * : Comma-separated language codes; default: every active language.
@@ -326,7 +327,7 @@ final class Settings_Transfer_Command {
 	 * ## OPTIONS
 	 *
 	 * [--sections=<sections>]
-	 * : Comma-separated sections; default: settings,modules.
+	 * : Comma-separated sections; default: every section.
 	 *
 	 * ## EXAMPLES
 	 *
@@ -475,6 +476,9 @@ final class Settings_Transfer_Command {
 		$dry_run  = ! empty( $assoc_args['dry-run'] );
 		$strict   = ! empty( $assoc_args['strict'] );
 		$sections = isset( $assoc_args['sections'] ) ? self::sections( $assoc_args ) : $file->sections;
+		if ( ! isset( $assoc_args['sections'] ) && 'import' === $reason ) {
+			$sections = array_values( array_diff( $sections, array_diff( Sections::ids(), self::default_sections( $user_id ) ) ) );
+		}
 		$langs    = self::langs( $assoc_args );
 		$lang_map = self::lang_map( $assoc_args );
 		$plan     = self::attempt( static fn(): Import_Plan => $importer->plan( $file, new Import_Options( $sections, $langs, $user_id, 'cli', false, array(), $strict, $dry_run, $reason, $lang_map ), $migrated ) );
@@ -746,6 +750,20 @@ final class Settings_Transfer_Command {
 	 */
 	private static function sections( array $assoc_args ): array {
 		return self::codes( $assoc_args, 'sections' ) ?? Sections::ids();
+	}
+
+	/**
+	 * Returns the sections of an export or import without --sections: every section, "consent_services" only for a person who may manage the consent.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param int $user_id User ID.
+	 * @return array<int, string> Section IDs in file order.
+	 * @phpstan-return list<string>
+	 */
+	private static function default_sections( int $user_id ): array {
+		$consent = user_can( $user_id, Capabilities::MANAGE_CONSENT );
+		return array_values( array_filter( Sections::ids(), static fn( string $id ): bool => Consent_Services_Section::ID !== $id || $consent ) );
 	}
 
 	/**

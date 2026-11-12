@@ -10,6 +10,7 @@ declare(strict_types=1);
 namespace Creationell\WpTheme\Core;
 
 use Creationell\WpTheme\Admin\Menu;
+use Creationell\WpTheme\Admin\Consent_Services_Page;
 use Creationell\WpTheme\Admin\Module_Page;
 use Creationell\WpTheme\Admin\Rights_Page;
 use Creationell\WpTheme\Admin\Notices;
@@ -21,6 +22,7 @@ use Creationell\WpTheme\Assets\Editor_Assets;
 use Creationell\WpTheme\Assets\Vendor_Scripts;
 use Creationell\WpTheme\Child\Child_Theme;
 use Creationell\WpTheme\Cli\Child_Command;
+use Creationell\WpTheme\Cli\Consent_Command;
 use Creationell\WpTheme\Cli\Css_Command;
 use Creationell\WpTheme\Cli\Doctor_Command;
 use Creationell\WpTheme\Cli\Module_Command;
@@ -93,6 +95,7 @@ final class Theme {
 		add_action( 'cli_init', array( Bootstrap_Bridge::class, 'add_doctor_section' ), 10, 0 );
 		add_action( 'cli_init', array( Doctor_Command::class, 'register' ), 10, 0 );
 		add_action( 'cli_init', array( Module_Command::class, 'register' ), 10, 0 );
+		add_action( 'cli_init', array( Consent_Command::class, 'register' ), 10, 0 );
 		add_filter( 'map_meta_cap', array( Capabilities::class, 'map_meta_cap' ), 10, 4 );
 		Site_Editor_Lock::register();
 		Template_Part_Gate::register();
@@ -101,6 +104,7 @@ final class Theme {
 		add_action( 'admin_init', array( Menu::class, 'redirect' ), 10, 0 );
 		Module_Page::register_hooks();
 		Rights_Page::register_hooks();
+		Consent_Services_Page::register_hooks();
 		Theme_Switch_Notice::register_hooks();
 		add_action( 'after_setup_theme', array( Acf_Adapter::class, 'boot' ), 10, 0 );
 		add_action( 'cli_init', array( Child_Command::class, 'register' ), 10, 0 );

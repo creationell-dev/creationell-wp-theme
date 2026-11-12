@@ -30,27 +30,36 @@
 	/**
 	 * Turns the cookie names of a category into what CookieConsent deletes.
 	 *
-	 * Names with is_regex become regular expressions. A pattern that PHP accepts
-	 * but JavaScript does not is dropped, so it cannot stop the banner.
+	 * Names with is_regex become regular expressions without flags: "u" would
+	 * reject escapes of PHP preg_quote() such as "\-", and "i" would widen the
+	 * case-sensitive patterns. A pattern that PHP accepts but JavaScript does
+	 * not is dropped, so it cannot stop the banner. A non-empty domain is
+	 * passed on.
 	 *
-	 * @param {Array} cookies Cookies with name and is_regex.
-	 * @return {Array} Cookies with a string or RegExp name.
+	 * @param {Array} cookies Cookies with name, is_regex and an optional domain.
+	 * @return {Array} Cookies with a string or RegExp name and an optional domain.
 	 */
 	function clearList( cookies ) {
 		var list = [];
 		cookies.forEach( function ( cookie ) {
+			var entry;
 			if ( ! cookie || 'string' !== typeof cookie.name ) {
 				return;
 			}
 			if ( ! cookie.is_regex ) {
-				list.push( { name: cookie.name } );
-				return;
+				entry = { name: cookie.name };
+			} else {
+				try {
+					entry = { name: new RegExp( cookie.name ) };
+				} catch ( error ) {
+					// Invalid pattern: the cookie is not deleted on withdrawal.
+					return;
+				}
 			}
-			try {
-				list.push( { name: new RegExp( cookie.name ) } );
-			} catch ( error ) {
-				// Invalid pattern: the cookie is not deleted on withdrawal.
+			if ( 'string' === typeof cookie.domain && '' !== cookie.domain ) {
+				entry.domain = cookie.domain;
 			}
+			list.push( entry );
 		} );
 		return list;
 	}

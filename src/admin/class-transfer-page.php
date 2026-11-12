@@ -10,11 +10,13 @@ declare(strict_types=1);
 namespace Creationell\WpTheme\Admin;
 
 use Closure;
+use Creationell\WpTheme\Consent\Consent_Cookie_Name;
 use Creationell\WpTheme\Core\Capabilities;
 use Creationell\WpTheme\Modules\Module_Catalog;
 use Creationell\WpTheme\Settings\Language;
 use Creationell\WpTheme\Settings\Registry;
 use Creationell\WpTheme\Settings\Transfer\Backup_Store;
+use Creationell\WpTheme\Settings\Transfer\Consent_Services_Section;
 use Creationell\WpTheme\Settings\Transfer\Export_Request;
 use Creationell\WpTheme\Settings\Transfer\Exporter;
 use Creationell\WpTheme\Settings\Transfer\Import_Options;
@@ -25,6 +27,7 @@ use Creationell\WpTheme\Settings\Transfer\Importer;
 use Creationell\WpTheme\Settings\Transfer\Json_Codec;
 use Creationell\WpTheme\Settings\Transfer\Plan_Row;
 use Creationell\WpTheme\Settings\Transfer\Row_Status;
+use Creationell\WpTheme\Settings\Transfer\Section_Languages;
 use Creationell\WpTheme\Settings\Transfer\Sections;
 use Creationell\WpTheme\Settings\Transfer\Transfer_Error;
 use Creationell\WpTheme\Settings\Transfer\Transfer_Exception;
@@ -800,8 +803,9 @@ final class Transfer_Page {
 		if ( $invalid ) {
 			self::field_error( $error_id, $error );
 		}
+		$consent = user_can( get_current_user_id(), Capabilities::MANAGE_CONSENT );
 		foreach ( Sections::all() as $id => $section ) {
-			self::checkbox( 'sections[]', $id, self::ID . '-section-' . $id, $section->label(), $invalid );
+			self::checkbox( 'sections[]', $id, self::ID . '-section-' . $id, $section->label(), $invalid, Consent_Services_Section::ID !== $id || $consent );
 		}
 		echo "</fieldset>\n";
 		echo '<fieldset class="' . esc_attr( self::ID . '-choices' ) . '">';
@@ -992,7 +996,7 @@ final class Transfer_Page {
 		if ( $map_error ) {
 			self::error_notice( Transfer_Error::LANG_MAP_INVALID );
 		}
-		if ( ! $restore && array() !== $plan->file->translatable ) {
+		if ( ! $restore && array() !== self::file_languages( $plan->file ) ) {
 			self::render_lang_map( $token, $plan->file, $map_error ? null : $selection, $map_error );
 		}
 		self::render_rows( $plan->rows, true );
@@ -1055,8 +1059,7 @@ final class Transfer_Page {
 		if ( $invalid ) {
 			self::field_error( $error_id, Transfer_Error::LANG_MAP_INVALID );
 		}
-		foreach ( array_keys( $file->translatable ) as $source ) {
-			$source  = (string) $source;
+		foreach ( self::file_languages( $file ) as $source ) {
 			$id      = self::ID . '-langmap-' . $source;
 			$current = $selection[ $source ] ?? ( in_array( $source, $active, true ) ? $source : '-' );
 			echo '<p><label for="' . esc_attr( $id ) . '">';
@@ -1279,17 +1282,88 @@ final class Transfer_Page {
 	 * @return void
 	 */
 	private static function row_html( Plan_Row $row ): void {
-		$module = Transfer_File::SECTION_MODULES === $row->section && str_starts_with( $row->key, 'module_' );
-		$label  = $module ? Module_Catalog::instance()->title( Transfer_File::module_slug( $row->key ) ) : self::key_label( $row->key );
+		$module  = Transfer_File::SECTION_MODULES === $row->section && str_starts_with( $row->key, 'module_' );
+		$consent = Consent_Services_Section::ID === $row->section;
+		$service = $consent && null === $row->lang && ! str_starts_with( $row->key, 'category:' );
+		if ( $consent ) {
+			$label = self::consent_label( $row );
+		} else {
+			$label = $module ? Module_Catalog::instance()->title( Transfer_File::module_slug( $row->key ) ) : self::key_label( $row->key );
+		}
 		echo '<tr><th scope="row">' . esc_html( $label ) . '</th>';
 		echo '<td>' . esc_html( $row->lang ?? __( 'All languages', 'creationell-wp-theme' ) ) . '</td>';
+		foreach ( array( $row->current, $row->incoming ) as $value ) {
+			echo '<td>';
+			if ( $service ) {
+				self::print_service( $value );
+			} else {
+				self::print_value( $value, $module );
+			}
+			echo '</td>';
+		}
 		echo '<td>';
-		self::print_value( $row->current, $module );
-		echo '</td><td>';
-		self::print_value( $row->incoming, $module );
-		echo '</td><td>';
 		self::print_status( $row );
 		echo "</td></tr>\n";
+	}
+
+	/**
+	 * Returns the label of a row of the section "consent_services".
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param Plan_Row $row Row.
+	 * @return string Name of the service, "Category texts: <slug>" for a category text, else the key.
+	 */
+	private static function consent_label( Plan_Row $row ): string {
+		if ( str_starts_with( $row->key, 'category:' ) ) {
+			/* translators: %s: slug of a consent category, e.g. "analytics". */
+			return sprintf( __( 'Category texts: %s', 'creationell-wp-theme' ), substr( $row->key, strlen( 'category:' ) ) );
+		}
+		foreach ( array( $row->incoming, $row->current ) as $value ) {
+			if ( is_array( $value ) && is_string( $value['name'] ?? null ) && '' !== $value['name'] ) {
+				return $value['name'];
+			}
+		}
+		return $row->key;
+	}
+
+	/**
+	 * Prints the structure of a consent service: name, category and the cookies.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param mixed $value Service, or null when there is none.
+	 * @return void
+	 */
+	private static function print_service( mixed $value ): void {
+		if ( ! is_array( $value ) ) {
+			echo '<span class="' . esc_attr( self::ID . '-default' ) . '">' . esc_html__( 'None', 'creationell-wp-theme' ) . '</span>';
+			return;
+		}
+		$name     = is_string( $value['name'] ?? null ) ? $value['name'] : '';
+		$category = is_string( $value['category'] ?? null ) ? $value['category'] : '';
+		echo esc_html( $name ) . '<br>' . esc_html( $category );
+		$cookies = is_array( $value['cookies'] ?? null ) ? $value['cookies'] : array();
+		if ( array() === $cookies ) {
+			return;
+		}
+		echo "<ul>\n";
+		foreach ( $cookies as $cookie ) {
+			if ( ! is_array( $cookie ) ) {
+				continue;
+			}
+			$match = is_string( $cookie['match'] ?? null ) ? $cookie['match'] : 'exact';
+			$notes = array( $match );
+			if ( true === ( $cookie['first_party'] ?? null ) ) {
+				$notes[] = __( 'on this site', 'creationell-wp-theme' );
+			}
+			if ( true === ( $cookie['parent_domain'] ?? null ) ) {
+				$notes[] = __( 'parent domain', 'creationell-wp-theme' );
+			}
+			$display = Consent_Cookie_Name::display( is_string( $cookie['name'] ?? null ) ? $cookie['name'] : '', $match );
+			echo '<li><code>' . esc_html( $display ) . '</code> (' . esc_html( implode( ', ', $notes ) ) . ")</li>\n";
+		}
+		echo '</ul>';
 	}
 
 	/**
@@ -1474,7 +1548,7 @@ final class Transfer_Page {
 	}
 
 	/**
-	 * Prints a checked checkbox with its label.
+	 * Prints a checkbox with its label, checked by default.
 	 *
 	 * @since 1.0.0
 	 *
@@ -1483,14 +1557,16 @@ final class Transfer_Page {
 	 * @param string $id      ID.
 	 * @param string $label   Label.
 	 * @param bool   $invalid Whether the group has an error.
+	 * @param bool   $checked Whether the box is checked.
 	 * @return void
 	 */
-	private static function checkbox( string $name, string $value, string $id, string $label, bool $invalid ): void {
+	private static function checkbox( string $name, string $value, string $id, string $label, bool $invalid, bool $checked = true ): void {
 		printf(
-			'<p><input type="checkbox" id="%1$s" name="%2$s" value="%3$s" checked%4$s> <label for="%1$s">%5$s</label></p>' . "\n",
+			'<p><input type="checkbox" id="%1$s" name="%2$s" value="%3$s"%4$s%5$s> <label for="%1$s">%6$s</label></p>' . "\n",
 			esc_attr( $id ),
 			esc_attr( $name ),
 			esc_attr( $value ),
+			$checked ? ' checked' : '',
 			$invalid ? ' aria-invalid="true"' : '',
 			esc_html( $label )
 		);
@@ -1721,6 +1797,25 @@ final class Transfer_Page {
 			'backup'  => __( 'Backup', 'creationell-wp-theme' ),
 			default   => $action,
 		};
+	}
+
+	/**
+	 * Returns the languages of the file a language map can name: those of the translated settings and those of the sections with texts of their own.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param Transfer_File $file File.
+	 * @return array<int, string> Language codes in file order, each once.
+	 * @phpstan-return list<string>
+	 */
+	private static function file_languages( Transfer_File $file ): array {
+		$langs = array_map( 'strval', array_keys( $file->translatable ) );
+		foreach ( Sections::all() as $id => $section ) {
+			if ( $section instanceof Section_Languages && $file->has_section( $id ) ) {
+				$langs = array_merge( $langs, $section->languages( $file ) );
+			}
+		}
+		return array_values( array_unique( $langs ) );
 	}
 
 	/**
@@ -1991,11 +2086,12 @@ final class Transfer_Page {
 				'valid'    => true,
 			);
 		}
-		$active = self::languages();
-		$map    = array();
-		$langs  = array();
+		$active  = self::languages();
+		$sources = self::file_languages( $file );
+		$map     = array();
+		$langs   = array();
 		foreach ( $selection as $source => $target ) {
-			if ( ! array_key_exists( $source, $file->translatable ) || ( '-' !== $target && ! in_array( $target, $active, true ) ) ) {
+			if ( ! in_array( (string) $source, $sources, true ) || ( '-' !== $target && ! in_array( $target, $active, true ) ) ) {
 				return array(
 					'lang_map' => array(),
 					'langs'    => null,

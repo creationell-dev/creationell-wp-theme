@@ -18,7 +18,8 @@ defined( 'ABSPATH' ) || exit;
  * The theme adds no role and changes none; it only answers map_meta_cap for its
  * own capabilities. Editors (edit_pages) maintain the texts, see the advanced
  * pages read-only and edit template parts; the agency (manage_options) manages
- * design, modules, import and export, menus and the Bootstrap line. A child
+ * design, modules, import and export, menus, the consent services and the
+ * Bootstrap line. A child
  * theme opens single areas to editors, takes basic areas back to the agency or
  * restricts administrators of the customer through the one filter
  * creationell_wp_theme_capabilities; its values are defaults, which the agency
@@ -102,11 +103,18 @@ final class Capabilities {
 	public const MANAGE_RIGHTS = 'creationell_wp_theme_manage_rights';
 
 	/**
+	 * Consent services and their cookies (page "Cookies and services"); unlockable.
+	 *
+	 * @since 1.0.0
+	 */
+	public const MANAGE_CONSENT = 'creationell_wp_theme_manage_consent';
+
+	/**
 	 * Areas a child theme may open to editors (key "unlock" of the filter).
 	 *
 	 * @since 1.0.0
 	 */
-	public const UNLOCKABLE = array( 'design', 'modules', 'import_export', 'menus' );
+	public const UNLOCKABLE = array( 'design', 'modules', 'import_export', 'menus', 'consent' );
 
 	/**
 	 * Areas a child theme may take back to the agency (key "revoke" of the filter).
@@ -141,7 +149,7 @@ final class Capabilities {
 	 * Returns the meta capability of each area.
 	 *
 	 * The areas are basic, advanced, template_parts, design, modules,
-	 * import_export, menus and bootstrap_line.
+	 * import_export, menus, bootstrap_line and consent.
 	 *
 	 * @since 1.0.0
 	 *
@@ -157,6 +165,7 @@ final class Capabilities {
 			'import_export'  => self::IMPORT_EXPORT,
 			'menus'          => self::EDIT_MENUS,
 			'bootstrap_line' => self::SWITCH_BOOTSTRAP_LINE,
+			'consent'        => self::MANAGE_CONSENT,
 		);
 	}
 
@@ -277,7 +286,7 @@ final class Capabilities {
 		 * Filters who may use the areas of the theme; the only filter for capabilities.
 		 *
 		 * "unlock" opens an area of the agency to editors (edit_pages): design,
-		 * modules, import_export, menus. "revoke" takes an area of the editors
+		 * modules, import_export, menus, consent. "revoke" takes an area of the editors
 		 * back to the agency (manage_options): basic, template_parts.
 		 * "restricted_admins" lists user logins of administrators who may use
 		 * only the unlocked areas; they never switch the Bootstrap line. These

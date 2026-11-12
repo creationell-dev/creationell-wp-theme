@@ -57,6 +57,7 @@ final class Menu {
 		'creationell-wp-theme-modules',
 		'creationell-wp-theme-import-export',
 		'creationell-wp-theme-rights',
+		'creationell-wp-theme-consent-services',
 	);
 
 	/**

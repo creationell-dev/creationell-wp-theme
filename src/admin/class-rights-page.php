@@ -284,6 +284,7 @@ final class Rights_Page {
 			'modules'        => __( 'Modules', 'creationell-wp-theme' ),
 			'import_export'  => __( 'Import and export', 'creationell-wp-theme' ),
 			'menus'          => __( 'Menus of header and footer', 'creationell-wp-theme' ),
+			'consent'        => __( 'Cookies and services', 'creationell-wp-theme' ),
 			'basic'          => __( 'Texts', 'creationell-wp-theme' ),
 			'template_parts' => __( 'Header and footer', 'creationell-wp-theme' ),
 			self::ADMINS     => __( 'Restricted administrators', 'creationell-wp-theme' ),
@@ -402,7 +403,7 @@ final class Rights_Page {
 		$listed = array_map( 'strtolower', Capabilities::config()['restricted_admins'] );
 		$own    = strtolower( self::own_login() );
 		printf( '<h2 id="%1$s">%2$s</h2>' . "\n", esc_attr( self::ID . 'admins-title' ), esc_html( self::title( self::ADMINS ) ) );
-		printf( '<p>%s</p>' . "\n", esc_html__( 'Administrators marked here cannot use the areas of the agency (design, modules, import and export, menus) unless they are open to editors; they never see this page and never switch the Bootstrap line. They keep the other rights of an administrator in WordPress; the restriction holds firmly only when the child theme locks it.', 'creationell-wp-theme' ) );
+		printf( '<p>%s</p>' . "\n", esc_html__( 'Administrators marked here cannot use the areas of the agency (design, modules, import and export, menus, cookies and services) unless they are open to editors; they never see this page and never switch the Bootstrap line. They keep the other rights of an administrator in WordPress; the restriction holds firmly only when the child theme locks it.', 'creationell-wp-theme' ) );
 		self::render_form_start( self::ADMINS );
 		printf( '<fieldset aria-describedby="%1$s"><legend>%2$s</legend>', esc_attr( self::ID . self::ADMINS . '-origin' ), esc_html( self::title( self::ADMINS ) ) );
 		foreach ( self::administrators() as $index => $admin ) {
@@ -476,6 +477,7 @@ final class Rights_Page {
 			'modules'        => __( 'Switching theme modules on and off.', 'creationell-wp-theme' ),
 			'import_export'  => __( 'Exporting and importing the theme settings.', 'creationell-wp-theme' ),
 			'menus'          => __( 'The menus assigned to the header and the footer.', 'creationell-wp-theme' ),
+			'consent'        => __( 'Consent services and their cookies in the cookie banner.', 'creationell-wp-theme' ),
 			'basic'          => __( 'Texts such as the footer, the contact details and the cookie banner.', 'creationell-wp-theme' ),
 			'template_parts' => __( 'Header and footer in the Site Editor.', 'creationell-wp-theme' ),
 		);

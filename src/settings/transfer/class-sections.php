@@ -17,8 +17,9 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Lists the sections this theme version exports and imports.
  *
- * Stage 1 and 3 of the transfer know "settings" and "modules"; later
- * sections (menu locations, theme mods, template parts) join this list.
+ * Stage 1 and 3 of the transfer know "settings" and "modules"; the
+ * cookie backend adds "consent_services"; later sections (menu locations,
+ * theme mods, template parts) join this list.
  * Sections of a file that are not in the list are reported as
  * "section_unknown" and never written.
  *
@@ -35,7 +36,7 @@ final class Sections {
 	 * @return array<string, Section_Interface> Sections by ID.
 	 */
 	public static function all( ?Setter $setter = null ): array {
-		$sections = array( new Settings_Section( $setter ), new Modules_Section() );
+		$sections = array( new Settings_Section( $setter ), new Modules_Section(), new Consent_Services_Section() );
 		$by_id    = array();
 		foreach ( $sections as $section ) {
 			$by_id[ $section->id() ] = $section;

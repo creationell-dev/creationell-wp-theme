@@ -146,10 +146,10 @@ final class Importer {
 		if ( array() === $selected ) {
 			Transfer_Exception::raise( Transfer_Error::NOTHING_SELECTED );
 		}
-		self::check_lang_map( $file, $options, $language->active() );
-
 		$sections = $this->sections();
-		$rows     = array();
+		self::check_lang_map( $file, $options, $language->active(), $sections );
+
+		$rows = array();
 		foreach ( $selected as $id ) {
 			if ( isset( $sections[ $id ] ) ) {
 				$rows = array_merge( $rows, $sections[ $id ]->plan( $file, $options ) );
@@ -313,15 +313,25 @@ final class Importer {
 	/**
 	 * Checks the language map against the file and the active languages.
 	 *
+	 * A source is in the file when the file has translated settings in it or
+	 * when a section of the file that implements Section_Languages names it.
+	 *
 	 * @since 1.0.0
 	 *
-	 * @param Transfer_File      $file    File.
-	 * @param Import_Options     $options Options.
-	 * @param array<int, string> $active  Active language codes.
+	 * @param Transfer_File                    $file     File.
+	 * @param Import_Options                   $options  Options.
+	 * @param array<int, string>               $active   Active language codes.
+	 * @param array<string, Section_Interface> $sections Sections by ID.
 	 * @return void
 	 * @throws Transfer_Exception With lang_map_invalid and the reason source_missing, target_inactive, target_twice or format.
 	 */
-	private static function check_lang_map( Transfer_File $file, Import_Options $options, array $active ): void {
+	private static function check_lang_map( Transfer_File $file, Import_Options $options, array $active, array $sections ): void {
+		$sources = array_keys( $file->translatable );
+		foreach ( $file->sections as $id ) {
+			if ( isset( $sections[ $id ] ) && $sections[ $id ] instanceof Section_Languages ) {
+				$sources = array_merge( $sources, $sections[ $id ]->languages( $file ) );
+			}
+		}
 		$targets = array();
 		foreach ( $options->lang_map as $source => $target ) {
 			if ( 1 !== preg_match( Transfer_File::LANGUAGE_PATTERN, (string) $source ) || 1 !== preg_match( Transfer_File::LANGUAGE_PATTERN, $target ) ) {
@@ -333,7 +343,7 @@ final class Importer {
 					)
 				);
 			}
-			if ( ! array_key_exists( $source, $file->translatable ) ) {
+			if ( ! in_array( (string) $source, $sources, true ) ) {
 				Transfer_Exception::raise(
 					Transfer_Error::LANG_MAP_INVALID,
 					array(

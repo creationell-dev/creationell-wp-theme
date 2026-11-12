@@ -29,11 +29,11 @@ defined( 'ABSPATH' ) || exit;
 final class Write_Context {
 
 	/**
-	 * Channels: the settings pages, WP-CLI, the import and the abilities.
+	 * Channels: the settings pages, WP-CLI, the import, the abilities and the theme's own admin pages outside ACF (`admin`).
 	 *
 	 * @since 1.0.0
 	 */
-	public const CHANNELS = array( 'acf', 'cli', 'import', 'ability' );
+	public const CHANNELS = array( 'acf', 'cli', 'import', 'ability', 'admin' );
 
 	/**
 	 * Checks the channel.
