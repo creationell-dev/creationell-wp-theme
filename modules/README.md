@@ -2,7 +2,8 @@
 
 A module is an optional function of the theme that a site switches on or off:
 blocks, integrations with plugins, the cookie banner. Modules ship with the theme
-only; there is no companion plugin. Every module is `off` until a site switches it on.
+only; there is no companion plugin. Every module is `off` until a site or its child
+theme switches it on.
 
 ## Catalog
 
@@ -15,6 +16,8 @@ only; there is no companion plugin. Every module is `off` until a site switches 
 | `consent` | Cookie banner and preferences dialog (CookieConsent 3.1.0) as consent provider for the core consent interface, footer link, block `consent-link`; not legally reviewed | `active`, `off` | available |
 | `header-footer` | Header and footer as template parts of the Site Editor, edited by editors; blocks for navbar, logo, search, footer menu, footer text, contact, social links and language switcher | `active`, `off` | available |
 | `woocommerce` | Shop templates, shop styles, product slider | `active`, `off` | not installed |
+| `blog` | Blog parts for posts: sidebar with categories and tags, reading time, back link, share links, richer 404 page, optional author pages; no block | `active`, `off` | available |
+| `post-filter` | Filters of the plugin JPKCom Post Filter in the blog sidebar; needs the plugin and the module `blog` | `active`, `off` | available |
 
 `wp creationell-theme module list` shows the state of every module; a module
 without its folder is `off` with the reason `not_installed`.

@@ -20,7 +20,7 @@ properties. The theme core lives in `src/`.
 | `pagination.php` | Pagination of archives and single posts |
 | `password-protected-form.php` | Form of password protected posts |
 | `template-functions.php` | Hooks that adapt WordPress output to the templates |
-| `template-tags.php` | Meta data of posts: author, dates, categories, tags, comments |
+| `template-tags.php` | Meta data of posts: author, dates, categories, tags, comments; the spots of the blog kit |
 | `tinymce-editor.php` | Styles of the classic editor |
 | `widgets.php` | Widget areas |
 | `blocks/` | Bootstrap classes for core blocks and widget blocks, the pattern category; `disable-unsupported-blocks.php` |
@@ -48,6 +48,40 @@ add_filter(
 	10,
 	2
 );
+```
+
+## Spots of the blog kit
+
+`template-tags.php` holds the places where the module `blog` adds its parts to
+a single post. The four single templates pass their context (`single`,
+`single-sidebar-left`, `single-sidebar-none`, `single-full-width-image`):
+
+- `creationell_wp_theme_category_badge( $context )` prints the category
+  badges; the filter `creationell_wp_theme_show_category_badge` (`$show`,
+  `$context`) hides them. Cards and post lists call it without a context.
+- `creationell_wp_theme_entry_meta( $context )` prints the markup of the filter
+  `creationell_wp_theme_entry_meta_html` and returns `true`; with an empty
+  filter result it prints nothing and returns `false`, and the template prints
+  its own meta line.
+- `creationell_wp_theme_entry_terms( $context )` does the same with the filter
+  `creationell_wp_theme_entry_terms_html`; with `false` the template prints its
+  tags with `creationell_wp_theme_tags()`.
+- `creationell_wp_theme_author()` asks the filter
+  `creationell_wp_theme_meta_author_link` (`$link`, `$user_id`) whether the
+  name links to the author archive.
+
+Both markup filters pass `wp_kses()` with the post tags and the SVG icons of
+the theme. `columns.php` and `template-functions.php` read the filter
+`creationell_wp_theme_blog_sidebar_force`, so a sidebar without widgets still
+gets the column `col-lg-9` and no body class `no-sidebar`. See
+`modules/blog/README.md`.
+
+```php
+<?php
+if ( ! creationell_wp_theme_entry_terms( 'single' ) ) {
+	creationell_wp_theme_tags();
+}
+?>
 ```
 
 Some helpers are wrapped in `function_exists()` checks, as in the base theme.

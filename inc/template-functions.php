@@ -29,8 +29,17 @@ function creationell_wp_theme_body_classes( mixed $classes ): mixed {
 		$classes[] = 'hfeed';
 	}
 
+	/**
+	 * Filters whether the sidebar shows without widgets, for example with the term lists of the blog.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param bool $force Whether to show the sidebar without widgets.
+	 */
+	$force = (bool) apply_filters( 'creationell_wp_theme_blog_sidebar_force', false );
+
 	// Adds a class of no-sidebar when there is no sidebar present.
-	if ( ! is_active_sidebar( 'sidebar-1' ) ) {
+	if ( ! is_active_sidebar( 'sidebar-1' ) && ! $force ) {
 		$classes[] = 'no-sidebar';
 	}
 

@@ -164,7 +164,18 @@ get_header();
 			<div class="<?php echo esc_attr( $creationell_wp_theme_class_main_col ); ?>">
 
 				<div class="entry-content">
-				<?php creationell_wp_theme_category_badge(); ?>
+				<?php
+				/**
+				 * Fires in the header of a post, after the post is set up and before the category badges.
+				 *
+				 * @since 1.0.0
+				 *
+				 * @param string $context Template, for example single or single-sidebar-left.
+				 */
+				do_action( 'creationell_wp_theme_entry_header_open', 'single-full-width-image' );
+				creationell_wp_theme_category_badge( 'single-full-width-image' );
+				if ( ! creationell_wp_theme_entry_meta( 'single-full-width-image' ) ) :
+					?>
 				<p class="entry-meta">
 					<small class="text-body-secondary">
 					<?php
@@ -174,7 +185,7 @@ get_header();
 					?>
 					</small>
 				</p>
-				<?php the_content(); ?>
+				<?php endif; ?><?php the_content(); ?>
 				</div>
 			  
 				<?php
@@ -190,10 +201,23 @@ get_header();
 
 				<div class="entry-footer clear-both">
 				<div class="mb-4">
-					<?php creationell_wp_theme_tags(); ?>
+					<?php
+					if ( ! creationell_wp_theme_entry_terms( 'single-full-width-image' ) ) {
+						creationell_wp_theme_tags();
+					}
+					?>
 				</div>
 
 				<?php
+				/**
+				 * Fires after the tags of a post, before related posts, the post navigation and the comments.
+				 *
+				 * @since 1.0.0
+				 *
+				 * @param string $context Template, for example single or single-sidebar-left.
+				 */
+				do_action( 'creationell_wp_theme_after_entry_terms', 'single-full-width-image' );
+
 					// Related posts using bs Swiper plugin
 					// Deprecated, new action creationell_wp_theme_before_pagination will be used for related posts.
 				if ( function_exists( 'creationell_wp_theme_related_posts' ) ) {

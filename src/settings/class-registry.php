@@ -139,7 +139,7 @@ final class Registry {
 	}
 
 	/**
-	 * Returns the core definitions: the Bootstrap line, the switches of the seven catalog modules, the design and the text keys.
+	 * Returns the core definitions: the Bootstrap line, the switches of the nine catalog modules, the design and the text keys.
 	 *
 	 * @since 1.0.0
 	 *

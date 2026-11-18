@@ -19,9 +19,22 @@ if ( ! function_exists( 'creationell_wp_theme_category_badge' ) ) :
 	 *
 	 * @since 1.0.0
 	 *
+	 * @param string $context Template, for example single or single-sidebar-left; empty in cards and post lists.
 	 * @return void
 	 */
-	function creationell_wp_theme_category_badge(): void {
+	function creationell_wp_theme_category_badge( string $context = '' ): void {
+		/**
+		 * Filters whether the category badges of a post show.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param bool   $show    Whether to show the category badges.
+		 * @param string $context Template, for example single or single-sidebar-left; empty in cards and post lists.
+		 */
+		if ( ! apply_filters( 'creationell_wp_theme_show_category_badge', true, $context ) ) {
+			return;
+		}
+
 		// Hide category and tag text for pages.
 		if ( 'post' === get_post_type() ) {
 			echo '<p class="category-badge">';
@@ -151,7 +164,7 @@ endif;
 if ( ! function_exists( 'creationell_wp_theme_author' ) ) {
 
 	/**
-	 * Prints the author of a post with a link to the author archive.
+	 * Prints the author of a post with a link to the author archive, or without the link when a filter says so.
 	 *
 	 * @since 1.0.0
 	 *
@@ -178,10 +191,24 @@ if ( ! function_exists( 'creationell_wp_theme_author' ) ) {
 			return;
 		}
 
+		$author_id = absint( get_the_author_meta( 'ID' ) );
+
+		/**
+		 * Filters whether the author name in the post meta links to the author archive.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param bool $link    Whether to link the author name.
+		 * @param int  $user_id ID of the author.
+		 */
+		$name = apply_filters( 'creationell_wp_theme_meta_author_link', true, $author_id )
+			? '<a class="url fn n" href="' . esc_url( get_author_posts_url( $author_id ) ) . '">' . esc_html( $author_name ) . '</a>'
+			: '<span class="fn n">' . esc_html( $author_name ) . '</span>';
+
 		$byline = sprintf(
 			/* translators: %s: post author */
 			esc_html_x( 'by %s', 'post author', 'creationell-wp-theme' ),
-			'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( absint( get_the_author_meta( 'ID' ) ) ) ) . '">' . esc_html( $author_name ) . '</a></span>'
+			'<span class="author vcard">' . $name . '</span>'
 		);
 
 		echo '<span class="byline"> ' . wp_kses_post( $byline ) . '</span>';
@@ -330,6 +357,70 @@ if ( ! function_exists( 'creationell_wp_theme_tags' ) ) :
 		);
 	}
 	add_filter( 'term_links-post_tag', 'creationell_wp_theme_add_tag_class' );
+endif;
+
+
+if ( ! function_exists( 'creationell_wp_theme_entry_meta' ) ) :
+	/**
+	 * Prints the meta line of a post that a module supplies, for example date, author and reading time.
+	 *
+	 * Without a module the filter returns an empty string; then nothing is printed
+	 * and the template prints its own meta line. The markup passes wp_kses with the
+	 * post tags and the SVG icons of the theme.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string $context Template, for example single or single-sidebar-left.
+	 * @return bool Whether a meta line was printed.
+	 */
+	function creationell_wp_theme_entry_meta( string $context ): bool {
+		/**
+		 * Filters the markup of the meta line of a post; empty keeps the meta line of the template.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param string $html    Markup of the meta line, empty for none.
+		 * @param string $context Template, for example single or single-sidebar-left.
+		 */
+		$html = (string) apply_filters( 'creationell_wp_theme_entry_meta_html', '', $context );
+		if ( '' === $html ) {
+			return false;
+		}
+		echo wp_kses( $html, creationell_wp_theme_kses_allowed_svg( wp_kses_allowed_html( 'post' ) ) );
+		return true;
+	}
+endif;
+
+
+if ( ! function_exists( 'creationell_wp_theme_entry_terms' ) ) :
+	/**
+	 * Prints the categories and tags of a post that a module supplies, below the content.
+	 *
+	 * Without a module the filter returns an empty string; then nothing is printed
+	 * and the template prints its tags with creationell_wp_theme_tags(). The markup
+	 * passes wp_kses with the post tags and the SVG icons of the theme.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string $context Template, for example single or single-sidebar-left.
+	 * @return bool Whether the terms were printed.
+	 */
+	function creationell_wp_theme_entry_terms( string $context ): bool {
+		/**
+		 * Filters the markup of the categories and tags below a post; empty keeps the tags of the template.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param string $html    Markup of the terms, empty for none.
+		 * @param string $context Template, for example single or single-sidebar-left.
+		 */
+		$html = (string) apply_filters( 'creationell_wp_theme_entry_terms_html', '', $context );
+		if ( '' === $html ) {
+			return false;
+		}
+		echo wp_kses( $html, creationell_wp_theme_kses_allowed_svg( wp_kses_allowed_html( 'post' ) ) );
+		return true;
+	}
 endif;
 
 

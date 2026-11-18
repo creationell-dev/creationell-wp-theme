@@ -45,6 +45,8 @@ final class Module_Catalog {
 		'consent'        => array( 'active', 'off' ),
 		'header-footer'  => array( 'active', 'off' ),
 		'woocommerce'    => array( 'active', 'off' ),
+		'blog'           => array( 'active', 'off' ),
+		'post-filter'    => array( 'active', 'off' ),
 	);
 
 	/**
@@ -170,6 +172,8 @@ final class Module_Catalog {
 			'consent'        => static fn(): string => __( 'Consent', 'creationell-wp-theme' ),
 			'header-footer'  => static fn(): string => __( 'Header and footer', 'creationell-wp-theme' ),
 			'woocommerce'    => static fn(): string => __( 'WooCommerce', 'creationell-wp-theme' ),
+			'blog'           => static fn(): string => __( 'Blog', 'creationell-wp-theme' ),
+			'post-filter'    => static fn(): string => __( 'Post filter', 'creationell-wp-theme' ),
 			default          => static fn(): string => $slug,
 		};
 	}

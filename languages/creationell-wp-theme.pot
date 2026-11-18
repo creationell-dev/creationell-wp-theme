@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-12T08:21:23+00:00\n"
+"POT-Creation-Date: 2026-11-18T16:29:13+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: creationell-wp-theme\n"
@@ -50,8 +50,14 @@ msgstr ""
 msgid "The page you are looking for does not exist or has moved."
 msgstr ""
 
-#: 404.php:97
+#: 404.php:107
 msgid "Back Home &raquo;"
+msgstr ""
+
+#. translators: %s: display name of the author
+#: author.php:127
+#, php-format
+msgid "Posts by %s"
 msgstr ""
 
 #. translators: %s: post title
@@ -98,7 +104,7 @@ msgid "Comments are closed."
 msgstr ""
 
 #: comments.php:141
-#: inc/template-tags.php:223
+#: inc/template-tags.php:250
 msgid "Leave a Comment"
 msgstr ""
 
@@ -190,7 +196,7 @@ msgstr ""
 
 #: inc/comments.php:50
 #: inc/comments.php:88
-#: inc/template-tags.php:241
+#: inc/template-tags.php:268
 #: src/admin/class-consent-services-page.php:1207
 msgid "Edit"
 msgstr ""
@@ -274,27 +280,28 @@ msgctxt "post password form"
 msgid "Enter"
 msgstr ""
 
-#: inc/template-tags.php:74
+#: inc/template-tags.php:87
 msgid "Sticky post"
 msgstr ""
 
 #. translators: used between list items, there is a space after the comma
-#: inc/template-tags.php:91
+#: inc/template-tags.php:104
+#: template-parts/blog/entry-meta.php:61
 msgid ", "
 msgstr ""
 
 #. translators: %s: post author
-#: inc/template-tags.php:183
+#: inc/template-tags.php:210
 #, php-format
 msgctxt "post author"
 msgid "by %s"
 msgstr ""
 
-#: inc/template-tags.php:260
+#: inc/template-tags.php:287
 msgid "Leave a comment"
 msgstr ""
 
-#: inc/template-tags.php:285
+#: inc/template-tags.php:312
 msgid "Tagged"
 msgstr ""
 
@@ -330,7 +337,7 @@ msgid "Top Nav Search"
 msgstr ""
 
 #: inc/widgets.php:97
-#: sidebar.php:95
+#: sidebar.php:114
 msgid "Sidebar"
 msgstr ""
 
@@ -360,6 +367,263 @@ msgstr ""
 
 #: inc/widgets.php:220
 msgid "404 Page"
+msgstr ""
+
+#: modules/blog/inc/class-author-profile-fields.php:174
+msgid "Author page"
+msgstr ""
+
+#: modules/blog/inc/class-author-profile-fields.php:177
+msgid "Profile image"
+msgstr ""
+
+#: modules/blog/inc/class-author-profile-fields.php:179
+msgid "Choose profile image"
+msgstr ""
+
+#: modules/blog/inc/class-author-profile-fields.php:179
+msgid "Use this image"
+msgstr ""
+
+#: modules/blog/inc/class-author-profile-fields.php:182
+msgid "Choose image"
+msgstr ""
+
+#: modules/blog/inc/class-author-profile-fields.php:183
+msgid "Remove image"
+msgstr ""
+
+#: modules/blog/inc/class-author-profile-fields.php:185
+msgid "An image from the media library, shown on the author page and as avatar instead of Gravatar. Without one the author page shows no image and the avatar follows the discussion settings (Gravatar or the default avatar)."
+msgstr ""
+
+#: modules/blog/inc/class-author-profile-fields.php:189
+msgid "Job title"
+msgstr ""
+
+#: modules/blog/inc/class-author-profile-fields.php:192
+msgid "Shown below the name on the author page, up to 120 characters."
+msgstr ""
+
+#: modules/blog/inc/class-author-profile-fields.php:196
+msgid "External profiles"
+msgstr ""
+
+#: modules/blog/inc/class-author-profile-fields.php:199
+msgid "One address per line, starting with https:// or http://, up to 10. Shown as links on the author page, after the website."
+msgstr ""
+
+#: modules/blog/inc/class-author-profile-fields.php:274
+msgid "This image cannot be used as profile image: choose an image you uploaded, or ask an editor or administrator to set it."
+msgstr ""
+
+#: modules/blog/inc/class-blog-module.php:109
+msgid "404 page links"
+msgstr ""
+
+#. translators: Accessible name of the sidebar landmark on blog pages, single posts and post archives.
+#: modules/blog/inc/class-blog-sidebar.php:123
+msgid "Blog sidebar"
+msgstr ""
+
+#: modules/blog/inc/class-blog-sidebar.php:152
+#: modules/blog/inc/class-entry-parts.php:151
+#: patterns/c-card-widget-categories.php:17
+#: template-parts/blog/entry-terms.php:71
+#: template-parts/blog/sidebar-terms.php:83
+msgid "Categories"
+msgstr ""
+
+#: modules/blog/inc/class-blog-sidebar.php:153
+#: modules/blog/inc/class-entry-parts.php:152
+#: template-parts/blog/entry-terms.php:95
+#: template-parts/blog/sidebar-terms.php:97
+msgid "Tags"
+msgstr ""
+
+#. translators: %s: title of the blog page.
+#: modules/blog/inc/class-entry-parts.php:219
+#, php-format
+msgid "Back to %s"
+msgstr ""
+
+#: modules/blog/inc/class-entry-parts.php:221
+#: template-parts/blog/back-link.php:25
+msgid "Back to the blog"
+msgstr ""
+
+#: modules/blog/inc/class-share-links.php:140
+#: template-parts/blog/share.php:59
+msgid "Share this post"
+msgstr ""
+
+#: modules/blog/module.php:25
+#: src/modules/class-module-catalog.php:175
+msgid "Blog"
+msgstr ""
+
+#: modules/blog/module.php:26
+msgid "Sidebar with categories and tags, reading time, back link, share links, a richer 404 page and optional author pages for the posts of the site."
+msgstr ""
+
+#: modules/blog/settings.php:39
+msgid "Term lists in the blog sidebar"
+msgstr ""
+
+#: modules/blog/settings.php:40
+msgid "Categories and tags, only one of them, or none."
+msgstr ""
+
+#: modules/blog/settings.php:51
+msgid "Number of posts in the term lists"
+msgstr ""
+
+#: modules/blog/settings.php:52
+msgid "Shows how many posts each category and tag has."
+msgstr ""
+
+#: modules/blog/settings.php:67
+msgid "Blog sidebar on small screens"
+msgstr ""
+
+#: modules/blog/settings.php:68
+msgid "Below the content, or in the offcanvas panel as on other pages."
+msgstr ""
+
+#: modules/blog/settings.php:79
+msgid "Category badge above the post title"
+msgstr ""
+
+#: modules/blog/settings.php:80
+msgid "Shows the category of a single post above its title."
+msgstr ""
+
+#: modules/blog/settings.php:91
+msgid "Date in the meta line"
+msgstr ""
+
+#: modules/blog/settings.php:92
+msgid "Shows the date of a post below its title."
+msgstr ""
+
+#: modules/blog/settings.php:103
+msgid "Reading time in the meta line"
+msgstr ""
+
+#: modules/blog/settings.php:104
+msgid "Shows how many minutes a post takes to read."
+msgstr ""
+
+#: modules/blog/settings.php:115
+msgid "Author in the meta line"
+msgstr ""
+
+#: modules/blog/settings.php:116
+msgid "Shows the author of a post below its title."
+msgstr ""
+
+#: modules/blog/settings.php:127
+msgid "Comments in the meta line"
+msgstr ""
+
+#: modules/blog/settings.php:128
+msgid "Shows the number of comments with a link to them, while comments are open or there are some."
+msgstr ""
+
+#: modules/blog/settings.php:139
+msgid "Words per minute"
+msgstr ""
+
+#: modules/blog/settings.php:140
+msgid "Reading speed for the reading time, from 100 to 400."
+msgstr ""
+
+#: modules/blog/settings.php:151
+msgid "Back link to the blog"
+msgstr ""
+
+#: modules/blog/settings.php:152
+msgid "Shows a link back to the blog page above a single post."
+msgstr ""
+
+#: modules/blog/settings.php:169
+msgid "Terms below a post"
+msgstr ""
+
+#: modules/blog/settings.php:170
+msgid "Categories and tags at the end of a single post, only one of them, or none."
+msgstr ""
+
+#: modules/blog/settings.php:187
+msgid "Share links"
+msgstr ""
+
+#: modules/blog/settings.php:188
+msgid "Automatic uses the plugin Shariff while it is active, otherwise the own links of the theme."
+msgstr ""
+
+#: modules/blog/settings.php:202
+msgid "Networks of the own share links"
+msgstr ""
+
+#: modules/blog/settings.php:203
+msgid "Names separated by commas, e.g. linkedin,email,copy. Available: linkedin, facebook, whatsapp, email, copy, x, bluesky and threads."
+msgstr ""
+
+#: modules/blog/settings.php:214
+msgid "Latest posts on the 404 page"
+msgstr ""
+
+#: modules/blog/settings.php:215
+msgid "From 0 to 6; 0 shows no posts."
+msgstr ""
+
+#: modules/blog/settings.php:226
+msgid "Search form on the 404 page"
+msgstr ""
+
+#: modules/blog/settings.php:227
+msgid "Shown only while the widget area of the 404 page holds no search."
+msgstr ""
+
+#: modules/blog/settings.php:238
+msgid "Author pages"
+msgstr ""
+
+#: modules/blog/settings.php:239
+msgid "Public pages for authors with posts. While this is off, author addresses show the 404 page."
+msgstr ""
+
+#: modules/blog/settings.php:252
+msgid "Heading of the categories"
+msgstr ""
+
+#: modules/blog/settings.php:253
+msgid "Empty shows \"Categories\"."
+msgstr ""
+
+#: modules/blog/settings.php:266
+msgid "Heading of the tags"
+msgstr ""
+
+#: modules/blog/settings.php:267
+msgid "Empty shows \"Tags\"."
+msgstr ""
+
+#: modules/blog/settings.php:280
+msgid "Text of the back link"
+msgstr ""
+
+#: modules/blog/settings.php:281
+msgid "Empty shows \"Back to {title}\". {title} is the title of the blog page."
+msgstr ""
+
+#: modules/blog/settings.php:294
+msgid "Heading of the share links"
+msgstr ""
+
+#: modules/blog/settings.php:295
+msgid "Empty shows \"Share this post\"."
 msgstr ""
 
 #: modules/consent/i18n-strings.php:20
@@ -466,7 +730,7 @@ msgstr ""
 
 #: modules/consent/inc/class-texts.php:207
 #: patterns/c-alert-danger.php:16
-#: sidebar.php:98
+#: sidebar.php:117
 #: template-parts/header/navbar.php:173
 msgid "Close"
 msgstr ""
@@ -1044,6 +1308,15 @@ msgstr ""
 msgid "Customised header and footer parts stay in the database but are no longer shown."
 msgstr ""
 
+#: modules/post-filter/module.php:24
+#: src/modules/class-module-catalog.php:176
+msgid "Post filter"
+msgstr ""
+
+#: modules/post-filter/module.php:25
+msgid "Shows the filters of the plugin JPKCom Post Filter in the blog sidebar instead of the plain category and tag lists."
+msgstr ""
+
 #: modules/post-lists/i18n-strings.php:20
 msgid "Post list"
 msgstr ""
@@ -1305,7 +1578,7 @@ msgid "Full content"
 msgstr ""
 
 #: modules/post-lists/module.php:25
-#: src/modules/class-module-catalog.php:166
+#: src/modules/class-module-catalog.php:168
 msgid "Post lists"
 msgstr ""
 
@@ -1324,7 +1597,7 @@ msgstr ""
 #: modules/post-slider/i18n-strings.php:20
 #: modules/post-slider/inc/class-post-slider-module.php:313
 #: modules/post-slider/module.php:25
-#: src/modules/class-module-catalog.php:167
+#: src/modules/class-module-catalog.php:169
 msgid "Post slider"
 msgstr ""
 
@@ -1409,7 +1682,7 @@ msgstr ""
 #: modules/related-posts/i18n-strings.php:20
 #: modules/related-posts/inc/class-related-posts-module.php:319
 #: modules/related-posts/module.php:26
-#: src/modules/class-module-catalog.php:168
+#: src/modules/class-module-catalog.php:170
 msgid "Related posts"
 msgstr ""
 
@@ -1577,10 +1850,6 @@ msgstr ""
 #: patterns/c-card-widget-categories.php
 msgctxt "Pattern title"
 msgid "c - Card with category widget"
-msgstr ""
-
-#: patterns/c-card-widget-categories.php:17
-msgid "Categories"
 msgstr ""
 
 #: patterns/c-cards-pricing.php
@@ -1803,7 +2072,7 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: sidebar.php:59
+#: sidebar.php:78
 msgid "Open side menu"
 msgstr ""
 
@@ -1812,10 +2081,10 @@ msgid "Full width image"
 msgstr ""
 
 #. translators: Name of the navigation to the previous and the next post; not the same as "Posts navigation" (pages of a post archive).
-#: single-templates/single-full-width-image.php:215
-#: single-templates/single-sidebar-left.php:166
-#: single-templates/single-sidebar-none.php:152
-#: single.php:164
+#: single-templates/single-full-width-image.php:239
+#: single-templates/single-sidebar-left.php:190
+#: single-templates/single-sidebar-none.php:176
+#: single.php:188
 msgid "Post navigation"
 msgstr ""
 
@@ -2626,7 +2895,7 @@ msgid "Texts"
 msgstr ""
 
 #: src/admin/class-rights-page.php:289
-#: src/modules/class-module-catalog.php:171
+#: src/modules/class-module-catalog.php:173
 msgid "Header and footer"
 msgstr ""
 
@@ -3707,15 +3976,15 @@ msgstr ""
 msgid "CREATIONELL_WP_THEME_MANIFEST_URL is set to %s, which is no https URL. The creationell Theme ignores it and uses the official update manifest."
 msgstr ""
 
-#: src/modules/class-module-catalog.php:169
+#: src/modules/class-module-catalog.php:171
 msgid "Contact Form 7"
 msgstr ""
 
-#: src/modules/class-module-catalog.php:170
+#: src/modules/class-module-catalog.php:172
 msgid "Consent"
 msgstr ""
 
-#: src/modules/class-module-catalog.php:172
+#: src/modules/class-module-catalog.php:174
 msgid "WooCommerce"
 msgstr ""
 
@@ -3799,6 +4068,7 @@ msgid "%1$s (ID %2$d)"
 msgstr ""
 
 #: src/settings/acf/class-acf-adapter.php:396
+#: template-parts/blog/404-content.php:84
 msgid "(no title)"
 msgstr ""
 
@@ -4425,6 +4695,88 @@ msgstr ""
 #, php-format
 msgid "WPML uses the URL mode \"%s\"; the theme is tested with language directories."
 msgstr ""
+
+#: template-parts/blog/404-content.php:45
+msgid "Search the website"
+msgstr ""
+
+#: template-parts/blog/404-content.php:58
+msgid "Popular sections"
+msgstr ""
+
+#: template-parts/blog/404-content.php:79
+msgid "Latest posts"
+msgstr ""
+
+#: template-parts/blog/404-content.php:94
+msgid "To the blog"
+msgstr ""
+
+#. translators: %s: minutes it takes to read the post.
+#: template-parts/blog/entry-meta.php:43
+#, php-format
+msgid "%s minute reading time"
+msgid_plural "%s minutes reading time"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %s: number of comments.
+#: template-parts/blog/entry-meta.php:52
+#, php-format
+msgid "%s comment"
+msgid_plural "%s comments"
+msgstr[0] ""
+msgstr[1] ""
+
+#: template-parts/blog/home-no-match.php:18
+msgid "No posts match these filters."
+msgstr ""
+
+#: template-parts/blog/home-none.php:18
+msgid "There are no posts yet."
+msgstr ""
+
+#: template-parts/blog/home-none.php:20
+msgid "Search the blog"
+msgstr ""
+
+#: template-parts/blog/share.php:76
+msgid "Link copied"
+msgstr ""
+
+#: template-parts/blog/share.php:76
+msgid "The link could not be copied."
+msgstr ""
+
+#: template-parts/blog/share.php:76
+msgid "Copy link"
+msgstr ""
+
+#: template-parts/blog/share.php:77
+msgid "The link could not be shared."
+msgstr ""
+
+#: template-parts/blog/share.php:77
+msgid "Share…"
+msgstr ""
+
+#: template-parts/blog/share.php:81
+msgid "Share by email"
+msgstr ""
+
+#. translators: %s: name of a network, for example LinkedIn.
+#: template-parts/blog/share.php:85
+#, php-format
+msgid "Share on %s (opens in a new tab)"
+msgstr ""
+
+#. translators: %s: number of posts.
+#: template-parts/blog/sidebar-terms.php:45
+#, php-format
+msgid "%s post"
+msgid_plural "%s posts"
+msgstr[0] ""
+msgstr[1] ""
 
 #: template-parts/header/actions.php:100
 msgid "Open search"

@@ -1,0 +1,39 @@
+/**
+ * Module post-filter: the filter bar of JPKCom Post Filter in the colors of the theme.
+ *
+ * Sets only the CSS variables of the plugin (--jpkpf-*) to the Bootstrap
+ * variables of the theme (--bs-*), so color settings and the dark mode apply
+ * to the filter bar without changes. The markup and the layout stay those of
+ * the plugin. The stylesheet loads after the one of the plugin, so these
+ * values also take the place of the color scheme chosen in the plugin.
+ *
+ * @package Creationell\WpTheme
+ * @since   1.0.0
+ */
+
+:root {
+	--jpkpf-primary: var(--bs-primary);
+	--jpkpf-primary-hover: var(--bs-primary);
+	--jpkpf-filter-bg: var(--bs-tertiary-bg);
+	--jpkpf-filter-color: var(--bs-body-color);
+	--jpkpf-filter-active-bg: var(--bs-primary);
+	--jpkpf-filter-active-color: var(--bs-white);
+	--jpkpf-filter-hover-bg: var(--bs-secondary-bg);
+	--jpkpf-filter-hover-color: var(--bs-emphasis-color);
+	--jpkpf-reset-color: var(--bs-secondary-color);
+	--jpkpf-reset-border: var(--bs-border-color);
+	--jpkpf-card-bg: var(--bs-body-bg);
+	--jpkpf-card-border: var(--bs-border-color);
+	--jpkpf-card-shadow: var(--bs-box-shadow-sm);
+	--jpkpf-card-shadow-hover: var(--bs-box-shadow);
+	--jpkpf-text-primary: var(--bs-body-color);
+	--jpkpf-text-secondary: var(--bs-secondary-color);
+	--jpkpf-link-color: var(--bs-link-color);
+	--jpkpf-link-hover: var(--bs-link-hover-color);
+	--jpkpf-no-results-color: var(--bs-secondary-color);
+	--jpkpf-filter-label-color: var(--bs-secondary-color);
+	--jpkpf-dropdown-panel-bg: var(--bs-body-bg);
+	--jpkpf-filter-radius: var(--bs-border-radius-sm);
+	--jpkpf-card-radius: var(--bs-border-radius);
+	--jpkpf-input-radius: var(--bs-border-radius-sm);
+}

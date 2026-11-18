@@ -1,6 +1,6 @@
 # creationell Theme
 
-**Version:** 0.5.1
+**Version:** 0.6.0
 
 **Requires at least:** 7.1
 
@@ -91,6 +91,26 @@ define( 'CREATIONELL_WP_THEME_MODULE_CONTACT_FORM_7', 'active' );
 ```
 
 `modules/README.md` lists the modules, their states and the folder convention.
+
+The modules `blog` and `post-filter` make up the blog kit: a blog sidebar with
+categories and tags (or the filters of the plugin JPKCom Post Filter), reading
+time, a link back to the blog page, share links, a richer 404 page and
+optional author pages. With the module `blog` off, the blog page, the posts,
+the archives and the 404 page look as before. The templates offer the places
+for it as hooks whether the module is on or off:
+`creationell_wp_theme_entry_header_open`,
+`creationell_wp_theme_show_category_badge`,
+`creationell_wp_theme_entry_meta_html`,
+`creationell_wp_theme_entry_terms_html`,
+`creationell_wp_theme_after_entry_terms`,
+`creationell_wp_theme_404_after_content`,
+`creationell_wp_theme_sidebar_aria_label`,
+`creationell_wp_theme_blog_sidebar_force` and
+`creationell_wp_theme_meta_author_link`; the helpers of the blog page offer
+`creationell_wp_theme_blog_url`, `creationell_wp_theme_reading_time_wpm` and
+`creationell_wp_theme_is_blog_view`. `modules/blog/README.md` describes the
+settings, template parts and all hooks of the kit, including the calls a child
+theme with its own single templates, `sidebar.php` or `404.php` keeps.
 
 ## Where to set what
 
@@ -234,6 +254,8 @@ in `modules/consent/README.md`.
 - `inc/README.md`: the template helpers in `inc/` and their filters.
 - `assets/README.md`: stylesheets, scripts, images and vendored libraries.
 - `modules/README.md`: the module catalog and the folder convention.
+- `src/blog/README.md`, `modules/blog/README.md` and
+  `modules/post-filter/README.md`: the blog kit.
 
 Every function, class, method and hook of the theme has a PHPDoc block in
 English; `phpdoc.xml` builds the API documentation with phpDocumentor 3.
@@ -265,6 +287,196 @@ GPL-2.0-or-later, see `LICENSE`. Licenses of the included third-party code:
 `THIRD-PARTY-NOTICES`.
 
 ## Changelog
+
+### 0.6.0
+
+- Blog kit: the new modules `blog` and `post-filter`, both `off` by default;
+  nothing changes until they are switched on. The module `blog` adds a blog
+  sidebar with categories and tags (accessible name "Blog sidebar", shown also
+  without widgets, below the content or in the offcanvas panel on small
+  screens), a link back to the blog page above a single post, a meta line with
+  date, reading time, author and comments, the categories and tags below the
+  post, share links, a 404 page with a search form, the menu location
+  "404 page links" and the latest posts, and optional author pages. Its 20
+  settings (group `blog`: 16 design keys of the level advanced, four texts per
+  language) are listed in `modules/blog/README.md`; they travel with the
+  settings export.
+- Blog page and author archive: the new templates `home.php` and `author.php`.
+  From 0.6.0 on, `template_include` reports the `home.php` of the parent theme
+  on the blog page and `author.php` on every author archive, whatever the
+  state of the module `blog`, instead of `index.php` and `archive.php`. While
+  the module is off and while a child theme has its own `index.php` without
+  `home.php` (or its own `archive.php` without `author.php`), the two files
+  include `index.php` or `archive.php`, so the markup stays as before. While
+  the module is on and the setting `blog_author_pages` is off, an author
+  address is no author archive but the 404 page. The blog page shows the
+  title and the excerpt of the posts page, the post loop and, while the site
+  has no published post, a note with a search form; when the site has posts
+  but the list is empty, for example after a filter that matches nothing, it
+  says "No posts match these filters."
+  (filter `creationell_wp_theme_blog_home_empty`, part
+  `template-parts/blog/home-no-match.php`).
+- Reading time: words per minute from the setting `blog_reading_wpm` (100 to
+  400, default 200), counted in the text of every block, also in lists,
+  captions and the containers of other plugins, and stored in the post meta
+  `_creationell_wp_theme_reading_time`. A post behind a password shows none.
+- Share links: the buttons of the plugin Shariff while it is active (called
+  through `shariff3uu_render()`, attributes from the filter
+  `creationell_wp_theme_shariff_atts`), otherwise own links (LinkedIn,
+  Facebook, WhatsApp, email and "Copy link" by default; also X, Bluesky and
+  Threads) that load nothing from a third party before a click. A draft or
+  preview shares nothing, and while Shariff inserts its own buttons the theme
+  prints none.
+- Author pages (setting `blog_author_pages`, default off): only authors with a
+  published post have a page. Any other author address, its feed and its later
+  pages answer with the 404 page, before SEO plugins pick their page type and
+  without a redirect to the address with the login. While the setting is off,
+  every author address gives the 404 page, the byline names the author without
+  a link and the sitemap lists no users. New profile fields under
+  *Users > Profile*: a profile image from the media library, which replaces
+  Gravatar as avatar, a job title and external profiles, in the user meta
+  `creationell_wp_theme_author_image`, `creationell_wp_theme_author_job_title`
+  and `creationell_wp_theme_author_profiles`. An image the user may not use
+  is refused, and the profile screen says so.
+- Post filter: the module `post-filter` shows the filters of the plugin
+  JPKCom Post Filter 1.7.2 or later in the blog sidebar instead of the
+  category and tag lists. It needs the plugin and the module `blog`. While
+  the plugin prints its own message for an empty result, the blog page prints
+  none.
+- Functions: `creationell_wp_theme_blog_url()`,
+  `creationell_wp_theme_blog_title()`,
+  `creationell_wp_theme_has_blog_posts()`,
+  `creationell_wp_theme_blog_reading_time()` and
+  `creationell_wp_theme_is_blog_view()` in `src/functions-api.php`, the
+  template tags `creationell_wp_theme_entry_meta()` and
+  `creationell_wp_theme_entry_terms()`; `creationell_wp_theme_category_badge()`
+  takes an optional context. They work whether the module is on or off.
+- New filters: `creationell_wp_theme_blog_url`,
+  `creationell_wp_theme_reading_time_wpm`,
+  `creationell_wp_theme_is_blog_view`,
+  `creationell_wp_theme_show_category_badge`,
+  `creationell_wp_theme_entry_meta_html`,
+  `creationell_wp_theme_entry_terms_html`,
+  `creationell_wp_theme_sidebar_aria_label`,
+  `creationell_wp_theme_blog_sidebar_force`,
+  `creationell_wp_theme_blog_sidebar_terms`,
+  `creationell_wp_theme_blog_sidebar_has_filter`,
+  `creationell_wp_theme_meta_author_link`,
+  `creationell_wp_theme_shariff_atts`,
+  `creationell_wp_theme_author_is_public`,
+  `creationell_wp_theme_author_image_size` and
+  `creationell_wp_theme_blog_home_empty`. New actions:
+  `creationell_wp_theme_entry_header_open`,
+  `creationell_wp_theme_after_entry_terms` and
+  `creationell_wp_theme_404_after_content`. The hooks of the templates and of
+  `src/blog/` run whether the module is on or off; those of the sidebar terms,
+  the share links and the author pages run while it is active. The contexts
+  `home` and `author` go only to the
+  new parts in `template-parts/blog/`; the hooks of `home.php` keep the
+  context `index` of `index.php`, those of `author.php` the context `archive`
+  of `archive.php`.
+- WP-CLI: `wp creationell-theme doctor` has the section `blog`. It warns
+  about a missing blog page, child templates that win over the module or lack
+  its calls, Shariff inserting its own buttons or using a third party, the
+  module `post-filter` without a filter bar, authors whose name or address
+  shows the login, and author pages that are off while an SEO plugin lists
+  authors.
+- Child theme template: `blog` starts `off` and `post-filter` `active`; the
+  post filter shows once the module `blog` is on and the plugin is active.
+
+#### Notes for the update
+
+- With the module `blog` off, the blog page, the single posts, the category,
+  tag and author archives, the sidebar and the 404 page keep the markup of
+  0.5.1.
+- Switching the module `blog` on with the setting `blog_author_pages` off
+  (the default) turns every author address into the 404 page and takes the
+  users out of the sitemap. Switch the setting on to keep the author archives.
+- Code that reads the template from `template_include` or the global
+  `$template` (plugins, Query Monitor) sees the `home.php` of the parent theme
+  on the blog page and `author.php` on every author archive, also with the
+  module `blog` off and under a child theme with its own `index.php` or
+  `archive.php`. In those cases the two files include `index.php` or
+  `archive.php`, so the markup stays as before.
+- Residual risk: a child theme that turns the support `block-templates` back
+  on no longer gets its block template `index` on the blog page, nor `archive`
+  or `index` on an author archive, because WordPress only takes a block
+  template at least as specific as the PHP template; it needs a block
+  template `home` or `author`.
+- A child theme with its own `single.php`, `single-post.php`,
+  `single-templates/*.php`, `sidebar.php` or `404.php` shows the blog parts
+  only with the calls listed under "Blog templates" in the README of the child
+  theme template and in `modules/blog/README.md`;
+  `wp creationell-theme doctor` names each file that lacks them.
+- The five new functions in `src/functions-api.php` are not pluggable: a child
+  theme or plugin that declares a function with one of these names stops the
+  site with a fatal error. The child theme template declares none.
+- The module `post-filter` needs JPKCom Post Filter 1.7.2 or later; with an
+  older version it adds nothing.
+- Theme 0.5.1 imports files of 0.6.0 but skips the blog settings and the
+  switches `module_blog` and `module_post_filter` as `unknown_key`. A file of
+  0.5.1 leaves the blog settings as they are.
+
+#### New or changed texts
+
+- Blog sidebar and single post: `Blog sidebar`, `Tags`, `Back to %s`,
+  `Back to the blog`, `Share this post`, `%s minute reading time` (plural:
+  `%s minutes reading time`), `%s comment` (plural: `%s comments`),
+  `%s post` (plural: `%s posts`)
+- Share links: `Copy link`, `Link copied`, `The link could not be copied.`,
+  `The link could not be shared.`, `Share…`, `Share by email`,
+  `Share on %s (opens in a new tab)`
+- Blog page and 404 page: `No posts match these filters.`,
+  `There are no posts yet.`, `Search the blog`, `Search the website`,
+  `Popular sections`, `Latest posts`, `To the blog`, and the menu location
+  `404 page links`
+- Author pages and profile fields: `Posts by %s`, `Author page`,
+  `Profile image`, `Choose profile image`, `Use this image`, `Choose image`,
+  `Remove image`, `Job title`, `External profiles`,
+  `Shown below the name on the author page, up to 120 characters.`
+- `An image from the media library, shown on the author page and as avatar
+  instead of Gravatar. Without one the author page shows no image and the
+  avatar follows the discussion settings (Gravatar or the default avatar).`
+- `One address per line, starting with https:// or http://, up to 10. Shown
+  as links on the author page, after the website.`
+- `This image cannot be used as profile image: choose an image you uploaded,
+  or ask an editor or administrator to set it.`
+- Page *Modules*: `Blog`, `Sidebar with categories and tags, reading time,
+  back link, share links, a richer 404 page and optional author pages for the
+  posts of the site.`, `Post filter`, `Shows the filters of the plugin JPKCom
+  Post Filter in the blog sidebar instead of the plain category and tag
+  lists.`
+- Pages *Design* and *Texts*, labels of the blog settings:
+  `Term lists in the blog sidebar`, `Number of posts in the term lists`,
+  `Blog sidebar on small screens`, `Category badge above the post title`,
+  `Date in the meta line`, `Reading time in the meta line`,
+  `Author in the meta line`, `Comments in the meta line`,
+  `Words per minute`, `Back link to the blog`, `Terms below a post`,
+  `Share links`, `Networks of the own share links`,
+  `Latest posts on the 404 page`, `Search form on the 404 page`,
+  `Author pages`, `Heading of the categories`, `Heading of the tags`,
+  `Text of the back link`, `Heading of the share links`
+- Pages *Design* and *Texts*, descriptions of the blog settings:
+  `Categories and tags, only one of them, or none.`,
+  `Shows how many posts each category and tag has.`,
+  `Below the content, or in the offcanvas panel as on other pages.`,
+  `Shows the category of a single post above its title.`,
+  `Shows the date of a post below its title.`,
+  `Shows how many minutes a post takes to read.`,
+  `Shows the author of a post below its title.`,
+  `Shows the number of comments with a link to them, while comments are open
+  or there are some.`, `Reading speed for the reading time, from 100 to 400.`,
+  `Shows a link back to the blog page above a single post.`,
+  `Categories and tags at the end of a single post, only one of them, or
+  none.`, `Automatic uses the plugin Shariff while it is active, otherwise the
+  own links of the theme.`, `Names separated by commas, e.g.
+  linkedin,email,copy. Available: linkedin, facebook, whatsapp, email, copy,
+  x, bluesky and threads.`, `From 0 to 6; 0 shows no posts.`,
+  `Shown only while the widget area of the 404 page holds no search.`,
+  `Public pages for authors with posts. While this is off, author addresses
+  show the 404 page.`, `Empty shows "Categories".`, `Empty shows "Tags".`,
+  `Empty shows "Back to {title}". {title} is the title of the blog page.`,
+  `Empty shows "Share this post".`
 
 ### 0.5.1
 

@@ -50,7 +50,7 @@ msgstr "Seite nicht gefunden"
 msgid "The page you are looking for does not exist or has moved."
 msgstr "Die Seite, die du suchst, existiert nicht oder wurde verschoben."
 
-#: 404.php:97
+#: 404.php:107
 msgid "Back Home &raquo;"
 msgstr "Zur Startseite &raquo;"
 
@@ -98,7 +98,7 @@ msgid "Comments are closed."
 msgstr "Die Kommentarfunktion ist geschlossen."
 
 #: comments.php:141
-#: inc/template-tags.php:223
+#: inc/template-tags.php:250
 msgid "Leave a Comment"
 msgstr "Schreibe einen Kommentar"
 
@@ -148,7 +148,7 @@ msgstr "Menü"
 
 #: modules/consent/inc/class-texts.php:207
 #: patterns/c-alert-danger.php:16
-#: sidebar.php:98
+#: sidebar.php:117
 #: template-parts/header/navbar.php:173
 msgid "Close"
 msgstr "Schließen"
@@ -189,7 +189,7 @@ msgstr "Pingback:"
 
 #: inc/comments.php:50
 #: inc/comments.php:88
-#: inc/template-tags.php:241
+#: inc/template-tags.php:268
 #: src/admin/class-consent-services-page.php:1207
 msgid "Edit"
 msgstr "Bearbeiten"
@@ -273,27 +273,28 @@ msgctxt "post password form"
 msgid "Enter"
 msgstr "Absenden"
 
-#: inc/template-tags.php:74
+#: inc/template-tags.php:87
 msgid "Sticky post"
 msgstr "Oben gehaltener Beitrag"
 
 #. translators: used between list items, there is a space after the comma
-#: inc/template-tags.php:91
+#: inc/template-tags.php:104
+#: template-parts/blog/entry-meta.php:61
 msgid ", "
 msgstr ", "
 
 #. translators: %s: post author
-#: inc/template-tags.php:183
+#: inc/template-tags.php:210
 #, php-format
 msgctxt "post author"
 msgid "by %s"
 msgstr "von %s"
 
-#: inc/template-tags.php:260
+#: inc/template-tags.php:287
 msgid "Leave a comment"
 msgstr "Schreibe einen Kommentar"
 
-#: inc/template-tags.php:285
+#: inc/template-tags.php:312
 msgid "Tagged"
 msgstr "Verschlagwortet mit"
 
@@ -329,7 +330,7 @@ msgid "Top Nav Search"
 msgstr "Suche in der oberen Navigation"
 
 #: inc/widgets.php:97
-#: sidebar.php:95
+#: sidebar.php:114
 msgid "Sidebar"
 msgstr "Seitenleiste"
 
@@ -486,7 +487,11 @@ msgctxt "Pattern title"
 msgid "c - Card with category widget"
 msgstr "c - Card mit Kategorien-Widget"
 
+#: modules/blog/inc/class-blog-sidebar.php:152
+#: modules/blog/inc/class-entry-parts.php:151
 #: patterns/c-card-widget-categories.php:17
+#: template-parts/blog/entry-terms.php:71
+#: template-parts/blog/sidebar-terms.php:83
 msgid "Categories"
 msgstr "Kategorien"
 
@@ -705,7 +710,7 @@ msgstr "Suche nach:"
 msgid "Search"
 msgstr "Suchen"
 
-#: sidebar.php:59
+#: sidebar.php:78
 msgid "Open side menu"
 msgstr "Seitenmenü öffnen"
 
@@ -714,10 +719,10 @@ msgid "Full width image"
 msgstr "Bild in voller Breite"
 
 #. translators: Name of the navigation to the previous and the next post; not the same as "Posts navigation" (pages of a post archive).
-#: single-templates/single-full-width-image.php:215
-#: single-templates/single-sidebar-left.php:166
-#: single-templates/single-sidebar-none.php:152
-#: single.php:164
+#: single-templates/single-full-width-image.php:239
+#: single-templates/single-sidebar-left.php:190
+#: single-templates/single-sidebar-none.php:176
+#: single.php:188
 msgid "Post navigation"
 msgstr "Vorheriger und nächster Beitrag"
 
@@ -836,38 +841,38 @@ msgid "CREATIONELL_WP_THEME_MANIFEST_URL is set to %s, which is no https URL. Th
 msgstr "CREATIONELL_WP_THEME_MANIFEST_URL ist auf %s gesetzt, das ist keine https-URL. Das creationell Theme ignoriert den Wert und nutzt das offizielle Update-Manifest."
 
 #: modules/post-lists/module.php:25
-#: src/modules/class-module-catalog.php:166
+#: src/modules/class-module-catalog.php:168
 msgid "Post lists"
 msgstr "Beitragslisten"
 
 #: modules/post-slider/i18n-strings.php:20
 #: modules/post-slider/inc/class-post-slider-module.php:313
 #: modules/post-slider/module.php:25
-#: src/modules/class-module-catalog.php:167
+#: src/modules/class-module-catalog.php:169
 msgid "Post slider"
 msgstr "Beitrags-Slider"
 
 #: modules/related-posts/i18n-strings.php:20
 #: modules/related-posts/inc/class-related-posts-module.php:319
 #: modules/related-posts/module.php:26
-#: src/modules/class-module-catalog.php:168
+#: src/modules/class-module-catalog.php:170
 msgid "Related posts"
 msgstr "Ähnliche Beiträge"
 
-#: src/modules/class-module-catalog.php:169
+#: src/modules/class-module-catalog.php:171
 msgid "Contact Form 7"
 msgstr "Contact Form 7"
 
-#: src/modules/class-module-catalog.php:170
+#: src/modules/class-module-catalog.php:172
 msgid "Consent"
 msgstr "Einwilligung"
 
 #: src/admin/class-rights-page.php:289
-#: src/modules/class-module-catalog.php:171
+#: src/modules/class-module-catalog.php:173
 msgid "Header and footer"
 msgstr "Kopf- und Fußbereich"
 
-#: src/modules/class-module-catalog.php:172
+#: src/modules/class-module-catalog.php:174
 msgid "WooCommerce"
 msgstr "WooCommerce"
 
@@ -904,6 +909,7 @@ msgid "%1$s (ID %2$d)"
 msgstr "%1$s (ID %2$d)"
 
 #: src/settings/acf/class-acf-adapter.php:396
+#: template-parts/blog/404-content.php:84
 msgid "(no title)"
 msgstr "(kein Titel)"
 
@@ -4811,3 +4817,349 @@ msgstr "Importiere auch die Standardsprache: Diesen Dienst gibt es auf dieser We
 #, php-format
 msgid "The service itself is not imported: %s"
 msgstr "Der Dienst selbst wird nicht importiert: %s"
+
+#. translators: %s: display name of the author
+#: author.php:127
+#, php-format
+msgid "Posts by %s"
+msgstr "Beiträge von %s"
+
+#: modules/blog/inc/class-author-profile-fields.php:174
+msgid "Author page"
+msgstr "Autorenseite"
+
+#: modules/blog/inc/class-author-profile-fields.php:177
+msgid "Profile image"
+msgstr "Profilbild"
+
+#: modules/blog/inc/class-author-profile-fields.php:179
+msgid "Choose profile image"
+msgstr "Profilbild auswählen"
+
+#: modules/blog/inc/class-author-profile-fields.php:179
+msgid "Use this image"
+msgstr "Dieses Bild verwenden"
+
+#: modules/blog/inc/class-author-profile-fields.php:182
+msgid "Choose image"
+msgstr "Bild auswählen"
+
+#: modules/blog/inc/class-author-profile-fields.php:183
+msgid "Remove image"
+msgstr "Bild entfernen"
+
+#: modules/blog/inc/class-author-profile-fields.php:189
+msgid "Job title"
+msgstr "Berufsbezeichnung"
+
+#: modules/blog/inc/class-author-profile-fields.php:192
+msgid "Shown below the name on the author page, up to 120 characters."
+msgstr "Erscheint auf der Autorenseite unter dem Namen, höchstens 120 Zeichen."
+
+#: modules/blog/inc/class-author-profile-fields.php:196
+msgid "External profiles"
+msgstr "Externe Profile"
+
+#: modules/blog/inc/class-author-profile-fields.php:199
+msgid "One address per line, starting with https:// or http://, up to 10. Shown as links on the author page, after the website."
+msgstr "Eine Adresse je Zeile, beginnend mit https:// oder http://, höchstens 10. Erscheinen als Links auf der Autorenseite, nach der Website."
+
+#: modules/blog/inc/class-blog-module.php:109
+msgid "404 page links"
+msgstr "Links der 404-Seite"
+
+#. translators: Accessible name of the sidebar landmark on blog pages, single posts and post archives.
+#: modules/blog/inc/class-blog-sidebar.php:123
+msgid "Blog sidebar"
+msgstr "Blog-Seitenleiste"
+
+#: modules/blog/inc/class-blog-sidebar.php:153
+#: modules/blog/inc/class-entry-parts.php:152
+#: template-parts/blog/entry-terms.php:95
+#: template-parts/blog/sidebar-terms.php:97
+msgid "Tags"
+msgstr "Schlagwörter"
+
+#. translators: %s: title of the blog page.
+#: modules/blog/inc/class-entry-parts.php:219
+#, php-format
+msgid "Back to %s"
+msgstr "Zurück zu %s"
+
+#: modules/blog/inc/class-entry-parts.php:221
+#: template-parts/blog/back-link.php:25
+msgid "Back to the blog"
+msgstr "Zurück zum Blog"
+
+#: modules/blog/inc/class-share-links.php:140
+#: template-parts/blog/share.php:59
+msgid "Share this post"
+msgstr "Beitrag teilen"
+
+#: modules/blog/module.php:25
+#: src/modules/class-module-catalog.php:175
+msgid "Blog"
+msgstr "Blog"
+
+#: modules/blog/module.php:26
+msgid "Sidebar with categories and tags, reading time, back link, share links, a richer 404 page and optional author pages for the posts of the site."
+msgstr "Seitenleiste mit Kategorien und Schlagwörtern, Lesezeit, Link zurück zum Blog, Teilen-Links, eine erweiterte 404-Seite und optionale Autorenseiten für die Beiträge der Website."
+
+#: modules/blog/settings.php:39
+msgid "Term lists in the blog sidebar"
+msgstr "Listen in der Blog-Seitenleiste"
+
+#: modules/blog/settings.php:40
+msgid "Categories and tags, only one of them, or none."
+msgstr "Kategorien und Schlagwörter, nur eine der beiden Listen oder keine."
+
+#: modules/blog/settings.php:51
+msgid "Number of posts in the term lists"
+msgstr "Anzahl der Beiträge in den Listen"
+
+#: modules/blog/settings.php:52
+msgid "Shows how many posts each category and tag has."
+msgstr "Zeigt, wie viele Beiträge jede Kategorie und jedes Schlagwort hat."
+
+#: modules/blog/settings.php:67
+msgid "Blog sidebar on small screens"
+msgstr "Blog-Seitenleiste auf kleinen Bildschirmen"
+
+#: modules/blog/settings.php:68
+msgid "Below the content, or in the offcanvas panel as on other pages."
+msgstr "Unter dem Inhalt oder wie auf anderen Seiten im Offcanvas-Bereich."
+
+#: modules/blog/settings.php:79
+msgid "Category badge above the post title"
+msgstr "Kategorie-Badge über dem Beitragstitel"
+
+#: modules/blog/settings.php:80
+msgid "Shows the category of a single post above its title."
+msgstr "Zeigt die Kategorie eines Beitrags über seinem Titel."
+
+#: modules/blog/settings.php:91
+msgid "Date in the meta line"
+msgstr "Datum in der Metazeile"
+
+#: modules/blog/settings.php:92
+msgid "Shows the date of a post below its title."
+msgstr "Zeigt das Datum eines Beitrags unter seinem Titel."
+
+#: modules/blog/settings.php:103
+msgid "Reading time in the meta line"
+msgstr "Lesezeit in der Metazeile"
+
+#: modules/blog/settings.php:104
+msgid "Shows how many minutes a post takes to read."
+msgstr "Zeigt, wie viele Minuten das Lesen eines Beitrags dauert."
+
+#: modules/blog/settings.php:115
+msgid "Author in the meta line"
+msgstr "Autor in der Metazeile"
+
+#: modules/blog/settings.php:116
+msgid "Shows the author of a post below its title."
+msgstr "Zeigt den Autor eines Beitrags unter seinem Titel."
+
+#: modules/blog/settings.php:127
+msgid "Comments in the meta line"
+msgstr "Kommentare in der Metazeile"
+
+#: modules/blog/settings.php:128
+msgid "Shows the number of comments with a link to them, while comments are open or there are some."
+msgstr "Zeigt die Zahl der Kommentare mit einem Link dorthin, solange Kommentare offen sind oder es welche gibt."
+
+#: modules/blog/settings.php:139
+msgid "Words per minute"
+msgstr "Wörter pro Minute"
+
+#: modules/blog/settings.php:140
+msgid "Reading speed for the reading time, from 100 to 400."
+msgstr "Lesegeschwindigkeit für die Lesezeit, von 100 bis 400."
+
+#: modules/blog/settings.php:151
+msgid "Back link to the blog"
+msgstr "Link zurück zum Blog"
+
+#: modules/blog/settings.php:152
+msgid "Shows a link back to the blog page above a single post."
+msgstr "Zeigt über einem Beitrag einen Link zurück zur Blogseite."
+
+#: modules/blog/settings.php:169
+msgid "Terms below a post"
+msgstr "Kategorien und Schlagwörter unter einem Beitrag"
+
+#: modules/blog/settings.php:170
+msgid "Categories and tags at the end of a single post, only one of them, or none."
+msgstr "Kategorien und Schlagwörter am Ende eines Beitrags, nur eine der beiden Listen oder keine."
+
+#: modules/blog/settings.php:187
+msgid "Share links"
+msgstr "Teilen-Links"
+
+#: modules/blog/settings.php:188
+msgid "Automatic uses the plugin Shariff while it is active, otherwise the own links of the theme."
+msgstr "Automatisch nutzt das Plugin Shariff, solange es aktiv ist, sonst die eigenen Links des Themes."
+
+#: modules/blog/settings.php:202
+msgid "Networks of the own share links"
+msgstr "Netzwerke der eigenen Teilen-Links"
+
+#: modules/blog/settings.php:203
+msgid "Names separated by commas, e.g. linkedin,email,copy. Available: linkedin, facebook, whatsapp, email, copy, x, bluesky and threads."
+msgstr "Namen durch Kommas getrennt, z. B. linkedin,email,copy. Verfügbar: linkedin, facebook, whatsapp, email, copy, x, bluesky und threads."
+
+#: modules/blog/settings.php:214
+msgid "Latest posts on the 404 page"
+msgstr "Neueste Beiträge auf der 404-Seite"
+
+#: modules/blog/settings.php:215
+msgid "From 0 to 6; 0 shows no posts."
+msgstr "Von 0 bis 6; 0 zeigt keine Beiträge."
+
+#: modules/blog/settings.php:226
+msgid "Search form on the 404 page"
+msgstr "Suchformular auf der 404-Seite"
+
+#: modules/blog/settings.php:227
+msgid "Shown only while the widget area of the 404 page holds no search."
+msgstr "Erscheint nur, solange der Widget-Bereich der 404-Seite keine Suche enthält."
+
+#: modules/blog/settings.php:238
+msgid "Author pages"
+msgstr "Autorenseiten"
+
+#: modules/blog/settings.php:239
+msgid "Public pages for authors with posts. While this is off, author addresses show the 404 page."
+msgstr "Öffentliche Seiten für Autoren mit Beiträgen. Solange das aus ist, zeigen die Adressen der Autoren die 404-Seite."
+
+#: modules/blog/settings.php:252
+msgid "Heading of the categories"
+msgstr "Überschrift der Kategorien"
+
+#: modules/blog/settings.php:253
+msgid "Empty shows \"Categories\"."
+msgstr "Leer zeigt „Kategorien“."
+
+#: modules/blog/settings.php:266
+msgid "Heading of the tags"
+msgstr "Überschrift der Schlagwörter"
+
+#: modules/blog/settings.php:267
+msgid "Empty shows \"Tags\"."
+msgstr "Leer zeigt „Schlagwörter“."
+
+#: modules/blog/settings.php:280
+msgid "Text of the back link"
+msgstr "Text des Links zurück zum Blog"
+
+#: modules/blog/settings.php:281
+msgid "Empty shows \"Back to {title}\". {title} is the title of the blog page."
+msgstr "Leer zeigt „Zurück zu {title}“. {title} ist der Titel der Blogseite."
+
+#: modules/blog/settings.php:294
+msgid "Heading of the share links"
+msgstr "Überschrift der Teilen-Links"
+
+#: modules/blog/settings.php:295
+msgid "Empty shows \"Share this post\"."
+msgstr "Leer zeigt „Beitrag teilen“."
+
+#: modules/post-filter/module.php:24
+#: src/modules/class-module-catalog.php:176
+msgid "Post filter"
+msgstr "Beitragsfilter"
+
+#: modules/post-filter/module.php:25
+msgid "Shows the filters of the plugin JPKCom Post Filter in the blog sidebar instead of the plain category and tag lists."
+msgstr "Zeigt die Filter des Plugins JPKCom Post Filter in der Blog-Seitenleiste statt der einfachen Listen der Kategorien und Schlagwörter."
+
+#: template-parts/blog/404-content.php:45
+msgid "Search the website"
+msgstr "Website durchsuchen"
+
+#: template-parts/blog/404-content.php:58
+msgid "Popular sections"
+msgstr "Beliebte Bereiche"
+
+#: template-parts/blog/404-content.php:79
+msgid "Latest posts"
+msgstr "Neueste Beiträge"
+
+#: template-parts/blog/404-content.php:94
+msgid "To the blog"
+msgstr "Zum Blog"
+
+#. translators: %s: minutes it takes to read the post.
+#: template-parts/blog/entry-meta.php:43
+#, php-format
+msgid "%s minute reading time"
+msgid_plural "%s minutes reading time"
+msgstr[0] "%s Minute Lesezeit"
+msgstr[1] "%s Minuten Lesezeit"
+
+#. translators: %s: number of comments.
+#: template-parts/blog/entry-meta.php:52
+#, php-format
+msgid "%s comment"
+msgid_plural "%s comments"
+msgstr[0] "%s Kommentar"
+msgstr[1] "%s Kommentare"
+
+#: template-parts/blog/home-none.php:18
+msgid "There are no posts yet."
+msgstr "Es gibt noch keine Beiträge."
+
+#: template-parts/blog/home-none.php:20
+msgid "Search the blog"
+msgstr "Blog durchsuchen"
+
+#: template-parts/blog/share.php:76
+msgid "Link copied"
+msgstr "Link kopiert"
+
+#: template-parts/blog/share.php:76
+msgid "The link could not be copied."
+msgstr "Der Link konnte nicht kopiert werden."
+
+#: template-parts/blog/share.php:76
+msgid "Copy link"
+msgstr "Link kopieren"
+
+#: template-parts/blog/share.php:77
+msgid "The link could not be shared."
+msgstr "Der Link konnte nicht geteilt werden."
+
+#: template-parts/blog/share.php:77
+msgid "Share…"
+msgstr "Teilen …"
+
+#: template-parts/blog/share.php:81
+msgid "Share by email"
+msgstr "Per E-Mail teilen"
+
+#. translators: %s: name of a network, for example LinkedIn.
+#: template-parts/blog/share.php:85
+#, php-format
+msgid "Share on %s (opens in a new tab)"
+msgstr "Auf %s teilen (öffnet in einem neuen Tab)"
+
+#. translators: %s: number of posts.
+#: template-parts/blog/sidebar-terms.php:45
+#, php-format
+msgid "%s post"
+msgid_plural "%s posts"
+msgstr[0] "%s Beitrag"
+msgstr[1] "%s Beiträge"
+
+#: modules/blog/inc/class-author-profile-fields.php:185
+msgid "An image from the media library, shown on the author page and as avatar instead of Gravatar. Without one the author page shows no image and the avatar follows the discussion settings (Gravatar or the default avatar)."
+msgstr "Ein Bild aus der Mediathek, gezeigt auf der Autorenseite und als Avatar statt Gravatar. Ohne eigenes Bild zeigt die Autorenseite keines, und der Avatar folgt den Diskussionseinstellungen (Gravatar oder Standard-Avatar)."
+
+#: modules/blog/inc/class-author-profile-fields.php:274
+msgid "This image cannot be used as profile image: choose an image you uploaded, or ask an editor or administrator to set it."
+msgstr "Dieses Bild kann nicht als Profilbild dienen: Wähle ein Bild, das du hochgeladen hast, oder bitte einen Redakteur oder Administrator, es festzulegen."
+
+#: template-parts/blog/home-no-match.php:18
+msgid "No posts match these filters."
+msgstr "Keine Beiträge passen zu diesen Filtern."

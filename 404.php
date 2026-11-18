@@ -93,7 +93,17 @@ get_header();
 			<!-- 404 Widget -->
 			<?php if ( is_active_sidebar( '404-page' ) ) : ?>
 				<div><?php dynamic_sidebar( '404-page' ); ?></div>
-			<?php endif; ?>
+			<?php
+			endif;
+			/**
+			 * Fires on the 404 page after the widget area and before the link to the home page.
+			 *
+			 * @since 1.0.0
+			 *
+			 * @param string $context Template, here 404.
+			 */
+			do_action( 'creationell_wp_theme_404_after_content', '404' );
+			?>
 			<a class="btn btn-outline-primary" href="<?php echo esc_url( home_url() ); ?>"><?php esc_html_e( 'Back Home &raquo;', 'creationell-wp-theme' ); ?></a>
 			</div>
 		</section><!-- .error-404 -->

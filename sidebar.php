@@ -13,6 +13,15 @@ defined( 'ABSPATH' ) || exit;
 
 
 /**
+ * Filters whether the sidebar shows without widgets, for example with the term lists of the blog.
+ *
+ * @since 1.0.0
+ *
+ * @param bool $force Whether to show the sidebar without widgets.
+ */
+$creationell_wp_theme_blog_sidebar_force = (bool) apply_filters( 'creationell_wp_theme_blog_sidebar_force', false );
+
+/**
  * Filters whether a widget area counts as filled.
  *
  * @since 1.0.0
@@ -20,7 +29,7 @@ defined( 'ABSPATH' ) || exit;
  * @param bool   $has_widgets Whether the area has widgets.
  * @param string $sidebar     Widget area ID.
  */
-if ( ! apply_filters( 'creationell_wp_theme_sidebar_has_widgets', is_active_sidebar( 'sidebar-1' ), 'sidebar-1' ) ) {
+if ( ! apply_filters( 'creationell_wp_theme_sidebar_has_widgets', is_active_sidebar( 'sidebar-1' ), 'sidebar-1' ) && ! $creationell_wp_theme_blog_sidebar_force ) {
 	return;
 }
 ?>
@@ -33,9 +42,19 @@ if ( ! apply_filters( 'creationell_wp_theme_sidebar_has_widgets', is_active_side
  * @param string $classes Space-separated CSS classes.
  */
 $creationell_wp_theme_class_sidebar_col = apply_filters( 'creationell_wp_theme_class_sidebar_col', 'col-lg-3 order-lg-2' );
+
+/**
+ * Filters the accessible name of the sidebar landmark.
+ *
+ * @since 1.0.0
+ *
+ * @param string $label Accessible name; empty for none, then the aside gets no aria-label.
+ */
+$creationell_wp_theme_sidebar_aria_label = apply_filters( 'creationell_wp_theme_sidebar_aria_label', '' );
+$creationell_wp_theme_sidebar_aria_label = is_string( $creationell_wp_theme_sidebar_aria_label ) ? $creationell_wp_theme_sidebar_aria_label : '';
 ?>
 <div class="<?php echo esc_attr( $creationell_wp_theme_class_sidebar_col ); ?>">
-	<aside id="secondary" class="widget-area">
+	<aside id="secondary" class="widget-area"<?php echo '' !== $creationell_wp_theme_sidebar_aria_label ? ' aria-label="' . esc_attr( $creationell_wp_theme_sidebar_aria_label ) . '"' : ''; ?>>
 
 	<?php
 	/**

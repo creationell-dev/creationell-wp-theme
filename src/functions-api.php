@@ -15,12 +15,16 @@
 
 declare(strict_types=1);
 
+use Creationell\WpTheme\Blog\Blog_Context;
+use Creationell\WpTheme\Blog\Blog_Url;
+use Creationell\WpTheme\Blog\Reading_Time;
 use Creationell\WpTheme\Consent\Consent_Categories;
 use Creationell\WpTheme\Consent\Consent_Gate;
 use Creationell\WpTheme\Consent\Script_Marker;
 use Creationell\WpTheme\Core\Template_Part_Gate;
 use Creationell\WpTheme\Modules\Module_State;
 use Creationell\WpTheme\Settings\Bootstrap_Line;
+use Creationell\WpTheme\Settings\Registry;
 use Creationell\WpTheme\Settings\Settings;
 use Creationell\WpTheme\Wpml\Language_Switcher;
 
@@ -243,4 +247,127 @@ function creationell_wp_theme_language_switcher( array $args = array() ): string
  */
 function creationell_wp_theme_render_template_part( string $slug ): bool {
 	return Template_Part_Gate::render( $slug );
+}
+
+/**
+ * Returns the URL of the blog page.
+ *
+ * With a static front page it is the posts page of the reading options, in
+ * the language of the request with WPML; with posts on the front page it is
+ * the home URL. Without a posts page it is an empty string. The filter
+ * creationell_wp_theme_blog_url may change it.
+ *
+ * Example:
+ *
+ *     $url = creationell_wp_theme_blog_url();
+ *     if ( '' !== $url ) {
+ *         printf( '<a href="%s">%s</a>', esc_url( $url ), esc_html__( 'Blog', 'my-child' ) );
+ *     }
+ *
+ * @api
+ * @since 1.0.0
+ *
+ * @return string URL, or an empty string.
+ */
+function creationell_wp_theme_blog_url(): string {
+	return Blog_Url::url();
+}
+
+/**
+ * Returns the title of the posts page as plain text.
+ *
+ * Tags are removed and character references decoded; escape the title for
+ * the output. Empty without a posts page and with posts on the front page.
+ *
+ * Example:
+ *
+ *     echo esc_html( creationell_wp_theme_blog_title() ); // "News & more"
+ *
+ * @api
+ * @since 1.0.0
+ *
+ * @return string Title, or an empty string.
+ */
+function creationell_wp_theme_blog_title(): string {
+	return Blog_Url::title();
+}
+
+/**
+ * Tells whether at least one post is published.
+ *
+ * Asked once per request.
+ *
+ * Example:
+ *
+ *     if ( creationell_wp_theme_has_blog_posts() ) {
+ *         // Link to the blog.
+ *     }
+ *
+ * @api
+ * @since 1.0.0
+ *
+ * @return bool True when a published post exists.
+ */
+function creationell_wp_theme_has_blog_posts(): bool {
+	return Blog_Url::has_posts();
+}
+
+/**
+ * Returns the minutes a post takes to read, at least 1.
+ *
+ * Counts the words of the content without blocks that excerpts drop,
+ * shortcodes and HTML, and Han, Hiragana and Katakana characters at 500 a
+ * minute. The words per minute come from the setting blog_reading_wpm
+ * (200 while it is not registered); the filter
+ * creationell_wp_theme_reading_time_wpm may change them. The result is stored
+ * in post meta until the post changes. An ID without a post gives 1.
+ *
+ * Example:
+ *
+ *     $minutes = creationell_wp_theme_blog_reading_time( get_the_ID() );
+ *     printf(
+ *         esc_html( _n( '%s minute', '%s minutes', $minutes, 'my-child' ) ),
+ *         esc_html( number_format_i18n( $minutes ) )
+ *     );
+ *
+ * @api
+ * @since 1.0.0
+ *
+ * @param int|WP_Post $post Post ID or post.
+ * @return int Minutes.
+ */
+function creationell_wp_theme_blog_reading_time( int|WP_Post $post ): int {
+	$post = $post instanceof WP_Post ? $post : get_post( $post );
+	if ( ! $post instanceof WP_Post ) {
+		return 1;
+	}
+	$wpm = 200;
+	if ( Registry::instance()->has( 'blog_reading_wpm' ) ) {
+		$value = Settings::instance()->get( 'blog_reading_wpm' );
+		$wpm   = is_numeric( $value ) ? (int) $value : $wpm;
+	}
+	return Reading_Time::minutes( $post, $wpm );
+}
+
+/**
+ * Tells whether the request shows the blog.
+ *
+ * True for the blog page, a single post, a category, tag or date archive and
+ * an author archive of posts; false for search results. The filter
+ * creationell_wp_theme_is_blog_view may change the answer. Reliable once the
+ * main query ran.
+ *
+ * Example:
+ *
+ *     if ( creationell_wp_theme_is_blog_view() ) {
+ *         // Show a newsletter box.
+ *     }
+ *
+ * @api
+ * @since 1.0.0
+ *
+ * @return bool True for a blog view.
+ */
+function creationell_wp_theme_is_blog_view(): bool {
+	return Blog_Context::is_blog_view();
 }

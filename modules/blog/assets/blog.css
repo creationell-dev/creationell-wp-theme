@@ -1,0 +1,78 @@
+/**
+ * Module blog: term lists of the blog sidebar and below the post, meta line, back link, share list and profile image of the author page.
+ *
+ * Loaded in the blog view (author pages included) and on the 404 page. Colors come only from the
+ * Bootstrap variables of the theme (--bs-*) or currentColor, so color settings
+ * and the dark mode apply without changes. Logical properties only; the back
+ * arrow is mirrored for right-to-left languages, no right-to-left copy needed.
+ *
+ * @package Creationell\WpTheme
+ * @since   1.0.0
+ */
+
+/* Term badges in the sidebar and below the post: targets of at least 24 by 24 pixels, wrapping with a row gap. */
+.blog-terms .list-inline,
+.entry-terms .list-inline {
+	display: flex;
+	flex-wrap: wrap;
+	row-gap: .25rem;
+}
+
+.blog-terms .list-inline-item > a,
+.entry-terms .list-inline-item > a {
+	display: inline-flex;
+	gap: .25em;
+	align-items: center;
+	justify-content: center;
+	min-block-size: 24px;
+	min-inline-size: 24px;
+}
+
+/* Current term: bold and with a border, not only another color. */
+.blog-terms .list-group-item a[aria-current] {
+	padding-inline-start: .5rem;
+	font-weight: 700;
+	border-inline-start: 3px solid var(--bs-primary);
+}
+
+.blog-terms .list-inline-item > a[aria-current] {
+	font-weight: 700;
+	border: 1px solid currentColor;
+}
+
+/* Forced colors drop the background of the badges; the border of the current term stays in the forced text color. */
+@media (forced-colors: active) {
+	.blog-terms a[aria-current] {
+		border-color: currentColor;
+	}
+}
+
+/* Separator between the parts of the meta line. */
+.entry-meta-sep {
+	margin-inline: .25rem;
+}
+
+/* The back arrow points to the start of the line. */
+[dir="rtl"] .back-link .bi {
+	transform: scaleX(-1);
+}
+
+/* Share links: one gap between the buttons, also when they wrap. */
+.share-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .5rem;
+}
+
+.share-list .list-inline-item {
+	margin: 0;
+}
+
+/* Profile image of the author page: a square box the image covers, so a portrait or landscape upload stays a circle. */
+.author-header .author-image {
+	inline-size: 10rem;
+	block-size: auto;
+	aspect-ratio: 1;
+	object-fit: cover;
+	flex-shrink: 0;
+}

@@ -68,8 +68,18 @@ get_header();
 			<main id="main" class="site-main">
 
 			<div class="entry-header">
-				<?php the_post(); ?>
-				<?php creationell_wp_theme_category_badge(); ?>
+				<?php
+				the_post();
+				/**
+				 * Fires in the header of a post, after the post is set up and before the category badges.
+				 *
+				 * @since 1.0.0
+				 *
+				 * @param string $context Template, for example single or single-sidebar-left.
+				 */
+				do_action( 'creationell_wp_theme_entry_header_open', 'single-sidebar-left' );
+				?>
+				<?php creationell_wp_theme_category_badge( 'single-sidebar-left' ); ?>
 				<?php
 				/**
 				 * Fires before the page title.
@@ -100,7 +110,8 @@ get_header();
 				 * @param string $context Template, for example page or archive.
 				 */
 				do_action( 'creationell_wp_theme_after_title', 'single-sidebar-left' );
-				?>
+				if ( ! creationell_wp_theme_entry_meta( 'single-sidebar-left' ) ) :
+					?>
 				<p class="entry-meta">
 				<small class="text-body-secondary">
 					<?php
@@ -110,7 +121,7 @@ get_header();
 					?>
 				</small>
 				</p>
-				<?php creationell_wp_theme_post_thumbnail(); ?>
+				<?php endif; ?><?php creationell_wp_theme_post_thumbnail(); ?>
 			</div>
 			
 			<?php
@@ -141,10 +152,23 @@ get_header();
 
 			<div class="entry-footer clear-both">
 				<div class="mb-4">
-				<?php creationell_wp_theme_tags(); ?>
+				<?php
+				if ( ! creationell_wp_theme_entry_terms( 'single-sidebar-left' ) ) {
+					creationell_wp_theme_tags();
+				}
+				?>
 				</div>
 
 				<?php
+				/**
+				 * Fires after the tags of a post, before related posts, the post navigation and the comments.
+				 *
+				 * @since 1.0.0
+				 *
+				 * @param string $context Template, for example single or single-sidebar-left.
+				 */
+				do_action( 'creationell_wp_theme_after_entry_terms', 'single-sidebar-left' );
+
 				// Related posts using bs Swiper plugin
 				// Deprecated, new action creationell_wp_theme_before_pagination will be used for related posts.
 				if ( function_exists( 'creationell_wp_theme_related_posts' ) ) {

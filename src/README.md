@@ -32,6 +32,7 @@ a class that a Bootstrap line needs, and the libraries in `lib/`, load through
 | `settings/` | `Settings` | Settings registry, definitions, values, the setter, sanitizer, contrast rules, fonts, Bootstrap line; `transfer/` holds import and export |
 | `modules/` | `Modules` | Module catalog, manifest and state |
 | `posts/` | `Posts` | Query arguments, card options, pagination, content guard and slider options of the post blocks; hook-free |
+| `blog/` | `Blog` | URL and title of the blog page, reading time, blog context and the switch of `home.php` and `author.php` to `index.php` and `archive.php`; always loaded, also with the module `blog` off, hook-free |
 | `consent/` | `Consent` | Consent gate, categories, script marker and the JavaScript bridge |
 | `child/` | `Child` | Headers of the active child theme and the child theme rules |
 | `update/` | `Update` | Theme updater, update manifest and its error codes |
@@ -68,6 +69,10 @@ plugins may call; they are not pluggable:
   the consent interface.
 - `creationell_wp_theme_language_switcher( $args )`: markup of the language
   switcher.
+- `creationell_wp_theme_blog_url()`, `creationell_wp_theme_blog_title()`,
+  `creationell_wp_theme_has_blog_posts()`,
+  `creationell_wp_theme_blog_reading_time( $post )`,
+  `creationell_wp_theme_is_blog_view()`: the blog helpers, see `blog/README.md`.
 
 ```php
 if ( 'active' === creationell_wp_theme_module_state( 'contact-form-7' ) ) {
