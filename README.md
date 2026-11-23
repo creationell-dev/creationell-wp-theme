@@ -1,6 +1,6 @@
 # creationell Theme
 
-**Version:** 0.6.0
+**Version:** 0.6.1
 
 **Requires at least:** 7.1
 
@@ -287,6 +287,29 @@ GPL-2.0-or-later, see `LICENSE`. Licenses of the included third-party code:
 `THIRD-PARTY-NOTICES`.
 
 ## Changelog
+
+### 0.6.1
+
+- WP-CLI: the section `blog` of `wp creationell-theme doctor` names only the
+  single templates of the child theme that WordPress uses for posts:
+  `single.php`, `single-post.php` and `single-post-*.php`, and as before
+  every file in `single-templates/`. Templates of other post types such as
+  `single-product.php` no longer get a warning.
+- Share links with Shariff: the theme follows the Shariff setting "Disable the
+  Shariff buttons on password protected posts" (`disable_on_protected`) and
+  the word `hideshariff` in the content (without `/hideshariff`), as Shariff
+  does for its own buttons. The post then has no share section.
+- Own share links (without Shariff, or with the setting `blog_share` on
+  `links`): a password-protected post, also once its password is entered,
+  gets no share links. The new filter
+  `creationell_wp_theme_share_protected` (`bool $share`, `WP_Post $post`,
+  default `false`) shares it again; only `true` counts.
+
+#### Notes for the update
+
+- A site that wants to keep sharing its protected posts with the own links
+  sets the filter `creationell_wp_theme_share_protected` to `true`. Otherwise
+  there is nothing to do.
 
 ### 0.6.0
 

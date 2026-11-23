@@ -119,7 +119,7 @@ final class Blog_Doctor {
 	}
 
 	/**
-	 * Warns about templates of the child theme: index.php or archive.php that win over the templates of the module, and single templates, sidebar.php and 404.php that must keep the calls of the module.
+	 * Warns about templates of the child theme: index.php or archive.php that win over the templates of the module, and the single templates of posts, sidebar.php and 404.php that must keep the calls of the module.
 	 *
 	 * @since 1.0.0
 	 *
@@ -137,11 +137,15 @@ final class Blog_Doctor {
 		if ( $author_pages && Blog_Templates::child_overrides( 'author' ) && '' !== Blog_Templates::fallback( 'author' ) ) {
 			$warnings[] = "The child theme's archive.php takes priority over the author pages.";
 		}
-		$dir       = get_stylesheet_directory(); // creationell-allow-stylesheet: the doctor names the templates of the child theme that replace those of the parent.
-		$root      = glob( $dir . '/single*.php' );
-		$templates = glob( $dir . '/single-templates/*.php' );
-		$singles   = array_merge(
+		$dir        = get_stylesheet_directory(); // creationell-allow-stylesheet: the doctor names the templates of the child theme that replace those of the parent.
+		$root       = glob( $dir . '/single*.php' );
+		$templates  = glob( $dir . '/single-templates/*.php' );
+		$root_names = array_filter(
 			array_map( static fn( string $file ): string => basename( $file ), false === $root ? array() : $root ),
+			static fn( string $file ): bool => 1 === preg_match( '~^single(?:-post(?:-.+)?)?\.php$~', $file )
+		);
+		$singles    = array_merge(
+			array_values( $root_names ),
 			array_map( static fn( string $file ): string => 'single-templates/' . basename( $file ), false === $templates ? array() : $templates )
 		);
 		foreach ( $singles as $file ) {

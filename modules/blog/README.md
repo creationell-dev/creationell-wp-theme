@@ -79,7 +79,11 @@ older theme version without these keys leaves them as they are.
   shows no share section, and while Shariff inserts its buttons itself the
   theme prints none. The per-post switches of the Shariff meta box count only
   while Shariff is active; left behind after Shariff is removed, they hide
-  nothing.
+  nothing. Protected posts (with a password, also once it is entered) get no
+  own links; `creationell_wp_theme_share_protected` shares them again. With
+  Shariff its setting "Disable the Shariff buttons on password protected
+  posts" and the word `hideshariff` in the content (without `/hideshariff`)
+  apply, as for its own buttons.
 - **404 page**: after the widget area a search form (`blog_404_search`), the
   menu of the location "404 page links" and the latest posts
   (`blog_404_posts`) with a link "To the blog".
@@ -153,6 +157,7 @@ module is on or off; the module answers them while it is `active`.
 | `creationell_wp_theme_blog_sidebar_terms` | filter | `bool $show` | whether the blog sidebar shows the term lists; only `true` counts |
 | `creationell_wp_theme_blog_sidebar_has_filter` | filter | `bool $has_filter` | whether the sidebar shows the filter bar of the module `post-filter`; only `true` counts |
 | `creationell_wp_theme_shariff_atts` | filter | `array $atts`, `WP_Post $post` | attributes for `shariff3uu_render()`: `url`, `title`, `headline`, `theme` |
+| `creationell_wp_theme_share_protected` | filter | `bool $share`, `WP_Post $post` | true shares a password-protected post with the own links (default false) |
 | `creationell_wp_theme_author_is_public` | filter | `bool $is_public`, `WP_User $user` | whether a user has a public author page; default: a published post |
 | `creationell_wp_theme_author_image_size` | filter | `string\|array $size`, `WP_User $user` | image size of the profile image on the author page; default `medium` |
 | `creationell_wp_theme_blog_home_empty` | filter | `bool $show` | whether the blog page prints "No posts match these filters." when its list is empty although the site has posts; only `true` counts. The module `post-filter` answers `false` while the plugin prints its own zero results zone |
@@ -186,8 +191,9 @@ without `author.php` the author pages.
 `wp creationell-theme doctor` has the section `blog`: `state`, `blog_url`,
 `author_pages`, `share_mode` (`off`, `shariff` or `links`) and `post_filter`,
 and with findings `warnings`: no blog page, child templates that win over the
-module or lack its calls (also single templates in the root of the child
-theme), Shariff inserting its own buttons or using a third party, the module
+module or lack its calls (`single.php`, `single-post.php`,
+`single-post-*.php` and `single-templates/*.php` of the child theme),
+Shariff inserting its own buttons or using a third party, the module
 `post-filter` without a filter bar, authors whose name or address shows the
 login (also a nicename WordPress derived from the login, such as
 `anna-schmidt` from `anna.schmidt`), author pages off while an SEO plugin

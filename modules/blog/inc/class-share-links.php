@@ -22,11 +22,15 @@ defined( 'ABSPATH' ) || exit;
  * shariff takes only Shariff; links only the own links; off nothing. When
  * Shariff inserts its buttons itself (after or before the posts, by the meta
  * box of the post, or through its custom hooks at a hook of the theme), the
- * theme prints nothing, so a post never shows two share bars. The own links
- * are plain links to the share pages of the networks: no script, cookie or
- * request to a third party before a click. The template part
- * template-parts/blog/share.php prints the section; the callbacks read the
- * settings when they run.
+ * theme prints nothing, so a post never shows two share bars. The theme calls
+ * Shariff directly and so follows two of its settings itself: no buttons on a
+ * post with a password while disable_on_protected is on, and none on a post
+ * whose content has hideshariff without /hideshariff. A post with a password
+ * gets no own links unless the filter creationell_wp_theme_share_protected
+ * answers true. The own links are plain links to the share pages of the
+ * networks: no script, cookie or request to a third party before a click.
+ * The template part template-parts/blog/share.php prints the section; the
+ * callbacks read the settings when they run.
  *
  * @since 1.0.0
  */
@@ -152,7 +156,11 @@ final class Share_Links {
 	 *
 	 * Off for a post that is not published, in a preview, outside the view of
 	 * a single post, with the setting off or shariff without the plugin, and
-	 * whenever Shariff inserts its buttons itself.
+	 * whenever Shariff inserts its buttons itself. Off as well with Shariff
+	 * when its settings hide the buttons on the post (disable_on_protected
+	 * for a post with a password, hideshariff in the content), and with the
+	 * own links for a post with a password unless the filter
+	 * creationell_wp_theme_share_protected answers true.
 	 *
 	 * @since 1.0.0
 	 *
@@ -164,7 +172,31 @@ final class Share_Links {
 		if ( 'off' === $mode || 'publish' !== $post->post_status || is_preview() || ! is_singular( 'post' ) ) {
 			return 'off';
 		}
-		return self::shariff_self_inserts( $post ) ? 'off' : $mode;
+		if ( self::shariff_self_inserts( $post ) ) {
+			return 'off';
+		}
+		if ( 'shariff' === $mode ) {
+			return self::shariff_hides( $post ) ? 'off' : 'shariff';
+		}
+		if ( ! self::is_protected( $post ) ) {
+			return $mode;
+		}
+
+		/**
+		 * Filters whether a post with a password gets the own share links.
+		 *
+		 * A post counts as protected while the visitor has to enter its
+		 * password and also after the visitor entered it, as with Shariff.
+		 * Asked only for the own links; with Shariff its setting "Disable the
+		 * Shariff buttons on password protected posts" decides. Only true
+		 * shares the post.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param bool    $share False: a post with a password gets no own links.
+		 * @param WP_Post $post  Post with a password.
+		 */
+		return true === apply_filters( 'creationell_wp_theme_share_protected', false, $post ) ? $mode : 'off';
 	}
 
 	/**
@@ -241,6 +273,45 @@ final class Share_Links {
 			}
 		}
 		return false;
+	}
+
+	/**
+	 * Tells whether a post has a password: the visitor has to enter it, or has entered it already.
+	 *
+	 * The same check as Shariff: post_password_required() or a non-empty
+	 * password on the post. As in WordPress and Shariff, the password 0
+	 * counts as none.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param WP_Post $post Post.
+	 * @return bool True for a post with a password.
+	 */
+	private static function is_protected( WP_Post $post ): bool {
+		return post_password_required( $post ) || ! empty( $post->post_password );
+	}
+
+	/**
+	 * Tells whether the settings of Shariff hide its buttons on a post the theme would share with Shariff.
+	 *
+	 * Follows the rules of Shariff for its own insertion: the option
+	 * disable_on_protected counts only as the integer 1 and then hides the
+	 * buttons on a post with a password; hideshariff in the content hides
+	 * them unless the content also has /hideshariff. The theme leaves the
+	 * content as it is; Shariff removes the word while it is loaded.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param WP_Post $post Post.
+	 * @return bool True when Shariff would show no buttons on the post.
+	 */
+	private static function shariff_hides( WP_Post $post ): bool {
+		$options = $GLOBALS['shariff3uu'] ?? null;
+		if ( is_array( $options ) && 1 === ( $options['disable_on_protected'] ?? null ) && self::is_protected( $post ) ) {
+			return true;
+		}
+		$content = (string) $post->post_content;
+		return str_contains( $content, 'hideshariff' ) && ! str_contains( $content, '/hideshariff' );
 	}
 
 	/**
