@@ -229,7 +229,7 @@ final class Wpml_Integration {
 	 *
 	 * WPML reads the configuration files when Appearance > Themes is opened,
 	 * not after a theme switch with WP-CLI; until then wp_template_part keeps
-	 * the previous sync mode (seen in E1: 1 instead of 2).
+	 * the previous sync mode (observed: 1 instead of 2).
 	 *
 	 * @since 1.0.0
 	 *

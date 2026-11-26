@@ -64,7 +64,7 @@ $creationell_wp_theme_allowed    = creationell_wp_theme_kses_allowed_svg( wp_kse
 	<h2 id="<?php echo esc_attr( $creationell_wp_theme_heading_id ); ?>" class="h6"><?php echo esc_html( $creationell_wp_theme_heading ); ?></h2>
 <?php
 if ( '' !== $creationell_wp_theme_shariff ) :
-	// The markup of Shariff, unchanged: the plugin escapes its own output (see phpcs.xml.dist).
+	// The markup of Shariff, unchanged: the plugin escapes its own output.
 	echo $creationell_wp_theme_shariff . "\n";
 else :
 	?>

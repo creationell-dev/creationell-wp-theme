@@ -10,8 +10,8 @@
  *
  * The script carries no texts: all texts are in the configuration. Named
  * corrections at the end make CookieConsent 3.1.0 fully usable with keyboard
- * and screen readers (decision B of the spike report S-CC; F-n names its
- * findings).
+ * and screen readers; the comment of each correction names the gap it
+ * closes.
  */
 ( function () {
 	'use strict';
@@ -177,10 +177,10 @@
 		}
 	} );
 
-	// 8. Named corrections of CookieConsent 3.1.0 (decision B, spike report S-CC, section 4).
+	// 8. Named corrections of CookieConsent 3.1.0.
 
 	/**
-	 * F-2: the banner is not modal (disablePageInteraction false), so it is a
+	 * The banner is not modal (disablePageInteraction false), so it is a
 	 * named region instead of a modal dialog, as upstream commit 772b737 does.
 	 */
 	function bannerAsRegion( banner ) {
@@ -189,7 +189,7 @@
 	}
 
 	/**
-	 * F-4: the settings button of the banner announces that it opens a dialog,
+	 * The settings button of the banner announces that it opens a dialog,
 	 * as upstream commit 706f25c does.
 	 */
 	function announcePreferencesPopup( banner ) {
@@ -200,7 +200,7 @@
 	}
 
 	/**
-	 * F-10: the SVG icons of the close button and the section arrows are
+	 * The SVG icons of the close button and the section arrows are
 	 * decorative, as upstream commit 772b737 marks them.
 	 */
 	function hideDecorativeIcons( modal ) {
@@ -210,7 +210,7 @@
 	}
 
 	/**
-	 * F-3: Tab and Shift+Tab may leave the non-modal banner. CookieConsent traps
+	 * Tab and Shift+Tab may leave the non-modal banner. CookieConsent traps
 	 * the focus in the banner with a bubbling keydown listener on #cc-main; a
 	 * capturing listener on the root element runs before it and stops Tab for
 	 * the banner only, while the dialog keeps its trap.
@@ -227,7 +227,7 @@
 	}
 
 	/**
-	 * F-11: CookieConsent focuses a tabindex="-1" element when the dialog opens;
+	 * CookieConsent focuses a tabindex="-1" element when the dialog opens;
 	 * Shift+Tab from there leaves the dialog, because the trap only reacts on its
 	 * first and last focusable element (upstream issue 828, fixed on dev in
 	 * c0a6c51). A capturing listener on document wraps the focus first.
@@ -252,7 +252,7 @@
 	}
 
 	/**
-	 * F-1: CookieConsent 3.1.0 focuses the banner 100 ms after showing it, while
+	 * CookieConsent 3.1.0 focuses the banner 100 ms after showing it, while
 	 * it is still hidden, so the focus stays on the page. Once the banner is
 	 * visible it takes the focus, unless the visitor already focused something,
 	 * as upstream commit 772b737 does later. A skip link target that the theme

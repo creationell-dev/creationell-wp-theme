@@ -25,5 +25,5 @@ $creationell_wp_theme_html = is_string( $creationell_wp_theme_args['html'] ?? nu
 if ( '' === $creationell_wp_theme_html ) {
 	return;
 }
-// The markup of the plugin, unchanged: the plugin escapes its own output (see phpcs.xml.dist).
+// The markup of the plugin, unchanged: the plugin escapes its own output.
 echo $creationell_wp_theme_html;

@@ -4,7 +4,7 @@
  *
  * Prints the current post of the loop as image card: the image (large, empty
  * alt, no link) fills the card, the text sits on a dark box at 75 % opacity so
- * that its contrast does not depend on the image (FS-8). The box holds the
+ * that its contrast does not depend on the image. The box holds the
  * category badges, the title with the only link to the post (stretched over
  * the card), date and author for posts, the excerpt (none while the post wants
  * its password), "Read more" and the tags.

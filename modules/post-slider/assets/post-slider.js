@@ -10,7 +10,7 @@
  * the stylesheet shows its slides as a grid.
  *
  * The keyboard module of Swiper stays off, since it would catch the arrow keys
- * of the whole page (FS-10); arrows and dots are buttons. With
+ * of the whole page; arrows and dots are buttons. With
  * prefers-reduced-motion: reduce the slides change without animation and the
  * slideshow does not start by itself; the pause button then offers to play.
  * While focus is inside the slider (except on the pause button) or the pointer

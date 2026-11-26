@@ -44,7 +44,7 @@ add_filter(
 ## Term selection
 
 Blockstudio 7.6.14 does not resolve `{attributes.taxonomy}` in the block
-editor (spike SP-9.1, `tests/spikes/tp9-blockstudio/README.md`). The blocks
+editor. The blocks
 therefore take the terms as a text field with a comma list of term IDs;
 `Query_Args::ids()` reads it, as well as the `{value, label}` objects that
 fields with `populate` and `fetch` store.

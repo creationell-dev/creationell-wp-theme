@@ -11,7 +11,7 @@
  * right-to-left languages; the dots are filled by the slider script. The
  * script post-slider.js starts Swiper; without it the stylesheet shows the
  * slides as a grid and hides the controls. In the block editor the part
- * prints a static grid of the first posts instead (FS-11): no Swiper markup,
+ * prints a static grid of the first posts instead: no Swiper markup,
  * no JSON, no buttons.
  *
  * Arguments: query (WP_Query), display (options of Display_Options), options

@@ -37,11 +37,11 @@ defined( 'ABSPATH' ) || exit;
  *   language of the post_id, never the rows;
  * - acf/validate_post_id: ACFML 5 appends "_<lang>" to every own options
  *   post_id; the global page gets its plain post_id back, so the untranslated
- *   keys stay the same in every language (FS-20);
+ *   keys stay the same in every language;
  * - acf/prepare_field: effective value and origin, which a select always
  *   offers; read-only when locked, without the capability of the area or
  *   untranslated in a secondary language, then every type but the plain inputs
- *   shows its value as a message; acf/render_field adds the reset button (FS-14);
+ *   shows its value as a message; acf/render_field adds the reset button;
  * - acf/validate_save_post: a dry run of the setter over the posted values
  *   reports contrast and invalid values at the field;
  * - acf/pre_update_value: fields of the theme never reach the rows through ACF;
@@ -86,7 +86,7 @@ final class Acf_Adapter {
 	 * ACF types that honor readonly and disabled and post nothing else; other types show their value as a message when read-only.
 	 *
 	 * The type true_false posts a hidden 0 and has no disabled checkbox, post_object
-	 * and a select with ui add a hidden input of the same name (tp5-p3-01).
+	 * and a select with ui add a hidden input of the same name.
 	 *
 	 * @since 1.0.0
 	 */
@@ -217,7 +217,7 @@ final class Acf_Adapter {
 	 * Parses an ACF post_id of the theme pages.
 	 *
 	 * "creationell_wp_theme_global" is global, also with the suffix of an active
-	 * language (ACFML, FS-20); "options" is the default language, "options_<lang>"
+	 * language (ACFML); "options" is the default language, "options_<lang>"
 	 * an active language, "options_all" all languages.
 	 *
 	 * @since 1.0.0
@@ -344,7 +344,7 @@ final class Acf_Adapter {
 	 * Adds the effective value to the choices of a select that lacks it.
 	 *
 	 * Without it the browser selects the first choice, and an unchanged save
-	 * would overwrite the value silently (tp5-p3-02). The label is the value
+	 * would overwrite the value silently. The label is the value
 	 * itself; the setter still judges it on save.
 	 *
 	 * @since 1.0.0
@@ -408,7 +408,7 @@ final class Acf_Adapter {
 	/**
 	 * Prints the reset button after a theme field with a backend value; action acf/render_field.
 	 *
-	 * The button submits the form (FS-14: no writing GET); the options page runs
+	 * The button submits the form (no writing GET); the options page runs
 	 * the reset after its save. ACF renders some field types, such as the
 	 * post_object of a page setting, as another type with a nested
 	 * acf_render_field(); the button belongs to the outer run only.

@@ -1,6 +1,6 @@
 # Scoped third-party PHP libraries of the theme. Generated file. Do not edit.
 prefix = Creationell\WpTheme\Vendor
-input_hash = d7abda42e7a67f8e62a1a5dd6def390c64f9fff76b417d20965be15b6d79263c
+input_hash = f3ee134c78a4e89832b4f7aace937c6eba582ab2e276d6898d8059b1a65d885a
 generator = bin/build-scoped-libs.php
 
 [league/uri]

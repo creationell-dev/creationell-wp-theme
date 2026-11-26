@@ -63,8 +63,9 @@ get_header();
 		 * @since 1.0.0
 		 *
 		 * @param string $classes Space-separated CSS classes.
+		 * @param string $context Template, for example page or archive.
 		 */
-		$creationell_wp_theme_class_main_col = apply_filters( 'creationell_wp_theme_class_main_col', 'col' );
+		$creationell_wp_theme_class_main_col = apply_filters( 'creationell_wp_theme_class_main_col', 'col', 'page' );
 		?>
 		<div class="<?php echo esc_attr( $creationell_wp_theme_class_main_col ); ?>">
 

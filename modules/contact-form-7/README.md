@@ -16,9 +16,9 @@ the plugin "Contact Form 7: Accessible Defaults".
 Switch it on in *Theme settings > Modules*, with
 `wp creationell-theme module enable contact-form-7 --user=<admin>`, with the
 constant in `wp-config.php` or with the filter `creationell_wp_theme_modules`
-of a child theme (see `modules/README.md`). The golden path
-`docs/golden-paths/create-cf7-form.md` of the repository shows the whole way
-from the plugins to a checked form.
+of a child theme (see `modules/README.md`). The recipe
+[`../../agent-guide/recipes/create-cf7-form.md`](../../agent-guide/recipes/create-cf7-form.md)
+shows the whole way from the plugins to a checked form.
 
 ## What the module does
 
@@ -121,14 +121,12 @@ add_filter( 'creationell_wp_theme_cf7_inline_choices', '__return_true' );
   visible.
 - The module sets no cookies and stores nothing in the database.
 
-## Tests
+## Checks on a site
 
-Group `cf7` of the repository: unit tests of the classes, the stylesheet and
-the manifest; markup and WordPress cases in wp-env
-(`composer test:integration -- --profile=cf7`); end-to-end cases with axe
-against the development copy (`tests/e2e/theme/cf7.spec.ts` after the seed
-`tests/e2e/theme/seed-cf7.php`). Screen reader and zoom checks are manual:
-section "Contact Form 7 forms" of `docs/testing/manual-a11y-checklist.md`.
+- `wp creationell-theme module status contact-form-7` reports the module as
+  `active`.
+- Send a test message with the keyboard only.
+- Check labels, error messages and the live region with a screen reader.
 
 ## Files
 

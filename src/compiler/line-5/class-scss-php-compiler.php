@@ -220,7 +220,7 @@ final class Scss_Php_Compiler implements Stylesheet_Compiler_Interface {
 	}
 
 	/**
-	 * Runs step 1 alone: the expanded stylesheet of scssphp, the input of Node RTLCSS in the RTL comparison of the repository.
+	 * Runs step 1 alone: the expanded stylesheet of scssphp, the input of the RTL comparison with Node RTLCSS.
 	 *
 	 * @since 1.0.0
 	 *

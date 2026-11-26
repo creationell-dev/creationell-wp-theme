@@ -65,7 +65,7 @@ final class Access_Routes {
 	/**
 	 * REST routes editors reach, with methods, group and, where needed, parameters.
 	 *
-	 * The list comes from the requests of the part editor (spike S-7). A row
+	 * The list holds the routes (seen in the requests of the part editor). A row
 	 * with "params" matches only when each of these parameters has exactly
 	 * this value as its effective value, read from JSON, body and query in
 	 * the order of WP_REST_Request::get_param() (the view configuration of
@@ -177,7 +177,7 @@ final class Access_Routes {
 	 * HEAD and OPTIONS count as GET. The method is compared without case. A
 	 * part ID also matches as "<stylesheet>/<slug>": web servers that merge
 	 * slashes in the path (nginx) send it that way, and WordPress reads it as
-	 * "<stylesheet>//<slug>" (spike S-7).
+	 * "<stylesheet>//<slug>".
 	 *
 	 * @since 1.0.0
 	 *

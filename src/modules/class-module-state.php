@@ -18,7 +18,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Resolves the state of a module from its layers and tells why.
  *
- * Configured state, precedence P4, lowest first: default "off" < child default <
+ * Configured state, precedence lowest first: default "off" < child default <
  * backend < child lock < constant CREATIONELL_WP_THEME_MODULE_<SLUG>. The child
  * layers come from the filter creationell_wp_theme_modules, the backend layer
  * from the module store (the settings snapshot for the shared instance). The highest layer that is set wins; when its value is no
@@ -252,7 +252,7 @@ final class Module_State {
 	}
 
 	/**
-	 * Returns the configured state of a module: P4 with the backend layer, before the checks.
+	 * Returns the configured state of a module: all layers including the backend layer, before the checks.
 	 *
 	 * @since 1.0.0
 	 *

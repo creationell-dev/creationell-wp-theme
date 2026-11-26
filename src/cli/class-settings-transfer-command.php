@@ -39,14 +39,14 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Exports, imports, backs up and restores the theme settings and shows the transfer log.
  *
- * Every subcommand is its own command below "creationell-theme settings", next
- * to the settings commands of the settings core, and needs the global parameter
- * --user of a user with the capability creationell_wp_theme_import_export:
- * the log names the person, and the setter checks the capability of every key
- * for that user. Exit code 0 means done or dry run; 1 means nothing was written
- * (every Transfer_Error, a file that cannot be read or written, a missing user).
- * A declined question of WP_CLI::confirm() ends with 0 and writes nothing, as
- * everywhere in WP-CLI.
+ * The transfer commands export, import, backup list, backup create, backup
+ * restore and log sit next to the settings commands of the settings core. Each
+ * of them needs the global parameter --user of a user with the capability
+ * creationell_wp_theme_import_export: the log names the person, and the setter
+ * checks the capability of every key for that user. Their exit code 0 means done
+ * or dry run; 1 means nothing was written (every Transfer_Error, a file that
+ * cannot be read or written, a missing user). A declined question of
+ * WP_CLI::confirm() ends with 0 and writes nothing, as everywhere in WP-CLI.
  *
  * Import and restore show the plan first: a table of every row with section,
  * key, language, current and incoming value, status and message, then the

@@ -161,7 +161,7 @@ final class Access_Context {
 	 * $request['id'] (or 'parent'). A request whose effective value of a URL
 	 * parameter differs from the one in the route, such as
 	 * PUT <stylesheet>//footer?id=<stylesheet>//extra, would edit another part
-	 * under the grant of the footer route, so it gets "none" (FS-5). Rows with
+	 * under the grant of the footer route, so it gets "none". Rows with
 	 * "params" (view-config) compare the effective values as well.
 	 *
 	 * @since 1.0.0

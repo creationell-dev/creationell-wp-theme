@@ -8,7 +8,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-11-18T16:29:13+00:00\n"
+"POT-Creation-Date: 2026-11-24T18:14:01+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: creationell-wp-theme\n"
@@ -452,7 +452,7 @@ msgstr ""
 msgid "Back to the blog"
 msgstr ""
 
-#: modules/blog/inc/class-share-links.php:140
+#: modules/blog/inc/class-share-links.php:144
 #: template-parts/blog/share.php:59
 msgid "Share this post"
 msgstr ""
@@ -2081,10 +2081,10 @@ msgid "Full width image"
 msgstr ""
 
 #. translators: Name of the navigation to the previous and the next post; not the same as "Posts navigation" (pages of a post archive).
-#: single-templates/single-full-width-image.php:239
-#: single-templates/single-sidebar-left.php:190
+#: single-templates/single-full-width-image.php:240
+#: single-templates/single-sidebar-left.php:191
 #: single-templates/single-sidebar-none.php:176
-#: single.php:188
+#: single.php:189
 msgid "Post navigation"
 msgstr ""
 

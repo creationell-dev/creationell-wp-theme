@@ -171,9 +171,9 @@ add_filter(
 
 ## Child themes
 
-A child theme with its own `single.php`, `single-post.php` or
-`single-templates/*.php` keeps these calls at the same places, so the blog
-parts still show:
+A child theme with its own `single.php` or `single-templates/*.php` (posts
+use `single.php`; a `single-post.php` is not allowed, because the parent theme
+has none) keeps these calls at the same places, so the blog parts still show:
 `do_action( 'creationell_wp_theme_entry_header_open', $context )`,
 `creationell_wp_theme_category_badge( $context )`,
 `creationell_wp_theme_entry_meta( $context )`,
@@ -191,13 +191,13 @@ without `author.php` the author pages.
 `wp creationell-theme doctor` has the section `blog`: `state`, `blog_url`,
 `author_pages`, `share_mode` (`off`, `shariff` or `links`) and `post_filter`,
 and with findings `warnings`: no blog page, child templates that win over the
-module or lack its calls (`single.php`, `single-post.php`,
-`single-post-*.php` and `single-templates/*.php` of the child theme),
-Shariff inserting its own buttons or using a third party, the module
-`post-filter` without a filter bar, authors whose name or address shows the
-login (also a nicename WordPress derived from the login, such as
-`anna-schmidt` from `anna.schmidt`), author pages off while an SEO plugin
-lists authors.
+module or lack its calls (`single.php` and `single-templates/*.php` of the
+child theme; it also names a `single-post.php` or `single-post-*.php`, which
+`child check` rejects), Shariff inserting its own buttons or using a third
+party, the module `post-filter` without a filter bar, authors whose name or
+address shows the login (also a nicename WordPress derived from the login,
+such as `anna-schmidt` from `anna.schmidt`), author pages off while an SEO
+plugin lists authors.
 
 ```sh
 wp creationell-theme doctor --format=json | jq '.blog'

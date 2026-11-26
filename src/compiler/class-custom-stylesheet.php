@@ -335,7 +335,7 @@ final class Custom_Stylesheet {
 	 * locator serves the stored build until a new one. WordPress fires
 	 * after_switch_theme on the first request after the switch, which may be a
 	 * front-end request: this only schedules the event and forgets the stale
-	 * check of the admin, it neither compiles nor computes the fingerprint (FS-8).
+	 * check of the admin, it neither compiles nor computes the fingerprint.
 	 *
 	 * @since 1.0.0
 	 *

@@ -26,7 +26,7 @@ defined( 'ABSPATH' ) || exit;
  * stylesheet loads early on a singular page that holds one of the blocks, else
  * when a block renders, and in the editor canvas. While the module is active,
  * the block creabb/post-grid of CreaBootstrapBlocks leaves the inserter unless
- * the filter creationell_wp_theme_hide_cbb_post_grid returns false (FS-16);
+ * the filter creationell_wp_theme_hide_cbb_post_grid returns false;
  * existing post grids keep rendering. The renderers turn the block attributes
  * into a WP_Query through Query_Args and Display_Options and hand the query to
  * the template parts of template-parts/post-lists/, which a child theme may

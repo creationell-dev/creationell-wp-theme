@@ -30,11 +30,11 @@ defined( 'ABSPATH' ) || exit;
  * prints the related posts there on a singular request for a post type of the
  * setting related_posts_post_types, unless the content holds the block or the
  * filter creationell_wp_theme_related_posts_auto_insert returns false. A
- * hidden module renders existing blocks only (FS-13). Related_Query finds the
+ * hidden module renders existing blocks only. Related_Query finds the
  * posts; template-parts/related-posts/related-posts.php, which a child theme
  * may override, prints a section with a heading and the cards of the module
  * post-lists as a grid, or the slider of the module post-slider while that
- * module is not off (FS-12). The stylesheets load early on a singular page
+ * module is not off. The stylesheets load early on a singular page
  * with related posts, else when they render. The block comes from the blocks/
  * folder, which the module gate hands to Blockstudio.
  *
@@ -286,7 +286,7 @@ final class Related_Posts_Module {
 	}
 
 	/**
-	 * Returns the effective display: slider only when asked for and the module post-slider is not off (FS-12), else grid.
+	 * Returns the effective display: slider only when asked for and the module post-slider is not off, else grid.
 	 *
 	 * @since 1.0.0
 	 *

@@ -6,7 +6,7 @@
  * state; the file returns a list of Definition objects and declares nothing, so
  * it may run more than once per request. Which posts count as related and how
  * they show is an advanced design setting of the agency; the heading is a text
- * of the site, per language (FS-5).
+ * of the site, per language.
  *
  * @package Creationell\WpTheme
  * @since   1.0.0

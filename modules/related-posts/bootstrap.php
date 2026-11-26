@@ -4,7 +4,7 @@
  *
  * The module gate requires this file with $slug, $state and $manifest in scope.
  * Only an active module adds the related posts below single posts; a hidden
- * one renders existing blocks only (FS-13).
+ * one renders existing blocks only.
  *
  * @package Creationell\WpTheme
  * @since   1.0.0

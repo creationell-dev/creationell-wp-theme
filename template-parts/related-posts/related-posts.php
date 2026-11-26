@@ -7,7 +7,7 @@
  * template-parts/post-lists/ (1 column, 2 from md, the given number from lg),
  * or, for the layout slider, as the post slider of the module post-slider in
  * the context related-posts; without that module the grid shows instead. In
- * the block editor the slider prints its static grid (FS-11).
+ * the block editor the slider prints its static grid.
  *
  * Arguments: query (WP_Query), display (card options of Display_Options),
  * layout (grid, slider), columns (1 to 3), heading (text), heading_level (2

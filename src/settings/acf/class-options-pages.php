@@ -28,7 +28,7 @@ defined( 'ABSPATH' ) || exit;
  * "creationell_wp_theme_global", capability creationell_wp_theme_view_advanced,
  * so editors see it read-only) holds a note about the Bootstrap line and the
  * tabs colors and fonts. Every active module adds one tab with its settings
- * of the section of the page (FS-19). No page uses edit_posts. The pages only
+ * of the section of the page. No page uses edit_posts. The pages only
  * show and post the values; the adapter reads and writes them through the
  * settings and the setter.
  *

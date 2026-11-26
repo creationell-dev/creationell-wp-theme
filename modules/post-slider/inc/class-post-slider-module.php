@@ -28,7 +28,7 @@ defined( 'ABSPATH' ) || exit;
  * block, else when a slider renders; both need the Swiper library of
  * Vendor_Scripts (handle creationell-wp-theme-swiper). The editor canvas gets
  * the stylesheet only: there the block shows a static grid of its first posts
- * and runs no script (FS-11). The renderer turns the block attributes into a
+ * and runs no script. The renderer turns the block attributes into a
  * WP_Query through Query_Args and hands the query, the card options of
  * Display_Options and the Swiper options of Slider_Config to
  * template-parts/post-slider/slider.php, which a child theme may override. The

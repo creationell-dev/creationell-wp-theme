@@ -15,7 +15,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Declares the theme supports on after_setup_theme with priority 2.
  *
- * Template mode (M0): the theme renders its PHP templates and never block
+ * Template mode: the theme renders its PHP templates and never block
  * templates. Because the theme has a theme.json, WordPress adds the support
  * "block-templates" on after_setup_theme with priority 1
  * (wp_enable_block_templates()); with it, a wp_template saved in the database

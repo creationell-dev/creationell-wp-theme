@@ -83,7 +83,7 @@ the module is `off`.
 
 On a site with the environment type `local`, the constant
 `CREATIONELL_WP_THEME_TEST_MODULES_DIR` may name a second folder with modules;
-the test suites point it at `tests/fixtures/modules/` of the repository. A slug
+the automated tests of the theme point it at their own test modules. A slug
 in both folders comes from the theme. On other environment types the constant
 is ignored, so a release never reads test modules.
 

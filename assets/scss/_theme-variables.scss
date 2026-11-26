@@ -15,8 +15,8 @@
 
 // Accessible defaults of the theme. Text colours reach 4.5:1 and focus rings and
 // field borders 3:1 on white and on the light grey backgrounds (bg-body-tertiary);
-// composer test:contrast checks every pair. Change them in the child theme only
-// together with that check.
+// a contrast check of the theme covers every pair. A child theme that changes
+// them checks WCAG 2.2 AA itself.
 
 // Colours: primary 5.84:1 on white, 5.54:1 on #f8f9fa; secondary 6.09:1 and 5.78:1.
 // Settings of the design section (Token_Map) come first and win; keep !default on

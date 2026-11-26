@@ -6,8 +6,8 @@
  * button sets from the --bs-btn-* values that the class btn-primary sets on the
  * root element #creationell-theme-consent. Theme colors and the dark mode
  * (data-bs-theme) therefore apply without own colors. Only var(--bs-*) and
- * var(--cc-*), logical properties, no color literals. The additions marked with
- * a finding come from the spike report S-CC (decision B).
+ * var(--cc-*), logical properties, no color literals. The additions after the
+ * mapping correct the layout and the accessibility of CookieConsent 3.1.0.
  */
 #cc-main {
 	--cc-font-family: var(--bs-body-font-family);
@@ -58,7 +58,7 @@
 	--cc-footer-bg: var(--bs-tertiary-bg);
 	--cc-footer-color: var(--bs-secondary-color);
 	--cc-footer-border-color: var(--bs-border-color);
-	/* Above sticky headers (1020, 1030), below offcanvas (1045) and modals (FS-13). */
+	/* Above sticky headers (1020, 1030), below offcanvas (1045) and modals. */
 	--cc-z-index: 1044;
 	font-size: var(--bs-body-font-size);
 }
@@ -100,7 +100,7 @@
 
 /*
  * Equal buttons in the bar: CookieConsent puts a start margin on the second
- * button inside equal grid columns, so it is narrower (spike finding F-6).
+ * button inside equal grid columns, so it is narrower.
  */
 #cc-main .cm.cm--bar:not(.cm--inline) .cm__btns .cm__btn-group .cm__btn + .cm__btn {
 	margin-inline: 0;
@@ -111,21 +111,21 @@
 	gap: 0.375rem;
 }
 
-/* At 400 % zoom the bar is taller than the viewport; it scrolls instead of cutting off its title (spike finding F-9). */
+/* At 400 % zoom the bar is taller than the viewport; it scrolls instead of cutting off its title. */
 #cc-main .cm--bar {
 	max-block-size: 100vh;
 	max-block-size: 100dvh;
 	overflow-y: auto;
 }
 
-/* Category switches reach the minimum target size of 24 x 24 px (spike finding F-7). */
+/* Category switches reach the minimum target size of 24 x 24 px. */
 #cc-main .section__toggle,
 #cc-main .section__toggle-wrapper {
 	block-size: 24px;
 }
 
 /*
- * The cookie table keeps its words whole (finding f2b5-03). A word-break the
+ * The cookie table keeps its words whole. A word-break the
  * site lets the table inherit, such as break-word on body, would split the
  * header "Service" or a service name in the middle, because it lets a column
  * shrink below its longest word; only a word longer than its line may wrap.
@@ -140,7 +140,7 @@
  * Below 640 px CookieConsent shows each cookie as label and value rows and
  * gives the label a quarter of the row, so "Beschreibung" ends in an ellipsis.
  * The label takes its own width instead, at least 10em so the values line
- * up, at most half the row (f2b5-03).
+ * up, at most half the row.
  */
 @media screen and (max-width: 640px) {
 	#cc-main .pm__table-td::before {
@@ -150,7 +150,7 @@
 	}
 }
 
-/* The bar sets its own transition duration, so reduced motion needs both selectors (spike finding F-8). */
+/* The bar sets its own transition duration, so reduced motion needs both selectors. */
 @media (prefers-reduced-motion: reduce) {
 
 	#cc-main,
@@ -160,12 +160,12 @@
 }
 
 /*
- * The banner is not modal: focused elements scroll above it (FS-12), and the
- * page gets room at its end, so the last element can scroll above it too
- * (spike finding F-5). consent.js keeps the offset at the banner height. The
+ * The banner is not modal: focused elements scroll above it, and the page
+ * gets room at its end, so the last element can scroll above it too.
+ * consent.js keeps the offset at the banner height. The
  * room is a spacer after the page, not a padding of body: the theme gives html
  * and body a height of 100 %, so a padding would stay inside that height and
- * the page would not get longer (end-to-end case E-CB-08).
+ * the page would not get longer.
  */
 html.show--consent {
 	scroll-padding-block-end: var(--creationell-theme-consent-offset, 0px);
@@ -180,7 +180,7 @@ html.show--consent body::after {
 /*
  * The offcanvas menu of the theme sits in the sticky header, whose stacking
  * context has z-index 1020, so its own 1045 never reaches the banner. While an
- * offcanvas or modal is open the banner goes below the header (FS-13, E-CB-07).
+ * offcanvas or modal is open the banner goes below the header.
  * The preferences dialog closes both before it opens (consent.js), but
  * Bootstrap removes the class show only at the end of the hide transition, and
  * a hide can be prevented: so the rule never applies while the dialog is open.

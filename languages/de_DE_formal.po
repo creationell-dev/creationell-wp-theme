@@ -719,10 +719,10 @@ msgid "Full width image"
 msgstr "Bild in voller Breite"
 
 #. translators: Name of the navigation to the previous and the next post; not the same as "Posts navigation" (pages of a post archive).
-#: single-templates/single-full-width-image.php:239
-#: single-templates/single-sidebar-left.php:190
+#: single-templates/single-full-width-image.php:240
+#: single-templates/single-sidebar-left.php:191
 #: single-templates/single-sidebar-none.php:176
-#: single.php:188
+#: single.php:189
 msgid "Post navigation"
 msgstr "Vorheriger und nächster Beitrag"
 
@@ -4891,7 +4891,7 @@ msgstr "Zurück zu %s"
 msgid "Back to the blog"
 msgstr "Zurück zum Blog"
 
-#: modules/blog/inc/class-share-links.php:140
+#: modules/blog/inc/class-share-links.php:144
 #: template-parts/blog/share.php:59
 msgid "Share this post"
 msgstr "Beitrag teilen"

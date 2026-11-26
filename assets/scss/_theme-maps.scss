@@ -4,7 +4,7 @@
 // part of it, such as a dark footer). The default primary colour reaches 2.6:1
 // on the dark page and 2.3:1 on its tertiary background only, so the ring there
 // is the light ring, tinted in steps of 5 % until it reaches 3:1 on both (with a
-// small margin; composer test:contrast checks the pairs). The secondary
+// small margin; the contrast check of the theme covers the pairs). The secondary
 // background (bg-body-secondary) is not part of the check. A child theme may set
 // $focus-ring-color-dark in its _project-variables.scss.
 @function creationell-tint-for-dark($color, $backgrounds, $minimum) {
@@ -44,8 +44,8 @@ $focus-ring-color-dark: null !default;
 // border 2.8:1. Like the ring, the colours are tinted until they reach 4.5:1
 // (text) and 3:1 (border) on the dark page and its tertiary background, for any
 // primary colour of the design settings; the hover text is the contrast colour of
-// the tint (composer test:contrast checks the pairs). A child theme may set the
-// variables in its _project-variables.scss.
+// the tint (the contrast check of the theme covers the pairs). A child theme
+// may set the variables in its _project-variables.scss.
 $creationell-dark-surfaces: ($body-bg-dark, $body-tertiary-bg-dark);
 $btn-outline-primary-color-dark: null !default;
 $btn-outline-secondary-color-dark: null !default;

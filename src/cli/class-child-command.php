@@ -69,7 +69,7 @@ final class Child_Command {
 	}
 
 	/**
-	 * Checks a child theme folder against the rules in the README of the child theme.
+	 * Checks a child theme folder against the rules in agent-guide/child-theme.md of the theme.
 	 *
 	 * Prints one row per finding and ends with exit code 1 when there is any.
 	 *

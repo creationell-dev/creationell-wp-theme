@@ -95,10 +95,9 @@ brings no script.
 The block templates use inline SVG icons and need no icon font. The theme
 loads the Bootstrap Icons font (`creationell-wp-theme-icons`) only for
 CreaBootstrapBlocks or through the filter `creationell_wp_theme_load_icon_font`.
-Measured on 2026-09-29 on the reference page of the end-to-end tests (all
-layouts of the three post modules, CreaBootstrapBlocks active, headless
-Chromium): 204,512 bytes transferred in 23 requests with the font stylesheet,
-190,591 bytes in 22 requests without it. The difference is the stylesheet
+Measured on 2026-09-29 on a page with all layouts of the three post modules
+(CreaBootstrapBlocks active, headless Chromium): 204,512 bytes transferred in
+23 requests with the font stylesheet, 190,591 bytes in 22 requests without it. The difference is the stylesheet
 `bootstrap-icons.min.css` (13,990 bytes transferred, 87,008 bytes unpacked);
 the font file itself (`bootstrap-icons.woff2`, 134,044 bytes) loads only when
 an element on the page uses an icon glyph, which none of the post blocks does.
@@ -107,12 +106,6 @@ A site without CreaBootstrapBlocks icons can switch the font off:
 ```php
 add_filter( 'creationell_wp_theme_load_icon_font', '__return_false' );
 ```
-
-## Tests
-
-Unit tests: `composer test:unit -- --group=post-lists` (and `posts` for
-`src/posts/`). Integration and end-to-end tests of the three post modules are
-described in `tests/README.md` of the development repository.
 
 ## Hooks
 

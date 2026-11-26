@@ -34,10 +34,12 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Returns the state of a theme module.
  *
- * Precedence: default "off" < child default < child lock < constant
- * CREATIONELL_WP_THEME_MODULE_<SLUG>. A module without its folder, an unknown
- * slug or a state the module does not know gives "off". Reliable from
- * after_setup_theme on, when the child theme has added its filters.
+ * Precedence: default "off" < child default < value saved in the backend <
+ * child lock < constant CREATIONELL_WP_THEME_MODULE_<SLUG>; the child layers
+ * come from the filter creationell_wp_theme_modules. A module without its
+ * folder, an unknown slug or a state the module does not know gives "off".
+ * Reliable from after_setup_theme on, when the child theme has added its
+ * filters.
  *
  * Example:
  *

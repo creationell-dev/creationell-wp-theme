@@ -1,6 +1,6 @@
 # creationell Theme
 
-**Version:** 0.6.1
+**Version:** 0.7.0
 
 **Requires at least:** 7.1
 
@@ -44,16 +44,21 @@ styles, template overrides and the defaults and locks of the theme functions.
 Its `style.css` keeps `Template: creationell-wp-theme`, `Update URI: false` and
 the header `Bootstrap Lines`, which names the Bootstrap major versions its
 project styles support. The README of the child theme template lists what a
-child theme may and may not change; `wp creationell-theme child check` checks a
-child theme against these rules.
+child theme may and may not change; the full contract ships with the theme in
+`agent-guide/child-theme.md`. `wp creationell-theme child check` checks a child
+theme against these rules.
 
-A child theme sets defaults and locks through two filters in its
+A child theme configures the parent theme through four filters in its
 `functions.php`:
 
 - `creationell_wp_theme_modules`: the state of each module, as `default` (the
   site may change it) or `locked` (the site cannot).
 - `creationell_wp_theme_settings`: defaults and locks of the theme settings in
   the same form.
+- `creationell_wp_theme_capabilities`: what editors may change by default
+  (`unlock`, `revoke`, `restricted_admins`, `locked`).
+- `creationell_wp_theme_font_catalog`: project fonts for the design page, with
+  their `.woff2` files in `assets/fonts/` of the child theme.
 
 ```php
 add_filter(
@@ -225,7 +230,7 @@ target language. The mapping wins over the file's own texts of the target
 language (those rows are skipped as `language_replaced`). A language that is not
 in the file, not active, or used as target twice stops the import with
 `lang_map_invalid`; nothing is written. A restore of a backup never maps. The
-file format stays v1. Steps: `docs/golden-paths/import-texts-as-other-language.md`.
+file format stays v1. Steps: [agent-guide/recipes/import-texts-as-other-language.md](agent-guide/recipes/import-texts-as-other-language.md).
 
 ## Command line
 
@@ -246,8 +251,13 @@ of the cookie banner (`list` and `presets` read them); all four need
 `--user=<login>` of a person with `creationell_wp_theme_manage_consent`. Details
 in `modules/consent/README.md`.
 
+All commands with their options, and which of them write:
+`agent-guide/reference/cli.md`.
+
 ## For developers
 
+- `AGENTS.md`: entry point for coding agents in a project with this theme; it
+  links the guides, the generated reference and the recipes in `agent-guide/`.
 - `src/README.md`: the theme core in `src/` (loading, naming, public
   functions such as `creationell_wp_theme_module_state()` and
   `creationell_wp_theme_setting()`).
@@ -258,7 +268,7 @@ in `modules/consent/README.md`.
   `modules/post-filter/README.md`: the blog kit.
 
 Every function, class, method and hook of the theme has a PHPDoc block in
-English; `phpdoc.xml` builds the API documentation with phpDocumentor 3.
+English.
 
 ## Files
 
@@ -280,6 +290,9 @@ English; `phpdoc.xml` builds the API documentation with phpDocumentor 3.
 - `lib/`: PHP libraries of the stylesheet compiler, in their own namespace.
 - `languages/`: translation template and German translations.
 - `modules/`: the theme modules.
+- `AGENTS.md` and `agent-guide/`: documentation for coding agents; a theme
+  update replaces both, so project notes belong in the documentation of the
+  project.
 
 ## License
 
@@ -287,6 +300,53 @@ GPL-2.0-or-later, see `LICENSE`. Licenses of the included third-party code:
 `THIRD-PARTY-NOTICES`.
 
 ## Changelog
+
+### 0.7.0
+
+- New: `AGENTS.md` and `agent-guide/` with guides, a reference generated from
+  the source (hooks, templates, modules, settings and WP-CLI commands) and 14
+  recipes. A project points its coding agents to
+  `wp-content/themes/creationell-wp-theme/AGENTS.md`.
+- The filter `creationell_wp_theme_class_main_col` gets the place as a second
+  argument in every template: `page`, `single`, `archive`, `index`, `search`,
+  `page-sidebar-left`, `page-full-width-image`, `single-sidebar-left` and
+  `single-full-width-image`. Callbacks with one parameter keep working.
+- Corrections in the documentation: a child theme unlocks five areas for
+  editors (`design`, `modules`, `import_export`, `menus`, `consent`) and
+  configures the parent theme through four filters; the DocBlock of
+  `creationell_wp_theme_module_state()` names the precedence of the module
+  states. Comments in the code no longer name internal references.
+- Documentation: a child theme overrides the single view of posts with
+  `single.php` or a file in `single-templates/`. The parent theme has no
+  `single-post.php`, so `wp creationell-theme child check` rejects one in a
+  child theme (rule `allowed-paths`); the notes of 0.6.0 and 0.6.1 that name
+  it describe what `doctor` scans.
+- Documentation of behaviour that was not described before: with the module
+  `blog` active and the setting `blog_author_pages` off, every author address
+  answers with the 404 page. The term lists of the blog sidebar show only
+  terms with published posts and leave out the default category while it is
+  the only one. Only `assets/img/logo/logo.svg` and
+  `assets/img/logo/logo-theme-dark.svg` of a child theme replace the logos of
+  the parent theme. The section `blog` of `wp creationell-theme doctor` names
+  every overriding child template with the calls it must keep, without
+  reading the file.
+- Documentation of the plugin versions: with Contact Form 7 older than 6.0
+  the module `contact-form-7` shows as active but changes nothing on the
+  forms; with JPKCom Post Filter older than 1.7.2 the module `post-filter`
+  shows as active, but the sidebar keeps the term lists. The module
+  `related-posts` also needs the module `post-lists`.
+- Documentation of the child theme: `Bootstrap Lines` lists a further line
+  only once the installed parent theme includes it, and the few Bootstrap
+  variables the theme sets after `_project-variables.scss`, mostly for
+  accessibility (focus ring, field borders, code color), take no project
+  value from that file.
+  `wp help creationell-theme child check` names `agent-guide/child-theme.md`
+  as the rules it checks.
+
+#### Notes for the update
+
+- Nothing to do; a project may point its coding agents to
+  `wp-content/themes/creationell-wp-theme/AGENTS.md`.
 
 ### 0.6.1
 

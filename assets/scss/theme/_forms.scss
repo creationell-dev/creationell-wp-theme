@@ -18,7 +18,7 @@ select {
 // Colour of the focus rings of the theme, per colour mode (_theme-maps.scss); the
 // language switcher draws its ring in the emphasis colour instead.
 // A custom property of the theme, not --bs-focus-ring-color, which a plugin with
-// its own copy of Bootstrap may redefine (K-11).
+// its own copy of Bootstrap may redefine.
 :root,
 [data-bs-theme="light"] {
   --creationell-theme-focus-ring: #{$focus-ring-color};
@@ -102,7 +102,7 @@ select {
 // Close buttons: Bootstrap draws their ring from --bs-btn-close-focus-shadow and
 // resets the outline. A plugin that loads its own copy of Bootstrap after the
 // theme redefines both: a faint ring (1.41:1) or none at all when its ring colour
-// is undefined (K-11). The outline of the buttons replaces the ring; the doubled
+// is undefined. The outline of the buttons replaces the ring; the doubled
 // class outranks .btn-close:focus of such a copy. After a mouse click the ring of
 // the theme's own Bootstrap stays off, as on the buttons.
 .btn-close {

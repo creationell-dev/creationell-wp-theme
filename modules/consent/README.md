@@ -19,8 +19,9 @@ site.
 Switch it on on the module page of the theme settings, with
 `wp creationell-theme module enable consent`, with the constant in
 `wp-config.php` or with the filter `creationell_wp_theme_modules` of a child
-theme (see `modules/README.md`); the golden path "Enable the cookie banner"
-(`docs/golden-paths/enable-cookie-banner.md` of the repository) walks through it. While the plugin bs Cookie Settings is active the module
+theme (see `modules/README.md`); the recipe
+[`../../agent-guide/recipes/enable-cookie-banner.md`](../../agent-guide/recipes/enable-cookie-banner.md)
+walks through it. While the plugin bs Cookie Settings is active the module
 stays `off`. Switching it off asks for a confirmation: banner, dialog and
 withdrawal link disappear at once, and scripts marked for consent stay blocked.
 
@@ -205,20 +206,15 @@ add_filter(
 - The block `creationell-theme/consent-link` needs Blockstudio; without it the
   footer link and links with `data-cc="show-preferencesModal"` still open the
   dialog.
-- Screen reader, zoom and keyboard checks by hand are listed under "Cookie
-  banner" in `docs/testing/manual-a11y-checklist.md` of the repository.
+- Check banner and dialog by hand with a screen reader, at 400 % zoom and with
+  the keyboard only.
 
-## Tests
+## Checks on a site
 
-- Unit: `composer test -- --group=consent-banner`; the backend:
-  `composer test -- --group=consent-services`.
-- WordPress: `composer test:integration -- --profile=consent` (wp-env, module
-  on by constant, `de_DE_formal`).
-- Browser: seed the development site with
-  `wp eval-file tests/e2e/theme/seed-consent.php`, then
-  `npm run test:e2e -- tests/e2e/theme/consent-banner.spec.ts`; remove the seed
-  with `wp eval-file tests/e2e/theme/seed-consent.php remove`.
-- Browser, backend: after `seed-consent.php` also
-  `wp eval-file tests/e2e/theme/seed-consent-services.php`, then
-  `npm run test:e2e -- tests/e2e/theme/consent-services.spec.ts`; `remove`
-  restores the store.
+- `wp creationell-theme doctor` shows the consent provider, the categories and
+  the services per category in the section `consent`; a warning names marked
+  scripts that never run.
+- `wp creationell-theme consent services list --user=<login>` shows the
+  services of the backend.
+- Open the site in a private window: the banner appears, and a script that
+  waits for consent does not load before the consent.
